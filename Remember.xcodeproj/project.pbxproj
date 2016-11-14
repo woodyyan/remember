@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
-		825DEB1B1DD9DC070065090F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB1A1DD9DC070065090F /* ViewController.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
 		825DEB211DD9DC070065090F /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB1F1DD9DC070065090F /* Remember.xcdatamodeld */; };
 		825DEB231DD9DC070065090F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB221DD9DC070065090F /* Assets.xcassets */; };
 		825DEB261DD9DC070065090F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB241DD9DC070065090F /* LaunchScreen.storyboard */; };
 		825DEB311DD9DC070065090F /* RememberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB301DD9DC070065090F /* RememberTests.swift */; };
 		825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB3B1DD9DC070065090F /* RememberUITests.swift */; };
-		825DEB4A1DDA000E0065090F /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB491DDA000E0065090F /* LGSimpleChat.swift */; };
+		825DEB511DDA0B640065090F /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* ChatInputView.swift */; };
+		825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */; };
+		825DEB561DDA0B9B0065090F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,6 @@
 /* Begin PBXFileReference section */
 		825DEB151DD9DC070065090F /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB181DD9DC070065090F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		825DEB1A1DD9DC070065090F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		825DEB1D1DD9DC070065090F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		825DEB201DD9DC070065090F /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
 		825DEB221DD9DC070065090F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +50,9 @@
 		825DEB371DD9DC070065090F /* RememberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RememberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB3B1DD9DC070065090F /* RememberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberUITests.swift; sourceTree = "<group>"; };
 		825DEB3D1DD9DC070065090F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		825DEB491DDA000E0065090F /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
+		825DEB501DDA0B640065090F /* ChatInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
+		825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
+		825DEB541DDA0B9B0065090F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +103,8 @@
 		825DEB171DD9DC070065090F /* Remember */ = {
 			isa = PBXGroup;
 			children = (
-				825DEB4B1DDA03CA0065090F /* Controller */,
+				825DEB521DDA0B9B0065090F /* Controller */,
+				825DEB4F1DDA0B640065090F /* View */,
 				825DEB181DD9DC070065090F /* AppDelegate.swift */,
 				825DEB1C1DD9DC070065090F /* Main.storyboard */,
 				825DEB221DD9DC070065090F /* Assets.xcassets */,
@@ -130,13 +133,21 @@
 			path = RememberUITests;
 			sourceTree = "<group>";
 		};
-		825DEB4B1DDA03CA0065090F /* Controller */ = {
+		825DEB4F1DDA0B640065090F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				825DEB491DDA000E0065090F /* LGSimpleChat.swift */,
-				825DEB1A1DD9DC070065090F /* ViewController.swift */,
+				825DEB501DDA0B640065090F /* ChatInputView.swift */,
 			);
-			name = Controller;
+			path = View;
+			sourceTree = "<group>";
+		};
+		825DEB521DDA0B9B0065090F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */,
+				825DEB541DDA0B9B0065090F /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,9 +287,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				825DEB1B1DD9DC070065090F /* ViewController.swift in Sources */,
+				825DEB561DDA0B9B0065090F /* ViewController.swift in Sources */,
+				825DEB511DDA0B640065090F /* ChatInputView.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
-				825DEB4A1DDA000E0065090F /* LGSimpleChat.swift in Sources */,
+				825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */,
 				825DEB211DD9DC070065090F /* Remember.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

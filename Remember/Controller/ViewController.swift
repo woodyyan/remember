@@ -28,6 +28,12 @@ class ViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
+        setChatInputView()
+    }
+    
+    private func setChatInputView(){
+        
     }
     
     func pushToAboutPage(_ sender:UIBarButtonItem){
