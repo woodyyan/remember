@@ -16,8 +16,12 @@ class ViewController: UITableViewController {
         
         self.title = "丁丁记事"
         self.view.backgroundColor = UIColor.white
+        UINavigationBar.appearance().barStyle = UIBarStyle.black
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 252/255, green: 156/255, blue: 43/255, alpha: 1)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "关于", style: .plain, target: self, action: #selector(ViewController.pushToAboutPage(_:)))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }

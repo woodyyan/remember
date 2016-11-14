@@ -101,9 +101,8 @@
 		825DEB171DD9DC070065090F /* Remember */ = {
 			isa = PBXGroup;
 			children = (
-				825DEB491DDA000E0065090F /* LGSimpleChat.swift */,
+				825DEB4B1DDA03CA0065090F /* Controller */,
 				825DEB181DD9DC070065090F /* AppDelegate.swift */,
-				825DEB1A1DD9DC070065090F /* ViewController.swift */,
 				825DEB1C1DD9DC070065090F /* Main.storyboard */,
 				825DEB221DD9DC070065090F /* Assets.xcassets */,
 				825DEB241DD9DC070065090F /* LaunchScreen.storyboard */,
@@ -129,6 +128,15 @@
 				825DEB3D1DD9DC070065090F /* Info.plist */,
 			);
 			path = RememberUITests;
+			sourceTree = "<group>";
+		};
+		825DEB4B1DDA03CA0065090F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				825DEB491DDA000E0065090F /* LGSimpleChat.swift */,
+				825DEB1A1DD9DC070065090F /* ViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
