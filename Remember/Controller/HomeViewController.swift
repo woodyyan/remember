@@ -28,11 +28,32 @@ class HomeViewController: UIViewController {
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
         setInputView()
+        setKeyboardNotification()
+    }
+    
+    private func setKeyboardNotification(){
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     private func setInputView(){
         let inputView = InputView(frame: CGRect(x: 0, y: self.view.frame.height - 46, width: self.view.frame.width, height: 46))
+        inputView.tag = 111
         self.view.addSubview(inputView)
+    }
+    
+    func keyboardWillHide(_ notice:Notification){
+        let inputView = self.view.viewWithTag(111)
+        inputView?.frame = CGRect(x: 0, y: -46, width: self.view.frame.width, height: 46)
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    func keyboardWillShow(_ notice:Notification){
+        let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
+        let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let endFrame = endFrameValue.cgRectValue
+        let inputView = self.view.viewWithTag(111)
+        inputView?.frame = CGRect(x: 0, y: self.view.bounds.height - 46 - endFrame.height, width: self.view.bounds.width, height: 46)
     }
     
     func pushToAboutPage(_ sender:UIBarButtonItem){
