@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,21 +19,20 @@ class ViewController: UITableViewController {
     
     private func setUI(){
         self.title = "丁丁记事"
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
         UINavigationBar.appearance().barStyle = UIBarStyle.black
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 252/255, green: 156/255, blue: 43/255, alpha: 1)
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "关于", style: .plain, target: self, action: #selector(ViewController.pushToAboutPage(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "关于", style: .plain, target: self, action: #selector(HomeViewController.pushToAboutPage(_:)))
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
         
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-
-        setChatInputView()
+        setInputView()
     }
     
-    private func setChatInputView(){
-        
+    private func setInputView(){
+        let inputView = InputView(frame: CGRect(x: 0, y: self.view.frame.height - 46, width: self.view.frame.width, height: 46))
+        self.view.addSubview(inputView)
     }
     
     func pushToAboutPage(_ sender:UIBarButtonItem){

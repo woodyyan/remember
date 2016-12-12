@@ -14,9 +14,9 @@
 		825DEB261DD9DC070065090F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB241DD9DC070065090F /* LaunchScreen.storyboard */; };
 		825DEB311DD9DC070065090F /* RememberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB301DD9DC070065090F /* RememberTests.swift */; };
 		825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB3B1DD9DC070065090F /* RememberUITests.swift */; };
-		825DEB511DDA0B640065090F /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* ChatInputView.swift */; };
+		825DEB511DDA0B640065090F /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputView.swift */; };
 		825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */; };
-		825DEB561DDA0B9B0065090F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* ViewController.swift */; };
+		825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +50,9 @@
 		825DEB371DD9DC070065090F /* RememberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RememberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB3B1DD9DC070065090F /* RememberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberUITests.swift; sourceTree = "<group>"; };
 		825DEB3D1DD9DC070065090F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		825DEB501DDA0B640065090F /* ChatInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
+		825DEB501DDA0B640065090F /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
-		825DEB541DDA0B9B0065090F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		825DEB541DDA0B9B0065090F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,7 @@
 		825DEB4F1DDA0B640065090F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				825DEB501DDA0B640065090F /* ChatInputView.swift */,
+				825DEB501DDA0B640065090F /* InputView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -145,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */,
-				825DEB541DDA0B9B0065090F /* ViewController.swift */,
+				825DEB541DDA0B9B0065090F /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -287,8 +287,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				825DEB561DDA0B9B0065090F /* ViewController.swift in Sources */,
-				825DEB511DDA0B640065090F /* ChatInputView.swift in Sources */,
+				825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */,
+				825DEB511DDA0B640065090F /* InputView.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */,
 				825DEB211DD9DC070065090F /* Remember.xcdatamodeld in Sources */,
