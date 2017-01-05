@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
-		825DEB211DD9DC070065090F /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB1F1DD9DC070065090F /* Remember.xcdatamodeld */; };
 		825DEB231DD9DC070065090F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB221DD9DC070065090F /* Assets.xcassets */; };
 		825DEB261DD9DC070065090F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB241DD9DC070065090F /* LaunchScreen.storyboard */; };
 		825DEB311DD9DC070065090F /* RememberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB301DD9DC070065090F /* RememberTests.swift */; };
@@ -17,6 +16,15 @@
 		825DEB511DDA0B640065090F /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputView.swift */; };
 		825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */; };
 		825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
+		82DB5C1D1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
+		82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
+		82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
+		82FED7C81E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
+		82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
+		82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */; };
+		82FED7CC1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */; };
+		82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7D51E0A78AC00FDDFD2 /* Remember.xcdatamodeld */; };
+		82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7D51E0A78AC00FDDFD2 /* Remember.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +48,6 @@
 		825DEB151DD9DC070065090F /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB181DD9DC070065090F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		825DEB1D1DD9DC070065090F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		825DEB201DD9DC070065090F /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
 		825DEB221DD9DC070065090F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		825DEB251DD9DC070065090F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		825DEB271DD9DC070065090F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +60,10 @@
 		825DEB501DDA0B640065090F /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
 		825DEB541DDA0B9B0065090F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingEntity.swift; sourceTree = "<group>"; };
+		82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingRepository.swift; sourceTree = "<group>"; };
+		82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,14 +114,16 @@
 		825DEB171DD9DC070065090F /* Remember */ = {
 			isa = PBXGroup;
 			children = (
-				825DEB521DDA0B9B0065090F /* Controller */,
-				825DEB4F1DDA0B640065090F /* View */,
-				825DEB181DD9DC070065090F /* AppDelegate.swift */,
-				825DEB1C1DD9DC070065090F /* Main.storyboard */,
-				825DEB221DD9DC070065090F /* Assets.xcassets */,
-				825DEB241DD9DC070065090F /* LaunchScreen.storyboard */,
 				825DEB271DD9DC070065090F /* Info.plist */,
-				825DEB1F1DD9DC070065090F /* Remember.xcdatamodeld */,
+				825DEB181DD9DC070065090F /* AppDelegate.swift */,
+				825DEB221DD9DC070065090F /* Assets.xcassets */,
+				825DEB521DDA0B9B0065090F /* Controller */,
+				825DEB241DD9DC070065090F /* LaunchScreen.storyboard */,
+				825DEB1C1DD9DC070065090F /* Main.storyboard */,
+				82FED7CE1E0A631700FDDFD2 /* Model */,
+				82FED7C61E0A624100FDDFD2 /* ViewModel */,
+				82FED7D51E0A78AC00FDDFD2 /* Remember.xcdatamodeld */,
+				825DEB4F1DDA0B640065090F /* View */,
 			);
 			path = Remember;
 			sourceTree = "<group>";
@@ -148,6 +161,24 @@
 				825DEB541DDA0B9B0065090F /* HomeViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		82FED7C61E0A624100FDDFD2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */,
+				82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */,
+			);
+			name = ViewModel;
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		82FED7CE1E0A631700FDDFD2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,7 +244,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Songbai Yan";
 				TargetAttributes = {
 					825DEB141DD9DC070065090F = {
@@ -287,11 +318,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */,
 				825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */,
+				82FED7C81E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
+				82DB5C1D1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
+				82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
 				825DEB511DDA0B640065090F /* InputView.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */,
-				825DEB211DD9DC070065090F /* Remember.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +334,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				825DEB311DD9DC070065090F /* RememberTests.swift in Sources */,
+				82FED7CC1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */,
+				82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
+				82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
+				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
+				82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +403,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -414,6 +454,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -446,6 +487,7 @@
 				DEVELOPMENT_TEAM = XD7JAMNS86;
 				INFOPLIST_FILE = Remember/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.Remember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -459,6 +501,7 @@
 				DEVELOPMENT_TEAM = XD7JAMNS86;
 				INFOPLIST_FILE = Remember/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.Remember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -565,12 +608,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		825DEB1F1DD9DC070065090F /* Remember.xcdatamodeld */ = {
+		82FED7D51E0A78AC00FDDFD2 /* Remember.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				825DEB201DD9DC070065090F /* Remember.xcdatamodel */,
+				82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */,
 			);
-			currentVersion = 825DEB201DD9DC070065090F /* Remember.xcdatamodel */;
+			currentVersion = 82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */;
 			path = Remember.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
