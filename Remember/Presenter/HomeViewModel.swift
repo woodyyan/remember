@@ -14,4 +14,8 @@ class HomeViewModel {
     init() {
         things = ThingRepository.sharedInstance.getThings()
     }
+    
+    func deleteThing(_ thing:ThingEntity){
+        ThingRepository.sharedInstance.deleteThing(thing: thing)
+    }
 }

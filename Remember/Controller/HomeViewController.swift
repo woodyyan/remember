@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     fileprivate var viewModel = HomeViewModel()
+    fileprivate var tableView:UITableView!
     fileprivate var things = [ThingEntity]()
 
     override func viewDidLoad() {
@@ -49,6 +50,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func initInputView(){
         let inputView = InputView(frame: CGRect(x: 0, y: self.view.frame.height - 46, width: self.view.frame.width, height: 46))
         inputView.tag = 111
+        inputView.delegate = self
         self.view.addSubview(inputView)
     }
     
@@ -57,7 +59,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let navBarHeight = self.navigationController?.navigationBar.frame.height{
             statusHeight += navBarHeight
         }
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 46), style: UITableViewStyle.plain)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 46), style: UITableViewStyle.plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -98,18 +100,40 @@ extension HomeViewController{
         return 1
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = things[indexPath.row].content
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == UITableViewCellEditingStyle.delete){
+            let alertController = UIAlertController(title: "提示", message: "确认要删除吗？", preferredStyle: UIAlertControllerStyle.alert)
+            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+                tableView.setEditing(false, animated: true)
+            })
+            alertController.addAction(cancelAction)
+            let deleteAction = UIAlertAction(title: "删除", style: UIAlertActionStyle.destructive, handler: { (action) -> Void in
+                let index=(indexPath as NSIndexPath).row as Int
+                let thing = self.things[index]
+                self.things.remove(at: index)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+                self.viewModel.deleteThing(thing)
+            })
+            alertController.addAction(deleteAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension HomeViewController : ThingInputDelegate{
+    func input(inputView: InputView, thing: ThingEntity) {
+        self.things.append(thing)
+        tableView.reloadData()
     }
 }
 

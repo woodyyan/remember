@@ -3,8 +3,9 @@
     <entity name="Thing" representedClassName=".Thing" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Thing" positionX="-27" positionY="18" width="128" height="75"/>
+        <element name="Thing" positionX="-27" positionY="18" width="128" height="90"/>
     </elements>
 </model>

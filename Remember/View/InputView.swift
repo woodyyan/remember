@@ -13,6 +13,8 @@ class InputView : UIView, UITextFieldDelegate{
     
     private var textField:UITextField!
     
+    var delegate:ThingInputDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -37,8 +39,14 @@ class InputView : UIView, UITextFieldDelegate{
             textField.resignFirstResponder()
             textField.text = ""
             
+            delegate?.input(inputView: self, thing: thing)
+            
             return true
         }
         return false
     }
+}
+
+protocol ThingInputDelegate : NSObjectProtocol{
+    func input(inputView:InputView, thing:ThingEntity)
 }

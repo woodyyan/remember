@@ -36,13 +36,28 @@ class ThingRepository {
     }
     
     private func deleteThingFromLocalDB(thing:ThingEntity){
-        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
+        let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
+        request.entity = entity
+        let predicate = NSPredicate(format: "%K == %@","id", thing.id)
+        request.predicate = predicate
+        do{
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject]{
+                for thing in results {
+                    appDelegate.persistentContainer.viewContext.delete(thing)
+                    appDelegate.saveContext()
+                }
+            }
+        }catch{
+            
+        }
     }
     
     private func createAndSaveThingInLocalDB(thing:ThingEntity){
         let object:NSManagedObject = NSEntityDescription.insertNewObject(forEntityName: "Thing", into: appDelegate.persistentContainer.viewContext)
         object.setValue(thing.content, forKey: "content")
         object.setValue(thing.createdAt, forKey: "createdAt")
+        object.setValue(thing.id, forKey: "id")
         appDelegate.saveContext()
     }
     
@@ -61,7 +76,12 @@ class ThingRepository {
                             continue
                         }
                         
+                        guard let id = result.value(forKey: "id") as? String else {
+                            continue
+                        }
+                        
                         let thing = ThingEntity(content: content, createdAt: createdAt)
+                        thing.id = id
                         things.append(thing)
                     }
                 }
