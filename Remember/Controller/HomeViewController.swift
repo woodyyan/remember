@@ -54,6 +54,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.addSubview(inputView)
     }
     
+    private func getSearchBar() -> UISearchBar{
+//        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+//        searchBar.placeholder = "搜索你忘记的小事"
+//        return searchBar
+        let searchResultVC = SearchResultTableViewController()
+        
+        let searchController = UISearchController(searchResultsController: UINavigationController(rootViewController: searchResultVC))
+        //searchController.delegate = self
+        searchController.searchResultsUpdater = searchResultVC
+        searchController.searchBar.placeholder = "搜索你忘记的小事"
+        //        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = true
+        //searchController.searchBar.barTintColor = CommonHelper.getMainColor()
+        
+        return searchController.searchBar
+    }
+    
     private func initTableView(){
         var statusHeight = UIApplication.shared.statusBarFrame.height
         if let navBarHeight = self.navigationController?.navigationBar.frame.height{
@@ -62,6 +79,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 46), style: UITableViewStyle.plain)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableHeaderView = getSearchBar()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.tableFooterView = UIView(frame:CGRect.zero)
         self.view.addSubview(tableView)

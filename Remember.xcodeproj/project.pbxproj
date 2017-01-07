@@ -19,6 +19,9 @@
 		82DB5C1D1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
 		82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
 		82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
+		82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
+		82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
+		82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
 		82FED7C81E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */; };
@@ -61,6 +64,7 @@
 		825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
 		825DEB541DDA0B9B0065090F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingEntity.swift; sourceTree = "<group>"; };
+		82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingRepository.swift; sourceTree = "<group>"; };
 		82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			children = (
 				825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */,
 				825DEB541DDA0B9B0065090F /* HomeViewController.swift */,
+				82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 				825DEB511DDA0B640065090F /* InputView.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */,
+				82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +341,7 @@
 			files = (
 				825DEB311DD9DC070065090F /* RememberTests.swift in Sources */,
 				82FED7CC1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */,
+				82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 				82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
 				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
@@ -347,6 +354,7 @@
 			files = (
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
 				82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
+				82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
