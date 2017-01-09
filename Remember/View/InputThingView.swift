@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class InputView : UIView, UITextFieldDelegate{
+class InputThingView : UIView, UITextFieldDelegate{
     
     private var textField:UITextField!
     
@@ -48,5 +48,5 @@ class InputView : UIView, UITextFieldDelegate{
 }
 
 protocol ThingInputDelegate : NSObjectProtocol{
-    func input(inputView:InputView, thing:ThingEntity)
+    func input(inputView:InputThingView, thing:ThingEntity)
 }

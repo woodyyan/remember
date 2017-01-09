@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     fileprivate var viewModel = HomeViewModel()
+    fileprivate var inputThingView:InputThingView!
     fileprivate var tableView:UITableView!
     fileprivate var searchController:UISearchController!
     
@@ -52,10 +53,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initInputView(){
-        let inputView = InputView(frame: CGRect(x: 0, y: self.view.frame.height - 46, width: self.view.frame.width, height: 46))
-        inputView.tag = 111
-        inputView.delegate = self
-        self.view.addSubview(inputView)
+        inputThingView = InputThingView(frame: CGRect(x: 0, y: self.view.frame.height - 46, width: self.view.frame.width, height: 46))
+        inputThingView.delegate = self
+        self.view.addSubview(inputThingView)
     }
     
     private func initSearchBar(){
@@ -85,8 +85,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func keyboardWillHide(_ notice:Notification){
-        let inputView = self.view.viewWithTag(111)
-        inputView?.frame = CGRect(x: 0, y: self.view.frame.height - 46, width: self.view.frame.width, height: 46)
+        inputThingView.frame = CGRect(x: 0, y: self.view.frame.height - 46, width: self.view.frame.width, height: 46)
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -100,6 +99,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func pushToAboutPage(_ sender:UIBarButtonItem){
     }
+    
+    fileprivate func getThings() -> [ThingEntity]{
+        return self.searchController != nil && self.searchController.isActive ? self.filteredThings : self.things
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -110,7 +113,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 extension HomeViewController{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.things.count
+        return self.getThings().count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -119,7 +122,7 @@ extension HomeViewController{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = things[indexPath.row].content
+        cell.textLabel?.text = getThings()[indexPath.row].content
         return cell
     }
     
@@ -147,7 +150,7 @@ extension HomeViewController{
     }
 }
 
-extension HomeViewController : UISearchResultsUpdating{
+extension HomeViewController : UISearchResultsUpdating, UISearchControllerDelegate{
     // Uupdate searching results
     func updateSearchResults(for searchController: UISearchController) {
         
@@ -155,16 +158,25 @@ extension HomeViewController : UISearchResultsUpdating{
             filterResultsForSearchText(searchText)
         }
         self.tableView.reloadData()
-        
+    }
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+        inputThingView.isHidden = true
     }
     
     private func filterResultsForSearchText(_ searchText: String){
-        
+        if searchText.isEmpty{
+            self.filteredThings = self.things
+        }else{
+            self.filteredThings = self.things.filter({ (thing) -> Bool in
+                return thing.content.contains(searchText)
+            })
+        }
     }
 }
 
 extension HomeViewController : ThingInputDelegate{
-    func input(inputView: InputView, thing: ThingEntity) {
+    func input(inputView: InputThingView, thing: ThingEntity) {
         self.things.append(thing)
         tableView.reloadData()
     }

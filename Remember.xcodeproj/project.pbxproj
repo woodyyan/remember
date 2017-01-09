@@ -13,7 +13,7 @@
 		825DEB261DD9DC070065090F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB241DD9DC070065090F /* LaunchScreen.storyboard */; };
 		825DEB311DD9DC070065090F /* RememberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB301DD9DC070065090F /* RememberTests.swift */; };
 		825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB3B1DD9DC070065090F /* RememberUITests.swift */; };
-		825DEB511DDA0B640065090F /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputView.swift */; };
+		825DEB511DDA0B640065090F /* InputThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputThingView.swift */; };
 		825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */; };
 		825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
 		82DB5C1D1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
@@ -60,7 +60,7 @@
 		825DEB371DD9DC070065090F /* RememberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RememberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB3B1DD9DC070065090F /* RememberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberUITests.swift; sourceTree = "<group>"; };
 		825DEB3D1DD9DC070065090F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		825DEB501DDA0B640065090F /* InputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		825DEB501DDA0B640065090F /* InputThingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputThingView.swift; sourceTree = "<group>"; };
 		825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
 		825DEB541DDA0B9B0065090F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingEntity.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		825DEB4F1DDA0B640065090F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				825DEB501DDA0B640065090F /* InputView.swift */,
+				825DEB501DDA0B640065090F /* InputThingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -328,7 +328,7 @@
 				82FED7C81E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
 				82DB5C1D1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
-				825DEB511DDA0B640065090F /* InputView.swift in Sources */,
+				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */,
 				82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
