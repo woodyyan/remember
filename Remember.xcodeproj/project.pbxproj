@@ -496,7 +496,7 @@
 				INFOPLIST_FILE = Remember/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.Remember;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.remember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -510,7 +510,7 @@
 				INFOPLIST_FILE = Remember/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.Remember;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.remember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

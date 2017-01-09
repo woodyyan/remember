@@ -12,7 +12,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     fileprivate var viewModel = HomeViewModel()
     fileprivate var tableView:UITableView!
+    fileprivate var searchController:UISearchController!
+    
     fileprivate var things = [ThingEntity]()
+    fileprivate var filteredThings = [ThingEntity]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +36,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         initTableView()
         initInputView()
+        initSearchBar()
         setKeyboardNotification()
         
         initData()
@@ -54,21 +58,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.addSubview(inputView)
     }
     
-    private func getSearchBar() -> UISearchBar{
-//        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
-//        searchBar.placeholder = "搜索你忘记的小事"
-//        return searchBar
-        let searchResultVC = SearchResultTableViewController()
-        
-        let searchController = UISearchController(searchResultsController: UINavigationController(rootViewController: searchResultVC))
-        //searchController.delegate = self
-        searchController.searchResultsUpdater = searchResultVC
+    private func initSearchBar(){
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.sizeToFit()
         searchController.searchBar.placeholder = "搜索你忘记的小事"
-        //        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = true
-        //searchController.searchBar.barTintColor = CommonHelper.getMainColor()
+        searchController.searchBar.showsCancelButton = false
+        searchController.searchBar.barTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+        tableView.tableHeaderView = searchController.searchBar
+        definesPresentationContext = true
         
-        return searchController.searchBar
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
     }
     
     private func initTableView(){
@@ -79,7 +79,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 46), style: UITableViewStyle.plain)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableHeaderView = getSearchBar()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.tableFooterView = UIView(frame:CGRect.zero)
         self.view.addSubview(tableView)
@@ -145,6 +144,22 @@ extension HomeViewController{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension HomeViewController : UISearchResultsUpdating{
+    // Uupdate searching results
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        if let searchText = searchController.searchBar.text{
+            filterResultsForSearchText(searchText)
+        }
+        self.tableView.reloadData()
+        
+    }
+    
+    private func filterResultsForSearchText(_ searchText: String){
+        
     }
 }
 
