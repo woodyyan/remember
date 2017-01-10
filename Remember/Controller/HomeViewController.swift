@@ -99,6 +99,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func pushToAboutPage(_ sender:UIBarButtonItem){
+        let aboutController = AboutViewController()
+        self.navigationController?.pushViewController(aboutController, animated: true)
     }
     
     override func didReceiveMemoryWarning() {

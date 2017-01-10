@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
+		823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
+		823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
 		825DEB231DD9DC070065090F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB221DD9DC070065090F /* Assets.xcassets */; };
@@ -48,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		823A341E1E252EBA0093FBF4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		825DEB151DD9DC070065090F /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB181DD9DC070065090F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		825DEB1D1DD9DC070065090F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */,
 				825DEB541DDA0B9B0065090F /* HomeViewController.swift */,
 				82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */,
+				823A341E1E252EBA0093FBF4 /* AboutViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */,
+				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +348,7 @@
 				825DEB311DD9DC070065090F /* RememberTests.swift in Sources */,
 				82FED7CC1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */,
 				82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
+				823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
 				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
@@ -354,6 +361,7 @@
 			files = (
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
 				82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
+				823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
