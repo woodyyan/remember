@@ -13,10 +13,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     fileprivate var viewModel = HomeViewModel()
     fileprivate var inputThingView:InputThingView!
     fileprivate var tableView:UITableView!
-    fileprivate var searchController:UISearchController!
     
     fileprivate var things = [ThingEntity]()
-    fileprivate var filteredThings = [ThingEntity]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,16 +57,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initSearchBar(){
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.sizeToFit()
-        searchController.searchBar.placeholder = "搜索你忘记的小事"
-        searchController.searchBar.showsCancelButton = false
-        searchController.searchBar.barTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
-        tableView.tableHeaderView = searchController.searchBar
-        definesPresentationContext = true
+        let searchBar = UISearchBar()
+        searchBar.sizeToFit()
+        searchBar.delegate = self
+        searchBar.placeholder = "搜索你忘记的小事"
+        tableView.tableHeaderView = searchBar
         
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = false
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.showSearchController))
+        tapGesture.numberOfTapsRequired = 1
+        searchBar.addGestureRecognizer(tapGesture)
+    }
+    
+    func showSearchController(){
+        print("aaa")
     }
     
     private func initTableView(){
@@ -100,10 +101,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func pushToAboutPage(_ sender:UIBarButtonItem){
     }
     
-    fileprivate func getThings() -> [ThingEntity]{
-        return self.searchController != nil && self.searchController.isActive ? self.filteredThings : self.things
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -113,7 +110,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 extension HomeViewController{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.getThings().count
+        return self.things.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -122,7 +119,7 @@ extension HomeViewController{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = getThings()[indexPath.row].content
+        cell.textLabel?.text = things[indexPath.row].content
         return cell
     }
     
@@ -150,27 +147,25 @@ extension HomeViewController{
     }
 }
 
-extension HomeViewController : UISearchResultsUpdating, UISearchControllerDelegate{
-    // Uupdate searching results
-    func updateSearchResults(for searchController: UISearchController) {
-        
-        if let searchText = searchController.searchBar.text{
-            filterResultsForSearchText(searchText)
-        }
-        self.tableView.reloadData()
+extension HomeViewController : UISearchBarDelegate{
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        openSearchController()
+        return false
     }
     
-    func willPresentSearchController(_ searchController: UISearchController) {
-        inputThingView.isHidden = true
-    }
-    
-    private func filterResultsForSearchText(_ searchText: String){
-        if searchText.isEmpty{
-            self.filteredThings = self.things
-        }else{
-            self.filteredThings = self.things.filter({ (thing) -> Bool in
-                return thing.content.contains(searchText)
-            })
+    private func openSearchController(){
+        let searchResultController = SearchResultTableViewController()
+        searchResultController.things = self.things
+        let searchController = UISearchController(searchResultsController: searchResultController)
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.placeholder = "搜索你忘记的小事"
+        searchController.searchResultsUpdater = searchResultController
+//        searchController.searchBar.barTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
+        definesPresentationContext = true
+        searchController.dimsBackgroundDuringPresentation = true
+        self.present(searchController, animated: true){
+            self.tabBarController?.tabBar.isHidden = true
         }
     }
 }

@@ -17,7 +17,6 @@ class SearchResultTableViewController : UITableViewController, UISearchResultsUp
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        things = ThingRepository.sharedInstance.getThings()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
