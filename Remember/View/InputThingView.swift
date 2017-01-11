@@ -33,17 +33,18 @@ class InputThingView : UIView, UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let content = textField.text{
-            let thing = ThingEntity(content: content, createdAt: NSDate())
-            ThingRepository.sharedInstance.createThing(thing: thing)
-            
-            textField.resignFirstResponder()
-            textField.text = ""
-            
-            delegate?.input(inputView: self, thing: thing)
-            
-            return true
+            if !content.isEmpty{
+                let thing = ThingEntity(content: content, createdAt: NSDate())
+                ThingRepository.sharedInstance.createThing(thing: thing)
+                
+                delegate?.input(inputView: self, thing: thing)
+            }
         }
-        return false
+        
+        textField.resignFirstResponder()
+        textField.text = ""
+        
+        return true
     }
 }
 

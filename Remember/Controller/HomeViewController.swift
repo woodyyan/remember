@@ -94,8 +94,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
         let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
         let endFrame = endFrameValue.cgRectValue
-        let inputView = self.view.viewWithTag(111)
-        inputView?.frame = CGRect(x: 0, y: self.view.bounds.height - 46 - endFrame.height, width: self.view.bounds.width, height: 46)
+        inputThingView.frame = CGRect(x: 0, y: self.view.bounds.height - 46 - endFrame.height, width: self.view.bounds.width, height: 46)
     }
     
     func pushToAboutPage(_ sender:UIBarButtonItem){
