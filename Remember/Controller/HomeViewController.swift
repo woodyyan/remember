@@ -99,7 +99,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func pushToAboutPage(_ sender:UIBarButtonItem){
-        let aboutController = AboutViewController()
+        let aboutController = AboutViewController(style: .grouped)
         self.navigationController?.pushViewController(aboutController, animated: true)
     }
     
