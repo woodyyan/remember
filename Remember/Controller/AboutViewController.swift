@@ -49,7 +49,7 @@ class AboutViewController: UITableViewController {
         case 4:
             return 70
         case 5:
-            return 90
+            return 100
         default:
             return 44
         }
