@@ -12,6 +12,17 @@ import UIKit
 class InputTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        let leftImage = UIImageView(image: UIImage(named: "PlusMath"))
+        self.leftView = leftImage
+        self.leftViewMode = .always
+        self.attributedPlaceholder = NSAttributedString(string: " 记一点什么吧", attributes: [NSForegroundColorAttributeName:UIColor.remember()])
+        self.backgroundColor = UIColor.inputGray()
+        self.layer.borderColor = UIColor.inputGray().cgColor
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 20
+        
+        self.returnKeyType = .done
     }
     
     required init?(coder aDecoder: NSCoder) {

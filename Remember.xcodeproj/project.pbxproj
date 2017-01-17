@@ -40,6 +40,7 @@
 		823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34B61E2E26C60093FBF4 /* InputTextField.swift */; };
 		823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34B61E2E26C60093FBF4 /* InputTextField.swift */; };
 		823A34B91E2E26C60093FBF4 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34B61E2E26C60093FBF4 /* InputTextField.swift */; };
+		823A34BA1E2E294C0093FBF4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
 		825DEB231DD9DC070065090F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB221DD9DC070065090F /* Assets.xcassets */; };
@@ -462,6 +463,7 @@
 			files = (
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
 				82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
+				823A34BA1E2E294C0093FBF4 /* HomeViewModel.swift in Sources */,
 				823A34251E2530070093FBF4 /* AboutViewModel.swift in Sources */,
 				823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				823A34B91E2E26C60093FBF4 /* InputTextField.swift in Sources */,
