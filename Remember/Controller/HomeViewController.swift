@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    private let inputViewHeight:CGFloat = 60
     
     fileprivate var viewModel = HomeViewModel()
     fileprivate var inputThingView:InputThingView!
@@ -49,7 +50,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initInputView(){
-        inputThingView = InputThingView(frame: CGRect(x: 0, y: self.view.frame.height - 46, width: self.view.frame.width, height: 46))
+        inputThingView = InputThingView(frame: CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight))
         inputThingView.delegate = self
         self.view.addSubview(inputThingView)
     }
@@ -75,7 +76,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let navBarHeight = self.navigationController?.navigationBar.frame.height{
             statusHeight += navBarHeight
         }
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 46), style: UITableViewStyle.plain)
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - inputViewHeight), style: UITableViewStyle.plain)
         tableView.backgroundColor = UIColor.background()
         tableView.delegate = self
         tableView.dataSource = self
@@ -85,7 +86,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func keyboardWillHide(_ notice:Notification){
-        inputThingView.frame = CGRect(x: 0, y: self.view.frame.height - 46, width: self.view.frame.width, height: 46)
+        inputThingView.frame = CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight)
         self.dismiss(animated: false, completion: nil)
     }
     
@@ -93,7 +94,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
         let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
         let endFrame = endFrameValue.cgRectValue
-        inputThingView.frame = CGRect(x: 0, y: self.view.bounds.height - 46 - endFrame.height, width: self.view.bounds.width, height: 46)
+        inputThingView.frame = CGRect(x: 0, y: self.view.bounds.height - inputViewHeight - endFrame.height, width: self.view.bounds.width, height: inputViewHeight)
     }
     
     func pushToAboutPage(_ sender:UIBarButtonItem){

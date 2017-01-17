@@ -18,11 +18,17 @@ class InputThingView : UIView, UITextFieldDelegate{
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor(red: 236/255, green: 236/255, blue: 236/255, alpha: 1)
-        textField = UITextField(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height))
-        textField.placeholder = "记一点什么吧"
+        textField = InputTextField(frame: CGRect(x: 10, y: 10, width: frame.width - 20, height: frame.height - 20))
+        let leftImage = UIImageView(image: UIImage(named: "PlusMath"))
+        textField.leftView = leftImage
+        textField.leftViewMode = .always
+        textField.attributedPlaceholder = NSAttributedString(string: " 记一点什么吧", attributes: [NSForegroundColorAttributeName:UIColor.remember()])
+        textField.backgroundColor = UIColor.inputGray()
+        textField.layer.borderColor = UIColor.inputGray().cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = 20
+        
         textField.delegate = self
-        textField.borderStyle = .roundedRect
         textField.returnKeyType = .done
         self.addSubview(textField)
     }
