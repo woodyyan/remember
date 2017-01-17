@@ -17,8 +17,8 @@ class AboutViewController: UITableViewController {
         
         self.title = "关于"
         self.view.backgroundColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.tintColor = UIColor.remember()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.remember()];
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.separatorStyle = .none
