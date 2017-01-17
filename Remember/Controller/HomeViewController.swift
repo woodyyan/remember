@@ -25,13 +25,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func initUI(){
         self.title = "丁丁记事"
-        self.view.backgroundColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
-        UINavigationBar.appearance().barStyle = UIBarStyle.black
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 252/255, green: 156/255, blue: 43/255, alpha: 1)
+        self.view.backgroundColor = UIColor.background()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.remember()];
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "关于", style: .plain, target: self, action: #selector(HomeViewController.pushToAboutPage(_:)))
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.remember()
         
         initTableView()
         initInputView()
@@ -78,6 +76,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             statusHeight += navBarHeight
         }
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 46), style: UITableViewStyle.plain)
+        tableView.backgroundColor = UIColor.background()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")

@@ -92,6 +92,7 @@
 		823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		823A34AF1E28A3130093FBF4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		823A34B11E28A72C0093FBF4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		823A34B51E28ADE30093FBF4 /* Remember.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Remember.entitlements; sourceTree = "<group>"; };
 		825DEB151DD9DC070065090F /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB181DD9DC070065090F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		825DEB1D1DD9DC070065090F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -200,6 +201,7 @@
 		825DEB171DD9DC070065090F /* Remember */ = {
 			isa = PBXGroup;
 			children = (
+				823A34B51E28ADE30093FBF4 /* Remember.entitlements */,
 				823A34401E27588E0093FBF4 /* module.modulemap */,
 				823A343F1E2758840093FBF4 /* Firebase.h */,
 				823A34B11E28A72C0093FBF4 /* GoogleService-Info.plist */,
@@ -343,6 +345,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = XD7JAMNS86;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					825DEB2B1DD9DC070065090F = {
 						CreatedOnToolsVersion = 8.1;
@@ -589,6 +596,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Remember/Remember.entitlements;
 				DEVELOPMENT_TEAM = XD7JAMNS86;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -612,6 +620,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Remember/Remember.entitlements;
 				DEVELOPMENT_TEAM = XD7JAMNS86;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
