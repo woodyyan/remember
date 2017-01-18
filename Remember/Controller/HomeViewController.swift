@@ -56,19 +56,35 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initSearchBar(){
-        let searchBar = UISearchBar()
-        searchBar.sizeToFit()
-        searchBar.delegate = self
-        searchBar.placeholder = "搜索你忘记的小事"
-        tableView.tableHeaderView = searchBar
+        let searchButton = UIButton(type: UIButtonType.system)
+        searchButton.setTitle("搜索你忘记的小事", for: UIControlState.normal)
+        searchButton.frame = CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 40)
+        searchButton.layer.borderColor = UIColor.inputGray().cgColor
+        searchButton.layer.borderWidth = 1
+        searchButton.layer.cornerRadius = 20
+        searchButton.backgroundColor = UIColor.inputGray()
+        searchButton.setTitleColor(UIColor.remember(), for: UIControlState.normal)
+        searchButton.addTarget(self, action: #selector(HomeViewController.searchClick(_:)), for: UIControlEvents.touchUpInside)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.showSearchController))
-        tapGesture.numberOfTapsRequired = 1
-        searchBar.addGestureRecognizer(tapGesture)
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
+        headerView.addSubview(searchButton)
+        
+        tableView.tableHeaderView = headerView
     }
     
-    func showSearchController(){
-        print("aaa")
+    func searchClick(_ sender:UIButton) {
+        let searchResultController = SearchResultTableViewController()
+        searchResultController.things = self.things
+        let searchController = UISearchController(searchResultsController: searchResultController)
+        searchController.delegate = self
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.placeholder = "搜索你忘记的小事"
+        searchController.searchResultsUpdater = searchResultController
+        definesPresentationContext = true
+        searchController.dimsBackgroundDuringPresentation = true
+        self.present(searchController, animated: true){
+            sender.isHidden = true
+        }
     }
     
     private func initTableView(){
@@ -155,26 +171,9 @@ extension HomeViewController{
     }
 }
 
-extension HomeViewController : UISearchBarDelegate{
-    
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        openSearchController()
-        return false
-    }
-    
-    private func openSearchController(){
-        let searchResultController = SearchResultTableViewController()
-        searchResultController.things = self.things
-        let searchController = UISearchController(searchResultsController: searchResultController)
-        searchController.searchBar.sizeToFit()
-        searchController.searchBar.placeholder = "搜索你忘记的小事"
-        searchController.searchResultsUpdater = searchResultController
-//        searchController.searchBar.barTintColor = UIColor(red: 205/255, green: 205/255, blue: 205/255, alpha: 1)
-        definesPresentationContext = true
-        searchController.dimsBackgroundDuringPresentation = true
-        self.present(searchController, animated: true){
-            self.tabBarController?.tabBar.isHidden = true
-        }
+extension HomeViewController : UISearchControllerDelegate{
+    func didDismissSearchController(_ searchController: UISearchController) {
+        print("ag")
     }
 }
 
