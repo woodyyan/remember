@@ -83,7 +83,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         definesPresentationContext = true
         searchController.dimsBackgroundDuringPresentation = true
         self.present(searchController, animated: true){
-            sender.isHidden = true
         }
     }
     
@@ -96,7 +95,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.backgroundColor = UIColor.background()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.separatorStyle = .none
+        tableView.register(ThingTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.tableFooterView = UIView(frame:CGRect.zero)
         self.view.addSubview(tableView)
     }
@@ -135,16 +135,30 @@ extension HomeViewController{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.numberOfLines = 0
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ThingTableViewCell
         cell.textLabel?.text = things[indexPath.row].content
+        cell.setBackground(style: getCellBackgroundStyle(indexPath.row))
         return cell
+    }
+    
+    private func getCellBackgroundStyle(_ index:Int) -> ThingCellBackgroundStyle{
+        var style = ThingCellBackgroundStyle.normal
+        let lastNumber = things.count - 1
+        switch index {
+        case 0:
+            style = ThingCellBackgroundStyle.first
+        case lastNumber:
+            style = ThingCellBackgroundStyle.last
+        default:
+            style = ThingCellBackgroundStyle.normal
+        }
+        return style
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let content:NSString = things[indexPath.row].content as NSString
-        let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
-        return size.height + 20
+        let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 140, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
+        return size.height + 30
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
