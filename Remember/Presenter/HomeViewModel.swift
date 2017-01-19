@@ -33,4 +33,8 @@ extension UIColor{
     class func inputGray() -> UIColor{
         return UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
     }
+    
+    class func text() -> UIColor{
+        return UIColor(red: 116/255, green: 116/255, blue: 116/255, alpha: 1)
+    }
 }

@@ -57,13 +57,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func initSearchBar(){
         let searchButton = UIButton(type: UIButtonType.system)
-        searchButton.setTitle("搜索你忘记的小事", for: UIControlState.normal)
+        searchButton.setTitle(" 搜索你忘记的小事", for: UIControlState.normal)
+        searchButton.setImage(UIImage(named: "Search"), for: UIControlState.normal)
         searchButton.frame = CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 40)
         searchButton.layer.borderColor = UIColor.inputGray().cgColor
         searchButton.layer.borderWidth = 1
         searchButton.layer.cornerRadius = 20
         searchButton.backgroundColor = UIColor.inputGray()
         searchButton.setTitleColor(UIColor.remember(), for: UIControlState.normal)
+        searchButton.tintColor = UIColor.remember()
         searchButton.addTarget(self, action: #selector(HomeViewController.searchClick(_:)), for: UIControlEvents.touchUpInside)
         
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))

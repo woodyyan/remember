@@ -28,6 +28,7 @@ class ThingTableViewCell: UITableViewCell {
         let cellHeight = self.frame.size.height;
         let cellWidth = self.frame.size.width;
         self.textLabel?.numberOfLines = 0
+        self.textLabel?.textColor = UIColor.text()
         self.textLabel?.textAlignment = .justified
         self.textLabel?.frame = CGRect(x: 30, y: 15, width: cellWidth - 60, height: cellHeight - 30)
     }
