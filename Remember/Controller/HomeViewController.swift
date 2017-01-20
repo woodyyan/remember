@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let inputViewHeight:CGFloat = 60
     
+    fileprivate var isSearchPresent = false
     fileprivate var viewModel = HomeViewModel()
     fileprivate var inputThingView:InputThingView!
     fileprivate var tableView:UITableView!
@@ -84,6 +85,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchController.searchResultsUpdater = searchResultController
         definesPresentationContext = true
         searchController.dimsBackgroundDuringPresentation = true
+        self.isSearchPresent = true
         self.present(searchController, animated: true){
         }
     }
@@ -104,15 +106,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func keyboardWillHide(_ notice:Notification){
-        inputThingView.frame = CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight)
-        self.dismiss(animated: false, completion: nil)
+        if !isSearchPresent{
+            inputThingView.frame = CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight)
+            self.dismiss(animated: false, completion: nil)
+        }
     }
     
     func keyboardWillShow(_ notice:Notification){
-        let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
-        let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let endFrame = endFrameValue.cgRectValue
-        inputThingView.frame = CGRect(x: 0, y: self.view.bounds.height - inputViewHeight - endFrame.height, width: self.view.bounds.width, height: inputViewHeight)
+        if !isSearchPresent{
+            let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
+            let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+            let endFrame = endFrameValue.cgRectValue
+            inputThingView.frame = CGRect(x: 0, y: self.view.bounds.height - inputViewHeight - endFrame.height, width: self.view.bounds.width, height: inputViewHeight)
+        }
     }
     
     func pushToAboutPage(_ sender:UIBarButtonItem){
@@ -188,8 +194,8 @@ extension HomeViewController{
 }
 
 extension HomeViewController : UISearchControllerDelegate{
-    func didDismissSearchController(_ searchController: UISearchController) {
-        print("ag")
+    func willDismissSearchController(_ searchController: UISearchController) {
+        self.isSearchPresent = false
     }
 }
 
