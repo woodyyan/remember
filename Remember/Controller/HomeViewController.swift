@@ -130,7 +130,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func pushToAboutPage(_ sender:UIBarButtonItem){
         inputThingView.endEditing()
-        let aboutController = AboutViewController(style: .grouped)
+        let aboutController = AboutViewController()
         self.navigationController?.pushViewController(aboutController, animated: true)
     }
     

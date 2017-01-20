@@ -22,7 +22,7 @@ class AboutViewModel {
     }
     
     func getDescription() -> String{
-        return "丁丁记事是一个帮助你记住平时容易的忘记的小事的应用，你可以非常快速而简单的记录一切容易忘记的小事，同时当你忘记它们的时候，可以很方便的找到它们。"
+        return StringConstants.description
     }
     
     func getGettingStarted() -> String{

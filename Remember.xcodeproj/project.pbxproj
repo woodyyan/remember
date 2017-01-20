@@ -52,6 +52,9 @@
 		823A34C81E31FD630093FBF4 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34C51E31FD630093FBF4 /* StringConstants.swift */; };
 		823A34C91E31FE1A0093FBF4 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
 		823A34CA1E31FE1A0093FBF4 /* DZNEmptyDataSet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
+		823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
+		823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
 		825DEB231DD9DC070065090F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB221DD9DC070065090F /* Assets.xcassets */; };
@@ -127,6 +130,7 @@
 		823A34BF1E2F531A0093FBF4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 		823A34C51E31FD630093FBF4 /* StringConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
+		823A34CC1E320DC00093FBF4 /* MessageBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
 		825DEB151DD9DC070065090F /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB181DD9DC070065090F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		825DEB1D1DD9DC070065090F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 			children = (
 				825DEB501DDA0B640065090F /* InputThingView.swift */,
 				823A34B61E2E26C60093FBF4 /* InputTextField.swift */,
+				823A34CC1E320DC00093FBF4 /* MessageBox.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */,
 				823A34231E2530070093FBF4 /* AboutViewModel.swift in Sources */,
 				825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */,
+				823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				82FED7C81E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				82DB5C1D1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
@@ -494,6 +500,7 @@
 				82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
 				823A34241E2530070093FBF4 /* AboutViewModel.swift in Sources */,
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
+				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				823A34BD1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
 				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
 			);
@@ -506,6 +513,7 @@
 				823A34BE1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
 				823A34C81E31FD630093FBF4 /* StringConstants.swift in Sources */,
+				823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				823A34BA1E2E294C0093FBF4 /* HomeViewModel.swift in Sources */,
 				823A34251E2530070093FBF4 /* AboutViewModel.swift in Sources */,
