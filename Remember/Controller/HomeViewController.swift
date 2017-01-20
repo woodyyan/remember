@@ -76,6 +76,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func searchClick(_ sender:UIButton) {
+        self.view.endEditing(true)
+        
         let searchResultController = SearchResultTableViewController()
         searchResultController.things = self.things
         let searchController = UISearchController(searchResultsController: searchResultController)
