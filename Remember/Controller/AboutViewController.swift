@@ -25,7 +25,7 @@ class AboutViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -45,11 +45,9 @@ class AboutViewController: UITableViewController {
         case 2:
             return 44
         case 3:
-            return 44
+            return 54
         case 4:
-            return 70
-        case 5:
-            return 100
+            return 80
         default:
             return 44
         }
@@ -72,9 +70,6 @@ class AboutViewController: UITableViewController {
         case 4:
             //介绍
             return getDescriptionCell()
-        case 5:
-            //使用说明
-            return getGettingStartedCell()
         default:
             return UITableViewCell()
         }
@@ -121,20 +116,8 @@ class AboutViewController: UITableViewController {
         descriptionLabel.numberOfLines = 0
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         descriptionLabel.textColor = UIColor.gray
-        descriptionLabel.textAlignment = .left
+        descriptionLabel.textAlignment = .justified
         cell.contentView.addSubview(descriptionLabel)
-        return cell
-    }
-    
-    private func getGettingStartedCell() -> UITableViewCell{
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        let gettingStartedLabel = UILabel(frame: CGRect(x: 40, y: 0, width: self.view.frame.width - 80, height: 90))
-        gettingStartedLabel.text = viewModel.getGettingStarted()
-        gettingStartedLabel.numberOfLines = 0
-        gettingStartedLabel.font = UIFont.systemFont(ofSize: 12)
-        gettingStartedLabel.textColor = UIColor.gray
-        gettingStartedLabel.textAlignment = .left
-        cell.contentView.addSubview(gettingStartedLabel)
         return cell
     }
 }
