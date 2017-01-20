@@ -76,7 +76,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func searchClick(_ sender:UIButton) {
-        self.view.endEditing(true)
+        inputThingView.endEditing()
         
         let searchResultController = SearchResultTableViewController()
         searchResultController.things = self.things
@@ -124,6 +124,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func pushToAboutPage(_ sender:UIBarButtonItem){
+        inputThingView.endEditing()
         let aboutController = AboutViewController(style: .grouped)
         self.navigationController?.pushViewController(aboutController, animated: true)
     }
@@ -191,7 +192,12 @@ extension HomeViewController{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        inputThingView.endEditing()
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        inputThingView.endEditing()
     }
 }
 

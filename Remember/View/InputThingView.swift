@@ -39,10 +39,14 @@ class InputThingView : UIView, UITextFieldDelegate{
             }
         }
         
-        textField.resignFirstResponder()
+        endEditing()
         textField.text = ""
         
         return true
+    }
+    
+    func endEditing() {
+        self.textField.resignFirstResponder()
     }
 }
 

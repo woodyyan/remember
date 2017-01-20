@@ -21,7 +21,7 @@ class InputTextField: UITextField {
         self.layer.borderColor = UIColor.inputGray().cgColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 20
-        
+        self.clearButtonMode = .whileEditing
         self.returnKeyType = .done
     }
     
