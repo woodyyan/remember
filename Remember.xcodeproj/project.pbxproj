@@ -44,6 +44,14 @@
 		823A34BC1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */; };
 		823A34BD1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */; };
 		823A34BE1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */; };
+		823A34C21E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
+		823A34C31E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
+		823A34C41E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
+		823A34C61E31FD630093FBF4 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34C51E31FD630093FBF4 /* StringConstants.swift */; };
+		823A34C71E31FD630093FBF4 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34C51E31FD630093FBF4 /* StringConstants.swift */; };
+		823A34C81E31FD630093FBF4 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34C51E31FD630093FBF4 /* StringConstants.swift */; };
+		823A34C91E31FE1A0093FBF4 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
+		823A34CA1E31FE1A0093FBF4 /* DZNEmptyDataSet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
 		825DEB231DD9DC070065090F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB221DD9DC070065090F /* Assets.xcassets */; };
@@ -84,6 +92,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		823A34CB1E31FE1A0093FBF4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				823A34CA1E31FE1A0093FBF4 /* DZNEmptyDataSet.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		823A341E1E252EBA0093FBF4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		823A34221E2530070093FBF4 /* AboutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
@@ -103,6 +125,8 @@
 		823A34B61E2E26C60093FBF4 /* InputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTableViewCell.swift; sourceTree = "<group>"; };
 		823A34BF1E2F531A0093FBF4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DZNEmptyDataSet.framework; sourceTree = "<group>"; };
+		823A34C51E31FD630093FBF4 /* StringConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		825DEB151DD9DC070065090F /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB181DD9DC070065090F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		825DEB1D1DD9DC070065090F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -138,7 +162,9 @@
 				823A34361E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				823A34391E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */,
 				823A34331E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */,
+				823A34C21E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
 				823A342D1E2758590093FBF4 /* FirebaseAnalytics.framework in Frameworks */,
+				823A34C91E31FE1A0093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +174,7 @@
 			files = (
 				823A343D1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */,
 				823A34311E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */,
+				823A34C31E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
 				823A34371E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				823A343A1E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */,
 				823A34341E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */,
@@ -161,6 +188,7 @@
 			files = (
 				823A343E1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */,
 				823A34321E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */,
+				823A34C41E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
 				823A34381E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				823A343B1E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */,
 				823A34351E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */,
@@ -174,6 +202,7 @@
 		823A34261E2758410093FBF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */,
 				823A34BF1E2F531A0093FBF4 /* QuartzCore.framework */,
 				823A34AF1E28A3130093FBF4 /* libz.tbd */,
 				823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */,
@@ -275,6 +304,7 @@
 				82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */,
 				82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */,
 				823A34221E2530070093FBF4 /* AboutViewModel.swift */,
+				823A34C51E31FD630093FBF4 /* StringConstants.swift */,
 			);
 			name = ViewModel;
 			path = Presenter;
@@ -298,6 +328,7 @@
 				825DEB111DD9DC070065090F /* Sources */,
 				825DEB121DD9DC070065090F /* Frameworks */,
 				825DEB131DD9DC070065090F /* Resources */,
+				823A34CB1E31FE1A0093FBF4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -443,6 +474,7 @@
 				823A34BC1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
+				823A34C61E31FD630093FBF4 /* StringConstants.swift in Sources */,
 				825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */,
 				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
@@ -454,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				825DEB311DD9DC070065090F /* RememberTests.swift in Sources */,
+				823A34C71E31FD630093FBF4 /* StringConstants.swift in Sources */,
 				82FED7CC1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */,
 				82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 				823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
@@ -472,6 +505,7 @@
 			files = (
 				823A34BE1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
+				823A34C81E31FD630093FBF4 /* StringConstants.swift in Sources */,
 				82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				823A34BA1E2E294C0093FBF4 /* HomeViewModel.swift in Sources */,
 				823A34251E2530070093FBF4 /* AboutViewModel.swift in Sources */,

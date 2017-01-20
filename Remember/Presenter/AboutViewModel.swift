@@ -26,7 +26,7 @@ class AboutViewModel {
     }
     
     func getGettingStarted() -> String{
-        return "比如：\n爸爸的烟藏在厨房第三个柜子里面\n三脚架在右边床头柜里\n女朋友的生日是2月14日\n妈妈最喜欢吃的菜是土豆丝\n毕业证书在衣柜底部的抽屉里"
+        return StringConstants.sampleThing
     }
     
     private func getCurrentVersion(_ bundleVersion:Bool = false) -> String{

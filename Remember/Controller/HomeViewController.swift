@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let inputViewHeight:CGFloat = 60
@@ -105,6 +106,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.register(ThingTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.tableFooterView = UIView(frame:CGRect.zero)
         self.view.addSubview(tableView)
+        
+        // EmptyDataSet SDK
+        self.tableView.emptyDataSetSource = self;
+        self.tableView.emptyDataSetDelegate = self;
     }
     
     func keyboardWillHide(_ notice:Notification){
@@ -183,8 +188,8 @@ extension HomeViewController{
                 let index=(indexPath as NSIndexPath).row as Int
                 let thing = self.things[index]
                 self.things.remove(at: index)
-                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
                 self.viewModel.deleteThing(thing)
+                tableView.reloadData()
             })
             alertController.addAction(deleteAction)
             self.present(alertController, animated: true, completion: nil)
@@ -198,6 +203,20 @@ extension HomeViewController{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         inputThingView.endEditing()
+    }
+}
+
+extension HomeViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "EmptyBox")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "添加一个小事吧", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 16)])
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: StringConstants.sampleThing, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 12)])
     }
 }
 
