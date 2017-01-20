@@ -41,6 +41,8 @@ class ThingTableViewCell: UITableViewCell {
             self.backgroundView = getBackgroundImageView("LastCellBackground")
         case .normal:
             self.backgroundView = getBackgroundImageView("CellBackground")
+        case .one:
+            self.backgroundView = getBackgroundImageView("OneCellBackground")
         }
     }
     
@@ -53,9 +55,10 @@ class ThingTableViewCell: UITableViewCell {
 }
 
 enum ThingCellBackgroundStyle : Int {
-    case normal
-    case first
-    case last
+    case normal //正常情况，四个缺角
+    case first //第一个cell，只有下面两个缺角
+    case last //最后一个cell，只有上面两个缺角
+    case one //只有一个cell，没有缺角
 }
 
 class ThingLabel: UILabel {

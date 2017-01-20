@@ -168,6 +168,11 @@ extension HomeViewController{
         default:
             style = ThingCellBackgroundStyle.normal
         }
+        
+        if things.count == 1{
+            style = ThingCellBackgroundStyle.one
+        }
+        
         return style
     }
     
