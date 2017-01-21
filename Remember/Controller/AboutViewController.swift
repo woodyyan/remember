@@ -30,6 +30,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.allowsSelection = false
         tableView.separatorStyle = .none
         self.view.addSubview(tableView)
     }
@@ -57,7 +58,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         case 3:
             return 54
         case 4:
-            return 80
+            return 100
         default:
             return 44
         }
@@ -173,7 +174,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private func getSloganCell() -> UITableViewCell{
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = viewModel.getSlogan()
-        cell.textLabel?.textColor = UIColor.gray
+        cell.textLabel?.textColor = UIColor.darkGray
         cell.textLabel?.textAlignment = .center
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         return cell
@@ -183,7 +184,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = viewModel.getVersionInfo()
         cell.textLabel?.textAlignment = .center
-        cell.textLabel?.textColor = UIColor.gray
+        cell.textLabel?.textColor = UIColor.lightGray
         cell.textLabel?.font = UIFont.systemFont(ofSize: 12)
         return cell
     }
