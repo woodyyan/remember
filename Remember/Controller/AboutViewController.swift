@@ -56,9 +56,9 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         case 2:
             return 44
         case 3:
-            return 54
-        case 4:
             return 100
+        case 4:
+            return 54
         default:
             return 44
         }
@@ -145,11 +145,11 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
             //slogan：记住你容易忘记的小事
             return getSloganCell()
         case 3:
-            //版本号
-            return getVersionCell()
-        case 4:
             //介绍
             return getDescriptionCell()
+        case 4:
+            //版本号
+            return getVersionCell()
         default:
             return UITableViewCell()
         }
@@ -191,13 +191,11 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private func getDescriptionCell() -> UITableViewCell{
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        let descriptionLabel = UILabel(frame: CGRect(x: 40, y: 0, width: self.view.frame.width - 80, height: 70))
-        descriptionLabel.text = viewModel.getDescription()
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
-        descriptionLabel.textColor = UIColor.gray
-        descriptionLabel.textAlignment = .justified
-        cell.contentView.addSubview(descriptionLabel)
+        cell.textLabel?.text = viewModel.getDescription()
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+        cell.textLabel?.textColor = UIColor.gray
+        cell.textLabel?.textAlignment = .justified
         return cell
     }
 }
