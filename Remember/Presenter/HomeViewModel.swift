@@ -19,6 +19,10 @@ class HomeViewModel {
     func deleteThing(_ thing:ThingEntity){
         ThingRepository.sharedInstance.deleteThing(thing: thing)
     }
+    
+    func editThing(_ thing:ThingEntity){
+        ThingRepository.sharedInstance.editThing(thing: thing)
+    }
 }
 
 extension UIColor{

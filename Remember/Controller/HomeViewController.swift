@@ -12,7 +12,7 @@ import DZNEmptyDataSet
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let inputViewHeight:CGFloat = 60
     
-    fileprivate var isSearchPresent = false
+    fileprivate var shouldInputViewDisplay = true
     fileprivate var viewModel = HomeViewModel()
     fileprivate var inputThingView:InputThingView!
     fileprivate var tableView:UITableView!
@@ -88,7 +88,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchController.searchResultsUpdater = searchResultController
         definesPresentationContext = true
         searchController.dimsBackgroundDuringPresentation = true
-        self.isSearchPresent = true
+        self.shouldInputViewDisplay = false
         self.present(searchController, animated: true){
         }
     }
@@ -113,14 +113,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func keyboardWillHide(_ notice:Notification){
-        if !isSearchPresent{
+        if shouldInputViewDisplay{
             inputThingView.frame = CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight)
             self.dismiss(animated: false, completion: nil)
         }
     }
     
     func keyboardWillShow(_ notice:Notification){
-        if !isSearchPresent{
+        if shouldInputViewDisplay{
             let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
             let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
             let endFrame = endFrameValue.cgRectValue
@@ -204,10 +204,33 @@ extension HomeViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         inputThingView.endEditing()
         tableView.deselectRow(at: indexPath, animated: true)
+        let thing = self.things[indexPath.row]
+        editThing(thing)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         inputThingView.endEditing()
+    }
+    
+    private func editThing(_ thing: ThingEntity){
+        let alertController = UIAlertController(title: "编辑", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+            self.shouldInputViewDisplay = true
+        })
+        alertController.addAction(cancelAction)
+        let okAction = UIAlertAction(title: "确认", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+            self.shouldInputViewDisplay = true
+            let textField = alertController.textFields?.first
+            thing.content = textField?.text
+            self.viewModel.editThing(thing)
+            self.tableView.reloadData()
+        })
+        alertController.addAction(okAction)
+        alertController.addTextField { (textField) in
+            textField.text = thing.content
+        }
+        self.shouldInputViewDisplay = false
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -227,7 +250,7 @@ extension HomeViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
 
 extension HomeViewController : UISearchControllerDelegate{
     func willDismissSearchController(_ searchController: UISearchController) {
-        self.isSearchPresent = false
+        self.shouldInputViewDisplay = true
     }
 }
 
