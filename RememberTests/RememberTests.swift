@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Remember
+//@testable import Remember
 
 class RememberTests: XCTestCase {
     

@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		823539A41E37251300B102D8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */; };
+		823539A51E37251400B102D8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */; };
+		823539AC1E37458300B102D8 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */; };
+		823539AF1E3745B800B102D8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */; };
+		823539B01E3745B900B102D8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */; };
+		823539B11E3745BB00B102D8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AF1E28A3130093FBF4 /* libz.tbd */; };
+		823539B21E3745BC00B102D8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AF1E28A3130093FBF4 /* libz.tbd */; };
+		823539B51E3885DA00B102D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
+		823539B61E3885DB00B102D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
+		823539B71E3885E400B102D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
+		823539B81E3885E500B102D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
+		823539B91E38863400B102D8 /* InputThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputThingView.swift */; };
+		823539BA1E38863500B102D8 /* InputThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputThingView.swift */; };
 		823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
@@ -62,7 +75,6 @@
 		825DEB311DD9DC070065090F /* RememberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB301DD9DC070065090F /* RememberTests.swift */; };
 		825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB3B1DD9DC070065090F /* RememberUITests.swift */; };
 		825DEB511DDA0B640065090F /* InputThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputThingView.swift */; };
-		825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */; };
 		825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
 		82DB5C1D1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
 		82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
@@ -110,6 +122,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		823539A81E37256900B102D8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		823A341E1E252EBA0093FBF4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		823A34221E2530070093FBF4 /* AboutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		823A34271E2758590093FBF4 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -127,7 +140,6 @@
 		823A34B51E28ADE30093FBF4 /* Remember.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Remember.entitlements; sourceTree = "<group>"; };
 		823A34B61E2E26C60093FBF4 /* InputTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTableViewCell.swift; sourceTree = "<group>"; };
-		823A34BF1E2F531A0093FBF4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 		823A34C51E31FD630093FBF4 /* StringConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringConstants.swift; sourceTree = "<group>"; };
 		823A34CC1E320DC00093FBF4 /* MessageBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
@@ -144,7 +156,6 @@
 		825DEB3B1DD9DC070065090F /* RememberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RememberUITests.swift; sourceTree = "<group>"; };
 		825DEB3D1DD9DC070065090F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		825DEB501DDA0B640065090F /* InputThingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputThingView.swift; sourceTree = "<group>"; };
-		825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LGSimpleChat.swift; sourceTree = "<group>"; };
 		825DEB541DDA0B9B0065090F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingEntity.swift; sourceTree = "<group>"; };
 		82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
@@ -176,8 +187,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				823539AF1E3745B800B102D8 /* libsqlite3.tbd in Frameworks */,
+				823539B11E3745BB00B102D8 /* libz.tbd in Frameworks */,
 				823A343D1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */,
 				823A34311E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */,
+				823539A41E37251300B102D8 /* AddressBook.framework in Frameworks */,
 				823A34C31E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
 				823A34371E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				823A343A1E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */,
@@ -192,11 +206,14 @@
 			files = (
 				823A343E1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */,
 				823A34321E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */,
+				823539A51E37251400B102D8 /* AddressBook.framework in Frameworks */,
+				823539B01E3745B900B102D8 /* libsqlite3.tbd in Frameworks */,
 				823A34C41E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
 				823A34381E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				823A343B1E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */,
 				823A34351E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */,
 				823A342F1E27585A0093FBF4 /* FirebaseAnalytics.framework in Frameworks */,
+				823539B21E3745BC00B102D8 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,8 +223,8 @@
 		823A34261E2758410093FBF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				823539A81E37256900B102D8 /* XCTest.framework */,
 				823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */,
-				823A34BF1E2F531A0093FBF4 /* QuartzCore.framework */,
 				823A34AF1E28A3130093FBF4 /* libz.tbd */,
 				823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */,
 				823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */,
@@ -294,7 +311,6 @@
 		825DEB521DDA0B9B0065090F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				825DEB531DDA0B9B0065090F /* LGSimpleChat.swift */,
 				825DEB541DDA0B9B0065090F /* HomeViewController.swift */,
 				82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */,
 				823A341E1E252EBA0093FBF4 /* AboutViewController.swift */,
@@ -498,7 +514,6 @@
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				823A34C61E31FD630093FBF4 /* StringConstants.swift in Sources */,
-				825DEB551DDA0B9B0065090F /* LGSimpleChat.swift in Sources */,
 				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 			);
@@ -513,9 +528,12 @@
 				82FED7CC1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */,
 				82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 				823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
+				823539B91E38863400B102D8 /* InputThingView.swift in Sources */,
+				823539B71E3885E400B102D8 /* HomeViewController.swift in Sources */,
 				82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
 				823A34241E2530070093FBF4 /* AboutViewModel.swift in Sources */,
+				823539B51E3885DA00B102D8 /* AppDelegate.swift in Sources */,
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				823A34BD1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
@@ -527,8 +545,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				823539B61E3885DB00B102D8 /* AppDelegate.swift in Sources */,
 				823A34BE1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
+				823539AC1E37458300B102D8 /* ThingRepository.swift in Sources */,
 				823A34C81E31FD630093FBF4 /* StringConstants.swift in Sources */,
 				823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
@@ -536,6 +556,8 @@
 				823A34251E2530070093FBF4 /* AboutViewModel.swift in Sources */,
 				823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				823A34B91E2E26C60093FBF4 /* InputTextField.swift in Sources */,
+				823539B81E3885E500B102D8 /* HomeViewController.swift in Sources */,
+				823539BA1E38863500B102D8 /* InputThingView.swift in Sources */,
 				82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
