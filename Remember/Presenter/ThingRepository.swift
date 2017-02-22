@@ -53,6 +53,26 @@ class ThingRepository {
         }
     }
     
+    func saveSortedThings(things:[ThingEntity]){
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
+        let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
+        request.entity = entity
+        for thing in things{
+            let predicate = NSPredicate(format: "%K == %@","id", thing.id)
+            request.predicate = predicate
+            do{
+                if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject]{
+                    for result in results {
+                        result.setValue(thing.index, forKey: "index")
+                    }
+                }
+            }catch{
+                
+            }
+        }
+        appDelegate.saveContext()
+    }
+    
     private func deleteThingFromLocalDB(thing:ThingEntity){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
@@ -98,7 +118,11 @@ class ThingRepository {
                             continue
                         }
                         
-                        let thing = ThingEntity(content: content, createdAt: createdAt)
+                        guard let index = result.value(forKey: "index") as? NSNumber else {
+                            continue
+                        }
+                        
+                        let thing = ThingEntity(content: content, createdAt: createdAt, index: index.intValue)
                         thing.id = id
                         things.append(thing)
                     }
@@ -106,6 +130,9 @@ class ThingRepository {
             }
         } catch {
         }
+        
+        things.sort { $0.index < $1.index }
+        
         return things
     }
 }

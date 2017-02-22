@@ -32,7 +32,7 @@ class InputThingView : UIView, UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let content = textField.text{
             if !content.isEmpty{
-                let thing = ThingEntity(content: content, createdAt: NSDate())
+                let thing = ThingEntity(content: content, createdAt: NSDate(), index: 0)
                 ThingRepository.sharedInstance.createThing(thing: thing)
                 
                 delegate?.input(inputView: self, thing: thing)

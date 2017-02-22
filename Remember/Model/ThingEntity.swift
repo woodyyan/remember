@@ -12,11 +12,13 @@ class ThingEntity {
     var content:String!
     var createdAt:NSDate!
     var id:String!
+    var index:Int!
     
-    init(content:String, createdAt:NSDate) {
+    init(content:String, createdAt:NSDate, index:Int) {
         let uuid = UUID().uuidString
         self.id = uuid
         self.content = content
         self.createdAt = createdAt
+        self.index = index
     }
 }

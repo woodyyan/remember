@@ -25,6 +25,8 @@ class ThingTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        self.selectionStyle = .none
+        
         let cellHeight = self.frame.size.height;
         let cellWidth = self.frame.size.width;
         self.textLabel?.numberOfLines = 0

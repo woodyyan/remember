@@ -17,6 +17,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     fileprivate var inputThingView:InputThingView!
     fileprivate var tableView:UITableView!
     
+    fileprivate var snapshotView:UIView?
+    fileprivate var sourceIndexPath:IndexPath?
+    
     fileprivate var things = [ThingEntity]()
 
     override func viewDidLoad() {
@@ -37,6 +40,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         initTableView()
         initInputView()
         initSearchBar()
+        initLongPressForTableView()
         setKeyboardNotification()
         
         initData()
@@ -110,6 +114,102 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // EmptyDataSet SDK
         self.tableView.emptyDataSetSource = self;
         self.tableView.emptyDataSetDelegate = self;
+    }
+    
+    private func initLongPressForTableView(){
+        let longPress = UILongPressGestureRecognizer(target: self, action:#selector(HomeViewController.longPressGestureRecognized(_:)))
+        self.tableView.addGestureRecognizer(longPress)
+    }
+    
+    func longPressGestureRecognized(_ sender:AnyObject) {
+        let longPress = sender as! UILongPressGestureRecognizer
+        let state = longPress.state
+        let location = longPress.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: location)
+        
+        switch state {
+        case .began:
+            if indexPath != nil {
+                sourceIndexPath = indexPath
+                let cell = self.tableView.cellForRow(at: indexPath!)
+                snapshotView = self.customSnapshotFromView(cell!)
+                
+                var center = cell?.center
+                snapshotView?.center = center!
+                snapshotView?.alpha = 0.0
+                self.tableView.addSubview(snapshotView!)
+                
+                UIView.animate(withDuration: 0.25, animations: {
+                    center?.y = location.y
+                    self.snapshotView?.center = center!
+                    self.snapshotView?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+                    self.snapshotView?.alpha = 0.98
+                    cell?.alpha = 0.0
+                },completion: { (finished) in
+                    cell?.isHidden = true
+                })
+            }
+            break
+        case .changed:
+            var  center = snapshotView?.center
+            center?.y = location.y
+            snapshotView?.center = center!
+            
+            if indexPath != nil && !(indexPath == sourceIndexPath) {
+                let index = self.things[indexPath!.row].index
+                self.things[indexPath!.row].index = self.things[sourceIndexPath!.row].index
+                self.things[sourceIndexPath!.row].index = index
+                swap(&self.things[indexPath!.row], &self.things[sourceIndexPath!.row])
+                self.tableView.moveRow(at: sourceIndexPath!, to: indexPath!)
+                sourceIndexPath = indexPath
+            }
+            break
+        default:
+            let cell = self.tableView.cellForRow(at: sourceIndexPath!)
+            cell?.alpha = 0.0
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                self.snapshotView?.center = cell!.center
+                self.snapshotView?.transform = CGAffineTransform.identity
+                self.snapshotView?.alpha = 0.0
+                cell?.alpha = 1.0
+                self.sortThings()
+                self.viewModel.saveSortedThings(self.things)
+                self.tableView.reloadData()
+            }, completion: { (finished) in
+                cell?.isHidden = false
+                self.sourceIndexPath = nil
+                self.snapshotView?.removeFromSuperview()
+                self.snapshotView = nil
+            })
+            break
+        }
+    }
+    
+    private func sortThings(){
+        var set = Set<Int>()
+        self.things.forEach { set.insert($0.index) }
+        if set.count < self.things.count{
+            var index = 0
+            self.things.forEach({ (thing) in
+                thing.index = index
+                index += 1
+            })
+        }
+    }
+    
+    func customSnapshotFromView(_ inputView:UIView) ->UIView {
+        UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0)
+        inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        let snapshot = UIImageView(image: image)
+        snapshot.layer.masksToBounds = false
+        snapshot.layer.cornerRadius = 0.0
+        snapshot.layer.shadowOffset = CGSize(width: -5.0, height: 0.0)
+        snapshot.layer.shadowOpacity = 0.4
+        return snapshot
     }
     
     func keyboardWillHide(_ notice:Notification){
@@ -201,11 +301,19 @@ extension HomeViewController{
         }
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         inputThingView.endEditing()
         tableView.deselectRow(at: indexPath, animated: true)
         let thing = self.things[indexPath.row]
         editThing(thing)
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
