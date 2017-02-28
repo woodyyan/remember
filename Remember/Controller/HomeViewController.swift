@@ -173,8 +173,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.snapshotView?.transform = CGAffineTransform.identity
                 self.snapshotView?.alpha = 0.0
                 cell?.alpha = 1.0
-                self.sortThings()
-                self.viewModel.saveSortedThings(self.things)
+                self.sortAndSaveThings()
                 self.tableView.reloadData()
             }, completion: { (finished) in
                 cell?.isHidden = false
@@ -186,16 +185,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    private func sortThings(){
+    fileprivate func sortAndSaveThings(){
         var set = Set<Int>()
         self.things.forEach { set.insert($0.index) }
-        if set.count < self.things.count{
+        if set.count < self.things.count || self.things[0].index != 0{
             var index = 0
             self.things.forEach({ (thing) in
                 thing.index = index
                 index += 1
             })
         }
+        
+        self.viewModel.saveSortedThings(self.things)
     }
     
     func customSnapshotFromView(_ inputView:UIView) ->UIView {
@@ -283,7 +284,33 @@ extension HomeViewController{
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if(editingStyle == UITableViewCellEditingStyle.delete){
+//        if(editingStyle == UITableViewCellEditingStyle.delete){
+//            let alertController = UIAlertController(title: "提示", message: "确认要删除吗？", preferredStyle: UIAlertControllerStyle.alert)
+//            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
+//                tableView.setEditing(false, animated: true)
+//            })
+//            alertController.addAction(cancelAction)
+//            let deleteAction = UIAlertAction(title: "删除", style: UIAlertActionStyle.destructive, handler: { (action) -> Void in
+//                let index=(indexPath as NSIndexPath).row as Int
+//                let thing = self.things[index]
+//                self.things.remove(at: index)
+//                self.viewModel.deleteThing(thing)
+//                tableView.reloadData()
+//            })
+//            alertController.addAction(deleteAction)
+//            self.present(alertController, animated: true, completion: nil)
+//        }
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "编辑") { (action, index) -> Void in
+            let index=(indexPath as NSIndexPath).row as Int
+            let thing = self.things[index]
+            self.editThing(thing)
+            tableView.isEditing = false
+        }
+        
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "删除") { (action, index) -> Void in
             let alertController = UIAlertController(title: "提示", message: "确认要删除吗？", preferredStyle: UIAlertControllerStyle.alert)
             let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
                 tableView.setEditing(false, animated: true)
@@ -299,6 +326,7 @@ extension HomeViewController{
             alertController.addAction(deleteAction)
             self.present(alertController, animated: true, completion: nil)
         }
+        return [deleteAction,editAction]
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
@@ -308,8 +336,6 @@ extension HomeViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         inputThingView.endEditing()
         tableView.deselectRow(at: indexPath, animated: true)
-        let thing = self.things[indexPath.row]
-        editThing(thing)
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -321,24 +347,12 @@ extension HomeViewController{
     }
     
     private func editThing(_ thing: ThingEntity){
-        let alertController = UIAlertController(title: "编辑", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
-            self.shouldInputViewDisplay = true
-        })
-        alertController.addAction(cancelAction)
-        let okAction = UIAlertAction(title: "确认", style: UIAlertActionStyle.default, handler: { (action) -> Void in
-            self.shouldInputViewDisplay = true
-            let textField = alertController.textFields?.first
-            thing.content = textField?.text
-            self.viewModel.editThing(thing)
-            self.tableView.reloadData()
-        })
-        alertController.addAction(okAction)
-        alertController.addTextField { (textField) in
-            textField.text = thing.content
-        }
-        self.shouldInputViewDisplay = false
-        self.present(alertController, animated: true, completion: nil)
+        self.shouldInputViewDisplay = true
+        
+        let editController = EditThingViewController()
+        editController.delegate = self
+        editController.thing = thing
+        self.navigationController?.pushViewController(editController, animated: true)
     }
 }
 
@@ -365,6 +379,13 @@ extension HomeViewController : UISearchControllerDelegate{
 extension HomeViewController : ThingInputDelegate{
     func input(inputView: InputThingView, thing: ThingEntity) {
         self.things.append(thing)
+        self.sortAndSaveThings()
+        tableView.reloadData()
+    }
+}
+
+extension HomeViewController : EditThingDelegate{
+    func editThing(edit complete: Bool, thing: ThingEntity) {
         tableView.reloadData()
     }
 }

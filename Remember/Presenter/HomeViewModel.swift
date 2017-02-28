@@ -20,10 +20,6 @@ class HomeViewModel {
         ThingRepository.sharedInstance.deleteThing(thing: thing)
     }
     
-    func editThing(_ thing:ThingEntity){
-        ThingRepository.sharedInstance.editThing(thing: thing)
-    }
-    
     func saveSortedThings(_ things:[ThingEntity]){
         ThingRepository.sharedInstance.saveSortedThings(things: things)
     }

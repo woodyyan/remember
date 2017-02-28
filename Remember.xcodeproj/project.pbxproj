@@ -82,6 +82,10 @@
 		82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
 		82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
 		82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
+		82DF5DA11E657EAE0027CA1F /* EditThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */; };
+		82DF5DA21E657EB10027CA1F /* EditThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */; };
+		82DF5DA41E6580E20027CA1F /* EditThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA31E6580E20027CA1F /* EditThingViewModel.swift */; };
+		82DF5DA51E6580E20027CA1F /* EditThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA31E6580E20027CA1F /* EditThingViewModel.swift */; };
 		82FED7C81E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */; };
@@ -159,6 +163,8 @@
 		825DEB541DDA0B9B0065090F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingEntity.swift; sourceTree = "<group>"; };
 		82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
+		82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditThingViewController.swift; sourceTree = "<group>"; };
+		82DF5DA31E6580E20027CA1F /* EditThingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditThingViewModel.swift; sourceTree = "<group>"; };
 		82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingRepository.swift; sourceTree = "<group>"; };
 		82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -315,6 +321,7 @@
 				82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */,
 				823A341E1E252EBA0093FBF4 /* AboutViewController.swift */,
 				823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */,
+				82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -326,6 +333,7 @@
 				82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */,
 				823A34221E2530070093FBF4 /* AboutViewModel.swift */,
 				823A34C51E31FD630093FBF4 /* StringConstants.swift */,
+				82DF5DA31E6580E20027CA1F /* EditThingViewModel.swift */,
 			);
 			name = ViewModel;
 			path = Presenter;
@@ -502,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82DF5DA11E657EAE0027CA1F /* EditThingViewController.swift in Sources */,
 				82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */,
 				823A34231E2530070093FBF4 /* AboutViewModel.swift in Sources */,
 				825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */,
@@ -516,6 +525,7 @@
 				823A34C61E31FD630093FBF4 /* StringConstants.swift in Sources */,
 				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
+				82DF5DA41E6580E20027CA1F /* EditThingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +540,8 @@
 				823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				823539B91E38863400B102D8 /* InputThingView.swift in Sources */,
 				823539B71E3885E400B102D8 /* HomeViewController.swift in Sources */,
+				82DF5DA51E6580E20027CA1F /* EditThingViewModel.swift in Sources */,
+				82DF5DA21E657EB10027CA1F /* EditThingViewController.swift in Sources */,
 				82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
 				823A34241E2530070093FBF4 /* AboutViewModel.swift in Sources */,
