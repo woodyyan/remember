@@ -39,6 +39,8 @@ class EditThingViewController: UIViewController {
     
     private func initEditView(){
         editView = UITextView(frame: self.view.frame)
+        editView.font = UIFont.systemFont(ofSize: 18)
+        editView.textColor = UIColor.text()
         editView.text = thing?.content
         self.view.addSubview(editView)
         editView.becomeFirstResponder()
