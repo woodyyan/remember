@@ -90,6 +90,8 @@
 		82DF5DA81E6954950027CA1F /* FirebaseCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA61E6954950027CA1F /* FirebaseCrash.framework */; };
 		82DF5DAA1E6964010027CA1F /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
 		82DF5DAB1E6964130027CA1F /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
+		82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
+		82DF5DAE1E6D58740027CA1F /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
 		82FED7C81E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */; };
@@ -171,6 +173,7 @@
 		82DF5DA31E6580E20027CA1F /* EditThingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditThingViewModel.swift; sourceTree = "<group>"; };
 		82DF5DA61E6954950027CA1F /* FirebaseCrash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCrash.framework; sourceTree = "<group>"; };
 		82DF5DA91E6964010027CA1F /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
+		82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceInputController.swift; sourceTree = "<group>"; };
 		82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingRepository.swift; sourceTree = "<group>"; };
 		82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -334,6 +337,7 @@
 				823A341E1E252EBA0093FBF4 /* AboutViewController.swift */,
 				823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */,
 				82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */,
+				82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -531,6 +535,7 @@
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				82DB5C1D1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
+				82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
 				823A34BC1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
@@ -554,6 +559,7 @@
 				823539B71E3885E400B102D8 /* HomeViewController.swift in Sources */,
 				82DF5DA51E6580E20027CA1F /* EditThingViewModel.swift in Sources */,
 				82DF5DA21E657EB10027CA1F /* EditThingViewController.swift in Sources */,
+				82DF5DAE1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
 				82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
 				823A34241E2530070093FBF4 /* AboutViewModel.swift in Sources */,

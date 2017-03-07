@@ -58,6 +58,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func initInputView(){
         inputThingView = InputThingView(frame: CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight))
         inputThingView.delegate = self
+        inputThingView.voiceInputAction = {(inputView) -> Void in
+            let voiceInputController = VoiceInputController()
+            voiceInputController.modalPresentationStyle = .custom
+            voiceInputController.modalTransitionStyle = .crossDissolve
+            self.present(voiceInputController, animated: false, completion:{ Void in
+                voiceInputController.show()
+            })
+        }
         self.view.addSubview(inputThingView)
     }
     

@@ -15,6 +15,8 @@ class InputThingView : UIView, UITextFieldDelegate{
     
     var delegate:ThingInputDelegate?
     
+    var voiceInputAction:((InputThingView) -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -38,7 +40,7 @@ class InputThingView : UIView, UITextFieldDelegate{
     }
     
     func micButtonTapped(sender:UIButton){
-        print("agag")
+        self.voiceInputAction?(self)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
