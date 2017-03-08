@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     
@@ -16,6 +17,12 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        initUI()
+        addDismissGesture()
+    }
+    
+    private func initUI(){
         //一个cell的高度
         let height = (self.view.frame.width)/2
         
@@ -27,7 +34,33 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         voiceView.backgroundColor = UIColor.white
         backgroundView.addSubview(voiceView)
         
-        addDismissGesture()
+        let cancelButton = UIButton(type: UIButtonType.custom)
+        cancelButton.setImage(UIImage(named: "Cancel"), for: .normal)
+        cancelButton.addTarget(self, action: #selector(VoiceInputController.cancelTapped(sender:)), for: .touchUpInside)
+        cancelButton.sizeToFit()
+        voiceView.addSubview(cancelButton)
+        cancelButton.snp.makeConstraints { (maker) in
+            maker.bottom.equalTo(voiceView.snp.bottom).offset(-20)
+            maker.left.equalTo(voiceView.snp.left).offset(20)
+        }
+        
+        let okButton = UIButton(type: UIButtonType.custom)
+        okButton.setImage(UIImage(named: "Checked"), for: .normal)
+        okButton.addTarget(self, action: #selector(VoiceInputController.okTapped(sender:)), for: .touchUpInside)
+        okButton.sizeToFit()
+        voiceView.addSubview(okButton)
+        okButton.snp.makeConstraints { (maker) in
+            maker.bottom.equalTo(voiceView.snp.bottom).offset(-20)
+            maker.right.equalTo(voiceView.snp.right).offset(-20)
+        }
+    }
+    
+    func cancelTapped(sender:UIButton){
+        print("a")
+    }
+    
+    func okTapped(sender:UIButton){
+        print("a")
     }
     
     private func addDismissGesture(){

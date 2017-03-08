@@ -92,6 +92,9 @@
 		82DF5DAB1E6964130027CA1F /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
 		82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
 		82DF5DAE1E6D58740027CA1F /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
+		82DF5DB01E6FA9F20027CA1F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */; };
+		82DF5DB11E6FA9F20027CA1F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */; };
+		82DF5DB21E6FB6110027CA1F /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82FED7C81E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */; };
@@ -124,6 +127,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				82DF5DB21E6FB6110027CA1F /* SnapKit.framework in Embed Frameworks */,
 				823A34CA1E31FE1A0093FBF4 /* DZNEmptyDataSet.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -174,6 +178,7 @@
 		82DF5DA61E6954950027CA1F /* FirebaseCrash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCrash.framework; sourceTree = "<group>"; };
 		82DF5DA91E6964010027CA1F /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceInputController.swift; sourceTree = "<group>"; };
+		82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingRepository.swift; sourceTree = "<group>"; };
 		82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -187,6 +192,7 @@
 				82DF5DAA1E6964010027CA1F /* Speech.framework in Frameworks */,
 				823A34B01E28A3130093FBF4 /* libz.tbd in Frameworks */,
 				823A34AE1E28A30B0093FBF4 /* libsqlite3.tbd in Frameworks */,
+				82DF5DB01E6FA9F20027CA1F /* SnapKit.framework in Frameworks */,
 				823A34AC1E28A2FF0093FBF4 /* AddressBook.framework in Frameworks */,
 				823A343C1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */,
 				823A34301E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */,
@@ -209,6 +215,7 @@
 				823A343D1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */,
 				823A34311E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */,
 				82DF5DAB1E6964130027CA1F /* Speech.framework in Frameworks */,
+				82DF5DB11E6FA9F20027CA1F /* SnapKit.framework in Frameworks */,
 				823539A41E37251300B102D8 /* AddressBook.framework in Frameworks */,
 				823A34C31E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
 				823A34371E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
@@ -242,6 +249,7 @@
 		823A34261E2758410093FBF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */,
 				82DF5DA91E6964010027CA1F /* Speech.framework */,
 				82DF5DA61E6954950027CA1F /* FirebaseCrash.framework */,
 				823539A81E37256900B102D8 /* XCTest.framework */,
