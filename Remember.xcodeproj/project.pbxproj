@@ -95,6 +95,8 @@
 		82DF5DB01E6FA9F20027CA1F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */; };
 		82DF5DB11E6FA9F20027CA1F /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */; };
 		82DF5DB21E6FB6110027CA1F /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		82DF5DB41E7005380027CA1F /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DB31E7005380027CA1F /* VoiceInputViewModel.swift */; };
+		82DF5DB51E7005380027CA1F /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DB31E7005380027CA1F /* VoiceInputViewModel.swift */; };
 		82FED7C81E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */; };
@@ -179,6 +181,7 @@
 		82DF5DA91E6964010027CA1F /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceInputController.swift; sourceTree = "<group>"; };
 		82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
+		82DF5DB31E7005380027CA1F /* VoiceInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceInputViewModel.swift; sourceTree = "<group>"; };
 		82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingRepository.swift; sourceTree = "<group>"; };
 		82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -358,6 +361,7 @@
 				823A34221E2530070093FBF4 /* AboutViewModel.swift */,
 				823A34C51E31FD630093FBF4 /* StringConstants.swift */,
 				82DF5DA31E6580E20027CA1F /* EditThingViewModel.swift */,
+				82DF5DB31E7005380027CA1F /* VoiceInputViewModel.swift */,
 			);
 			name = ViewModel;
 			path = Presenter;
@@ -546,6 +550,7 @@
 				82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
 				823A34BC1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
+				82DF5DB41E7005380027CA1F /* VoiceInputViewModel.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				823A34C61E31FD630093FBF4 /* StringConstants.swift in Sources */,
 				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
@@ -568,6 +573,7 @@
 				82DF5DA51E6580E20027CA1F /* EditThingViewModel.swift in Sources */,
 				82DF5DA21E657EB10027CA1F /* EditThingViewController.swift in Sources */,
 				82DF5DAE1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
+				82DF5DB51E7005380027CA1F /* VoiceInputViewModel.swift in Sources */,
 				82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */,
 				823A34241E2530070093FBF4 /* AboutViewModel.swift in Sources */,

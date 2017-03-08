@@ -9,17 +9,108 @@
 import Foundation
 import UIKit
 import SnapKit
+import Speech
 
 class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "zh-CN"))
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+    private let audioEngine = AVAudioEngine()
     
+    fileprivate var viewModel = VoiceInputViewModel()
     fileprivate let backgroundView = UIView()
+    fileprivate var textView = UITextView()
+    
+    var delegate:VoiceInputDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        speechRecognizer?.delegate = self
         
+        requestAuthorization()
         initUI()
         addDismissGesture()
+        
+        startRecording()
+    }
+    
+    func startRecording() {
+        
+        resetRecognitionTask()
+        
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+            try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        } catch {
+            print("audioSession properties weren't set because of an error.")
+        }
+        
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        guard let inputNode = audioEngine.inputNode else {
+            print("Audio engine has no input node")
+            return
+        }
+        
+        guard let recognitionRequest = recognitionRequest else {
+            print("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
+            return
+        }
+        
+        recognitionRequest.shouldReportPartialResults = true
+        
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+            
+            var isFinal = false
+            
+            if result != nil {
+                
+                self.textView.text = result?.bestTranscription.formattedString
+                isFinal = (result?.isFinal)!
+            }
+            
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+            }
+        })
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+            self.recognitionRequest?.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        
+        do {
+            try audioEngine.start()
+        } catch {
+            print("audioEngine couldn't start because of an error.")
+        }
+        
+        textView.text = "说出你要记的小事吧"
+    }
+    
+    private func requestAuthorization(){
+        SFSpeechRecognizer.requestAuthorization { (authStatus) in
+            
+            switch authStatus {
+            case .authorized:
+                print("Authorized")
+            case .denied:
+                print("User denied access to speech recognition")
+            case .restricted:
+                print("Speech recognition restricted on this device")
+            case .notDetermined:
+                print("Speech recognition not yet authorized")
+            }
+        }
     }
     
     private func initUI(){
@@ -53,14 +144,36 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
             maker.bottom.equalTo(voiceView.snp.bottom).offset(-20)
             maker.right.equalTo(voiceView.snp.right).offset(-20)
         }
+        
+        textView = UITextView()
+        voiceView.addSubview(textView)
+        textView.snp.makeConstraints { (maker) in
+            maker.top.equalTo(voiceView.snp.top).offset(20)
+            maker.left.equalTo(voiceView.snp.left).offset(20)
+            maker.right.equalTo(voiceView.snp.right).offset(-20)
+            maker.bottom.equalTo(cancelButton.snp.top).offset(-20)
+        }
     }
     
     func cancelTapped(sender:UIButton){
-        print("a")
+        resetRecognitionTask()
+        self.dismissController()
     }
     
     func okTapped(sender:UIButton){
-        print("a")
+        resetRecognitionTask()
+        if !self.textView.text.isEmpty{
+            let thing = viewModel.saveThing(self.textView.text)
+            delegate?.voiceInput(voiceInputView: self, thing: thing)
+        }
+        self.dismissController()
+    }
+    
+    private func resetRecognitionTask(){
+        if recognitionTask != nil {
+            recognitionTask?.cancel()
+            recognitionTask = nil
+        }
     }
     
     private func addDismissGesture(){
@@ -119,4 +232,18 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         }
         return true
     }
+}
+
+extension VoiceInputController : SFSpeechRecognizerDelegate{
+    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        if available {
+            print("available")
+        } else {
+            print("not available")
+        }
+    }
+}
+
+protocol VoiceInputDelegate : NSObjectProtocol{
+    func voiceInput(voiceInputView:VoiceInputController, thing:ThingEntity)
 }

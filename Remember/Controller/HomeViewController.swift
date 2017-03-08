@@ -60,6 +60,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputThingView.delegate = self
         inputThingView.voiceInputAction = {(inputView) -> Void in
             let voiceInputController = VoiceInputController()
+            voiceInputController.delegate = self
             voiceInputController.modalPresentationStyle = .custom
             voiceInputController.modalTransitionStyle = .crossDissolve
             self.present(voiceInputController, animated: false, completion:{ Void in
@@ -386,6 +387,14 @@ extension HomeViewController : UISearchControllerDelegate{
 
 extension HomeViewController : ThingInputDelegate{
     func input(inputView: InputThingView, thing: ThingEntity) {
+        self.things.append(thing)
+        self.sortAndSaveThings()
+        tableView.reloadData()
+    }
+}
+
+extension HomeViewController : VoiceInputDelegate{
+    func voiceInput(voiceInputView:VoiceInputController, thing:ThingEntity){
         self.things.append(thing)
         self.sortAndSaveThings()
         tableView.reloadData()
