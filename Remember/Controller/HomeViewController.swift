@@ -387,7 +387,7 @@ extension HomeViewController : UISearchControllerDelegate{
 
 extension HomeViewController : ThingInputDelegate{
     func input(inputView: InputThingView, thing: ThingEntity) {
-        self.things.append(thing)
+        self.things.insert(thing, at: 0)
         self.sortAndSaveThings()
         tableView.reloadData()
     }
@@ -395,7 +395,7 @@ extension HomeViewController : ThingInputDelegate{
 
 extension HomeViewController : VoiceInputDelegate{
     func voiceInput(voiceInputView:VoiceInputController, thing:ThingEntity){
-        self.things.append(thing)
+        self.things.insert(thing, at: 0)
         self.sortAndSaveThings()
         tableView.reloadData()
     }
