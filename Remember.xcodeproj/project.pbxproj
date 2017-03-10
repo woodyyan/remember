@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		821FC4CA1E71407600A64E94 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
+		821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
+		821FC4CD1E7141B100A64E94 /* voicewave.gif in Resources */ = {isa = PBXBuildFile; fileRef = 821FC4CC1E7141B100A64E94 /* voicewave.gif */; };
+		821FC4CE1E7141B100A64E94 /* voicewave.gif in Resources */ = {isa = PBXBuildFile; fileRef = 821FC4CC1E7141B100A64E94 /* voicewave.gif */; };
 		823539A41E37251300B102D8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */; };
 		823539A51E37251400B102D8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */; };
 		823539AC1E37458300B102D8 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */; };
@@ -58,8 +62,6 @@
 		823A34BD1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */; };
 		823A34BE1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */; };
 		823A34C21E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
-		823A34C31E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
-		823A34C41E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
 		823A34C61E31FD630093FBF4 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34C51E31FD630093FBF4 /* StringConstants.swift */; };
 		823A34C71E31FD630093FBF4 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34C51E31FD630093FBF4 /* StringConstants.swift */; };
 		823A34C81E31FD630093FBF4 /* StringConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34C51E31FD630093FBF4 /* StringConstants.swift */; };
@@ -97,6 +99,7 @@
 		82DF5DB21E6FB6110027CA1F /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82DF5DB41E7005380027CA1F /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DB31E7005380027CA1F /* VoiceInputViewModel.swift */; };
 		82DF5DB51E7005380027CA1F /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DB31E7005380027CA1F /* VoiceInputViewModel.swift */; };
+		82DF5DBB1E7047A90027CA1F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DBA1E7047A90027CA1F /* ImageIO.framework */; };
 		82FED7C81E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7C91E0A625300FDDFD2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */; };
 		82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */; };
@@ -138,6 +141,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		821FC4C91E71407600A64E94 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		821FC4CC1E7141B100A64E94 /* voicewave.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = voicewave.gif; sourceTree = "<group>"; };
 		823539A81E37256900B102D8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		823A341E1E252EBA0093FBF4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		823A34221E2530070093FBF4 /* AboutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
@@ -182,6 +187,7 @@
 		82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceInputController.swift; sourceTree = "<group>"; };
 		82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		82DF5DB31E7005380027CA1F /* VoiceInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceInputViewModel.swift; sourceTree = "<group>"; };
+		82DF5DBA1E7047A90027CA1F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		82FED7C71E0A625300FDDFD2 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		82FED7CA1E0A62EA00FDDFD2 /* ThingRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingRepository.swift; sourceTree = "<group>"; };
 		82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -192,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82DF5DBB1E7047A90027CA1F /* ImageIO.framework in Frameworks */,
 				82DF5DAA1E6964010027CA1F /* Speech.framework in Frameworks */,
 				823A34B01E28A3130093FBF4 /* libz.tbd in Frameworks */,
 				823A34AE1E28A30B0093FBF4 /* libsqlite3.tbd in Frameworks */,
@@ -220,7 +227,6 @@
 				82DF5DAB1E6964130027CA1F /* Speech.framework in Frameworks */,
 				82DF5DB11E6FA9F20027CA1F /* SnapKit.framework in Frameworks */,
 				823539A41E37251300B102D8 /* AddressBook.framework in Frameworks */,
-				823A34C31E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
 				823A34371E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				823A343A1E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */,
 				823A34341E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */,
@@ -237,7 +243,6 @@
 				823A34321E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */,
 				823539A51E37251400B102D8 /* AddressBook.framework in Frameworks */,
 				823539B01E3745B900B102D8 /* libsqlite3.tbd in Frameworks */,
-				823A34C41E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
 				823A34381E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				823A343B1E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */,
 				823A34351E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */,
@@ -252,6 +257,7 @@
 		823A34261E2758410093FBF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82DF5DBA1E7047A90027CA1F /* ImageIO.framework */,
 				82DF5DAF1E6FA9F20027CA1F /* SnapKit.framework */,
 				82DF5DA91E6964010027CA1F /* Speech.framework */,
 				82DF5DA61E6954950027CA1F /* FirebaseCrash.framework */,
@@ -300,6 +306,7 @@
 				823A34B11E28A72C0093FBF4 /* GoogleService-Info.plist */,
 				825DEB271DD9DC070065090F /* Info.plist */,
 				825DEB181DD9DC070065090F /* AppDelegate.swift */,
+				821FC4CC1E7141B100A64E94 /* voicewave.gif */,
 				825DEB221DD9DC070065090F /* Assets.xcassets */,
 				825DEB521DDA0B9B0065090F /* Controller */,
 				825DEB241DD9DC070065090F /* LaunchScreen.storyboard */,
@@ -336,6 +343,7 @@
 				825DEB501DDA0B640065090F /* InputThingView.swift */,
 				823A34B61E2E26C60093FBF4 /* InputTextField.swift */,
 				823A34CC1E320DC00093FBF4 /* MessageBox.swift */,
+				821FC4C91E71407600A64E94 /* UIImage+Gif.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -494,6 +502,7 @@
 			files = (
 				825DEB261DD9DC070065090F /* LaunchScreen.storyboard in Resources */,
 				823A34B21E28A72C0093FBF4 /* GoogleService-Info.plist in Resources */,
+				821FC4CD1E7141B100A64E94 /* voicewave.gif in Resources */,
 				825DEB231DD9DC070065090F /* Assets.xcassets in Resources */,
 				825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */,
 			);
@@ -503,6 +512,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				821FC4CE1E7141B100A64E94 /* voicewave.gif in Resources */,
 				823A34B31E28A72C0093FBF4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,6 +548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				821FC4CA1E71407600A64E94 /* UIImage+Gif.swift in Sources */,
 				82DF5DA11E657EAE0027CA1F /* EditThingViewController.swift in Sources */,
 				82FED7CB1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */,
 				823A34231E2530070093FBF4 /* AboutViewModel.swift in Sources */,
@@ -581,6 +592,7 @@
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				823A34BD1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
+				821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */,
 				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -153,6 +153,14 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
             maker.right.equalTo(voiceView.snp.right).offset(-20)
             maker.bottom.equalTo(cancelButton.snp.top).offset(-20)
         }
+        
+        let imageView = UIImageView()
+        imageView.loadGif(name: "voicewave")
+        voiceView.addSubview(imageView)
+        imageView.snp.makeConstraints { (maker) in
+            maker.centerX.equalTo(voiceView)
+            maker.centerY.equalTo(cancelButton)
+        }
     }
     
     func cancelTapped(sender:UIButton){
