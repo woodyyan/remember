@@ -16,6 +16,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
+    private var hasText = false
     
     fileprivate var viewModel = VoiceInputViewModel()
     fileprivate let backgroundView = UIView()
@@ -67,7 +68,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
             var isFinal = false
             
             if result != nil {
-                
+                self.hasText = true
                 self.textView.text = result?.bestTranscription.formattedString
                 isFinal = (result?.isFinal)!
             }
@@ -146,6 +147,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         textView = UITextView()
+        textView.textColor = UIColor.text()
         voiceView.addSubview(textView)
         textView.snp.makeConstraints { (maker) in
             maker.top.equalTo(voiceView.snp.top).offset(20)
@@ -170,7 +172,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     
     func okTapped(sender:UIButton){
         resetRecognitionTask()
-        if !self.textView.text.isEmpty{
+        if !self.textView.text.isEmpty && self.hasText{
             let thing = viewModel.saveThing(self.textView.text)
             delegate?.voiceInput(voiceInputView: self, thing: thing)
         }
