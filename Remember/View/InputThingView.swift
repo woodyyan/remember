@@ -12,6 +12,7 @@ import UIKit
 class InputThingView : UIView, UITextFieldDelegate{
     
     private var textField:UITextField!
+    private var micButton:UIButton!
     
     var delegate:ThingInputDelegate?
     
@@ -26,7 +27,7 @@ class InputThingView : UIView, UITextFieldDelegate{
         textField.delegate = self
         self.addSubview(textField)
         
-        let micButton = UIButton.init(type: UIButtonType.custom)
+        micButton = UIButton.init(type: UIButtonType.custom)
         micButton.setImage(UIImage(named: "Microphone"), for: .normal)
         micButton.addTarget(self, action: #selector(InputThingView.micButtonTapped(sender:)), for: UIControlEvents.touchUpInside)
         micButton.sizeToFit()
@@ -41,6 +42,14 @@ class InputThingView : UIView, UITextFieldDelegate{
     
     func micButtonTapped(sender:UIButton){
         self.voiceInputAction?(self)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        micButton.isHidden = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        micButton.isHidden = false
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

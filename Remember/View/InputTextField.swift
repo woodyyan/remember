@@ -17,6 +17,7 @@ class InputTextField: UITextField {
         self.leftView = leftImage
         self.leftViewMode = .always
         self.attributedPlaceholder = NSAttributedString(string: " 记一点什么吧", attributes: [NSForegroundColorAttributeName:UIColor.remember()])
+        self.contentMode = .center
         self.backgroundColor = UIColor.inputGray()
         self.layer.borderColor = UIColor.inputGray().cgColor
         self.layer.borderWidth = 1
