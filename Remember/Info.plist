@@ -28,8 +28,6 @@
 	<string>语音输入想获取你的麦克风权限</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>语音输入想获取你的语音识别权限</string>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
