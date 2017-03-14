@@ -18,7 +18,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     fileprivate var tableView:UITableView!
     
     fileprivate var snapshotView:UIView?
+    fileprivate var tableHeaderView:UIView!
+    fileprivate let pasteboardViewTag = 1234
     fileprivate var sourceIndexPath:IndexPath?
+    fileprivate var pasteContent:String?
     
     fileprivate var things = [ThingEntity]()
 
@@ -39,7 +42,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         initTableView()
         initInputView()
-        initSearchBar()
+        initTableHeaderView()
         initLongPressForTableView()
         setKeyboardNotification()
         
@@ -70,7 +73,36 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.addSubview(inputThingView)
     }
     
-    private func initSearchBar(){
+    private func initTableHeaderView(){
+        tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
+        tableHeaderView.addSubview(getSearchButton())
+        
+        let pasteboard = UIPasteboard.general
+        if pasteboard.hasStrings || pasteboard.hasURLs {
+            //add timer
+            addPasteDisappearTimer()
+            
+            tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 130)
+            pasteContent = pasteboard.string
+            if pasteContent == nil{
+                pasteContent = pasteboard.url?.absoluteString
+            }
+            tableHeaderView.addSubview(getPasteBoardView(pasteContent))
+        }
+        
+        tableView.tableHeaderView = tableHeaderView
+    }
+    
+    private func addPasteDisappearTimer(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            // 移除粘贴板提示
+            if self.pasteContent != nil{
+                self.removePasteboardView()
+            }
+        }
+    }
+    
+    private func getSearchButton() -> UIView{
         let searchButton = UIButton(type: UIButtonType.system)
         searchButton.setTitle(" 搜索你忘记的小事", for: UIControlState.normal)
         searchButton.setImage(UIImage(named: "Search"), for: UIControlState.normal)
@@ -82,11 +114,69 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchButton.setTitleColor(UIColor.remember(), for: UIControlState.normal)
         searchButton.tintColor = UIColor.remember()
         searchButton.addTarget(self, action: #selector(HomeViewController.searchClick(_:)), for: UIControlEvents.touchUpInside)
+        return searchButton
+    }
+    
+    private func getPasteBoardView(_ content:String?) -> UIView{
+        let pasteboardView = UIView(frame: CGRect(x: 10, y: 60, width: self.view.frame.width - 20, height: 55))
+        pasteboardView.layer.cornerRadius = 10
+        pasteboardView.backgroundColor = UIColor.white
+        let tipTextLabel = UILabel(frame: CGRect(x: 10, y: 5, width: pasteboardView.frame.width, height: 20))
+        tipTextLabel.textColor = UIColor.remember()
+        tipTextLabel.text = "是否要添加粘贴板的内容："
+        tipTextLabel.font = UIFont.systemFont(ofSize: 12)
+        pasteboardView.addSubview(tipTextLabel)
+        tipTextLabel.snp.makeConstraints { (maker) in
+            maker.left.equalTo(pasteboardView).offset(10)
+            maker.top.equalTo(pasteboardView).offset(5)
+            maker.right.equalTo(pasteboardView).offset(-10)
+        }
         
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
-        headerView.addSubview(searchButton)
+        let okButton = UIButton(type: UIButtonType.custom)
+        okButton.setImage(UIImage(named: "Checked"), for: .normal)
+        okButton.addTarget(self, action: #selector(HomeViewController.pasteOkButtonClick(_:)), for: .touchUpInside)
+        okButton.sizeToFit()
+        pasteboardView.addSubview(okButton)
+        okButton.snp.makeConstraints { (maker) in
+            maker.centerY.equalTo(pasteboardView)
+            maker.right.equalTo(pasteboardView.snp.right).offset(-10)
+        }
         
-        tableView.tableHeaderView = headerView
+        let pasteContentLabel = UILabel()
+        pasteContentLabel.textColor = UIColor.text()
+        pasteContentLabel.text = content
+        pasteboardView.addSubview(pasteContentLabel)
+        pasteContentLabel.snp.makeConstraints { (maker) in
+            maker.top.equalTo(tipTextLabel.snp.bottom).offset(5)
+            maker.left.equalTo(tipTextLabel)
+            maker.right.equalTo(okButton.snp.left).offset(-5)
+            maker.height.equalTo(20)
+            maker.width.greaterThanOrEqualTo(100)
+        }
+        
+        pasteboardView.tag = pasteboardViewTag
+        return pasteboardView
+    }
+    
+    func pasteOkButtonClick(_ sender:UIButton){
+        if let content = pasteContent{
+            let thing = ThingEntity(content: content, createdAt: NSDate(), index: 0)
+            ThingRepository.sharedInstance.createThing(thing: thing)
+            self.things.insert(thing, at: 0)
+            self.sortAndSaveThings()
+            pasteContent = nil
+        }
+        
+        removePasteboardView()
+    }
+    
+    private func removePasteboardView(){
+        //remove pasteboard
+        tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60)
+        if let pasteboardView = tableHeaderView.viewWithTag(pasteboardViewTag){
+            pasteboardView.removeFromSuperview()
+        }
+        tableView.reloadData()
     }
     
     func searchClick(_ sender:UIButton) {
@@ -165,31 +255,35 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             snapshotView?.center = center!
             
             if indexPath != nil && !(indexPath == sourceIndexPath) {
-                let index = self.things[indexPath!.row].index
-                self.things[indexPath!.row].index = self.things[sourceIndexPath!.row].index
-                self.things[sourceIndexPath!.row].index = index
-                swap(&self.things[indexPath!.row], &self.things[sourceIndexPath!.row])
-                self.tableView.moveRow(at: sourceIndexPath!, to: indexPath!)
-                sourceIndexPath = indexPath
+                if let tempIndexPath = sourceIndexPath{
+                    let index = self.things[indexPath!.row].index
+                    self.things[indexPath!.row].index = self.things[tempIndexPath.row].index
+                    self.things[tempIndexPath.row].index = index
+                    swap(&self.things[indexPath!.row], &self.things[tempIndexPath.row])
+                    self.tableView.moveRow(at: tempIndexPath, to: indexPath!)
+                    sourceIndexPath = indexPath
+                }
             }
             break
         default:
-            let cell = self.tableView.cellForRow(at: sourceIndexPath!)
-            cell?.alpha = 0.0
-            
-            UIView.animate(withDuration: 0.25, animations: {
-                self.snapshotView?.center = cell!.center
-                self.snapshotView?.transform = CGAffineTransform.identity
-                self.snapshotView?.alpha = 0.0
-                cell?.alpha = 1.0
-                self.sortAndSaveThings()
-                self.tableView.reloadData()
-            }, completion: { (finished) in
-                cell?.isHidden = false
-                self.sourceIndexPath = nil
-                self.snapshotView?.removeFromSuperview()
-                self.snapshotView = nil
-            })
+            if let tempIndexPath = sourceIndexPath{
+                let cell = self.tableView.cellForRow(at: tempIndexPath)
+                cell?.alpha = 0.0
+                
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.snapshotView?.center = cell!.center
+                    self.snapshotView?.transform = CGAffineTransform.identity
+                    self.snapshotView?.alpha = 0.0
+                    cell?.alpha = 1.0
+                    self.sortAndSaveThings()
+                    self.tableView.reloadData()
+                }, completion: { (finished) in
+                    cell?.isHidden = false
+                    self.sourceIndexPath = nil
+                    self.snapshotView?.removeFromSuperview()
+                    self.snapshotView = nil
+                })
+            }
             break
         }
     }
