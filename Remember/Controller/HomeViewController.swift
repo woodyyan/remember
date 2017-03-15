@@ -165,6 +165,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.things.insert(thing, at: 0)
             self.sortAndSaveThings()
             pasteContent = nil
+            tableView.reloadData()
         }
         
         removePasteboardView()
@@ -172,11 +173,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func removePasteboardView(){
         //remove pasteboard
-        tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60)
-        if let pasteboardView = tableHeaderView.viewWithTag(pasteboardViewTag){
+
+        self.tableView.beginUpdates()
+        self.tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60)
+        if let pasteboardView = self.tableHeaderView.viewWithTag(self.pasteboardViewTag){
             pasteboardView.removeFromSuperview()
         }
-        tableView.reloadData()
+        self.tableView.tableHeaderView = self.tableHeaderView
+        self.tableView.endUpdates()
     }
     
     func searchClick(_ sender:UIButton) {
