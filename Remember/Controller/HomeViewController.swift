@@ -30,6 +30,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view, typically from a nib.
         
         initUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.updatePasteboardView(_:)), name: NSNotification.Name(rawValue: "updatePasteboardView"), object: nil)
     }
     
     private func initUI(){
@@ -47,6 +49,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         setKeyboardNotification()
         
         initData()
+    }
+    
+    func updatePasteboardView(_ notification: Notification){
+        addPasteboardViewIfNeeded()
     }
     
     private func initData(){
@@ -77,20 +83,26 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
         tableHeaderView.addSubview(getSearchButton())
         
-        let pasteboard = UIPasteboard.general
-        if pasteboard.hasStrings || pasteboard.hasURLs {
+        addPasteboardViewIfNeeded()
+        
+        tableView.tableHeaderView = tableHeaderView
+    }
+    
+    private func addPasteboardViewIfNeeded(){
+        //如果已经有粘贴板提示了就返回
+        if self.tableHeaderView.viewWithTag(self.pasteboardViewTag) != nil{
+            return
+        }
+        if let tempPasteContent = HomeViewModel.getPasteboardContent(){
             //add timer
             addPasteDisappearTimer()
             
+            pasteContent = tempPasteContent
+            self.tableView.beginUpdates()
             tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 130)
-            pasteContent = pasteboard.string
-            if pasteContent == nil{
-                pasteContent = pasteboard.url?.absoluteString
-            }
-            tableHeaderView.addSubview(getPasteBoardView(pasteContent))
+            tableHeaderView.addSubview(getPasteBoardView(tempPasteContent))
+            self.tableView.endUpdates()
         }
-        
-        tableView.tableHeaderView = tableHeaderView
     }
     
     private func addPasteDisappearTimer(){
@@ -117,7 +129,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return searchButton
     }
     
-    private func getPasteBoardView(_ content:String?) -> UIView{
+    private func getPasteBoardView(_ content:String) -> UIView{
         let pasteboardView = UIView(frame: CGRect(x: 10, y: 60, width: self.view.frame.width - 20, height: 55))
         pasteboardView.layer.cornerRadius = 10
         pasteboardView.backgroundColor = UIColor.white
@@ -154,8 +166,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             maker.width.greaterThanOrEqualTo(100)
         }
         
+        addPasteContentToSettings(content)
+        
         pasteboardView.tag = pasteboardViewTag
         return pasteboardView
+    }
+    
+    private func addPasteContentToSettings(_ content:String){
+        UserDefaults.standard.set(content, forKey: "pasteboardContent")
+        UserDefaults.standard.synchronize()
     }
     
     func pasteOkButtonClick(_ sender:UIButton){

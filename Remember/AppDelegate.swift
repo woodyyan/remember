@@ -42,6 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        // 粘贴板内容添加提示
+        if let pasteContent = HomeViewModel.getPasteboardContent(){
+            let notify = Notification(name: Notification.Name(rawValue: "updatePasteboardView"), object: pasteContent, userInfo: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "updatePasteboardView"), object: notify)
+        }
+
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
