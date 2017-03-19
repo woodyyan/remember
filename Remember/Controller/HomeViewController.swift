@@ -161,9 +161,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         pasteContentLabel.snp.makeConstraints { (maker) in
             maker.top.equalTo(tipTextLabel.snp.bottom).offset(5)
             maker.left.equalTo(tipTextLabel)
-            maker.right.equalTo(okButton.snp.left).offset(-5)
+            maker.right.lessThanOrEqualTo(okButton.snp.left).offset(-5)
             maker.height.equalTo(20)
-            maker.width.greaterThanOrEqualTo(100)
         }
         
         addPasteContentToSettings(content)
