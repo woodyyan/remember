@@ -38,12 +38,27 @@ class SearchResultTableViewController : UITableViewController, UISearchResultsUp
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = self.filteredThings[indexPath.row].content
+        cell.textLabel?.textColor = UIColor.text()
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.filteredThings.count > indexPath.row
+        {
+            let content:NSString = self.filteredThings[indexPath.row].content as NSString
+            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: UIFont.systemFontSize)], context: nil)
+            return size.height + 40
+        }
+        else{
+            return UITableViewCell().frame.height
+        }
+    }
+    
     
     private func filterResultsForSearchText(_ searchText: String){
         self.filteredThings = self.things.filter({ (thing) -> Bool in
