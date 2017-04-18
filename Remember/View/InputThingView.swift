@@ -40,6 +40,10 @@ class InputThingView : UIView, UITextFieldDelegate{
         super.init(coder: aDecoder)
     }
     
+    func isEditing() -> Bool{
+        return textField.isEditing
+    }
+    
     func micButtonTapped(sender:UIButton){
         self.voiceInputAction?(self)
     }

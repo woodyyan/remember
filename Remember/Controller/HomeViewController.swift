@@ -346,7 +346,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func keyboardWillShow(_ notice:Notification){
-        if shouldInputViewDisplay{
+        if shouldInputViewDisplay && inputThingView.isEditing(){
             let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
             let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
             let endFrame = endFrameValue.cgRectValue
