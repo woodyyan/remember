@@ -405,26 +405,10 @@ extension HomeViewController{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let content:NSString = things[indexPath.row].content as NSString
         let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 60, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
-        return size.height + 40
+        return size.height + 60
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if(editingStyle == UITableViewCellEditingStyle.delete){
-//            let alertController = UIAlertController(title: "提示", message: "确认要删除吗？", preferredStyle: UIAlertControllerStyle.alert)
-//            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
-//                tableView.setEditing(false, animated: true)
-//            })
-//            alertController.addAction(cancelAction)
-//            let deleteAction = UIAlertAction(title: "删除", style: UIAlertActionStyle.destructive, handler: { (action) -> Void in
-//                let index=(indexPath as NSIndexPath).row as Int
-//                let thing = self.things[index]
-//                self.things.remove(at: index)
-//                self.viewModel.deleteThing(thing)
-//                tableView.reloadData()
-//            })
-//            alertController.addAction(deleteAction)
-//            self.present(alertController, animated: true, completion: nil)
-//        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

@@ -51,8 +51,8 @@ class SearchResultTableViewController : UITableViewController, UISearchResultsUp
         if self.filteredThings.count > indexPath.row
         {
             let content:NSString = self.filteredThings[indexPath.row].content as NSString
-            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: UIFont.systemFontSize)], context: nil)
-            return size.height + 40
+            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
+            return size.height + 30
         }
         else{
             return UITableViewCell().frame.height
