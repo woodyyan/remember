@@ -31,7 +31,6 @@ class ThingTableViewCell: UITableViewCell {
         let cellWidth = self.frame.size.width;
         self.textLabel?.numberOfLines = 0
         self.textLabel?.textColor = UIColor.text()
-        self.textLabel?.textAlignment = .justified
         self.textLabel?.frame = CGRect(x: 30, y: 15, width: cellWidth - 60, height: cellHeight - 30)
     }
     
@@ -53,6 +52,32 @@ class ThingTableViewCell: UITableViewCell {
         let resizedImage = image?.resizableImage(withCapInsets: UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20), resizingMode: UIImageResizingMode.stretch)
         let backImage =  UIImageView(image: resizedImage)
         return backImage
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if [#selector(copyText)].contains(action) {
+            return true
+        }
+        return false
+    }
+    
+    func showMenuItems() {
+        self.becomeFirstResponder() // 这句很重要
+        let menuController = UIMenuController.shared
+        let copyItem = UIMenuItem(title: "复制", action: #selector(copyText))
+        menuController.menuItems = [copyItem]
+        menuController.setTargetRect(frame, in: superview!)
+        menuController.setMenuVisible(true, animated: true)
+    }
+    
+    func copyText() {
+        UIPasteboard.general.string = self.textLabel?.text
+        UserDefaults.standard.set(self.textLabel?.text, forKey: "pasteboardContent")
+        UserDefaults.standard.synchronize()
     }
 }
 

@@ -405,7 +405,7 @@ extension HomeViewController{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let content:NSString = things[indexPath.row].content as NSString
         let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 60, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
-        return size.height + 60
+        return size.height + 40
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -445,6 +445,10 @@ extension HomeViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         inputThingView.endEditing()
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? ThingTableViewCell{
+            cell.showMenuItems()
+        }
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
