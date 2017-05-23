@@ -68,6 +68,7 @@
 		823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
 		823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
 		823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
+		825BA5F71ED47E1600B4545B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
 		825DEB231DD9DC070065090F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB221DD9DC070065090F /* Assets.xcassets */; };
@@ -603,6 +604,7 @@
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
 				823539AC1E37458300B102D8 /* ThingRepository.swift in Sources */,
 				823A34C81E31FD630093FBF4 /* StringConstants.swift in Sources */,
+				825BA5F71ED47E1600B4545B /* HomeViewController.swift in Sources */,
 				823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				823A34BA1E2E294C0093FBF4 /* HomeViewModel.swift in Sources */,
