@@ -69,6 +69,11 @@
 		823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
 		823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
 		825BA5F71ED47E1600B4545B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
+		825BA5F81ED4817400B4545B /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
+		825BA5F91ED4818600B4545B /* EditThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */; };
+		825BA5FA1ED4818D00B4545B /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DB31E7005380027CA1F /* VoiceInputViewModel.swift */; };
+		825BA5FB1ED4819600B4545B /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
+		825BA5FC1ED481B100B4545B /* EditThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA31E6580E20027CA1F /* EditThingViewModel.swift */; };
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
 		825DEB231DD9DC070065090F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB221DD9DC070065090F /* Assets.xcassets */; };
@@ -599,15 +604,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825BA5FA1ED4818D00B4545B /* VoiceInputViewModel.swift in Sources */,
 				823539B61E3885DB00B102D8 /* AppDelegate.swift in Sources */,
 				823A34BE1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
+				825BA5F81ED4817400B4545B /* VoiceInputController.swift in Sources */,
 				823539AC1E37458300B102D8 /* ThingRepository.swift in Sources */,
 				823A34C81E31FD630093FBF4 /* StringConstants.swift in Sources */,
+				825BA5FC1ED481B100B4545B /* EditThingViewModel.swift in Sources */,
 				825BA5F71ED47E1600B4545B /* HomeViewController.swift in Sources */,
+				825BA5F91ED4818600B4545B /* EditThingViewController.swift in Sources */,
 				823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */,
 				823A34BA1E2E294C0093FBF4 /* HomeViewModel.swift in Sources */,
+				825BA5FB1ED4819600B4545B /* UIImage+Gif.swift in Sources */,
 				823A34251E2530070093FBF4 /* AboutViewModel.swift in Sources */,
 				823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				823A34B91E2E26C60093FBF4 /* InputTextField.swift in Sources */,
