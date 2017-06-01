@@ -24,7 +24,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window!.rootViewController = UINavigationController.init(rootViewController: HomeViewController());
         
+        let createItem = UIApplicationShortcutItem(type: "create", localizedTitle: "添加小事", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .add), userInfo: nil)
+        let searchItem = UIApplicationShortcutItem(type: "search", localizedTitle: "搜索小事", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .search), userInfo: nil)
+        application.shortcutItems = [createItem, searchItem]
+        
+        if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem{
+            self.performActionForShortcutItem(shortcutItem: shortcutItem)
+            return false
+        }
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        self.performActionForShortcutItem(shortcutItem: shortcutItem)
+    }
+    
+    func performActionForShortcutItem(shortcutItem:UIApplicationShortcutItem) {
+        if let controller = self.window!.rootViewController?.childViewControllers.first(where: { (vc) -> Bool in
+            return vc is HomeViewController
+        }) as? HomeViewController{
+            
+            if shortcutItem.type == "search" { //搜索小事
+                controller.searchClick(UIButton())
+            }else if shortcutItem.type == "create"{ //添加小事
+                controller.beginCreateThing()
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

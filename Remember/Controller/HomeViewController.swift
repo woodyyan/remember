@@ -14,14 +14,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     fileprivate var shouldInputViewDisplay = true
     fileprivate var viewModel = HomeViewModel()
-    fileprivate var inputThingView:InputThingView!
     fileprivate var tableView:UITableView!
-    
     fileprivate var snapshotView:UIView?
     fileprivate var tableHeaderView:UIView!
     fileprivate let pasteboardViewTag = 1234
     fileprivate var sourceIndexPath:IndexPath?
     fileprivate var pasteContent:String?
+    fileprivate var inputThingView:InputThingView!
     
     fileprivate var things = [ThingEntity]()
 
@@ -49,6 +48,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         setKeyboardNotification()
         
         initData()
+    }
+    
+    func beginCreateThing(){
+        inputThingView.beginEditing()
     }
     
     func updatePasteboardView(_ notification: Notification){
