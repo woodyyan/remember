@@ -101,7 +101,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
-            mailComposerVC.setSubject("技能树反馈")
+            mailComposerVC.setSubject("丁丁记事反馈")
             mailComposerVC.setToRecipients(["easystudio@outlook.com"])
             self.present(mailComposerVC, animated: true, completion: nil)
         } else {
