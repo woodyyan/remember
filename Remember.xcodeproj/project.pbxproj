@@ -86,6 +86,7 @@
 		826D44EF1E96934F0010B449 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 826D44ED1E9693450010B449 /* SnapKit.framework */; };
 		826D44F01E96934F0010B449 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 826D44ED1E9693450010B449 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
+		82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923661EF17962004937EA /* AboutViewModelTests.swift */; };
 		82DB5C1D1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
 		82DB5C1E1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
 		82DB5C1F1E1CCEEB0037FAD5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */; };
@@ -185,6 +186,7 @@
 		825DEB541DDA0B9B0065090F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		826D44ED1E9693450010B449 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SnapKit.framework; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82DB5C1C1E1CCEEB0037FAD5 /* ThingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingEntity.swift; sourceTree = "<group>"; };
 		82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditThingViewController.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				825DEB301DD9DC070065090F /* RememberTests.swift */,
 				825DEB321DD9DC070065090F /* Info.plist */,
 				82A923641EF17728004937EA /* HomeViewModelTests.swift */,
+				82A923661EF17962004937EA /* AboutViewModelTests.swift */,
 			);
 			path = RememberTests;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				823A34C71E31FD630093FBF4 /* StringConstants.swift in Sources */,
 				82FED7CC1E0A62EA00FDDFD2 /* ThingRepository.swift in Sources */,
 				82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
+				82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */,
 				823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				823539B91E38863400B102D8 /* InputThingView.swift in Sources */,
 				82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */,
