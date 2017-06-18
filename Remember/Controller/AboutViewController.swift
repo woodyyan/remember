@@ -120,14 +120,10 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     internal func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch(result){
         case MFMailComposeResult.sent:
-            let banner = NotificationBanner(title: "发送成功", subtitle: "发送成功", style: .success)
+            let banner = NotificationBanner(title: "反馈发送成功", subtitle: "我们会尽快处理", style: .success)
             banner.show()
-        case MFMailComposeResult.saved:
-            let banner = NotificationBanner(title: "发送取消", subtitle: "发送取消", style: .info)
-            banner.show()
-        case MFMailComposeResult.cancelled:
-            let banner = NotificationBanner(title: "发送取消", subtitle: "发送取消", style: .info)
-            banner.show()
+        case MFMailComposeResult.saved: break
+        case MFMailComposeResult.cancelled: break
         case MFMailComposeResult.failed:
             let banner = NotificationBanner(title: "发送失败", subtitle: "请检查配置", style: .warning)
             banner.show()
