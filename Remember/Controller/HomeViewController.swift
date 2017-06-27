@@ -421,6 +421,20 @@ extension HomeViewController{
             self.editThing(thing)
             tableView.isEditing = false
         }
+        editAction.backgroundEffect = UIBlurEffect(style: .regular)
+        
+        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "分享") { (action, index) -> Void in
+            let index=(indexPath as NSIndexPath).row as Int
+            let thing = self.things[index]
+            let activityController = UIActivityViewController(activityItems: [thing.content], applicationActivities: [])
+            activityController.excludedActivityTypes = [.openInIBooks, .addToReadingList, .saveToCameraRoll]
+            activityController.completionWithItemsHandler = {
+                (type, flag, array, error) -> Swift.Void in
+                print(type ?? "")
+            }
+            self.present(activityController, animated: true, completion: nil)
+        }
+        shareAction.backgroundColor = UIColor.remember()
         
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "删除") { (action, index) -> Void in
             let alertController = UIAlertController(title: "提示", message: "确认要删除吗？", preferredStyle: UIAlertControllerStyle.alert)
@@ -438,7 +452,7 @@ extension HomeViewController{
             alertController.addAction(deleteAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        return [deleteAction,editAction]
+        return [deleteAction, shareAction,editAction]
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
