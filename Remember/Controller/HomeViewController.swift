@@ -421,7 +421,6 @@ extension HomeViewController{
             self.editThing(thing)
             tableView.isEditing = false
         }
-        editAction.backgroundEffect = UIBlurEffect(style: .regular)
         
         let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "分享") { (action, index) -> Void in
             let index=(indexPath as NSIndexPath).row as Int
