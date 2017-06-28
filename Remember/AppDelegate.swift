@@ -24,11 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window!.rootViewController = UINavigationController.init(rootViewController: HomeViewController());
         
+        initAliyunService()
+        
         let createItem = UIApplicationShortcutItem(type: "create", localizedTitle: "添加小事", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .add), userInfo: nil)
         let searchItem = UIApplicationShortcutItem(type: "search", localizedTitle: "搜索小事", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .search), userInfo: nil)
         application.shortcutItems = [createItem, searchItem]
         
         return true
+    }
+    
+    private func initAliyunService(){
+        let man = ALBBMANAnalytics.getInstance()
+        //man?.turnOnDebug()
+        man?.initWithAppKey("24527009", secretKey: "241a802ec6df5bbf6255cee25e4b1919")
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
