@@ -11,6 +11,8 @@ import UIKit
 
 class ThingTableViewCell: UITableViewCell {
     
+    private var shouldCustomizeActionButtons = false
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -32,6 +34,63 @@ class ThingTableViewCell: UITableViewCell {
         self.textLabel?.numberOfLines = 0
         self.textLabel?.textColor = UIColor.text()
         self.textLabel?.frame = CGRect(x: 30, y: 15, width: cellWidth - 60, height: cellHeight - 30)
+        
+        customizeActionButtons()
+    }
+    
+    private func customizeActionButtons(){
+        for subView in self.subviews {
+            if subView.isKind(of: NSClassFromString("UITableViewCellDeleteConfirmationView")!){
+                if shouldCustomizeActionButtons{
+                    subView.backgroundColor = UIColor.clear
+                    if subView.subviews.count == 3{
+                        let deleteButton = subView.subviews[0]
+                        let deleteLabel = deleteButton.subviews[0]
+                        if deleteLabel.isKind(of: NSClassFromString("UIButtonLabel")!){
+                            deleteLabel.removeFromSuperview()
+                        }
+                        deleteButton.backgroundColor = UIColor.clear
+                        let deleteImage = UIImageView(image: UIImage(named: "delete"))
+                        deleteButton.addSubview(deleteImage)
+                        deleteImage.snp.makeConstraints({ (maker) in
+                            maker.center.equalTo(deleteButton)
+                        })
+                        
+                        let shareButton = subView.subviews[1]
+                        let shareLabel = shareButton.subviews[0]
+                        if shareLabel.isKind(of: NSClassFromString("UIButtonLabel")!){
+                            shareLabel.removeFromSuperview()
+                        }
+                        shareButton.backgroundColor = UIColor.clear
+                        let shareImage = UIImageView(image: UIImage(named: "share"))
+                        shareButton.addSubview(shareImage)
+                        shareImage.snp.makeConstraints({ (maker) in
+                            maker.center.equalTo(shareButton)
+                        })
+                        
+                        let editButton = subView.subviews[2]
+                        let editLabel = editButton.subviews[0]
+                        if editLabel.isKind(of: NSClassFromString("UIButtonLabel")!){
+                            editLabel.removeFromSuperview()
+                        }
+                        editButton.backgroundColor = UIColor.clear
+                        let editImage = UIImageView(image: UIImage(named: "edit"))
+                        editButton.addSubview(editImage)
+                        editImage.snp.makeConstraints({ (maker) in
+                            maker.center.equalTo(editButton)
+                        })
+                    }
+                }
+            }
+        }
+    }
+    
+    override func willTransition(to state: UITableViewCellStateMask) {
+        if state == UITableViewCellStateMask.showingDeleteConfirmationMask{
+            shouldCustomizeActionButtons = true
+        }else{
+            self.shouldCustomizeActionButtons = false
+        }
     }
     
     func setBackground(style:ThingCellBackgroundStyle){
