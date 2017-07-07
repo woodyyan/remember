@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let inputViewHeight:CGFloat = 60
     
     fileprivate var shouldInputViewDisplay = true
-    fileprivate var viewModel = HomeViewModel()
+    fileprivate var viewModel = HomeService()
     fileprivate var tableView:UITableView!
     fileprivate var snapshotView:UIView?
     fileprivate var tableHeaderView:UIView!
@@ -96,7 +96,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if self.tableHeaderView.viewWithTag(self.pasteboardViewTag) != nil{
             return
         }
-        if let tempPasteContent = HomeViewModel.getPasteboardContent(){
+        if let tempPasteContent = HomeService.getPasteboardContent(){
             //add timer
             addPasteDisappearTimer()
             
@@ -425,7 +425,7 @@ extension HomeViewController{
         let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "分享") { (action, index) -> Void in
             let index=(indexPath as NSIndexPath).row as Int
             let thing = self.things[index]
-            let activityController = HomeViewModel.getActivityViewController(content: thing.content!)
+            let activityController = HomeService.getActivityViewController(content: thing.content!)
             self.present(activityController, animated: true, completion: nil)
         }
         shareAction.backgroundColor = UIColor.remember()

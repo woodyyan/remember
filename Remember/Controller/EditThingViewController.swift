@@ -37,7 +37,7 @@ class EditThingViewController: UIViewController {
     
     func shareTap(sender:UIBarButtonItem){
         if let content = thing?.content{
-            let activityController = HomeViewModel.getActivityViewController(content: content)
+            let activityController = HomeService.getActivityViewController(content: content)
             self.present(activityController, animated: true, completion: nil)
         }
     }

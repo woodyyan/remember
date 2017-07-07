@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class HomeViewModel {
+class HomeService {
     private(set) var things = [ThingModel]()
     
     init() {

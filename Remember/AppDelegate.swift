@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // 粘贴板内容添加提示
-        if let pasteContent = HomeViewModel.getPasteboardContent(){
+        if let pasteContent = HomeService.getPasteboardContent(){
             let notify = Notification(name: Notification.Name(rawValue: "updatePasteboardView"), object: pasteContent, userInfo: nil)
             NotificationCenter.default.post(name: Notification.Name(rawValue: "updatePasteboardView"), object: notify)
         }
