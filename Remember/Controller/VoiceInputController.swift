@@ -255,5 +255,5 @@ extension VoiceInputController : SFSpeechRecognizerDelegate{
 }
 
 protocol VoiceInputDelegate : NSObjectProtocol{
-    func voiceInput(voiceInputView:VoiceInputController, thing:ThingEntity)
+    func voiceInput(voiceInputView:VoiceInputController, thing:ThingModel)
 }

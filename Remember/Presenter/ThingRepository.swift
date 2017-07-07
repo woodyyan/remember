@@ -23,23 +23,23 @@ class ThingRepository {
         
     }
     
-    func getThings() -> [ThingEntity]{
+    func getThings() -> [ThingModel]{
         return getThingsFromLocalDB()
     }
     
-    func createThing(thing:ThingEntity){
+    func create(_ thing:ThingModel){
         createAndSaveThingInLocalDB(thing: thing)
     }
     
-    func deleteThing(thing:ThingEntity){
-        deleteThingFromLocalDB(thing: thing)
+    func delete(_ thing:ThingModel){
+        deleteThing(by: thing.id)
     }
     
-    func editThing(thing:ThingEntity){
+    func edit(_ thing:ThingModel){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
         request.entity = entity
-        let predicate = NSPredicate(format: "%K == %@","id", thing.id)
+        let predicate = NSPredicate(format: "%K == %@","id", thing.id!)
         request.predicate = predicate
         do{
             if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject]{
@@ -53,12 +53,12 @@ class ThingRepository {
         }
     }
     
-    func saveSortedThings(things:[ThingEntity]){
+    func save(sorted things:[ThingModel]){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
         request.entity = entity
         for thing in things{
-            let predicate = NSPredicate(format: "%K == %@","id", thing.id)
+            let predicate = NSPredicate(format: "%K == %@","id", thing.id!)
             request.predicate = predicate
             do{
                 if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject]{
@@ -73,11 +73,11 @@ class ThingRepository {
         appDelegate.saveContext()
     }
     
-    private func deleteThingFromLocalDB(thing:ThingEntity){
+    private func deleteThing(by thingId:String){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
         request.entity = entity
-        let predicate = NSPredicate(format: "%K == %@","id", thing.id)
+        let predicate = NSPredicate(format: "%K == %@","id", thingId)
         request.predicate = predicate
         do{
             if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject]{
@@ -91,39 +91,31 @@ class ThingRepository {
         }
     }
     
-    private func createAndSaveThingInLocalDB(thing:ThingEntity){
+    private func createAndSaveThingInLocalDB(thing:ThingModel){
         let object:NSManagedObject = NSEntityDescription.insertNewObject(forEntityName: "Thing", into: appDelegate.persistentContainer.viewContext)
         object.setValue(thing.content, forKey: "content")
         object.setValue(thing.createdAt, forKey: "createdAt")
         object.setValue(thing.id, forKey: "id")
+        object.setValue(thing.index, forKey: "index")
         appDelegate.saveContext()
     }
     
-    private func getThingsFromLocalDB() -> [ThingEntity]{
-        var things = [ThingEntity]()
+    private func getThingsFromLocalDB() -> [ThingModel]{
+        var things = [ThingModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
         do{
-            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject]{
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [ThingEntity]{
                 if results.count > 0{
-                    for result in results {
-                        guard let content = result.value(forKey: "content") as? String else {
-                            continue
+                    for result in results{
+                        let thing = ThingModel(content: result.content!)
+                        if let createdAt = result.createdAt{
+                            thing.createdAt = createdAt as Date
                         }
-                        
-                        guard let createdAt = result.value(forKey: "createdAt") as? NSDate else {
-                            continue
+                        thing.id = result.id
+                        thing.index = Int(result.index)
+                        if let thingTags = result.thingTag?.allObjects as? [ThingTagModel]{
+                            thing.thingTag = thingTags
                         }
-                        
-                        guard let id = result.value(forKey: "id") as? String else {
-                            continue
-                        }
-                        
-                        guard let index = result.value(forKey: "index") as? NSNumber else {
-                            continue
-                        }
-                        
-                        let thing = ThingEntity(content: content, createdAt: createdAt, index: index.intValue)
-                        thing.id = id
                         things.append(thing)
                     }
                 }

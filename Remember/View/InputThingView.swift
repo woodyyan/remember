@@ -59,8 +59,8 @@ class InputThingView : UIView, UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let content = textField.text{
             if !content.isEmpty{
-                let thing = ThingEntity(content: content, createdAt: NSDate(), index: 0)
-                ThingRepository.sharedInstance.createThing(thing: thing)
+                let thing = ThingModel(content: content)
+                ThingRepository.sharedInstance.create(thing)
                 
                 delegate?.input(inputView: self, thing: thing)
             }
@@ -82,5 +82,5 @@ class InputThingView : UIView, UITextFieldDelegate{
 }
 
 protocol ThingInputDelegate : NSObjectProtocol{
-    func input(inputView:InputThingView, thing:ThingEntity)
+    func input(inputView:InputThingView, thing:ThingModel)
 }

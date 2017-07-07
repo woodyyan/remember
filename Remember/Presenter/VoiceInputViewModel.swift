@@ -9,9 +9,10 @@
 import Foundation
 
 class VoiceInputViewModel{
-    func saveThing(_ content:String) -> ThingEntity{
-        let thing = ThingEntity(content: content, createdAt: NSDate(), index: 0)
-        ThingRepository.sharedInstance.createThing(thing: thing)
+    func saveThing(_ content:String) -> ThingModel{
+        let thing = ThingModel(content: content)
+        thing.content = content
+        ThingRepository.sharedInstance.create(thing)
         return thing
     }
 }

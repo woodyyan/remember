@@ -22,7 +22,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     fileprivate var pasteContent:String?
     fileprivate var inputThingView:InputThingView!
     
-    fileprivate var things = [ThingEntity]()
+    fileprivate var things = [ThingModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,8 +181,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func pasteOkButtonClick(_ sender:UIButton){
         if let content = pasteContent{
-            let thing = ThingEntity(content: content, createdAt: NSDate(), index: 0)
-            ThingRepository.sharedInstance.createThing(thing: thing)
+            let thing = ThingModel(content: content)
+            ThingRepository.sharedInstance.create(thing)
             self.things.insert(thing, at: 0)
             self.sortAndSaveThings()
             pasteContent = nil
@@ -324,7 +324,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             })
         }
         
-        self.viewModel.saveSortedThings(self.things)
+        self.viewModel.save(sorted: self.things)
     }
     
     func customSnapshotFromView(_ inputView:UIView) ->UIView {
@@ -406,7 +406,7 @@ extension HomeViewController{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let content:NSString = things[indexPath.row].content as NSString
+        let content:NSString = things[indexPath.row].content! as NSString
         let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 60, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
         return size.height + 40
     }
@@ -416,7 +416,7 @@ extension HomeViewController{
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "编辑") { (action, index) -> Void in
-            let index=(indexPath as NSIndexPath).row as Int
+            let index = indexPath.row
             let thing = self.things[index]
             self.editThing(thing)
             tableView.isEditing = false
@@ -425,12 +425,7 @@ extension HomeViewController{
         let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "分享") { (action, index) -> Void in
             let index=(indexPath as NSIndexPath).row as Int
             let thing = self.things[index]
-            let activityController = UIActivityViewController(activityItems: [thing.content], applicationActivities: [])
-            activityController.excludedActivityTypes = [.openInIBooks, .addToReadingList, .saveToCameraRoll]
-            activityController.completionWithItemsHandler = {
-                (type, flag, array, error) -> Swift.Void in
-                print(type ?? "")
-            }
+            let activityController = HomeViewModel.getActivityViewController(content: thing.content!)
             self.present(activityController, animated: true, completion: nil)
         }
         shareAction.backgroundColor = UIColor.remember()
@@ -462,9 +457,15 @@ extension HomeViewController{
         inputThingView.endEditing()
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let cell = tableView.cellForRow(at: indexPath) as? ThingTableViewCell{
-            cell.showMenuItems()
-        }
+        let thing = self.things[indexPath.row]
+        openThingViewController(with: thing)
+    }
+    
+    private func openThingViewController(with thing:ThingModel){
+        let editController = EditThingViewController()
+        editController.delegate = self
+        editController.thing = thing
+        self.navigationController?.pushViewController(editController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -475,7 +476,7 @@ extension HomeViewController{
         inputThingView.endEditing()
     }
     
-    private func editThing(_ thing: ThingEntity){
+    private func editThing(_ thing: ThingModel){
         self.shouldInputViewDisplay = true
         
         let editController = EditThingViewController()
@@ -506,7 +507,7 @@ extension HomeViewController : UISearchControllerDelegate{
 }
 
 extension HomeViewController : ThingInputDelegate{
-    func input(inputView: InputThingView, thing: ThingEntity) {
+    func input(inputView: InputThingView, thing: ThingModel) {
         self.things.insert(thing, at: 0)
         self.sortAndSaveThings()
         tableView.reloadData()
@@ -514,7 +515,7 @@ extension HomeViewController : ThingInputDelegate{
 }
 
 extension HomeViewController : VoiceInputDelegate{
-    func voiceInput(voiceInputView:VoiceInputController, thing:ThingEntity){
+    func voiceInput(voiceInputView:VoiceInputController, thing:ThingModel){
         self.things.insert(thing, at: 0)
         self.sortAndSaveThings()
         tableView.reloadData()
@@ -522,7 +523,7 @@ extension HomeViewController : VoiceInputDelegate{
 }
 
 extension HomeViewController : EditThingDelegate{
-    func editThing(edit complete: Bool, thing: ThingEntity) {
+    func editThing(edit complete: Bool, thing: ThingModel) {
         tableView.reloadData()
     }
 }

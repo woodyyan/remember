@@ -1,5 +1,5 @@
 //
-//  ThingEntity+CoreDataClass.swift
+//  TagEntity+CoreDataClass.swift
 //  Remember
 //
 //  Created by Songbai Yan on 06/07/2017.
@@ -9,19 +9,20 @@
 import Foundation
 import CoreData
 
-public class ThingEntity: NSManagedObject {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<ThingEntity> {
-        return NSFetchRequest<ThingEntity>(entityName: "Thing")
+@objc(TagEntity)
+public class TagEntity: NSManagedObject {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<TagEntity> {
+        return NSFetchRequest<TagEntity>(entityName: "Tag")
     }
     
-    @NSManaged public var content: String?
-    @NSManaged public var createdAt: NSDate?
     @NSManaged public var id: String?
     @NSManaged public var index: Int32
+    @NSManaged public var name: String?
     @NSManaged public var thingTag: NSSet?
 }
 
-extension ThingEntity {
+// MARK: Generated accessors for thingTag
+extension TagEntity {
     
     @objc(addThingTagObject:)
     @NSManaged public func addToThingTag(_ value: ThingTagEntity)

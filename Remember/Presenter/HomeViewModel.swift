@@ -10,18 +10,28 @@ import Foundation
 import UIKit
 
 class HomeViewModel {
-    private(set) var things = [ThingEntity]()
+    private(set) var things = [ThingModel]()
     
     init() {
         things = ThingRepository.sharedInstance.getThings()
     }
     
-    func deleteThing(_ thing:ThingEntity){
-        ThingRepository.sharedInstance.deleteThing(thing: thing)
+    func deleteThing(_ thing:ThingModel){
+        ThingRepository.sharedInstance.delete(thing)
     }
     
-    func saveSortedThings(_ things:[ThingEntity]){
-        ThingRepository.sharedInstance.saveSortedThings(things: things)
+    func save(sorted things:[ThingModel]){
+        ThingRepository.sharedInstance.save(sorted: things)
+    }
+    
+    class func getActivityViewController(content:String) -> UIActivityViewController{
+        let activityController = UIActivityViewController(activityItems: [content], applicationActivities: [])
+        activityController.excludedActivityTypes = [.openInIBooks, .addToReadingList, .saveToCameraRoll]
+        activityController.completionWithItemsHandler = {
+            (type, flag, array, error) -> Swift.Void in
+            print(type ?? "")
+        }
+        return activityController
     }
     
     class func getPasteboardContent() -> String?{
