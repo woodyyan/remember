@@ -496,7 +496,7 @@ extension HomeViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: StringConstants.sampleThing, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 12)])
+        return NSAttributedString(string: Constants.sampleThing, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 12)])
     }
 }
 

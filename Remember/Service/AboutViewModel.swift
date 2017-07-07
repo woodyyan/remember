@@ -22,11 +22,11 @@ class AboutViewModel {
     }
     
     func getDescription() -> String{
-        return StringConstants.description
+        return Constants.description
     }
     
     func getGettingStarted() -> String{
-        return StringConstants.sampleThing
+        return Constants.sampleThing
     }
     
     private func getCurrentVersion(_ bundleVersion:Bool = false) -> String{
