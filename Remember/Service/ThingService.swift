@@ -10,6 +10,7 @@ import Foundation
 
 class ThingService {
     private let tagStorage = TagStorage()
+    private let thingStorage = ThingStorage()
     private let thingTagStorage = ThingTagStorage()
     
     func saveThingTag(for tag:TagEntity, with thingTag:ThingTagEntity){
@@ -22,8 +23,12 @@ class ThingService {
         return false
     }
     
+    func create(_ thing:ThingModel){
+        thingStorage.create(thing)
+    }
+    
     func edit(_ thing:ThingModel){
-        ThingStorage.sharedInstance.edit(thing)
+        thingStorage.edit(thing)
     }
     
     func getSelectedTags(by thing:ThingModel) -> [TagModel]{

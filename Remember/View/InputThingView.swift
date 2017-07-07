@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class InputThingView : UIView, UITextFieldDelegate{
+    private let thingService = ThingService()
     
     private var textField:UITextField!
     private var micButton:UIButton!
@@ -60,7 +61,7 @@ class InputThingView : UIView, UITextFieldDelegate{
         if let content = textField.text{
             if !content.isEmpty{
                 let thing = ThingModel(content: content)
-                ThingStorage.sharedInstance.create(thing)
+                thingService.create(thing)
                 
                 delegate?.input(inputView: self, thing: thing)
             }

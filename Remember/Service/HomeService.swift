@@ -10,18 +10,24 @@ import Foundation
 import UIKit
 
 class HomeService {
+    private let thingStorage = ThingStorage()
+    
     private(set) var things = [ThingModel]()
     
     init() {
-        things = ThingStorage.sharedInstance.getThings()
+        things = thingStorage.getThings()
     }
     
-    func deleteThing(_ thing:ThingModel){
-        ThingStorage.sharedInstance.delete(thing)
+    func create(_ thing:ThingModel){
+        thingStorage.create(thing)
+    }
+    
+    func delete(_ thing:ThingModel){
+        thingStorage.delete(thing)
     }
     
     func save(sorted things:[ThingModel]){
-        ThingStorage.sharedInstance.save(sorted: things)
+        thingStorage.save(sorted: things)
     }
     
     class func getActivityViewController(content:String) -> UIActivityViewController{

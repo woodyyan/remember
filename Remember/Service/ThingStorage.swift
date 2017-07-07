@@ -13,15 +13,15 @@ import CoreData
 class ThingStorage {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    private static let singletonInstance = ThingStorage()
-    
-    class var sharedInstance : ThingStorage {
-        return singletonInstance
-    }
-    
-    private init(){
-        
-    }
+//    private static let singletonInstance = ThingStorage()
+//    
+//    class var sharedInstance : ThingStorage {
+//        return singletonInstance
+//    }
+//    
+//    private init(){
+//        
+//    }
     
     func getThings() -> [ThingModel]{
         return getThingsFromLocalDB()

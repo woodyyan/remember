@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let inputViewHeight:CGFloat = 60
     
     fileprivate var shouldInputViewDisplay = true
-    fileprivate var viewModel = HomeService()
+    fileprivate var service = HomeService()
     fileprivate var tableView:UITableView!
     fileprivate var snapshotView:UIView?
     fileprivate var tableHeaderView:UIView!
@@ -59,7 +59,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initData(){
-        things = viewModel.things
+        things = service.things
     }
     
     private func setKeyboardNotification(){
@@ -182,7 +182,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func pasteOkButtonClick(_ sender:UIButton){
         if let content = pasteContent{
             let thing = ThingModel(content: content)
-            ThingStorage.sharedInstance.create(thing)
+            service.create(thing)
             self.things.insert(thing, at: 0)
             self.sortAndSaveThings()
             pasteContent = nil
@@ -324,7 +324,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             })
         }
         
-        self.viewModel.save(sorted: self.things)
+        self.service.save(sorted: self.things)
     }
     
     func customSnapshotFromView(_ inputView:UIView) ->UIView {
@@ -440,7 +440,7 @@ extension HomeViewController{
                 let index=(indexPath as NSIndexPath).row as Int
                 let thing = self.things[index]
                 self.things.remove(at: index)
-                self.viewModel.deleteThing(thing)
+                self.service.delete(thing)
                 tableView.reloadData()
             })
             alertController.addAction(deleteAction)
