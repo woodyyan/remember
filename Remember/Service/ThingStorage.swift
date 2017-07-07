@@ -10,12 +10,12 @@ import Foundation
 import UIKit
 import CoreData
 
-class ThingRepository {
+class ThingStorage {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    private static let singletonInstance = ThingRepository()
+    private static let singletonInstance = ThingStorage()
     
-    class var sharedInstance : ThingRepository {
+    class var sharedInstance : ThingStorage {
         return singletonInstance
     }
     

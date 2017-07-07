@@ -34,9 +34,9 @@
 		820B83F91F0F971D007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EB1F0F971D007E3C15 /* TagStorage.swift */; };
 		820B83FA1F0F971D007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EB1F0F971D007E3C15 /* TagStorage.swift */; };
 		820B83FB1F0F971D007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EB1F0F971D007E3C15 /* TagStorage.swift */; };
-		820B83FC1F0F971D007E3C15 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EC1F0F971D007E3C15 /* ThingRepository.swift */; };
-		820B83FD1F0F971D007E3C15 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EC1F0F971D007E3C15 /* ThingRepository.swift */; };
-		820B83FE1F0F971D007E3C15 /* ThingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EC1F0F971D007E3C15 /* ThingRepository.swift */; };
+		820B83FC1F0F971D007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EC1F0F971D007E3C15 /* ThingStorage.swift */; };
+		820B83FD1F0F971D007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EC1F0F971D007E3C15 /* ThingStorage.swift */; };
+		820B83FE1F0F971D007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EC1F0F971D007E3C15 /* ThingStorage.swift */; };
 		820B83FF1F0F971D007E3C15 /* ThingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83ED1F0F971D007E3C15 /* ThingService.swift */; };
 		820B84001F0F971D007E3C15 /* ThingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83ED1F0F971D007E3C15 /* ThingService.swift */; };
 		820B84011F0F971D007E3C15 /* ThingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83ED1F0F971D007E3C15 /* ThingService.swift */; };
@@ -208,7 +208,7 @@
 		820B83E81F0F971D007E3C15 /* AboutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		820B83E91F0F971D007E3C15 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		820B83EB1F0F971D007E3C15 /* TagStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagStorage.swift; sourceTree = "<group>"; };
-		820B83EC1F0F971D007E3C15 /* ThingRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingRepository.swift; sourceTree = "<group>"; };
+		820B83EC1F0F971D007E3C15 /* ThingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingStorage.swift; sourceTree = "<group>"; };
 		820B83ED1F0F971D007E3C15 /* ThingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingService.swift; sourceTree = "<group>"; };
 		820B83EE1F0F971D007E3C15 /* ThingTagStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTagStorage.swift; sourceTree = "<group>"; };
 		820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceInputViewModel.swift; sourceTree = "<group>"; };
@@ -363,7 +363,7 @@
 				820B83E81F0F971D007E3C15 /* AboutViewModel.swift */,
 				820B83E91F0F971D007E3C15 /* HomeViewModel.swift */,
 				820B83EB1F0F971D007E3C15 /* TagStorage.swift */,
-				820B83EC1F0F971D007E3C15 /* ThingRepository.swift */,
+				820B83EC1F0F971D007E3C15 /* ThingStorage.swift */,
 				820B83ED1F0F971D007E3C15 /* ThingService.swift */,
 				820B83EE1F0F971D007E3C15 /* ThingTagStorage.swift */,
 				820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */,
@@ -683,7 +683,7 @@
 				820B83F31F0F971D007E3C15 /* HomeViewModel.swift in Sources */,
 				820B83B51F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
 				825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */,
-				820B83FC1F0F971D007E3C15 /* ThingRepository.swift in Sources */,
+				820B83FC1F0F971D007E3C15 /* ThingStorage.swift in Sources */,
 				823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
@@ -724,7 +724,7 @@
 				82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */,
 				820B83FA1F0F971D007E3C15 /* TagStorage.swift in Sources */,
 				820B84001F0F971D007E3C15 /* ThingService.swift in Sources */,
-				820B83FD1F0F971D007E3C15 /* ThingRepository.swift in Sources */,
+				820B83FD1F0F971D007E3C15 /* ThingStorage.swift in Sources */,
 				823539B71E3885E400B102D8 /* HomeViewController.swift in Sources */,
 				820B83BE1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				820B83C61F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
@@ -752,7 +752,7 @@
 				820B83F51F0F971D007E3C15 /* HomeViewModel.swift in Sources */,
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
 				820B83B71F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
-				820B83FE1F0F971D007E3C15 /* ThingRepository.swift in Sources */,
+				820B83FE1F0F971D007E3C15 /* ThingStorage.swift in Sources */,
 				825BA5F81ED4817400B4545B /* VoiceInputController.swift in Sources */,
 				820B83C71F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				825BA5F71ED47E1600B4545B /* HomeViewController.swift in Sources */,

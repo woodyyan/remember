@@ -182,7 +182,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func pasteOkButtonClick(_ sender:UIButton){
         if let content = pasteContent{
             let thing = ThingModel(content: content)
-            ThingRepository.sharedInstance.create(thing)
+            ThingStorage.sharedInstance.create(thing)
             self.things.insert(thing, at: 0)
             self.sortAndSaveThings()
             pasteContent = nil

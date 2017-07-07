@@ -23,7 +23,7 @@ class ThingService {
     }
     
     func edit(_ thing:ThingModel){
-        ThingRepository.sharedInstance.edit(thing)
+        ThingStorage.sharedInstance.edit(thing)
     }
     
     func getSelectedTags(by thing:ThingModel) -> [TagModel]{

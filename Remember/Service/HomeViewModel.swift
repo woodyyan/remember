@@ -13,15 +13,15 @@ class HomeViewModel {
     private(set) var things = [ThingModel]()
     
     init() {
-        things = ThingRepository.sharedInstance.getThings()
+        things = ThingStorage.sharedInstance.getThings()
     }
     
     func deleteThing(_ thing:ThingModel){
-        ThingRepository.sharedInstance.delete(thing)
+        ThingStorage.sharedInstance.delete(thing)
     }
     
     func save(sorted things:[ThingModel]){
-        ThingRepository.sharedInstance.save(sorted: things)
+        ThingStorage.sharedInstance.save(sorted: things)
     }
     
     class func getActivityViewController(content:String) -> UIActivityViewController{

@@ -12,7 +12,7 @@ class VoiceInputViewModel{
     func saveThing(_ content:String) -> ThingModel{
         let thing = ThingModel(content: content)
         thing.content = content
-        ThingRepository.sharedInstance.create(thing)
+        ThingStorage.sharedInstance.create(thing)
         return thing
     }
 }

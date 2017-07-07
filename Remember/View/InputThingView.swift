@@ -60,7 +60,7 @@ class InputThingView : UIView, UITextFieldDelegate{
         if let content = textField.text{
             if !content.isEmpty{
                 let thing = ThingModel(content: content)
-                ThingRepository.sharedInstance.create(thing)
+                ThingStorage.sharedInstance.create(thing)
                 
                 delegate?.input(inputView: self, thing: thing)
             }
