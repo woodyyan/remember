@@ -31,24 +31,24 @@
 		820B83F31F0F971D007E3C15 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83E91F0F971D007E3C15 /* HomeService.swift */; };
 		820B83F41F0F971D007E3C15 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83E91F0F971D007E3C15 /* HomeService.swift */; };
 		820B83F51F0F971D007E3C15 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83E91F0F971D007E3C15 /* HomeService.swift */; };
-		820B83F91F0F971D007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EB1F0F971D007E3C15 /* TagStorage.swift */; };
-		820B83FA1F0F971D007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EB1F0F971D007E3C15 /* TagStorage.swift */; };
-		820B83FB1F0F971D007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EB1F0F971D007E3C15 /* TagStorage.swift */; };
-		820B83FC1F0F971D007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EC1F0F971D007E3C15 /* ThingStorage.swift */; };
-		820B83FD1F0F971D007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EC1F0F971D007E3C15 /* ThingStorage.swift */; };
-		820B83FE1F0F971D007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EC1F0F971D007E3C15 /* ThingStorage.swift */; };
 		820B83FF1F0F971D007E3C15 /* ThingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83ED1F0F971D007E3C15 /* ThingService.swift */; };
 		820B84001F0F971D007E3C15 /* ThingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83ED1F0F971D007E3C15 /* ThingService.swift */; };
 		820B84011F0F971D007E3C15 /* ThingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83ED1F0F971D007E3C15 /* ThingService.swift */; };
-		820B84021F0F971D007E3C15 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EE1F0F971D007E3C15 /* ThingTagStorage.swift */; };
-		820B84031F0F971D007E3C15 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EE1F0F971D007E3C15 /* ThingTagStorage.swift */; };
-		820B84041F0F971D007E3C15 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EE1F0F971D007E3C15 /* ThingTagStorage.swift */; };
 		820B84051F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */; };
 		820B84061F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */; };
 		820B84071F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */; };
 		820B840A1F0F97B5007E3C15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84091F0F97B5007E3C15 /* Constants.swift */; };
 		820B840B1F0F97B5007E3C15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84091F0F97B5007E3C15 /* Constants.swift */; };
 		820B840C1F0F97B5007E3C15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84091F0F97B5007E3C15 /* Constants.swift */; };
+		820B84111F0F9AFE007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840E1F0F9AFE007E3C15 /* TagStorage.swift */; };
+		820B84121F0F9AFE007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840E1F0F9AFE007E3C15 /* TagStorage.swift */; };
+		820B84131F0F9AFE007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840E1F0F9AFE007E3C15 /* TagStorage.swift */; };
+		820B84141F0F9AFE007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */; };
+		820B84151F0F9AFE007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */; };
+		820B84161F0F9AFE007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */; };
+		820B84171F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */; };
+		820B84181F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */; };
+		820B84191F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */; };
 		821FC4CA1E71407600A64E94 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
 		821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
 		821FC4CD1E7141B100A64E94 /* voicewave.gif in Resources */ = {isa = PBXBuildFile; fileRef = 821FC4CC1E7141B100A64E94 /* voicewave.gif */; };
@@ -207,12 +207,12 @@
 		820B83E31F0E8D3D007E3C15 /* TagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		820B83E81F0F971D007E3C15 /* AboutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
 		820B83E91F0F971D007E3C15 /* HomeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
-		820B83EB1F0F971D007E3C15 /* TagStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagStorage.swift; sourceTree = "<group>"; };
-		820B83EC1F0F971D007E3C15 /* ThingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingStorage.swift; sourceTree = "<group>"; };
 		820B83ED1F0F971D007E3C15 /* ThingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingService.swift; sourceTree = "<group>"; };
-		820B83EE1F0F971D007E3C15 /* ThingTagStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTagStorage.swift; sourceTree = "<group>"; };
 		820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceInputViewModel.swift; sourceTree = "<group>"; };
 		820B84091F0F97B5007E3C15 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		820B840E1F0F9AFE007E3C15 /* TagStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagStorage.swift; sourceTree = "<group>"; };
+		820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingStorage.swift; sourceTree = "<group>"; };
+		820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTagStorage.swift; sourceTree = "<group>"; };
 		821FC4C91E71407600A64E94 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		821FC4CC1E7141B100A64E94 /* voicewave.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = voicewave.gif; sourceTree = "<group>"; };
 		82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudMobileAnalitics.framework; sourceTree = "<group>"; };
@@ -362,10 +362,7 @@
 			children = (
 				820B83E81F0F971D007E3C15 /* AboutViewModel.swift */,
 				820B83E91F0F971D007E3C15 /* HomeService.swift */,
-				820B83EB1F0F971D007E3C15 /* TagStorage.swift */,
-				820B83EC1F0F971D007E3C15 /* ThingStorage.swift */,
 				820B83ED1F0F971D007E3C15 /* ThingService.swift */,
-				820B83EE1F0F971D007E3C15 /* ThingTagStorage.swift */,
 				820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */,
 			);
 			path = Service;
@@ -377,6 +374,16 @@
 				820B84091F0F97B5007E3C15 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		820B840D1F0F9AFE007E3C15 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				820B840E1F0F9AFE007E3C15 /* TagStorage.swift */,
+				820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */,
+				820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		823A34261E2758410093FBF4 /* Frameworks */ = {
@@ -434,6 +441,7 @@
 		825DEB171DD9DC070065090F /* Remember */ = {
 			isa = PBXGroup;
 			children = (
+				820B840D1F0F9AFE007E3C15 /* Storage */,
 				820B84081F0F97B5007E3C15 /* Utils */,
 				820B83E71F0F96CC007E3C15 /* Service */,
 				823A34B51E28ADE30093FBF4 /* Remember.entitlements */,
@@ -683,25 +691,25 @@
 				820B83F31F0F971D007E3C15 /* HomeService.swift in Sources */,
 				820B83B51F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
 				825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */,
-				820B83FC1F0F971D007E3C15 /* ThingStorage.swift in Sources */,
 				823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
-				820B83F91F0F971D007E3C15 /* TagStorage.swift in Sources */,
 				82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
 				823A34BC1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
+				820B84111F0F9AFE007E3C15 /* TagStorage.swift in Sources */,
 				820B840A1F0F97B5007E3C15 /* Constants.swift in Sources */,
 				820B84051F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */,
+				820B84171F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				820B83E41F0E8D3D007E3C15 /* TagModel.swift in Sources */,
 				820B83FF1F0F971D007E3C15 /* ThingService.swift in Sources */,
 				820B83BD1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
-				820B84021F0F971D007E3C15 /* ThingTagStorage.swift in Sources */,
 				82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 				820B83DC1F0E8AA6007E3C15 /* ThingModel.swift in Sources */,
+				820B84141F0F9AFE007E3C15 /* ThingStorage.swift in Sources */,
 				820B83E01F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -713,8 +721,8 @@
 				825DEB311DD9DC070065090F /* RememberTests.swift in Sources */,
 				820B83DD1F0E8AA6007E3C15 /* ThingModel.swift in Sources */,
 				820B840B1F0F97B5007E3C15 /* Constants.swift in Sources */,
+				820B84181F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
 				820B83E51F0E8D3D007E3C15 /* TagModel.swift in Sources */,
-				820B84031F0F971D007E3C15 /* ThingTagStorage.swift in Sources */,
 				82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 				82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */,
 				820B83F41F0F971D007E3C15 /* HomeService.swift in Sources */,
@@ -722,16 +730,16 @@
 				820B84061F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */,
 				823539B91E38863400B102D8 /* InputThingView.swift in Sources */,
 				82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */,
-				820B83FA1F0F971D007E3C15 /* TagStorage.swift in Sources */,
 				820B84001F0F971D007E3C15 /* ThingService.swift in Sources */,
-				820B83FD1F0F971D007E3C15 /* ThingStorage.swift in Sources */,
 				823539B71E3885E400B102D8 /* HomeViewController.swift in Sources */,
 				820B83BE1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				820B83C61F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
+				820B84121F0F9AFE007E3C15 /* TagStorage.swift in Sources */,
 				82DF5DA21E657EB10027CA1F /* EditThingViewController.swift in Sources */,
 				820B83F11F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
 				82DF5DAE1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
 				820B83B61F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
+				820B84151F0F9AFE007E3C15 /* ThingStorage.swift in Sources */,
 				823539B51E3885DA00B102D8 /* AppDelegate.swift in Sources */,
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
@@ -752,25 +760,25 @@
 				820B83F51F0F971D007E3C15 /* HomeService.swift in Sources */,
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
 				820B83B71F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
-				820B83FE1F0F971D007E3C15 /* ThingStorage.swift in Sources */,
 				825BA5F81ED4817400B4545B /* VoiceInputController.swift in Sources */,
 				820B83C71F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				825BA5F71ED47E1600B4545B /* HomeViewController.swift in Sources */,
 				825BA5F91ED4818600B4545B /* EditThingViewController.swift in Sources */,
-				820B83FB1F0F971D007E3C15 /* TagStorage.swift in Sources */,
 				823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				825BA5FB1ED4819600B4545B /* UIImage+Gif.swift in Sources */,
+				820B84131F0F9AFE007E3C15 /* TagStorage.swift in Sources */,
 				820B840C1F0F97B5007E3C15 /* Constants.swift in Sources */,
 				820B84071F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */,
+				820B84191F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
 				820B83E61F0E8D3D007E3C15 /* TagModel.swift in Sources */,
 				820B83BF1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				820B84011F0F971D007E3C15 /* ThingService.swift in Sources */,
 				823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				823A34B91E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				823539BA1E38863500B102D8 /* InputThingView.swift in Sources */,
-				820B84041F0F971D007E3C15 /* ThingTagStorage.swift in Sources */,
 				820B83DE1F0E8AA6007E3C15 /* ThingModel.swift in Sources */,
 				820B83E21F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
+				820B84161F0F9AFE007E3C15 /* ThingStorage.swift in Sources */,
 				82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
