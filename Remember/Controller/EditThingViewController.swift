@@ -66,6 +66,12 @@ class EditThingViewController: UIViewController {
         scrollView = UIScrollView(frame: self.view.frame)
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height - 64)
         self.view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { (maker) in
+            maker.top.equalTo(self.view)
+            maker.left.equalTo(self.view)
+            maker.right.equalTo(self.view)
+            maker.bottom.equalTo(self.view)
+        }
         
         let createdDateLabel = UILabel()
         createdDateLabel.text = getCreatedDateText()
@@ -98,8 +104,9 @@ class EditThingViewController: UIViewController {
         scrollView.addSubview(tagManagementView)
         tagManagementView.snp.makeConstraints { (maker) in
             maker.top.equalTo(editView.snp.bottom).offset(10)
-            maker.left.equalTo(editView)
-            maker.right.equalTo(editView)
+            maker.width.equalTo(scrollView)
+            maker.left.equalTo(scrollView)
+            maker.right.equalTo(scrollView)
             maker.height.equalTo(600)
         }
         
