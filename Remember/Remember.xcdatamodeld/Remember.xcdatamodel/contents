@@ -4,22 +4,21 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="thingTag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ThingTag" inverseName="tag" inverseEntity="ThingTag" syncable="YES"/>
     </entity>
     <entity name="Thing" representedClassName=".ThingEntity" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="index" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="thingTag" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ThingTag" inverseName="thing" inverseEntity="ThingTag" syncable="YES"/>
     </entity>
     <entity name="ThingTag" representedClassName="ThingTagEntity" syncable="YES">
-        <relationship name="tag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="thingTag" inverseEntity="Tag" syncable="YES"/>
-        <relationship name="thing" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thing" inverseName="thingTag" inverseEntity="Thing" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thingId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tag" positionX="-29" positionY="-117" width="128" height="105"/>
-        <element name="Thing" positionX="-38" positionY="105" width="128" height="120"/>
-        <element name="ThingTag" positionX="-36" positionY="27" width="128" height="75"/>
+        <element name="Tag" positionX="-29" positionY="-117" width="128" height="90"/>
+        <element name="Thing" positionX="-38" positionY="105" width="128" height="105"/>
+        <element name="ThingTag" positionX="-36" positionY="27" width="128" height="90"/>
     </elements>
 </model>

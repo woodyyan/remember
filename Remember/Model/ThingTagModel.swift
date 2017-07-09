@@ -9,6 +9,13 @@
 import Foundation
 
 class ThingTagModel {
-    var thing: ThingModel?
-    var tag: TagModel?
+    var thingId: String!
+    var tagId: String!
+    var id:String!
+    
+    init(thingId:String, tagId:String){
+        self.thingId = thingId
+        self.tagId = tagId
+        self.id = UUID().uuidString
+    }
 }

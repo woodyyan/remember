@@ -13,7 +13,7 @@ import CoreData
 class TagStorage {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    func save(for tag:TagEntity){
+    func save(for tag:TagModel){
         let entity = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: appDelegate.persistentContainer.viewContext)
         entity.setValue(tag.id, forKey: "id")
         entity.setValue(tag.name, forKey: "name")
@@ -21,38 +21,58 @@ class TagStorage {
         appDelegate.saveContext()
     }
     
-    func getAllTags() -> [TagEntity]{
-        var tags = [TagEntity]()
+    func getAllTags() -> [TagModel]{
+        var tags = [TagModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
         do{
-            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject]{
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [TagEntity]{
                 if results.count > 0{
                     for result in results {
-                        guard let id = result.value(forKey: "id") as? String else {
-                            continue
-                        }
-                        
-                        guard let name = result.value(forKey: "name") as? String else {
-                            continue
-                        }
-                        
-                        guard let index = result.value(forKey: "index") as? NSNumber else {
-                            continue
-                        }
-                        
-                        let tag = TagEntity()
-                        tag.setValue(name, forKey: "name")
-                        tag.setValue(id, forKey: "id")
-                        tag.setValue(index, forKey: "index")
-                        tags.append(tag)
+                        tags.append(result.toModel())
                     }
                 }
             }
         } catch {
         }
         
-//        tags.sort { $0.index < $1.index }
+        tags.sort { $0.index > $1.index }
         
         return tags
+    }
+    
+    func getTags(by ids:[String]) -> [TagModel]{
+        var tags = [TagModel]()
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
+        let predicate = NSPredicate(format: "%K IN %@", "id", ids)
+        request.predicate = predicate
+        do{
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [TagEntity]{
+                if results.count > 0{
+                    for result in results {
+                        tags.append(result.toModel())
+                    }
+                }
+            }
+        } catch {
+        }
+        
+        tags.sort { $0.index > $1.index }
+        
+        return tags
+    }
+    
+    func find(by tagName:String) -> TagModel?{
+        var tag:TagModel?
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
+        let predicate = NSPredicate(format: "%K == %@", "name", tagName)
+        request.predicate = predicate
+        do{
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [TagEntity]{
+                tag = results.first?.toModel()
+            }
+        } catch {
+        }
+        
+        return tag
     }
 }

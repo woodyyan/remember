@@ -18,22 +18,13 @@ public class TagEntity: NSManagedObject {
     @NSManaged public var id: String?
     @NSManaged public var index: Int32
     @NSManaged public var name: String?
-    @NSManaged public var thingTag: NSSet?
 }
 
-// MARK: Generated accessors for thingTag
-extension TagEntity {
-    
-    @objc(addThingTagObject:)
-    @NSManaged public func addToThingTag(_ value: ThingTagEntity)
-    
-    @objc(removeThingTagObject:)
-    @NSManaged public func removeFromThingTag(_ value: ThingTagEntity)
-    
-    @objc(addThingTag:)
-    @NSManaged public func addToThingTag(_ values: NSSet)
-    
-    @objc(removeThingTag:)
-    @NSManaged public func removeFromThingTag(_ values: NSSet)
-    
+extension TagEntity{
+    func toModel() -> TagModel{
+        let tagModel = TagModel(name: self.name!)
+        tagModel.id = self.id
+        tagModel.index = Int(self.index)
+        return tagModel
+    }
 }

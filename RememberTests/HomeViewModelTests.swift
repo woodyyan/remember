@@ -12,7 +12,6 @@ class HomeViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
@@ -21,10 +20,13 @@ class HomeViewModelTests: XCTestCase {
     }
     
     func testShoulddGetPasteboardContentWhenCopyAString() {
+        UserDefaults.standard.set("", forKey: "pasteboardContent")
+        UserDefaults.standard.synchronize()
+        
         let content = "content"
         UIPasteboard.general.string = content;
         
-        let result = HomeViewModel.getPasteboardContent()
+        let result = HomeService.getPasteboardContent()
         
         XCTAssert(result == content)
     }
@@ -33,13 +35,13 @@ class HomeViewModelTests: XCTestCase {
         let url = "http://google.com"
         UIPasteboard.general.url = URL.init(string: url);
         
-        let result = HomeViewModel.getPasteboardContent()
+        let result = HomeService.getPasteboardContent()
         
         XCTAssert(result == url)
     }
     
     func testShoulddGetNilPasteboardContentWhenNothingCopied() {
-        let result = HomeViewModel.getPasteboardContent()
+        let result = HomeService.getPasteboardContent()
         
         XCTAssert(result == nil)
     }

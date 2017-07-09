@@ -9,19 +9,7 @@
 import Foundation
 
 class ThingService {
-    private let tagStorage = TagStorage()
     private let thingStorage = ThingStorage()
-    private let thingTagStorage = ThingTagStorage()
-    
-    func saveThingTag(for tag:TagEntity, with thingTag:ThingTagEntity){
-        tagStorage.save(for: tag)
-        thingTagStorage.save(for: thingTag)
-    }
-    
-    func exists(_ tag:String) -> Bool{
-        //TODO
-        return false
-    }
     
     func create(_ thing:ThingModel){
         thingStorage.create(thing)
@@ -29,23 +17,6 @@ class ThingService {
     
     func edit(_ thing:ThingModel){
         thingStorage.edit(thing)
-    }
-    
-    func getSelectedTags(by thing:ThingModel) -> [TagModel]{
-//        let thingTags = thingTagStorage.getThingTags(by: thing)
-        return []
-    }
-    
-    func getUnselectedTags(by thing:ThingModel) -> [TagModel]{
-//        let tags = tagStorage.getAllTags()
-//        let thingTags = thingTagStorage.getThingTags(by: thing)
-//        let unselectedTags = tags.filter { (tag) -> Bool in
-//            return !thingTags.contains(where: { (thingTag) -> Bool in
-//                return thingTag.tagId == tag.id
-//            })
-//        }
-//        return unselectedTags
-        return [TagModel]()
     }
     
     func getCreatedDateText(from date:Date) -> String{

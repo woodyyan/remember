@@ -12,7 +12,6 @@ class TagModel {
     var id: String!
     var index = 0
     var name: String!
-    var thingTag = [ThingTagModel]()
     
     init(name:String){
         self.name = name

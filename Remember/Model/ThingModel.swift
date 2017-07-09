@@ -13,7 +13,6 @@ class ThingModel {
     var createdAt: Date!
     var id: String!
     var index: Int = 0
-    var thingTag = [ThingTagModel]()
     
     init(content:String) {
         self.content = content

@@ -10,15 +10,13 @@ import UIKit
 
 class EditThingViewController: UIViewController {
     fileprivate var service = ThingService()
+    fileprivate var tagService = TagService()
     
     var thing:ThingModel?
     var delegate:EditThingDelegate?
     var editView:UITextView!
-    var addTagTextField:UITextField!
-    var addTagButton:UIButton!
     var scrollView:UIScrollView!
-    var lastTagButton:UIButton?
-    var lastTopView:UIView?
+    var tagManagementView:TagManagementView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,65 +92,28 @@ class EditThingViewController: UIViewController {
             maker.height.greaterThanOrEqualTo(100)
             maker.width.equalTo(scrollView.frame.width - 20)
         }
-        lastTopView = editView
         
-        initTags(scrollView)
-    }
-    
-    private func initTags(_ scrollView:UIScrollView){
-        addTagButton = UIButton(type: .system)
-        addTagButton.setTitle("+添加标签", for: .normal)
-        addTagButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-        addTagButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        addTagButton.layer.cornerRadius = 10
-        addTagButton.backgroundColor = UIColor.remember()
-        addTagButton.setTitleColor(UIColor.white, for: .normal)
-        addTagButton.addTarget(self, action: #selector(EditThingViewController.addTagTap(sender:)), for: .touchUpInside)
-        scrollView.addSubview(addTagButton)
-        addTagButton.snp.makeConstraints { (maker) in
+        tagManagementView = TagManagementView(frame: CGRect(x: 0, y: 200, width: 375, height: 300))
+        tagManagementView.thing = self.thing
+        scrollView.addSubview(tagManagementView)
+        tagManagementView.snp.makeConstraints { (maker) in
             maker.top.equalTo(editView.snp.bottom).offset(10)
             maker.left.equalTo(editView)
-            maker.width.equalTo(70)
-            maker.height.equalTo(20)
+            maker.right.equalTo(editView)
+            maker.height.equalTo(600)
         }
         
-        addTagTextField = UITextField()
-        addTagTextField.isHidden = true
-        addTagTextField.delegate = self
-        addTagTextField.font = UIFont.systemFont(ofSize: 12)
-        addTagTextField.returnKeyType = .done
-        addTagTextField.placeholder = "添加标签"
-        scrollView.addSubview(addTagTextField)
-        addTagTextField.snp.makeConstraints { (maker) in
-            maker.top.equalTo(editView.snp.bottom).offset(10)
-            maker.left.equalTo(editView)
-            maker.width.equalTo(70)
-            maker.height.equalTo(20)
+        showAddedTags()
+    }
+    
+    private func showAddedTags(){
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+        
+        if let currentThing = self.thing{
+            let tags = tagService.getSelectedTags(by: currentThing)
+            self.tagManagementView.updateView(from: tags)
         }
-        
-        showSelectedTags()
-    }
-    
-    func addTagTap(sender:UIButton){
-        addTagTextField.isHidden = false
-        addTagTextField.becomeFirstResponder()
-        addTagButton.isHidden = true
-        
-        showUnselectedExistingTags()
-    }
-    
-    private func showSelectedTags(){
-//        if let currentThing = self.thing{
-//            let tags = service.getSelectedTags(by: currentThing)
-//            //TODO
-//        }
-    }
-    
-    private func showUnselectedExistingTags(){
-//        if let currentThing = self.thing{
-//            let tags = service.getUnselectedTags(by: currentThing)
-//            //TODO
-//        }
     }
     
     private func getCreatedDateText() -> String{
@@ -161,76 +122,6 @@ class EditThingViewController: UIViewController {
             dateText = service.getCreatedDateText(from: date as Date)
         }
         return dateText
-    }
-}
-
-extension EditThingViewController : UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        if let tag = textField.text{
-            if !service.exists(tag){
-                var leftView:UIView = addTagButton
-                var topView:UIView = editView
-                if lastTagButton != nil{
-                    let rightPoint = lastTagButton!.frame.origin.x + lastTagButton!.frame.width
-                    let width = scrollView.frame.width - rightPoint
-                    let tagBounds = NSString(string: tag).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 12)], context: nil)
-                    if width < 70 || width < tagBounds.width + 20{
-                        // 说明最右边空间不够了，该换行了
-                        leftView = scrollView
-                        topView = lastTagButton!
-                        lastTopView = lastTagButton
-                    }else{
-                        leftView = lastTagButton!
-                        topView = lastTopView!
-                    }
-                }
-                
-                lastTagButton = createNewTagButton(with: tag, last: leftView, last: topView)
-                textField.text = ""
-                
-                saveTag(tag)
-            }
-        }
-        
-        addTagTextField.isHidden = true
-        addTagButton.isHidden = false
-        
-        return true
-    }
-    
-    private func saveTag(_ tag:String){
-        let tagEntity = TagEntity()
-        tagEntity.name = tag
-        //TODO tagId tagIndex
-        
-        
-//        let thingTagEntity = ThingTagEntity()
-//        thingTagEntity.tag = tagEntity
-//        thingTagEntity.tagId = tagEntity.id
-//        thingTagEntity.thing = self.thing
-//        thingTagEntity.thingId = self.thing?.id
-//        
-//        service.saveThingTag(for: tagEntity, with: thingTagEntity)
-    }
-    
-    private func createNewTagButton(with tag:String, last leftView:UIView, last topView:UIView) -> UIButton{
-        let tagbutton = UIButton(type: .system)
-        tagbutton.setTitle(tag, for: .normal)
-        tagbutton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
-        tagbutton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        tagbutton.layer.cornerRadius = 10
-        tagbutton.backgroundColor = UIColor.white
-        tagbutton.setTitleColor(UIColor.remember(), for: .normal)
-        tagbutton.addTarget(self, action: #selector(EditThingViewController.addTagTap(sender:)), for: .touchUpInside)
-        scrollView.addSubview(tagbutton)
-        tagbutton.snp.makeConstraints { (maker) in
-            maker.left.equalTo(leftView.snp.right).offset(10)
-            maker.top.equalTo(topView.snp.bottom).offset(10)
-            maker.height.equalTo(20)
-        }
-        return tagbutton
     }
 }
 

@@ -15,6 +15,15 @@ public class ThingTagEntity: NSManagedObject {
         return NSFetchRequest<ThingTagEntity>(entityName: "ThingTag")
     }
     
-    @NSManaged public var thing: ThingEntity?
-    @NSManaged public var tag: TagEntity?
+    @NSManaged public var thingId: String?
+    @NSManaged public var tagId: String?
+    @NSManaged public var id: String?
+}
+
+extension ThingTagEntity{
+    func toModel() -> ThingTagModel{
+        let thingTagModel = ThingTagModel(thingId: self.thingId!, tagId: self.tagId!)
+        thingTagModel.id = self.id
+        return thingTagModel
+    }
 }

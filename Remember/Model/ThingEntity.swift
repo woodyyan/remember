@@ -18,21 +18,15 @@ public class ThingEntity: NSManagedObject {
     @NSManaged public var createdAt: NSDate?
     @NSManaged public var id: String?
     @NSManaged public var index: Int32
-    @NSManaged public var thingTag: NSSet?
 }
 
-extension ThingEntity {
-    
-    @objc(addThingTagObject:)
-    @NSManaged public func addToThingTag(_ value: ThingTagEntity)
-    
-    @objc(removeThingTagObject:)
-    @NSManaged public func removeFromThingTag(_ value: ThingTagEntity)
-    
-    @objc(addThingTag:)
-    @NSManaged public func addToThingTag(_ values: NSSet)
-    
-    @objc(removeThingTag:)
-    @NSManaged public func removeFromThingTag(_ values: NSSet)
-    
+extension ThingEntity{
+    func toModel() -> ThingModel{
+        let thingModel = ThingModel(content: self.content!)
+        thingModel.createdAt = self.createdAt! as Date
+        thingModel.id = self.id
+        thingModel.index = Int(self.index)
+        
+        return thingModel
+    }
 }

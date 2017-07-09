@@ -13,16 +13,6 @@ import CoreData
 class ThingStorage {
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-//    private static let singletonInstance = ThingStorage()
-//    
-//    class var sharedInstance : ThingStorage {
-//        return singletonInstance
-//    }
-//    
-//    private init(){
-//        
-//    }
-    
     func getThings() -> [ThingModel]{
         return getThingsFromLocalDB()
     }
@@ -107,16 +97,7 @@ class ThingStorage {
             if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [ThingEntity]{
                 if results.count > 0{
                     for result in results{
-                        let thing = ThingModel(content: result.content!)
-                        if let createdAt = result.createdAt{
-                            thing.createdAt = createdAt as Date
-                        }
-                        thing.id = result.id
-                        thing.index = Int(result.index)
-                        if let thingTags = result.thingTag?.allObjects as? [ThingTagModel]{
-                            thing.thingTag = thingTags
-                        }
-                        things.append(thing)
+                        things.append(result.toModel())
                     }
                 }
             }
