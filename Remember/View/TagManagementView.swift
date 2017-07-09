@@ -15,8 +15,10 @@ class TagManagementView: UIView {
     private var lastExistingTagButton:UIView?
     private var lastExistingTopView:UIView?
     private var tagScrollView:UIScrollView!
+    private var selectedTags = [TagModel]()
     private var unselectedTags = [TagModel]()
     private var tagButtons = [UIButton]()
+    private var isEditing = false
     
     var thing:ThingModel?
     var addTagTextField:UITextField!
@@ -67,21 +69,20 @@ class TagManagementView: UIView {
     }
     
     func addTagTap(sender:UIButton){
+        self.startEdit()
+    }
+    
+    func startEdit(){
+        isEditing = true
         addTagTextField.isHidden = false
         addTagTextField.becomeFirstResponder()
         addTagButton.isHidden = true
-        
-        if let currentThing = self.thing{
-            self.startEdit(with:currentThing)
-        }
-    }
-    
-    func startEdit(with thing:ThingModel){
         changeTagButton(true)
         showUnselectedExistingTags()
     }
     
     func endEdit(){
+        isEditing = false
         changeTagButton(false)
     }
     
@@ -157,9 +158,14 @@ class TagManagementView: UIView {
         updateView(for: tag)
     }
     
-    func updateView(from tags:[TagModel]){
-        if tags.count > 0{
-            for tag in tags{
+    func updateView(by thing:ThingModel){
+        self.tagButtons.forEach { (button) in
+            button.removeFromSuperview()
+        }
+        
+        selectedTags = tagService.getSelectedTags(by: thing)
+        if selectedTags.count > 0{
+            for tag in selectedTags{
                 updateView(for: tag.name)
             }
         }
@@ -218,7 +224,22 @@ class TagManagementView: UIView {
     }
     
     func tagTap(sender:UIButton){
-        print("sss")
+        if isEditing{
+            if let tag = sender.titleLabel?.text{
+                if let tagModel = selectedTags.first(where: { (t) -> Bool in
+                    return t.name == tag
+                }){
+                    let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
+                    tagService.deleteThingTag(thingTagModel)
+                    lastTopView = nil
+                    lastTagButton = nil
+                    updateView(by: self.thing!)
+                    showUnselectedExistingTags()
+                }
+            }
+        }else{
+            startEdit()
+        }
     }
     
     func keyboardWillHide(_ notice:Notification){

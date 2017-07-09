@@ -118,8 +118,7 @@ class EditThingViewController: UIViewController {
         self.view.layoutIfNeeded()
         
         if let currentThing = self.thing{
-            let tags = tagService.getSelectedTags(by: currentThing)
-            self.tagManagementView.updateView(from: tags)
+            self.tagManagementView.updateView(by: currentThing)
         }
     }
     
