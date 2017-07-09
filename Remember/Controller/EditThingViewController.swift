@@ -27,7 +27,9 @@ class EditThingViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.remember()];
         
         let shareButtonItem = UIBarButtonItem(image: UIImage(named: "share"), style: .plain, target: self, action: #selector(EditThingViewController.shareTap(sender:)))
+        shareButtonItem.imageInsets = UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
         let deleteButtonItem = UIBarButtonItem(image: UIImage(named: "delete"), style: .plain, target: self, action: #selector(EditThingViewController.deleteTap(sender:)))
+        deleteButtonItem.imageInsets = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: -12)
         self.navigationItem.rightBarButtonItems = [shareButtonItem, deleteButtonItem]
         
         initUI()
