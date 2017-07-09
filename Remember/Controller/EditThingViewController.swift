@@ -53,15 +53,6 @@ class EditThingViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func doneEditClick(sender:UIBarButtonItem){
-        if let tempThing = thing{
-            tempThing.content = editView.text
-            self.service.edit(tempThing)
-            delegate?.editThing(edit: true, thing: tempThing)
-        }
-        _ = self.navigationController?.popViewController(animated: true)
-    }
-    
     private func initUI(){
         scrollView = UIScrollView(frame: self.view.frame)
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: self.view.frame.size.height - 64)
@@ -135,6 +126,11 @@ extension EditThingViewController : UITextViewDelegate{
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n"{
             textView.resignFirstResponder()
+            if let tempThing = thing{
+                tempThing.content = editView.text
+                self.service.edit(tempThing)
+                delegate?.editThing(edit: true, thing: tempThing)
+            }
             return false
         }
         return true
