@@ -28,7 +28,12 @@ class TagStorage {
             if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [TagEntity]{
                 if results.count > 0{
                     for result in results {
-                        tags.append(result.toModel())
+                        if result.name == "我想"||result.name == "呜呜呜呜"{
+                            appDelegate.persistentContainer.viewContext.delete(result)
+                            appDelegate.saveContext()
+                        }else{
+                            tags.append(result.toModel())
+                        }
                     }
                 }
             }

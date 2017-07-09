@@ -15,6 +15,8 @@ class TagManagementView: UIView {
     private var lastExistingTagButton:UIView?
     private var lastExistingTopView:UIView?
     private var tagScrollView:UIScrollView!
+    private var unselectedTags = [TagModel]()
+    private var tagButtons = [UIButton]()
     
     var thing:ThingModel?
     var addTagTextField:UITextField!
@@ -60,12 +62,6 @@ class TagManagementView: UIView {
         tagScrollView!.alwaysBounceHorizontal = true
         self.addSubview(tagScrollView!)
         
-//        stackView = UIStackView(frame:CGRect(x: 0, y: 0, width: self.frame.width, height: 44))
-//        stackView!.axis = .horizontal
-//        stackView?.distribution = .fillEqually
-//        stackView?.spacing = 10
-//        tagScrollView!.addSubview(stackView!)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(TagManagementView.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(TagManagementView.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -81,12 +77,23 @@ class TagManagementView: UIView {
     }
     
     func startEdit(with thing:ThingModel){
-        self.tagScrollView?.isHidden = false
+        changeTagButton(true)
         showUnselectedExistingTags()
     }
     
-    func clicks(sender:UIBarButtonItem){
-        print("sss")
+    func endEdit(){
+        changeTagButton(false)
+    }
+    
+    private func changeTagButton(_ isEditing:Bool){
+        tagButtons.forEach { (button) in
+            if isEditing{
+                button.setImage(UIImage(named: "cross"), for: .normal)
+                button.tintColor = UIColor.white
+            }else{
+                button.setImage(nil, for: .normal)
+            }
+        }
     }
     
     private func showUnselectedExistingTags(){
@@ -97,24 +104,29 @@ class TagManagementView: UIView {
             
             var lastButton:UIButton?
             var width:CGFloat = 0
-            let tags = tagService.getUnselectedTags(by: currentThing)
-            for tag in tags{
-                let tagButton = createExistingTagButton(with: tag.name, last: nil, last: nil)
-                tagScrollView.addSubview(tagButton)
-                tagButton.snp.makeConstraints({ (maker) in
-                    maker.centerY.equalTo(tagScrollView!)
-                    if let button = lastButton{
-                        maker.left.equalTo(button.snp.right).offset(10)
-                    }else{
-                        maker.left.equalTo(tagScrollView!).offset(10)
-                    }
-                })
-                tagButton.sizeToFit()
-                lastButton = tagButton
-                width += tagButton.frame.width + 10
+            unselectedTags = tagService.getUnselectedTags(by: currentThing)
+            if unselectedTags.count > 0{
+                self.tagScrollView?.isHidden = false
+                for tag in unselectedTags{
+                    let tagButton = createExistingTagButton(with: tag.name, last: nil, last: nil)
+                    tagScrollView.addSubview(tagButton)
+                    tagButton.snp.makeConstraints({ (maker) in
+                        maker.centerY.equalTo(tagScrollView!)
+                        if let button = lastButton{
+                            maker.left.equalTo(button.snp.right).offset(10)
+                        }else{
+                            maker.left.equalTo(tagScrollView!).offset(10)
+                        }
+                    })
+                    tagButton.sizeToFit()
+                    lastButton = tagButton
+                    width += tagButton.frame.width + 10
+                }
+                tagScrollView.sizeToFit()
+                tagScrollView.contentSize = CGSize(width: width, height: tagScrollView.frame.height)
+            }else{
+                tagScrollView.isHidden = true
             }
-            tagScrollView.sizeToFit()
-            tagScrollView.contentSize = CGSize(width: width, height: tagScrollView.frame.height)
         }
     }
     
@@ -129,7 +141,16 @@ class TagManagementView: UIView {
     }
     
     func addExitingTagTap(sender:UIButton){
-        print("dddd")
+        if let tag = sender.titleLabel?.text?.trimmingCharacters(in: CharacterSet.init(charactersIn: "#")){
+            if let tagModel = unselectedTags.first(where: { (t) -> Bool in
+                return t.name == tag
+            }){
+                let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
+                tagService.saveThingTag(thingTagModel)
+                updateView(for: tag)
+                showUnselectedExistingTags()
+            }
+        }
     }
     
     func updateView(with tag:String){
@@ -192,6 +213,7 @@ class TagManagementView: UIView {
             }
             maker.height.equalTo(20)
         }
+        tagButtons.append(tagbutton)
         return tagbutton
     }
     
@@ -233,6 +255,7 @@ extension TagManagementView : UITextFieldDelegate{
         
         addTagTextField.isHidden = true
         addTagButton.isHidden = false
+        endEdit()
         
         return true
     }
