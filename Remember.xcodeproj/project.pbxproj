@@ -65,6 +65,10 @@
 		820B842D1F1119A7007E3C15 /* TagManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B842A1F1119A7007E3C15 /* TagManagementView.swift */; };
 		820B842E1F11C262007E3C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		820B842F1F11C263007E3C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
+		820B843D1F13BEF9007E3C15 /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820B843C1F13BEF9007E3C15 /* SCLAlertView.framework */; };
+		820B843E1F13BEFA007E3C15 /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820B843C1F13BEF9007E3C15 /* SCLAlertView.framework */; };
+		820B843F1F13BEFA007E3C15 /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 820B843C1F13BEF9007E3C15 /* SCLAlertView.framework */; };
+		820B84401F13BF8F007E3C15 /* SCLAlertView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 820B843C1F13BEF9007E3C15 /* SCLAlertView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		821FC4CA1E71407600A64E94 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
 		821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
 		821FC4CD1E7141B100A64E94 /* voicewave.gif in Resources */ = {isa = PBXBuildFile; fileRef = 821FC4CC1E7141B100A64E94 /* voicewave.gif */; };
@@ -202,6 +206,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				820B84401F13BF8F007E3C15 /* SCLAlertView.framework in Embed Frameworks */,
 				82A9237A1EF2CE0E004937EA /* MarqueeLabelSwift.framework in Embed Frameworks */,
 				82A9237B1EF2CE0E004937EA /* NotificationBanner.framework in Embed Frameworks */,
 				823A34CA1E31FE1A0093FBF4 /* DZNEmptyDataSet.framework in Embed Frameworks */,
@@ -231,6 +236,7 @@
 		820B842A1F1119A7007E3C15 /* TagManagementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagManagementView.swift; sourceTree = "<group>"; };
 		820B84301F11C2A0007E3C15 /* Remember-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Remember-Bridging-Header.h"; sourceTree = "<group>"; };
 		820B84311F11C4A7007E3C15 /* Remember-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Remember-Bridging-Header.h"; sourceTree = "<group>"; };
+		820B843C1F13BEF9007E3C15 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SCLAlertView.framework; sourceTree = "<group>"; };
 		821FC4C91E71407600A64E94 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		821FC4CC1E7141B100A64E94 /* voicewave.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = voicewave.gif; sourceTree = "<group>"; };
 		82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudMobileAnalitics.framework; sourceTree = "<group>"; };
@@ -298,6 +304,7 @@
 				82347E4D1F03A803002D8024 /* libresolv.tbd in Frameworks */,
 				823A34B01E28A3130093FBF4 /* libz.tbd in Frameworks */,
 				82DF5DBB1E7047A90027CA1F /* ImageIO.framework in Frameworks */,
+				820B843D1F13BEF9007E3C15 /* SCLAlertView.framework in Frameworks */,
 				82347E461F03A7E2002D8024 /* UT.framework in Frameworks */,
 				82DF5DAA1E6964010027CA1F /* Speech.framework in Frameworks */,
 				826D44EE1E9693450010B449 /* SnapKit.framework in Frameworks */,
@@ -347,6 +354,7 @@
 				82347E411F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */,
 				823A342E1E27585A0093FBF4 /* FirebaseAnalytics.framework in Frameworks */,
 				82347E441F03A7E2002D8024 /* AlicloudUtils.framework in Frameworks */,
+				820B843E1F13BEFA007E3C15 /* SCLAlertView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +385,7 @@
 				823A342F1E27585A0093FBF4 /* FirebaseAnalytics.framework in Frameworks */,
 				823539B21E3745BC00B102D8 /* libz.tbd in Frameworks */,
 				82347E451F03A7E2002D8024 /* AlicloudUtils.framework in Frameworks */,
+				820B843F1F13BEFA007E3C15 /* SCLAlertView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +425,7 @@
 		823A34261E2758410093FBF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				820B843C1F13BEF9007E3C15 /* SCLAlertView.framework */,
 				82347E501F03A80F002D8024 /* SystemConfiguration.framework */,
 				82347E4E1F03A809002D8024 /* CoreTelephony.framework */,
 				82347E4C1F03A803002D8024 /* libresolv.tbd */,

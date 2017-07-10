@@ -19,6 +19,10 @@ class ThingService {
         thingStorage.edit(thing)
     }
     
+    func delete(_ thing:ThingModel){
+        thingStorage.delete(thing)
+    }
+    
     func getCreatedDateText(from date:Date) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd hh:mm"

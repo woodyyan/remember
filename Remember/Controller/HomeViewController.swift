@@ -8,6 +8,7 @@
 
 import UIKit
 import DZNEmptyDataSet
+import SCLAlertView
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let inputViewHeight:CGFloat = 60
@@ -431,20 +432,22 @@ extension HomeViewController{
         shareAction.backgroundColor = UIColor.remember()
         
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "删除") { (action, index) -> Void in
-            let alertController = UIAlertController(title: "提示", message: "确认要删除吗？", preferredStyle: UIAlertControllerStyle.alert)
-            let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
-                tableView.setEditing(false, animated: true)
-            })
-            alertController.addAction(cancelAction)
-            let deleteAction = UIAlertAction(title: "删除", style: UIAlertActionStyle.destructive, handler: { (action) -> Void in
+            
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            alertView.addButton("确认删除", backgroundColor: UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
                 let index=(indexPath as NSIndexPath).row as Int
                 let thing = self.things[index]
                 self.things.remove(at: index)
                 self.service.delete(thing)
                 tableView.reloadData()
             })
-            alertController.addAction(deleteAction)
-            self.present(alertController, animated: true, completion: nil)
+            alertView.addButton("取消", backgroundColor: UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+                tableView.setEditing(false, animated: true)
+            })
+            alertView.showWarning("确定要删除吗？", subTitle: "删除后就找不回来啦。")
         }
         return [deleteAction, shareAction,editAction]
     }
@@ -523,7 +526,12 @@ extension HomeViewController : VoiceInputDelegate{
 }
 
 extension HomeViewController : EditThingDelegate{
-    func editThing(edit complete: Bool, thing: ThingModel) {
+    func editThing(isDeleted: Bool, thing: ThingModel) {
+        if isDeleted{
+            if let index = self.things.index(where: {$0.id == thing.id}){
+                self.things.remove(at: index)
+            }
+        }
         tableView.reloadData()
     }
 }

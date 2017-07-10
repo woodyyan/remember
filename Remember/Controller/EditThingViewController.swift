@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 class EditThingViewController: UIViewController {
     fileprivate var service = ThingService()
@@ -43,16 +44,21 @@ class EditThingViewController: UIViewController {
     }
     
     func deleteTap(sender:UIBarButtonItem){
-        let alertController = UIAlertController(title: "提示", message: "确认要删除吗？", preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) -> Void in
-            
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.addButton("确认删除", backgroundColor: UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+            if let currentThing = self.thing{
+                self.service.delete(currentThing)
+                self.delegate?.editThing(isDeleted: true, thing: currentThing)
+                self.navigationController?.popViewController(animated: true)
+            }
         })
-        alertController.addAction(cancelAction)
-        let deleteAction = UIAlertAction(title: "删除", style: UIAlertActionStyle.destructive, handler: { (action) -> Void in
-            //TODO
+        alertView.addButton("取消", backgroundColor: UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
         })
-        alertController.addAction(deleteAction)
-        self.present(alertController, animated: true, completion: nil)
+        
+        alertView.showWarning("确定要删除吗？", subTitle: "删除后就找不回来啦。")
     }
     
     private func initUI(){
@@ -131,7 +137,7 @@ extension EditThingViewController : UITextViewDelegate{
             if let tempThing = thing{
                 tempThing.content = editView.text
                 self.service.edit(tempThing)
-                delegate?.editThing(edit: true, thing: tempThing)
+                delegate?.editThing(isDeleted: false, thing: tempThing)
             }
             return false
         }
@@ -140,5 +146,5 @@ extension EditThingViewController : UITextViewDelegate{
 }
 
 protocol EditThingDelegate {
-    func editThing(edit complete:Bool, thing:ThingModel)
+    func editThing(isDeleted:Bool, thing:ThingModel)
 }
