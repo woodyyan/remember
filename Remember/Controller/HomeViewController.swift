@@ -416,10 +416,10 @@ extension HomeViewController{
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "编辑") { (action, index) -> Void in
+        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "标签") { (action, index) -> Void in
             let index = indexPath.row
             let thing = self.things[index]
-            self.editThing(thing)
+            self.editThing(thing, isTag: true)
             tableView.isEditing = false
         }
         
@@ -479,12 +479,13 @@ extension HomeViewController{
         inputThingView.endEditing()
     }
     
-    private func editThing(_ thing: ThingModel){
+    private func editThing(_ thing: ThingModel, isTag: Bool = false){
         self.shouldInputViewDisplay = true
         
         let editController = EditThingViewController()
         editController.delegate = self
         editController.thing = thing
+        editController.isEditTag = isTag
         self.navigationController?.pushViewController(editController, animated: true)
     }
 }

@@ -68,16 +68,16 @@ class ThingTableViewCell: UITableViewCell {
                             maker.center.equalTo(shareButton)
                         })
                         
-                        let editButton = subView.subviews[2]
-                        let editLabel = editButton.subviews[0]
-                        if editLabel.isKind(of: NSClassFromString("UIButtonLabel")!){
-                            editLabel.removeFromSuperview()
+                        let tagButton = subView.subviews[2]
+                        let tagLabel = tagButton.subviews[0]
+                        if tagLabel.isKind(of: NSClassFromString("UIButtonLabel")!){
+                            tagLabel.removeFromSuperview()
                         }
-                        editButton.backgroundColor = UIColor.clear
-                        let editImage = UIImageView(image: UIImage(named: "edit"))
-                        editButton.addSubview(editImage)
-                        editImage.snp.makeConstraints({ (maker) in
-                            maker.center.equalTo(editButton)
+                        tagButton.backgroundColor = UIColor.clear
+                        let tagImage = UIImageView(image: UIImage(named: "tag"))
+                        tagButton.addSubview(tagImage)
+                        tagImage.snp.makeConstraints({ (maker) in
+                            maker.center.equalTo(tagButton)
                         })
                     }
                 }

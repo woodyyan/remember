@@ -13,6 +13,7 @@ class EditThingViewController: UIViewController {
     fileprivate var service = ThingService()
     fileprivate var tagService = TagService()
     
+    var isEditTag = false
     var thing:ThingModel?
     var delegate:EditThingDelegate?
     var editView:UITextView!
@@ -110,6 +111,10 @@ class EditThingViewController: UIViewController {
         }
         
         showAddedTags()
+        
+        if isEditTag{
+            tagManagementView.startEdit()
+        }
     }
     
     private func showAddedTags(){
