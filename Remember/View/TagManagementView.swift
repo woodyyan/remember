@@ -150,7 +150,9 @@ class TagManagementView: UIView {
             }){
                 let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
                 tagService.saveThingTag(thingTagModel)
+                selectedTags.append(tagModel)
                 updateView(for: tag)
+                changeTagButton(true)
                 showUnselectedExistingTags()
                 self.delegate?.tagManagement(view: self, tag: tag)
             }
@@ -237,6 +239,7 @@ class TagManagementView: UIView {
                     lastTopView = nil
                     lastTagButton = nil
                     updateView(by: self.thing!)
+                    changeTagButton(true)
                     showUnselectedExistingTags()
                     self.delegate?.tagManagement(view: self, tag: tag)
                 }
