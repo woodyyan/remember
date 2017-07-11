@@ -12,11 +12,11 @@ import UIKit
 class SearchResultTableViewController : UITableViewController, UISearchResultsUpdating{
     private var filteredThings = [ThingModel]()
     
+    var searchResultDelegate:SearchResultTableDelegate?
     var things = [ThingModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
@@ -44,7 +44,10 @@ class SearchResultTableViewController : UITableViewController, UISearchResultsUp
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        let thing = self.filteredThings[indexPath.row]
+        searchResultDelegate?.searchResultTable(view: self, thing: thing)
+        self.dismiss(animated: true, completion: nil)
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,4 +68,8 @@ class SearchResultTableViewController : UITableViewController, UISearchResultsUp
             return thing.content!.contains(searchText)
         })
     }
+}
+
+protocol SearchResultTableDelegate {
+    func searchResultTable(view: SearchResultTableViewController, thing:ThingModel)
 }

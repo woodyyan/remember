@@ -209,8 +209,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputThingView.endEditing()
         
         let searchResultController = SearchResultTableViewController()
+        searchResultController.searchResultDelegate = self
         searchResultController.things = self.things
-        let searchController = UISearchController(searchResultsController: searchResultController)
+        let searchController = UISearchController(searchResultsController: UINavigationController(rootViewController: searchResultController))
         searchController.delegate = self
         searchController.searchBar.sizeToFit()
         searchController.searchBar.placeholder = "搜索你忘记的小事"
@@ -464,7 +465,7 @@ extension HomeViewController{
         openThingViewController(with: thing)
     }
     
-    private func openThingViewController(with thing:ThingModel){
+    func openThingViewController(with thing:ThingModel){
         let editController = EditThingViewController()
         editController.delegate = self
         editController.thing = thing
@@ -534,6 +535,12 @@ extension HomeViewController : EditThingDelegate{
             }
         }
         tableView.reloadData()
+    }
+}
+
+extension HomeViewController : SearchResultTableDelegate{
+    func searchResultTable(view: SearchResultTableViewController, thing: ThingModel) {
+        openThingViewController(with: thing)
     }
 }
 
