@@ -100,6 +100,7 @@ class EditThingViewController: UIViewController {
         }
         
         tagManagementView = TagManagementView(frame: CGRect(x: 0, y: 200, width: 375, height: 300))
+        tagManagementView.delegate = self
         tagManagementView.thing = self.thing
         scrollView.addSubview(tagManagementView)
         tagManagementView.snp.makeConstraints { (maker) in
@@ -132,6 +133,14 @@ class EditThingViewController: UIViewController {
             dateText = service.getCreatedDateText(from: date as Date)
         }
         return dateText
+    }
+}
+
+extension EditThingViewController: TagManagementDelegate{
+    func tagManagement(view: TagManagementView, tag: String) {
+        if let currentThing = thing{
+            delegate?.editThing(isDeleted: false, thing: currentThing)
+        }
     }
 }
 

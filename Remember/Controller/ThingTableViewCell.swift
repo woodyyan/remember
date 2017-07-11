@@ -8,16 +8,32 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class ThingTableViewCell: UITableViewCell {
+    private let tagService = TagService()
     
     private var shouldCustomizeActionButtons = false
+    
+    var tagLabel:UILabel?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = UIColor.clear
         setBackground(style: .normal)
+        
+        tagLabel = UILabel(frame: CGRect(x: 30, y: 20, width: 60, height: 20))
+        tagLabel?.textColor = UIColor.remember()
+        tagLabel?.textAlignment = .right
+        tagLabel?.font = UIFont.systemFont(ofSize: 10)
+        self.addSubview(tagLabel!)
+        tagLabel?.snp.makeConstraints({ (maker) in
+            maker.bottom.equalTo(self).offset(-5)
+            maker.right.equalTo(self).offset(-25)
+            maker.width.lessThanOrEqualTo(300)
+            maker.height.equalTo(20)
+        })
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +50,11 @@ class ThingTableViewCell: UITableViewCell {
         self.textLabel?.numberOfLines = 0
         self.textLabel?.textColor = UIColor.text()
         self.textLabel?.frame = CGRect(x: 30, y: 15, width: cellWidth - 60, height: cellHeight - 30)
+        if let tag = tagLabel?.text{
+            if !tag.isEmpty{
+                self.textLabel?.sizeToFit()
+            }
+        }
         
         customizeActionButtons()
     }
@@ -91,6 +112,13 @@ class ThingTableViewCell: UITableViewCell {
         }else{
             self.shouldCustomizeActionButtons = false
         }
+    }
+    
+    func addTags(for thing:ThingModel){
+        let tags = tagService.getSelectedTags(by: thing)
+        
+        let tagString = tags.filter({$0.name != nil}).map({$0.name!}).joined(separator: "/")
+        tagLabel?.text = tagString
     }
     
     func setBackground(style:ThingCellBackgroundStyle){

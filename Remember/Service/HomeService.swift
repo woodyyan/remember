@@ -11,6 +11,7 @@ import UIKit
 
 class HomeService {
     private let thingStorage = ThingStorage()
+    private let tagService = TagService()
     
     private(set) var things = [ThingModel]()
     
@@ -28,6 +29,11 @@ class HomeService {
     
     func save(sorted things:[ThingModel]){
         thingStorage.save(sorted: things)
+    }
+    
+    func hasTag(for thing:ThingModel) -> Bool{
+        let tags = tagService.getSelectedTags(by: thing)
+        return tags.count > 0
     }
     
     class func getActivityViewController(content:String) -> UIActivityViewController{

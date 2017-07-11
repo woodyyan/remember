@@ -23,6 +23,8 @@ class TagManagementView: UIView {
     var thing:ThingModel?
     var addTagTextField:UITextField!
     var addTagButton:UIButton!
+    var delegate:TagManagementDelegate?
+    
     let tagService = TagService()
     
     override init(frame: CGRect) {
@@ -150,6 +152,7 @@ class TagManagementView: UIView {
                 tagService.saveThingTag(thingTagModel)
                 updateView(for: tag)
                 showUnselectedExistingTags()
+                self.delegate?.tagManagement(view: self, tag: tag)
             }
         }
     }
@@ -235,6 +238,7 @@ class TagManagementView: UIView {
                     lastTagButton = nil
                     updateView(by: self.thing!)
                     showUnselectedExistingTags()
+                    self.delegate?.tagManagement(view: self, tag: tag)
                 }
             }
         }else{
@@ -270,6 +274,7 @@ extension TagManagementView : UITextFieldDelegate{
                     textField.text = ""
                     
                     saveTag(tag)
+                    delegate?.tagManagement(view: self, tag: tag)
                 }
             }
         }
@@ -288,4 +293,8 @@ extension TagManagementView : UITextFieldDelegate{
         tagService.save(tagModel)
         tagService.saveThingTag(thingTagModel)
     }
+}
+
+protocol TagManagementDelegate {
+    func tagManagement(view:TagManagementView, tag:String)
 }

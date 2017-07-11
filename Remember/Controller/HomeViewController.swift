@@ -383,7 +383,9 @@ extension HomeViewController{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ThingTableViewCell
-        cell.textLabel?.text = things[indexPath.row].content
+        let thing = self.things[indexPath.row]
+        cell.textLabel?.text = thing.content
+        cell.addTags(for: thing)
         cell.setBackground(style: getCellBackgroundStyle(indexPath.row))
         return cell
     }
@@ -408,9 +410,15 @@ extension HomeViewController{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let content:NSString = things[indexPath.row].content! as NSString
+        let thing = things[indexPath.row]
+        let content:NSString = thing.content! as NSString
         let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 60, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
-        return size.height + 40
+        var height = size.height + 40
+        let hasTag = service.hasTag(for: thing)
+        if hasTag{
+            height = size.height + 50
+        }
+        return height
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
