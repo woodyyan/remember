@@ -59,6 +59,37 @@ class ThingTableViewCell: UITableViewCell {
         customizeActionButtons()
     }
     
+    func showAddTagButton(){
+        let addTagButton = UIButton(type: .system)
+        addTagButton.setTitle("+添加标签", for: .normal)
+        addTagButton.addTarget(self, action: #selector(ThingTableViewCell.addTagTap(sender:)), for: .touchUpInside)
+        addTagButton.layer.cornerRadius = 10
+        addTagButton.layer.shadowColor = UIColor.black.cgColor
+        addTagButton.layer.shadowOpacity = 0.8
+        addTagButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+        addTagButton.backgroundColor = UIColor.remember()
+        addTagButton.setTitleColor(UIColor.white, for: .normal)
+        addTagButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        self.addSubview(addTagButton)
+        addTagButton.snp.makeConstraints { (maker) in
+            maker.right.equalTo(self).offset(-30)
+            maker.centerY.equalTo(self)
+            maker.height.equalTo(20)
+            maker.width.equalTo(70)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            // 移除添加标签按钮
+            addTagButton.removeFromSuperview()
+        }
+    }
+    
+    var addTagAction: (() -> Swift.Void)?
+    
+    func addTagTap(sender:UIButton){
+        addTagAction?()
+    }
+    
     private func customizeActionButtons(){
         for subView in self.subviews {
             if subView.isKind(of: NSClassFromString("UITableViewCellDeleteConfirmationView")!){
@@ -114,7 +145,7 @@ class ThingTableViewCell: UITableViewCell {
         }
     }
     
-    func addTags(for thing:ThingModel){
+    func showTags(for thing:ThingModel){
         let tags = tagService.getSelectedTags(by: thing)
         
         let tagString = tags.filter({$0.name != nil}).map({$0.name!}).joined(separator: "/")

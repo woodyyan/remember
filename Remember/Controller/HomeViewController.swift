@@ -183,6 +183,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func pasteOkButtonClick(_ sender:UIButton){
         if let content = pasteContent{
             let thing = ThingModel(content: content)
+            thing.isNew = true
             service.create(thing)
             self.things.insert(thing, at: 0)
             self.sortAndSaveThings()
@@ -385,8 +386,15 @@ extension HomeViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ThingTableViewCell
         let thing = self.things[indexPath.row]
         cell.textLabel?.text = thing.content
-        cell.addTags(for: thing)
+        cell.showTags(for: thing)
+        cell.addTagAction = { () in
+            self.editThing(thing, isTag: true)
+        }
         cell.setBackground(style: getCellBackgroundStyle(indexPath.row))
+        if thing.isNew{
+            cell.showAddTagButton()
+            thing.isNew = false
+        }
         return cell
     }
     

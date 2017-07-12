@@ -13,6 +13,7 @@ class ThingModel {
     var createdAt: Date!
     var id: String!
     var index: Int = 0
+    var isNew = false
     
     init(content:String) {
         self.content = content

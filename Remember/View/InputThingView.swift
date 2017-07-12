@@ -61,6 +61,7 @@ class InputThingView : UIView, UITextFieldDelegate{
         if let content = textField.text{
             if !content.isEmpty{
                 let thing = ThingModel(content: content)
+                thing.isNew = true
                 thingService.create(thing)
                 
                 delegate?.input(inputView: self, thing: thing)
