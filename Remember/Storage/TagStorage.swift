@@ -66,6 +66,24 @@ class TagStorage {
         return tags
     }
     
+    func updateIndex(for tag:TagModel){
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
+        let entity = NSEntityDescription.entity(forEntityName: "Tag", in: appDelegate.persistentContainer.viewContext)
+        request.entity = entity
+        let predicate = NSPredicate(format: "%K == %@","id", tag.id!)
+        request.predicate = predicate
+        do{
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [TagEntity]{
+                for result in results {
+                    result.setValue(tag.index, forKey: "index")
+                    appDelegate.saveContext()
+                }
+            }
+        }catch{
+            
+        }
+    }
+    
     func find(by tagName:String) -> TagModel?{
         var tag:TagModel?
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
