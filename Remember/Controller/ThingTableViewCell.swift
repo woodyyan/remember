@@ -67,6 +67,7 @@ class ThingTableViewCell: UITableViewCell {
         addTagButton.layer.shadowColor = UIColor.black.cgColor
         addTagButton.layer.shadowOpacity = 0.8
         addTagButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+        addTagButton.alpha = 0
         addTagButton.backgroundColor = UIColor.remember()
         addTagButton.setTitleColor(UIColor.white, for: .normal)
         addTagButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
@@ -78,9 +79,17 @@ class ThingTableViewCell: UITableViewCell {
             maker.width.equalTo(70)
         }
         
+        UIView.animate(withDuration: 0.5) { 
+            addTagButton.alpha = 1
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             // 移除添加标签按钮
-            addTagButton.removeFromSuperview()
+            UIView.animate(withDuration: 0.5, animations: {
+                addTagButton.alpha = 0
+            }, completion: { (success) in
+                addTagButton.removeFromSuperview()
+            })
         }
     }
     
