@@ -79,9 +79,9 @@ class ThingTableViewCell: UITableViewCell {
             maker.width.equalTo(70)
         }
         
-        UIView.animate(withDuration: 0.5) { 
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: .allowAnimatedContent, animations: {
             addTagButton.alpha = 1
-        }
+        }, completion: nil)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             // 移除添加标签按钮
