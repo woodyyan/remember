@@ -97,6 +97,7 @@ class ThingTableViewCell: UITableViewCell {
     
     func addTagTap(sender:UIButton){
         addTagAction?()
+        sender.removeFromSuperview()
     }
     
     private func customizeActionButtons(){
