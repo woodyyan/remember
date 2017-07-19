@@ -11,7 +11,6 @@ import UIKit
 import CoreData
 
 class ThingStorage {
-    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     func getThings() -> [ThingModel]{
         return getThingsFromLocalDB()
@@ -27,6 +26,7 @@ class ThingStorage {
     
     func edit(_ thing:ThingModel){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
         request.entity = entity
         let predicate = NSPredicate(format: "%K == %@","id", thing.id!)
@@ -45,6 +45,7 @@ class ThingStorage {
     
     func save(sorted things:[ThingModel]){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
         request.entity = entity
         for thing in things{
@@ -65,6 +66,7 @@ class ThingStorage {
     
     private func deleteThing(by thingId:String){
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
         request.entity = entity
         let predicate = NSPredicate(format: "%K == %@","id", thingId)
@@ -82,6 +84,7 @@ class ThingStorage {
     }
     
     private func createAndSaveThingInLocalDB(thing:ThingModel){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let object:NSManagedObject = NSEntityDescription.insertNewObject(forEntityName: "Thing", into: appDelegate.persistentContainer.viewContext)
         object.setValue(thing.content, forKey: "content")
         object.setValue(thing.createdAt, forKey: "createdAt")
@@ -94,6 +97,7 @@ class ThingStorage {
         var things = [ThingModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
         do{
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
             if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [ThingEntity]{
                 if results.count > 0{
                     for result in results{
