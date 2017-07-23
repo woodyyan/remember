@@ -26,6 +26,14 @@ class InputTextField: UITextField {
         self.returnKeyType = .done
     }
     
+    func setLeftImage(with image:UIImage){
+        self.leftView = UIImageView(image: image)
+    }
+    
+    func setPlaceHolder(with text:String){
+        self.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSForegroundColorAttributeName:UIColor.remember()])
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

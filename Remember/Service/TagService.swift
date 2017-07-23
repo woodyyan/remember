@@ -34,6 +34,10 @@ class TagService {
         tagStorage.updateIndex(for: tag)
     }
     
+    func getAllTags() -> [TagModel]{
+        return tagStorage.getAllTags()
+    }
+    
     func getSelectedTags(by thing:ThingModel) -> [TagModel]{
         let thingTags = thingTagStorage.getThingTags(by: thing)
         let tagIds = thingTags.filter({ $0.thingId == thing.id }).map({ $0.tagId! })
