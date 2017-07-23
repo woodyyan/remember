@@ -82,6 +82,14 @@
 		82303BC81F24ADC4004C06F1 /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 82303BC41F24ADC4004C06F1 /* Cartfile.resolved */; };
 		82303BC91F24ADC4004C06F1 /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 82303BC41F24ADC4004C06F1 /* Cartfile.resolved */; };
 		82303BCA1F24ADC4004C06F1 /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 82303BC41F24ADC4004C06F1 /* Cartfile.resolved */; };
+		82303BCC1F24F2C0004C06F1 /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 82303BCB1F24F2C0004C06F1 /* .gitattributes */; };
+		82303BD31F24F3EE004C06F1 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 82303BCE1F24F3EE004C06F1 /* 1.png */; };
+		82303BD41F24F3EE004C06F1 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 82303BCF1F24F3EE004C06F1 /* 2.png */; };
+		82303BD51F24F3EE004C06F1 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 82303BD01F24F3EE004C06F1 /* 3.png */; };
+		82303BD61F24F3EE004C06F1 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 82303BD11F24F3EE004C06F1 /* 4.png */; };
+		82303BD71F24F3EE004C06F1 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 82303BD21F24F3EE004C06F1 /* 5.png */; };
+		82303BD91F24F41E004C06F1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 82303BD81F24F41E004C06F1 /* README.md */; };
+		82303BDB1F24F5A3004C06F1 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 82303BDA1F24F5A2004C06F1 /* .travis.yml */; };
 		82347E401F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */; };
 		82347E411F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */; };
 		82347E421F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */; };
@@ -252,6 +260,14 @@
 		82303BAE1F245454004C06F1 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		82303BC31F24ADC4004C06F1 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		82303BC41F24ADC4004C06F1 /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
+		82303BCB1F24F2C0004C06F1 /* .gitattributes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		82303BCE1F24F3EE004C06F1 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		82303BCF1F24F3EE004C06F1 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		82303BD01F24F3EE004C06F1 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		82303BD11F24F3EE004C06F1 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		82303BD21F24F3EE004C06F1 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		82303BD81F24F41E004C06F1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		82303BDA1F24F5A2004C06F1 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudMobileAnalitics.framework; sourceTree = "<group>"; };
 		82347E3D1F03A7E2002D8024 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
 		82347E3E1F03A7E2002D8024 /* UT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UT.framework; sourceTree = "<group>"; };
@@ -436,6 +452,18 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		82303BCD1F24F3EE004C06F1 /* Screenshots */ = {
+			isa = PBXGroup;
+			children = (
+				82303BCE1F24F3EE004C06F1 /* 1.png */,
+				82303BCF1F24F3EE004C06F1 /* 2.png */,
+				82303BD01F24F3EE004C06F1 /* 3.png */,
+				82303BD11F24F3EE004C06F1 /* 4.png */,
+				82303BD21F24F3EE004C06F1 /* 5.png */,
+			);
+			path = Screenshots;
+			sourceTree = "<group>";
+		};
 		823A34261E2758410093FBF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +499,10 @@
 		825DEB0C1DD9DC070065090F = {
 			isa = PBXGroup;
 			children = (
+				82303BDA1F24F5A2004C06F1 /* .travis.yml */,
+				82303BD81F24F41E004C06F1 /* README.md */,
+				82303BCD1F24F3EE004C06F1 /* Screenshots */,
+				82303BCB1F24F2C0004C06F1 /* .gitattributes */,
 				82303BC31F24ADC4004C06F1 /* Cartfile */,
 				82303BC41F24ADC4004C06F1 /* Cartfile.resolved */,
 				823A34261E2758410093FBF4 /* Frameworks */,
@@ -696,12 +728,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				82303BC51F24ADC4004C06F1 /* Cartfile in Resources */,
+				82303BD71F24F3EE004C06F1 /* 5.png in Resources */,
 				82303BC81F24ADC4004C06F1 /* Cartfile.resolved in Resources */,
 				825DEB261DD9DC070065090F /* LaunchScreen.storyboard in Resources */,
 				823A34B21E28A72C0093FBF4 /* GoogleService-Info.plist in Resources */,
+				82303BD51F24F3EE004C06F1 /* 3.png in Resources */,
 				821FC4CD1E7141B100A64E94 /* voicewave.gif in Resources */,
 				825DEB231DD9DC070065090F /* Assets.xcassets in Resources */,
 				825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */,
+				82303BD41F24F3EE004C06F1 /* 2.png in Resources */,
+				82303BCC1F24F2C0004C06F1 /* .gitattributes in Resources */,
+				82303BD31F24F3EE004C06F1 /* 1.png in Resources */,
+				82303BDB1F24F5A3004C06F1 /* .travis.yml in Resources */,
+				82303BD61F24F3EE004C06F1 /* 4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,6 +800,7 @@
 				82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
 				82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
 				823A34BC1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
+				82303BD91F24F41E004C06F1 /* README.md in Sources */,
 				820B84111F0F9AFE007E3C15 /* TagStorage.swift in Sources */,
 				820B840A1F0F97B5007E3C15 /* Constants.swift in Sources */,
 				820B842B1F1119A7007E3C15 /* TagManagementView.swift in Sources */,
