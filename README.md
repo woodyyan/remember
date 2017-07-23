@@ -8,21 +8,26 @@
 丁丁记事是一个基于每件小事的轻量级的备忘录。
 
 比如你可以记录下面这些小事：
+
 女朋友的生日是2月14日
+
 妈妈最喜欢吃的菜是土豆丝
+
 红酒开瓶器在电视柜的抽屉里面
+
 爷爷吃的药过期时间是12月30号
+
 爸爸的烟藏在厨房第三个柜子里面
 
 跟我们交流：微博@略懂工作室
 
 App Store下载地址：[丁丁记事 on the App Store](https://itunes.apple.com/us/app/%E4%B8%81%E4%B8%81%E8%AE%B0%E4%BA%8B/id1192994573?l=zh&ls=1&mt=8)
 
-![image1](https://github.com/woodyyan/remember/raw/develop/Screenshots/1.jpg)
-![image2](https://github.com/woodyyan/remember/raw/develop/Screenshots/2.jpg)
-![image3](https://github.com/woodyyan/remember/raw/develop/Screenshots/3.jpg)
-![image4](https://github.com/woodyyan/remember/raw/develop/Screenshots/4.jpg)
-![image5](https://github.com/woodyyan/remember/raw/develop/Screenshots/5.jpg)
+![image1](https://github.com/woodyyan/remember/raw/develop/Screenshots/1.png)
+![image2](https://github.com/woodyyan/remember/raw/develop/Screenshots/2.png)
+![image3](https://github.com/woodyyan/remember/raw/develop/Screenshots/3.png)
+![image4](https://github.com/woodyyan/remember/raw/develop/Screenshots/4.png)
+![image5](https://github.com/woodyyan/remember/raw/develop/Screenshots/5.png)
 
 ## 第三方开源库
 
