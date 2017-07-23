@@ -1,5 +1,6 @@
 # # 丁丁记事 for iOS
 [![Build Status](https://travis-ci.org/woodyyan/remember.svg?branch=develop)](https://travis-ci.org/woodyyan/remember)
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5974bf357812780001c2fc66&branch=develop&build=latest)](https://dashboard.buddybuild.com/apps/5974bf357812780001c2fc66/build/latest?branch=develop)
 
 当你忘记红酒开瓶器放在哪里时，你只要打开丁丁记事，就可以找到一个月前你记录的红酒开瓶器放在哪里了。
 
