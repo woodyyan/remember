@@ -211,20 +211,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let searchController = SearchViewController()
         self.present(UINavigationController.init(rootViewController: searchController), animated: false, completion: nil)
-        
-//        let searchResultController = SearchResultTableViewController()
-//        searchResultController.searchResultDelegate = self
-//        searchResultController.things = self.things
-//        let searchController = UISearchController(searchResultsController: UINavigationController(rootViewController: searchResultController))
-//        searchController.delegate = self
-//        searchController.searchBar.sizeToFit()
-//        searchController.searchBar.placeholder = "搜索你忘记的小事"
-//        searchController.searchResultsUpdater = searchResultController
-//        definesPresentationContext = true
-//        searchController.dimsBackgroundDuringPresentation = true
-//        self.shouldInputViewDisplay = false
-//        self.present(searchController, animated: true){
-//        }
     }
     
     private func initTableView(){
