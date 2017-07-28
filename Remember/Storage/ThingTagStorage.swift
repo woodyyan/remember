@@ -40,6 +40,24 @@ class ThingTagStorage {
         }
     }
     
+    func getThingTags(by tag:TagModel) -> [ThingTagModel] {
+        var thingTags = [ThingTagModel]()
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ThingTag")
+        let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: appDelegate.persistentContainer.viewContext)
+        request.entity = entity
+        let predicate = NSPredicate(format: "%K == %@","tagId", tag.id!)
+        request.predicate = predicate
+        do{
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity]{
+                for result in results {
+                    thingTags.append(result.toModel())
+                }
+            }
+        }catch{
+        }
+        return thingTags
+    }
+    
     func getThingTags(by thing:ThingModel) -> [ThingTagModel]{
         var thingTags = [ThingTagModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ThingTag")

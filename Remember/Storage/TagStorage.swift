@@ -40,6 +40,23 @@ class TagStorage {
         return tags
     }
     
+    func getTag(by name:String) -> TagModel{
+        var tag:TagModel!
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
+        let predicate = NSPredicate(format: "%K == %@", "name", name)
+        request.predicate = predicate
+        do{
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [TagEntity]{
+                if results.count > 0{
+                    tag = results[0].toModel()
+                }
+            }
+        } catch {
+        }
+        
+        return tag
+    }
+    
     func getTags(by ids:[String]) -> [TagModel]{
         var tags = [TagModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")

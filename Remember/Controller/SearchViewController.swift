@@ -159,7 +159,11 @@ class SearchViewController : UIViewController{
     }
     
     func tagTap(sender:UIButton){
-        
+        if let tag = sender.titleLabel?.text{
+            self.tagView.isHidden = true
+            self.filteredThings = searchService.getThings(byTag: tag)
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -205,7 +209,7 @@ extension SearchViewController : UITextFieldDelegate{
         if let searchText = textField.text{
             if !searchText.isEmpty{
                 self.tagView.isHidden = true
-                self.filteredThings = self.searchService.getFilteredThings(by: searchText)
+                self.filteredThings = self.searchService.getThings(byText: searchText)
                 self.tableView.reloadData()
             }
         }
