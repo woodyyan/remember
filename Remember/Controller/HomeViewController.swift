@@ -210,6 +210,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputThingView.endEditing()
         
         let searchController = SearchViewController()
+        searchController.homeController = self
         self.present(UINavigationController.init(rootViewController: searchController), animated: false, completion: nil)
     }
     

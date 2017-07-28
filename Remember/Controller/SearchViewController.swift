@@ -10,11 +10,17 @@ import Foundation
 import UIKit
 
 class SearchViewController : UIViewController{
-    private var lastTopView:UIView?
-    private var lastTagButton:UIView?
-    private var tagLabel:UILabel!
+    fileprivate var lastTopView:UIView?
+    fileprivate var lastTagButton:UIView?
+    fileprivate var tagLabel:UILabel!
     
+    fileprivate var tagView:UIView!
+    fileprivate var tableView:UITableView!
     fileprivate let tagService = TagService()
+    fileprivate let searchService = SearchService()
+    fileprivate var filteredThings = [ThingModel]()
+    
+    var homeController:HomeViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,11 +57,35 @@ class SearchViewController : UIViewController{
             maker.height.equalTo(40)
         }
         
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: UITableViewStyle.plain)
+        tableView.backgroundColor = UIColor.background()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.tableFooterView = UIView(frame:CGRect.zero)
+        self.view.addSubview(tableView)
+        tableView.snp.makeConstraints { (maker) in
+            maker.top.equalTo(textField.snp.bottom).offset(10)
+            maker.left.equalTo(self.view)
+            maker.right.equalTo(self.view)
+            maker.bottom.equalTo(self.view)
+        }
+        
+        tagView = UIView()
+        self.view.addSubview(tagView)
+        tagView.snp.makeConstraints { (maker) in
+            maker.left.equalTo(self.view)
+            maker.top.equalTo(textField.snp.bottom)
+            maker.right.equalTo(self.view)
+            maker.bottom.equalTo(self.view)
+        }
+        
         tagLabel = UILabel()
         tagLabel.text = "常用标签"
         tagLabel.textColor = UIColor.gray
         tagLabel.font = UIFont.systemFont(ofSize: 12)
-        self.view.addSubview(tagLabel)
+        tagView.addSubview(tagLabel)
         tagLabel.snp.makeConstraints { (maker) in
             maker.left.equalTo(self.view).offset(20)
             maker.top.equalTo(textField.snp.bottom).offset(30)
@@ -115,10 +145,10 @@ class SearchViewController : UIViewController{
         tagbutton.backgroundColor = UIColor.remember()
         tagbutton.setTitleColor(UIColor.white, for: .normal)
         tagbutton.addTarget(self, action: #selector(SearchViewController.tagTap(sender:)), for: .touchUpInside)
-        self.view.addSubview(tagbutton)
+        self.tagView.addSubview(tagbutton)
         tagbutton.snp.makeConstraints { (maker) in
             if leftView == nil{
-                maker.left.equalTo(self.view).offset(20)
+                maker.left.equalTo(self.tagView).offset(20)
             }else{
                 maker.left.equalTo(leftView!.snp.right).offset(10)
             }
@@ -133,11 +163,50 @@ class SearchViewController : UIViewController{
     }
 }
 
+extension SearchViewController : UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.filteredThings.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = self.filteredThings[indexPath.row].content
+        cell.textLabel?.textColor = UIColor.text()
+        cell.textLabel?.numberOfLines = 0
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if self.filteredThings.count > indexPath.row
+        {
+            let content:NSString = self.filteredThings[indexPath.row].content! as NSString
+            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
+            return size.height + 30
+        }
+        else{
+            return UITableViewCell().frame.height
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.dismiss(animated: false, completion: nil)
+        let thing = self.filteredThings[indexPath.row]
+        homeController?.openThingViewController(with: thing)
+    }
+}
+
 extension SearchViewController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let content = textField.text{
-            if !content.isEmpty{
-                print("search")
+        if let searchText = textField.text{
+            if !searchText.isEmpty{
+                self.tagView.isHidden = true
+                self.filteredThings = self.searchService.getFilteredThings(by: searchText)
+                self.tableView.reloadData()
             }
         }
         

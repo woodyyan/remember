@@ -90,6 +90,9 @@
 		82303BD71F24F3EE004C06F1 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 82303BD21F24F3EE004C06F1 /* 5.png */; };
 		82303BD91F24F41E004C06F1 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 82303BD81F24F41E004C06F1 /* README.md */; };
 		82303BDB1F24F5A3004C06F1 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 82303BDA1F24F5A2004C06F1 /* .travis.yml */; };
+		82303BDD1F25B2FF004C06F1 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82303BDC1F25B2FF004C06F1 /* SearchService.swift */; };
+		82303BDE1F25B2FF004C06F1 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82303BDC1F25B2FF004C06F1 /* SearchService.swift */; };
+		82303BDF1F25B2FF004C06F1 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82303BDC1F25B2FF004C06F1 /* SearchService.swift */; };
 		82347E401F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */; };
 		82347E411F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */; };
 		82347E421F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */; };
@@ -268,6 +271,7 @@
 		82303BD21F24F3EE004C06F1 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		82303BD81F24F41E004C06F1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		82303BDA1F24F5A2004C06F1 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		82303BDC1F25B2FF004C06F1 /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudMobileAnalitics.framework; sourceTree = "<group>"; };
 		82347E3D1F03A7E2002D8024 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
 		82347E3E1F03A7E2002D8024 /* UT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UT.framework; sourceTree = "<group>"; };
@@ -430,6 +434,7 @@
 				820B83ED1F0F971D007E3C15 /* ThingService.swift */,
 				820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */,
 				820B84261F107183007E3C15 /* TagService.swift */,
+				82303BDC1F25B2FF004C06F1 /* SearchService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -808,6 +813,7 @@
 				820B84171F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				820B83E41F0E8D3D007E3C15 /* TagModel.swift in Sources */,
+				82303BDD1F25B2FF004C06F1 /* SearchService.swift in Sources */,
 				820B83FF1F0F971D007E3C15 /* ThingService.swift in Sources */,
 				820B83BD1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
@@ -830,6 +836,7 @@
 				820B840B1F0F97B5007E3C15 /* Constants.swift in Sources */,
 				820B84181F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
 				820B83E51F0E8D3D007E3C15 /* TagModel.swift in Sources */,
+				82303BDE1F25B2FF004C06F1 /* SearchService.swift in Sources */,
 				82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 				82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */,
 				820B83F41F0F971D007E3C15 /* HomeService.swift in Sources */,
@@ -892,6 +899,7 @@
 				820B83E21F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 				820B84161F0F9AFE007E3C15 /* ThingStorage.swift in Sources */,
 				82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
+				82303BDF1F25B2FF004C06F1 /* SearchService.swift in Sources */,
 				820B84291F107183007E3C15 /* TagService.swift in Sources */,
 				82303BB11F245454004C06F1 /* SearchViewController.swift in Sources */,
 			);

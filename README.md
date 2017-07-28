@@ -1,4 +1,4 @@
-# # 丁丁记事 for iOS
+# 丁丁记事 for iOS
 [![Build Status](https://travis-ci.org/woodyyan/remember.svg?branch=develop)](https://travis-ci.org/woodyyan/remember)
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5974bf357812780001c2fc66&branch=develop&build=latest)](https://dashboard.buddybuild.com/apps/5974bf357812780001c2fc66/build/latest?branch=develop)
 
