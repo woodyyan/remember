@@ -15,6 +15,7 @@ class SearchViewController : UIViewController{
     fileprivate var tagLabel:UILabel!
     
     fileprivate var tagView:UIView!
+    fileprivate var textField:InputTextField!
     fileprivate var tableView:UITableView!
     fileprivate let tagService = TagService()
     fileprivate let searchService = SearchService()
@@ -29,14 +30,26 @@ class SearchViewController : UIViewController{
         self.view.backgroundColor = UIColor.white
         
         initUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SearchViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    }
+    
+    func keyboardWillShow(_ notice:Notification){
+        let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
+        let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let endFrame = endFrameValue.cgRectValue
+        tableView.snp.makeConstraints { (maker) in
+            maker.bottom.equalTo(self.view).offset(-endFrame.height)
+        }
     }
     
     private func initUI(){
-        let textField = InputTextField(frame: CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height:  40))
+        textField = InputTextField(frame: CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height:  40))
         textField.setLeftImage(with: UIImage(named: "Search")!)
         textField.setPlaceHolder(with: " 搜索你忘记的小事")
         textField.returnKeyType = .search
         textField.delegate = self
+        textField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(sender:)), for: .editingChanged)
         self.view.addSubview(textField)
         textField.snp.makeConstraints { (maker) in
             maker.left.equalTo(self.view).offset(10)
@@ -61,7 +74,6 @@ class SearchViewController : UIViewController{
         tableView.backgroundColor = UIColor.background()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.tableFooterView = UIView(frame:CGRect.zero)
         self.view.addSubview(tableView)
@@ -95,6 +107,20 @@ class SearchViewController : UIViewController{
         showTags()
         
         textField.becomeFirstResponder()
+    }
+    
+    func textFieldDidChange(sender:UITextField){
+        if let isEmpty = sender.text?.isEmpty{
+            if isEmpty{
+                showAllTags()
+            }
+        }
+    }
+    
+    func showAllTags(){
+        self.filteredThings.removeAll()
+        self.tableView.reloadData()
+        self.tagView.isHidden = false
     }
     
     func cancelTap(sender:UIButton){
@@ -163,6 +189,7 @@ class SearchViewController : UIViewController{
             self.tagView.isHidden = true
             self.filteredThings = searchService.getThings(byTag: tag)
             self.tableView.reloadData()
+            self.textField.text = "#\(tag)"
         }
     }
 }
@@ -209,11 +236,20 @@ extension SearchViewController : UITextFieldDelegate{
         if let searchText = textField.text{
             if !searchText.isEmpty{
                 self.tagView.isHidden = true
-                self.filteredThings = self.searchService.getThings(byText: searchText)
+                if searchText.hasPrefix("#"){
+                    self.filteredThings = searchService.getThings(byTag: searchText.trimmingCharacters(in: CharacterSet.init(charactersIn: "#")))
+                }else{
+                    self.filteredThings = self.searchService.getThings(byText: searchText)
+                }
                 self.tableView.reloadData()
             }
         }
         
+        return true
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        showAllTags()
         return true
     }
 }

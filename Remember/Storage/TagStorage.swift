@@ -40,8 +40,8 @@ class TagStorage {
         return tags
     }
     
-    func getTag(by name:String) -> TagModel{
-        var tag:TagModel!
+    func getTag(by name:String) -> TagModel?{
+        var tag:TagModel?
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
         let predicate = NSPredicate(format: "%K == %@", "name", name)
         request.predicate = predicate
