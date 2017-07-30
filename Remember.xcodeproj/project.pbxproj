@@ -126,6 +126,9 @@
 		823876BE1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */; };
 		823876BF1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */; };
 		823876C01F2D6727001EA4B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */; };
+		823876C21F2D766F001EA4B4 /* TagManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876C11F2D766F001EA4B4 /* TagManageViewController.swift */; };
+		823876C31F2D766F001EA4B4 /* TagManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876C11F2D766F001EA4B4 /* TagManageViewController.swift */; };
+		823876C41F2D766F001EA4B4 /* TagManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876C11F2D766F001EA4B4 /* TagManageViewController.swift */; };
 		823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
@@ -285,6 +288,7 @@
 		82347E521F03A869002D8024 /* Remember-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Remember-Bridging-Header.h"; sourceTree = "<group>"; };
 		823539A81E37256900B102D8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		823876C11F2D766F001EA4B4 /* TagManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagManageViewController.swift; sourceTree = "<group>"; };
 		823A341E1E252EBA0093FBF4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		823A34271E2758590093FBF4 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		823A34281E2758590093FBF4 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
@@ -603,6 +607,7 @@
 				82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */,
 				82303BAE1F245454004C06F1 /* SearchViewController.swift */,
 				823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */,
+				823876C11F2D766F001EA4B4 /* TagManageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -808,6 +813,7 @@
 				823876BE1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */,
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
+				823876C21F2D766F001EA4B4 /* TagManageViewController.swift in Sources */,
 				82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
 				82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
 				823A34BC1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
@@ -853,6 +859,7 @@
 				82303BB01F245454004C06F1 /* SearchViewController.swift in Sources */,
 				820B84001F0F971D007E3C15 /* ThingService.swift in Sources */,
 				823539B71E3885E400B102D8 /* HomeViewController.swift in Sources */,
+				823876C31F2D766F001EA4B4 /* TagManageViewController.swift in Sources */,
 				820B83BE1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				820B83C61F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				820B84121F0F9AFE007E3C15 /* TagStorage.swift in Sources */,
@@ -907,6 +914,7 @@
 				820B83E21F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 				820B84161F0F9AFE007E3C15 /* ThingStorage.swift in Sources */,
 				82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
+				823876C41F2D766F001EA4B4 /* TagManageViewController.swift in Sources */,
 				82303BDF1F25B2FF004C06F1 /* SearchService.swift in Sources */,
 				820B84291F107183007E3C15 /* TagService.swift in Sources */,
 				82303BB11F245454004C06F1 /* SearchViewController.swift in Sources */,

@@ -69,7 +69,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            print("aaa")
+            let tagController = TagManageViewController()
+            self.navigationController?.pushViewController(tagController, animated: true)
         case 1:
             switch indexPath.row {
             case 0:
