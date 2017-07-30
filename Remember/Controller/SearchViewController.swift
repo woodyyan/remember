@@ -225,6 +225,7 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.view.endEditing(true)
         self.dismiss(animated: false, completion: nil)
         let thing = self.filteredThings[indexPath.row]
         homeController?.openThingViewController(with: thing)

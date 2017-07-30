@@ -123,6 +123,9 @@
 		823539B71E3885E400B102D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
 		823539B91E38863400B102D8 /* InputThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputThingView.swift */; };
 		823539BA1E38863500B102D8 /* InputThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputThingView.swift */; };
+		823876BE1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */; };
+		823876BF1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */; };
+		823876C01F2D6727001EA4B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */; };
 		823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
@@ -281,6 +284,7 @@
 		82347E501F03A80F002D8024 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		82347E521F03A869002D8024 /* Remember-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Remember-Bridging-Header.h"; sourceTree = "<group>"; };
 		823539A81E37256900B102D8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		823A341E1E252EBA0093FBF4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		823A34271E2758590093FBF4 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		823A34281E2758590093FBF4 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
@@ -598,6 +602,7 @@
 				82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */,
 				82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */,
 				82303BAE1F245454004C06F1 /* SearchViewController.swift */,
+				823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -800,6 +805,7 @@
 				820B83B51F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
 				825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */,
 				823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */,
+				823876BE1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */,
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
@@ -854,6 +860,7 @@
 				820B83F11F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
 				82DF5DAE1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
 				82F934911F1F5F5D00AE31DE /* ThingServiceTests.swift in Sources */,
+				823876BF1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */,
 				820B83B61F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
 				820B842C1F1119A7007E3C15 /* TagManagementView.swift in Sources */,
 				820B842E1F11C262007E3C15 /* AppDelegate.swift in Sources */,
@@ -892,6 +899,7 @@
 				820B83E61F0E8D3D007E3C15 /* TagModel.swift in Sources */,
 				820B83BF1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				820B84011F0F971D007E3C15 /* ThingService.swift in Sources */,
+				823876C01F2D6727001EA4B4 /* SettingsViewController.swift in Sources */,
 				823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				823A34B91E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				823539BA1E38863500B102D8 /* InputThingView.swift in Sources */,

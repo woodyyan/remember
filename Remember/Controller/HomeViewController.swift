@@ -39,7 +39,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.backgroundColor = UIColor.background()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.remember()];
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "about"), style: .plain, target: self, action: #selector(HomeViewController.pushToAboutPage(_:)))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(HomeViewController.pushToAboutPage(_:)))
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.remember()
         
         initTableView()
@@ -352,8 +352,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func pushToAboutPage(_ sender:UIBarButtonItem){
         inputThingView.endEditing()
-        let aboutController = AboutViewController()
-        self.navigationController?.pushViewController(aboutController, animated: true)
+        let settingsController = SettingsViewController()
+        self.navigationController?.pushViewController(settingsController, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
