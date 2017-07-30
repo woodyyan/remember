@@ -16,6 +16,14 @@ class TagService {
         thingTagStorage.save(for: thingTag)
     }
     
+    func deleteTag(_ tag:TagModel){
+        tagStorage.delete(tag)
+        let thingTags = thingTagStorage.getThingTags(by: tag)
+        for thingTag in thingTags{
+            thingTagStorage.delete(for: thingTag)
+        }
+    }
+    
     func deleteThingTag(_ thingTag:ThingTagModel){
         thingTagStorage.delete(for: thingTag)
     }

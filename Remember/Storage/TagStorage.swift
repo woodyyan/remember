@@ -21,6 +21,23 @@ class TagStorage {
         appDelegate.saveContext()
     }
     
+    func delete(_ tag:TagModel){
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
+        let predicate = NSPredicate(format: "%K == %@", "id", tag.id)
+        request.predicate = predicate
+        do{
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [TagEntity]{
+                if results.count > 0{
+                    for result in results{
+                        appDelegate.persistentContainer.viewContext.delete(result)
+                    }
+                    appDelegate.saveContext()
+                }
+            }
+        } catch {
+        }
+    }
+    
     func getAllTags() -> [TagModel]{
         var tags = [TagModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")

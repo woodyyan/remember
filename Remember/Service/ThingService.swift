@@ -10,6 +10,7 @@ import Foundation
 
 class ThingService {
     private let thingStorage = ThingStorage()
+    private let thingTagStorage = ThingTagStorage()
     
     func create(_ thing:ThingModel){
         thingStorage.create(thing)
@@ -21,6 +22,10 @@ class ThingService {
     
     func delete(_ thing:ThingModel){
         thingStorage.delete(thing)
+        let thingTags = thingTagStorage.getThingTags(by: thing)
+        for thingTag in thingTags{
+            thingTagStorage.delete(for: thingTag)
+        }
     }
     
     func getCreatedDateText(from date:Date) -> String{

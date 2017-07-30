@@ -32,6 +32,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         initUI()
         
         NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.updatePasteboardView(_:)), name: NSNotification.Name(rawValue: "updatePasteboardView"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.tagRemoved(_:)), name: NSNotification.Name(rawValue: "tagRemovedNotification"), object: nil)
     }
     
     private func initUI(){
@@ -57,6 +58,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func updatePasteboardView(_ notification: Notification){
         addPasteboardViewIfNeeded()
+    }
+    
+    func tagRemoved(_ notification: Notification){
+        self.tableView.reloadData()
     }
     
     private func initData(){

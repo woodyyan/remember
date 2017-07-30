@@ -12,6 +12,7 @@ import UIKit
 class HomeService {
     private let thingStorage = ThingStorage()
     private let tagService = TagService()
+    private let thingTagStorage = ThingTagStorage()
     
     private(set) var things = [ThingModel]()
     
@@ -25,6 +26,10 @@ class HomeService {
     
     func delete(_ thing:ThingModel){
         thingStorage.delete(thing)
+        let thingTags = thingTagStorage.getThingTags(by: thing)
+        for thingTag in thingTags{
+            thingTagStorage.delete(for: thingTag)
+        }
     }
     
     func save(sorted things:[ThingModel]){

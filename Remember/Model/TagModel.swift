@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TagModel {
+class TagModel : Hashable{
     var id: String!
     var index = 0
     var name: String!
@@ -16,5 +16,15 @@ class TagModel {
     init(name:String){
         self.name = name
         self.id = UUID().uuidString
+    }
+    
+    public static func ==(lhs: TagModel, rhs: TagModel) -> Bool{
+        return lhs.id == rhs.id
+    }
+    
+    public var hashValue: Int {
+        get{
+            return id.hashValue
+        }
     }
 }
