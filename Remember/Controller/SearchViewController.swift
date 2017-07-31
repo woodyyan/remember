@@ -134,6 +134,8 @@ class SearchViewController : UIViewController{
             for tag in allTags{
                 updateView(for: tag.name)
             }
+        }else{
+            self.tagView.isHidden = true
         }
     }
     

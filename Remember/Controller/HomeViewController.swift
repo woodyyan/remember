@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let inputViewHeight:CGFloat = 60
     
     fileprivate var shouldInputViewDisplay = true
-    fileprivate var service = HomeService()
+    fileprivate var service = ThingService()
     fileprivate var tableView:UITableView!
     fileprivate var snapshotView:UIView?
     fileprivate var tableHeaderView:UIView!

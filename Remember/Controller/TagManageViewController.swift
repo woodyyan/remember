@@ -8,6 +8,7 @@
 
 import UIKit
 import SCLAlertView
+import DZNEmptyDataSet
 
 class TagManageViewController: UITableViewController {
     private var tags = [TagModel]()
@@ -22,6 +23,9 @@ class TagManageViewController: UITableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.tableFooterView = UIView(frame:CGRect.zero)
         self.tableView.allowsSelection = false
+        // EmptyDataSet SDK
+        self.tableView.emptyDataSetSource = self;
+        self.tableView.emptyDataSetDelegate = self;
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "edit"), style: .plain, target: self, action: #selector(TagManageViewController.editTags(sender:)))
         
@@ -102,5 +106,15 @@ class TagManageViewController: UITableViewController {
     private func sendNotification(with tag:TagModel){
         let notify = Notification(name: Notification.Name(rawValue: "tagRemovedNotification"), object: tag, userInfo: nil)
         NotificationCenter.default.post(name: Notification.Name(rawValue: "tagRemovedNotification"), object: notify)
+    }
+}
+
+extension TagManageViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "tag")
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "没有标签", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 16)])
     }
 }

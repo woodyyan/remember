@@ -10,36 +10,6 @@ import Foundation
 import UIKit
 
 class HomeService {
-    private let thingStorage = ThingStorage()
-    private let tagService = TagService()
-    private let thingTagStorage = ThingTagStorage()
-    
-    private(set) var things = [ThingModel]()
-    
-    init() {
-        things = thingStorage.getThings()
-    }
-    
-    func create(_ thing:ThingModel){
-        thingStorage.create(thing)
-    }
-    
-    func delete(_ thing:ThingModel){
-        thingStorage.delete(thing)
-        let thingTags = thingTagStorage.getThingTags(by: thing)
-        for thingTag in thingTags{
-            thingTagStorage.delete(for: thingTag)
-        }
-    }
-    
-    func save(sorted things:[ThingModel]){
-        thingStorage.save(sorted: things)
-    }
-    
-    func hasTag(for thing:ThingModel) -> Bool{
-        let tags = tagService.getSelectedTags(by: thing)
-        return tags.count > 0
-    }
     
     class func getActivityViewController(content:String) -> UIActivityViewController{
         let activityController = UIActivityViewController(activityItems: [content], applicationActivities: [])

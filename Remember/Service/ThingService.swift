@@ -11,13 +11,16 @@ import Foundation
 class ThingService {
     private let thingStorage = ThingStorage()
     private let thingTagStorage = ThingTagStorage()
+    private let tagService = TagService()
+    
+    private(set) var things = [ThingModel]()
+    
+    init() {
+        things = thingStorage.getThings()
+    }
     
     func create(_ thing:ThingModel){
         thingStorage.create(thing)
-    }
-    
-    func edit(_ thing:ThingModel){
-        thingStorage.edit(thing)
     }
     
     func delete(_ thing:ThingModel){
@@ -26,6 +29,24 @@ class ThingService {
         for thingTag in thingTags{
             thingTagStorage.delete(for: thingTag)
         }
+    }
+    
+    func save(sorted things:[ThingModel]){
+        thingStorage.save(sorted: things)
+    }
+    
+    func hasTag(for thing:ThingModel) -> Bool{
+        let tags = tagService.getSelectedTags(by: thing)
+        return tags.count > 0
+    }
+    
+    func edit(_ thing:ThingModel){
+        thingStorage.edit(thing)
+    }
+    
+    func getAllThingCount() -> Int{
+        let things = thingStorage.getThings()
+        return things.count
     }
     
     func getCreatedDateText(from date:Date) -> String{

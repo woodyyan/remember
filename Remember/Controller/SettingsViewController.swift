@@ -28,6 +28,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.backgroundColor = UIColor.background()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
+        
+        let descriptionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
+        descriptionLabel.textAlignment = .center
+        descriptionLabel.font = UIFont.systemFont(ofSize: 14)
+        descriptionLabel.textColor = UIColor.gray
+        let thingService = ThingService()
+        let count = thingService.getAllThingCount()
+        descriptionLabel.text = "共记了\(count)件小事"
+        tableView.tableHeaderView = descriptionLabel
     }
     
     // MARK: - TableView
