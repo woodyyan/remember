@@ -129,6 +129,8 @@
 		823876C21F2D766F001EA4B4 /* TagManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876C11F2D766F001EA4B4 /* TagManageViewController.swift */; };
 		823876C31F2D766F001EA4B4 /* TagManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876C11F2D766F001EA4B4 /* TagManageViewController.swift */; };
 		823876C41F2D766F001EA4B4 /* TagManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876C11F2D766F001EA4B4 /* TagManageViewController.swift */; };
+		823876C71F30D3F6001EA4B4 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 823876C51F30D3F6001EA4B4 /* 7.png */; };
+		823876C81F30D3F6001EA4B4 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 823876C61F30D3F6001EA4B4 /* 6.png */; };
 		823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
@@ -289,6 +291,8 @@
 		823539A81E37256900B102D8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		823876C11F2D766F001EA4B4 /* TagManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagManageViewController.swift; sourceTree = "<group>"; };
+		823876C51F30D3F6001EA4B4 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		823876C61F30D3F6001EA4B4 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
 		823A341E1E252EBA0093FBF4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		823A34271E2758590093FBF4 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		823A34281E2758590093FBF4 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
@@ -468,6 +472,8 @@
 		82303BCD1F24F3EE004C06F1 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
+				823876C51F30D3F6001EA4B4 /* 7.png */,
+				823876C61F30D3F6001EA4B4 /* 6.png */,
 				82303BCE1F24F3EE004C06F1 /* 1.png */,
 				82303BCF1F24F3EE004C06F1 /* 2.png */,
 				82303BD01F24F3EE004C06F1 /* 3.png */,
@@ -754,7 +760,9 @@
 				82303BD41F24F3EE004C06F1 /* 2.png in Resources */,
 				82303BCC1F24F2C0004C06F1 /* .gitattributes in Resources */,
 				82303BD31F24F3EE004C06F1 /* 1.png in Resources */,
+				823876C71F30D3F6001EA4B4 /* 7.png in Resources */,
 				82303BDB1F24F5A3004C06F1 /* .travis.yml in Resources */,
+				823876C81F30D3F6001EA4B4 /* 6.png in Resources */,
 				82303BD61F24F3EE004C06F1 /* 4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,8 +26,8 @@ App Store下载地址：[丁丁记事 on the App Store](https://itunes.apple.com
 
 ![image1](https://github.com/woodyyan/remember/raw/develop/Screenshots/1.png)
 ![image2](https://github.com/woodyyan/remember/raw/develop/Screenshots/2.png)
-![image3](https://github.com/woodyyan/remember/raw/develop/Screenshots/3.png)
-![image4](https://github.com/woodyyan/remember/raw/develop/Screenshots/4.png)
+![image3](https://github.com/woodyyan/remember/raw/develop/Screenshots/6.png)
+![image4](https://github.com/woodyyan/remember/raw/develop/Screenshots/7.png)
 ![image5](https://github.com/woodyyan/remember/raw/develop/Screenshots/5.png)
 
 ## 第三方开源库
