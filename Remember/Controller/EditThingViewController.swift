@@ -26,7 +26,7 @@ class EditThingViewController: UIViewController {
         self.title = "编辑"
         self.view.backgroundColor = UIColor.background()
         self.navigationController?.navigationBar.tintColor = UIColor.remember()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.remember()];
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
         
         let shareButtonItem = UIBarButtonItem(image: UIImage(named: "share"), style: .plain, target: self, action: #selector(EditThingViewController.shareTap(sender:)))
         shareButtonItem.imageInsets = UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
@@ -37,14 +37,14 @@ class EditThingViewController: UIViewController {
         initUI()
     }
     
-    func shareTap(sender:UIBarButtonItem){
+    @objc func shareTap(sender:UIBarButtonItem){
         if let content = thing?.content{
             let activityController = HomeService.getActivityViewController(content: content)
             self.present(activityController, animated: true, completion: nil)
         }
     }
     
-    func deleteTap(sender:UIBarButtonItem){
+    @objc func deleteTap(sender:UIBarButtonItem){
         let appearance = SCLAlertView.SCLAppearance(
             showCloseButton: false
         )

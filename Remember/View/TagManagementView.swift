@@ -70,7 +70,7 @@ class TagManagementView: UIView {
         NotificationCenter.default.addObserver(self, selector: #selector(TagManagementView.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func addTagTap(sender:UIButton){
+    @objc func addTagTap(sender:UIButton){
         self.startEdit()
     }
     
@@ -143,7 +143,7 @@ class TagManagementView: UIView {
         return tagbutton
     }
     
-    func addExitingTagTap(sender:UIButton){
+    @objc func addExitingTagTap(sender:UIButton){
         if let tag = sender.titleLabel?.text?.trimmingCharacters(in: CharacterSet.init(charactersIn: "#")){
             if let tagModel = unselectedTags.first(where: { (t) -> Bool in
                 return t.name == tag
@@ -185,7 +185,7 @@ class TagManagementView: UIView {
         if lastTagButton != nil{
             let rightPoint = lastTagButton!.frame.origin.x + lastTagButton!.frame.width
             let width = self.frame.width - rightPoint
-            let tagBounds = NSString(string: tag).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 12)], context: nil)
+            let tagBounds = NSString(string: tag).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12)], context: nil)
             if width < 70 || width < tagBounds.width + 20{
                 // 说明最右边空间不够了，该换行了
                 leftView = nil
@@ -230,7 +230,7 @@ class TagManagementView: UIView {
         return tagbutton
     }
     
-    func tagTap(sender:UIButton){
+    @objc func tagTap(sender:UIButton){
         if isEditing{
             if let tag = sender.titleLabel?.text{
                 if let tagModel = selectedTags.first(where: { (t) -> Bool in
@@ -255,11 +255,11 @@ class TagManagementView: UIView {
         }
     }
     
-    func keyboardWillHide(_ notice:Notification){
+    @objc func keyboardWillHide(_ notice:Notification){
         self.tagScrollView?.isHidden = true
     }
     
-    func keyboardWillShow(_ notice:Notification){
+    @objc func keyboardWillShow(_ notice:Notification){
         let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
         let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
         let endFrame = endFrameValue.cgRectValue

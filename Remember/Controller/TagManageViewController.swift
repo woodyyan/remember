@@ -33,7 +33,7 @@ class TagManageViewController: UITableViewController {
         self.tags = allTags
     }
     
-    func editTags(sender:UIBarButtonItem){
+    @objc func editTags(sender:UIBarButtonItem){
         self.tableView.isEditing = !self.tableView.isEditing
     }
     
@@ -64,7 +64,7 @@ class TagManageViewController: UITableViewController {
         if self.tags.count > indexPath.row
         {
             let content:NSString = self.tags[indexPath.row].name as NSString
-            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
+            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)], context: nil)
             return size.height + 30
         }
         else{
@@ -115,6 +115,6 @@ extension TagManageViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegat
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "没有标签", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 16)])
+        return NSAttributedString(string: "没有标签", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)])
     }
 }

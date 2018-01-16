@@ -95,7 +95,7 @@ class ThingTableViewCell: UITableViewCell {
     
     var addTagAction: (() -> Swift.Void)?
     
-    func addTagTap(sender:UIButton){
+    @objc func addTagTap(sender:UIButton){
         addTagAction?()
         sender.removeFromSuperview()
     }
@@ -202,7 +202,7 @@ class ThingTableViewCell: UITableViewCell {
         menuController.setMenuVisible(true, animated: true)
     }
     
-    func copyText() {
+    @objc func copyText() {
         UIPasteboard.general.string = self.textLabel?.text
         UserDefaults.standard.set(self.textLabel?.text, forKey: "pasteboardContent")
         UserDefaults.standard.synchronize()

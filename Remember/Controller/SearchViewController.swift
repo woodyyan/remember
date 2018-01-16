@@ -34,7 +34,7 @@ class SearchViewController : UIViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(SearchViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
     
-    func keyboardWillShow(_ notice:Notification){
+    @objc func keyboardWillShow(_ notice:Notification){
         let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
         let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
         let endFrame = endFrameValue.cgRectValue
@@ -109,7 +109,7 @@ class SearchViewController : UIViewController{
         textField.becomeFirstResponder()
     }
     
-    func textFieldDidChange(sender:UITextField){
+    @objc func textFieldDidChange(sender:UITextField){
         if let isEmpty = sender.text?.isEmpty{
             if isEmpty{
                 showAllTags()
@@ -123,7 +123,7 @@ class SearchViewController : UIViewController{
         self.tagView.isHidden = false
     }
     
-    func cancelTap(sender:UIButton){
+    @objc func cancelTap(sender:UIButton){
         self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
@@ -146,7 +146,7 @@ class SearchViewController : UIViewController{
         if lastTagButton != nil{
             let rightPoint = lastTagButton!.frame.origin.x + lastTagButton!.frame.width
             let width = self.view.frame.width - rightPoint
-            let tagBounds = NSString(string: tag).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 12)], context: nil)
+            let tagBounds = NSString(string: tag).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12)], context: nil)
             if width < 70 || width < tagBounds.width + 30{
                 // 说明最右边空间不够了，该换行了
                 leftView = nil
@@ -186,7 +186,7 @@ class SearchViewController : UIViewController{
         return tagbutton
     }
     
-    func tagTap(sender:UIButton){
+    @objc func tagTap(sender:UIButton){
         if let tag = sender.titleLabel?.text{
             self.tagView.isHidden = true
             self.filteredThings = searchService.getThings(byTag: tag)
@@ -217,7 +217,7 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource{
         if self.filteredThings.count > indexPath.row
         {
             let content:NSString = self.filteredThings[indexPath.row].content! as NSString
-            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
+            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)], context: nil)
             return size.height + 30
         }
         else{

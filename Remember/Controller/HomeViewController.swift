@@ -38,7 +38,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func initUI(){
         self.title = "丁丁记事"
         self.view.backgroundColor = UIColor.background()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.remember()];
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(HomeViewController.pushToAboutPage(_:)))
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.remember()
@@ -56,11 +56,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputThingView.beginEditing()
     }
     
-    func updatePasteboardView(_ notification: Notification){
+    @objc func updatePasteboardView(_ notification: Notification){
         addPasteboardViewIfNeeded()
     }
     
-    func tagRemoved(_ notification: Notification){
+    @objc func tagRemoved(_ notification: Notification){
         self.tableView.reloadData()
     }
     
@@ -81,7 +81,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             voiceInputController.delegate = self
             voiceInputController.modalPresentationStyle = .custom
             voiceInputController.modalTransitionStyle = .crossDissolve
-            self.present(voiceInputController, animated: false, completion:{ Void in
+            self.present(voiceInputController, animated: false, completion: {
                 voiceInputController.show()
             })
         }
@@ -185,7 +185,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         UserDefaults.standard.synchronize()
     }
     
-    func pasteOkButtonClick(_ sender:UIButton){
+    @objc func pasteOkButtonClick(_ sender:UIButton){
         if let content = pasteContent{
             let thing = ThingModel(content: content)
             thing.isNew = true
@@ -211,7 +211,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.endUpdates()
     }
     
-    func searchClick(_ sender:UIButton) {
+    @objc func searchClick(_ sender:UIButton) {
         inputThingView.endEditing()
         
         let searchController = SearchViewController()
@@ -243,7 +243,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.addGestureRecognizer(longPress)
     }
     
-    func longPressGestureRecognized(_ sender:AnyObject) {
+    @objc func longPressGestureRecognized(_ sender:AnyObject) {
         let longPress = sender as! UILongPressGestureRecognizer
         let state = longPress.state
         let location = longPress.location(in: self.tableView)
@@ -339,14 +339,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return snapshot
     }
     
-    func keyboardWillHide(_ notice:Notification){
+    @objc func keyboardWillHide(_ notice:Notification){
         if shouldInputViewDisplay{
             inputThingView.frame = CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight)
             self.dismiss(animated: false, completion: nil)
         }
     }
     
-    func keyboardWillShow(_ notice:Notification){
+    @objc func keyboardWillShow(_ notice:Notification){
         if shouldInputViewDisplay && inputThingView.isEditing(){
             let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
             let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
@@ -355,7 +355,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    func pushToAboutPage(_ sender:UIBarButtonItem){
+    @objc func pushToAboutPage(_ sender:UIBarButtonItem){
         inputThingView.endEditing()
         let settingsController = SettingsViewController()
         self.navigationController?.pushViewController(settingsController, animated: true)
@@ -415,7 +415,7 @@ extension HomeViewController{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let thing = things[indexPath.row]
         let content:NSString = thing.content! as NSString
-        let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 60, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:UIFont.systemFont(ofSize: 17)], context: nil)
+        let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 60, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)], context: nil)
         var height = size.height + 40
         let hasTag = service.hasTag(for: thing)
         if hasTag{
@@ -508,11 +508,11 @@ extension HomeViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "添加一个小事吧", attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 16)])
+        return NSAttributedString(string: "添加一个小事吧", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)])
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: Constants.sampleThing, attributes: [NSFontAttributeName : UIFont.systemFont(ofSize: 12)])
+        return NSAttributedString(string: Constants.sampleThing, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12)])
     }
 }
 

@@ -51,10 +51,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
-        guard let inputNode = audioEngine.inputNode else {
-            print("Audio engine has no input node")
-            return
-        }
+        let inputNode = audioEngine.inputNode
         
         guard let recognitionRequest = recognitionRequest else {
             print("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
@@ -165,12 +162,12 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func cancelTapped(sender:UIButton){
+    @objc func cancelTapped(sender:UIButton){
         resetRecognitionTask()
         self.dismissController()
     }
     
-    func okTapped(sender:UIButton){
+    @objc func okTapped(sender:UIButton){
         resetRecognitionTask()
         if !self.textView.text.isEmpty && self.hasText{
             let thing = viewModel.saveThing(self.textView.text)
@@ -195,7 +192,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         self.view.addGestureRecognizer(tapGesture)
     }
     
-    func dismissController() {
+    @objc func dismissController() {
         UIView.animate(withDuration: 0.5,
                        delay: 0.0,
                        usingSpringWithDamping: 100.0,

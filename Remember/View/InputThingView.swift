@@ -45,7 +45,7 @@ class InputThingView : UIView, UITextFieldDelegate{
         return textField.isEditing
     }
     
-    func micButtonTapped(sender:UIButton){
+    @objc func micButtonTapped(sender:UIButton){
         self.voiceInputAction?(self)
     }
     

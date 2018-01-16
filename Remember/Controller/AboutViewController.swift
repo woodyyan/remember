@@ -20,7 +20,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.title = "关于"
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.remember()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.remember()];
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
         
         initTableView()
         initBottomView()
@@ -98,7 +98,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         bottomView.addSubview(companyLabel)
     }
     
-    func feedbackClick(_ sender:UIButton) {
+    @objc func feedbackClick(_ sender:UIButton) {
         if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
@@ -111,7 +111,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func weiboClick(_ sender:UIButton) {
+    @objc func weiboClick(_ sender:UIButton) {
         if let url = URL(string: "http://weibo.com/u/5613355795") {
             UIApplication.shared.open(url, options: [String : Any](), completionHandler: nil)
         }

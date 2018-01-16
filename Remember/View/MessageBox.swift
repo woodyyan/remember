@@ -14,7 +14,7 @@ class MessageBox {
     class func show(_ message:String){
         
         let messageString = NSString(string: message)
-        let size = messageString.size(attributes: [NSFontAttributeName:UIFont.boldSystemFont(ofSize: 13)])
+        let size = messageString.size(withAttributes: [NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 13)])
         
         let window = UIApplication.shared.keyWindow;
         let showView = UIView()
