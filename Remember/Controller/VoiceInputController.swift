@@ -154,11 +154,14 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         let imageView = UIImageView()
-        imageView.loadGif(name: "voicewave")
+        imageView.loadGif(name: "audiowave")
         voiceView.addSubview(imageView)
         imageView.snp.makeConstraints { (maker) in
             maker.centerX.equalTo(voiceView)
             maker.centerY.equalTo(cancelButton)
+            maker.left.equalTo(cancelButton.snp.right).offset(15)
+            maker.right.equalTo(okButton.snp.left).offset(-15)
+            maker.height.equalTo(25)
         }
     }
     

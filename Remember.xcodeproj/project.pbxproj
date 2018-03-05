@@ -52,7 +52,6 @@
 		820B841C1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DBA1E7047A90027CA1F /* ImageIO.framework */; };
 		820B841D1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DBA1E7047A90027CA1F /* ImageIO.framework */; };
 		820B841E1F0FE3D8007E3C15 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
-		820B841F1F0FE3DC007E3C15 /* FirebaseCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA61E6954950027CA1F /* FirebaseCrash.framework */; };
 		820B84241F107063007E3C15 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
 		820B84251F107064007E3C15 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
 		820B84271F107183007E3C15 /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84261F107183007E3C15 /* TagService.swift */; };
@@ -127,24 +126,6 @@
 		823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
-		823A342D1E2758590093FBF4 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34271E2758590093FBF4 /* FirebaseAnalytics.framework */; };
-		823A342E1E27585A0093FBF4 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34271E2758590093FBF4 /* FirebaseAnalytics.framework */; };
-		823A342F1E27585A0093FBF4 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34271E2758590093FBF4 /* FirebaseAnalytics.framework */; };
-		823A34301E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34281E2758590093FBF4 /* FirebaseCore.framework */; };
-		823A34311E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34281E2758590093FBF4 /* FirebaseCore.framework */; };
-		823A34321E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34281E2758590093FBF4 /* FirebaseCore.framework */; };
-		823A34331E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34291E2758590093FBF4 /* FirebaseInstanceID.framework */; };
-		823A34341E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34291E2758590093FBF4 /* FirebaseInstanceID.framework */; };
-		823A34351E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34291E2758590093FBF4 /* FirebaseInstanceID.framework */; };
-		823A34361E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A342A1E2758590093FBF4 /* GoogleInterchangeUtilities.framework */; };
-		823A34371E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A342A1E2758590093FBF4 /* GoogleInterchangeUtilities.framework */; };
-		823A34381E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A342A1E2758590093FBF4 /* GoogleInterchangeUtilities.framework */; };
-		823A34391E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A342B1E2758590093FBF4 /* GoogleSymbolUtilities.framework */; };
-		823A343A1E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A342B1E2758590093FBF4 /* GoogleSymbolUtilities.framework */; };
-		823A343B1E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A342B1E2758590093FBF4 /* GoogleSymbolUtilities.framework */; };
-		823A343C1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A342C1E2758590093FBF4 /* GoogleUtilities.framework */; };
-		823A343D1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A342C1E2758590093FBF4 /* GoogleUtilities.framework */; };
-		823A343E1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A342C1E2758590093FBF4 /* GoogleUtilities.framework */; };
 		823A34AC1E28A2FF0093FBF4 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */; };
 		823A34AE1E28A30B0093FBF4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */; };
 		823A34B01E28A3130093FBF4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AF1E28A3130093FBF4 /* libz.tbd */; };
@@ -162,6 +143,7 @@
 		823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
 		823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
 		823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
+		823DD5E0204D86DA00861214 /* audiowave.gif in Resources */ = {isa = PBXBuildFile; fileRef = 823DD5DF204D86DA00861214 /* audiowave.gif */; };
 		825BA5F71ED47E1600B4545B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
 		825BA5F81ED4817400B4545B /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
 		825BA5F91ED4818600B4545B /* EditThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */; };
@@ -181,8 +163,6 @@
 		82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
 		82DF5DA11E657EAE0027CA1F /* EditThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */; };
 		82DF5DA21E657EB10027CA1F /* EditThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */; };
-		82DF5DA71E6954950027CA1F /* FirebaseCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA61E6954950027CA1F /* FirebaseCrash.framework */; };
-		82DF5DA81E6954950027CA1F /* FirebaseCrash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA61E6954950027CA1F /* FirebaseCrash.framework */; };
 		82DF5DAA1E6964010027CA1F /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
 		82DF5DAB1E6964130027CA1F /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
 		82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
@@ -195,6 +175,7 @@
 		82E5803B200E55C0003E2435 /* MarqueeLabelSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58038200E45B6003E2435 /* MarqueeLabelSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82E5803C200E570B003E2435 /* SCLAlertView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82F3F4452008A99C00CFC0E2 /* SCLAlertView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82E5803D200E571E003E2435 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58032200E2763003E2435 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		82E5803E200F56CC003E2435 /* NotificationBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58036200E45AE003E2435 /* NotificationBanner.framework */; };
 		82F3F4462008A99C00CFC0E2 /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F3F4452008A99C00CFC0E2 /* SCLAlertView.framework */; };
 		82F934911F1F5F5D00AE31DE /* ThingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F934901F1F5F5D00AE31DE /* ThingServiceTests.swift */; };
 		82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7D51E0A78AC00FDDFD2 /* Remember.xcdatamodeld */; };
@@ -283,12 +264,6 @@
 		823876C51F30D3F6001EA4B4 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
 		823876C61F30D3F6001EA4B4 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
 		823A341E1E252EBA0093FBF4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		823A34271E2758590093FBF4 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		823A34281E2758590093FBF4 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = "<group>"; };
-		823A34291E2758590093FBF4 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseInstanceID.framework; sourceTree = "<group>"; };
-		823A342A1E2758590093FBF4 /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleInterchangeUtilities.framework; sourceTree = "<group>"; };
-		823A342B1E2758590093FBF4 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
-		823A342C1E2758590093FBF4 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = "<group>"; };
 		823A343F1E2758840093FBF4 /* Firebase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firebase.h; sourceTree = "<group>"; };
 		823A34401E27588E0093FBF4 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -300,6 +275,7 @@
 		823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTableViewCell.swift; sourceTree = "<group>"; };
 		823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 		823A34CC1E320DC00093FBF4 /* MessageBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBox.swift; sourceTree = "<group>"; };
+		823DD5DF204D86DA00861214 /* audiowave.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = audiowave.gif; sourceTree = "<group>"; };
 		825DEB151DD9DC070065090F /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB181DD9DC070065090F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		825DEB1D1DD9DC070065090F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -318,7 +294,6 @@
 		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
 		82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditThingViewController.swift; sourceTree = "<group>"; };
-		82DF5DA61E6954950027CA1F /* FirebaseCrash.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FirebaseCrash.framework; sourceTree = "<group>"; };
 		82DF5DA91E6964010027CA1F /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceInputController.swift; sourceTree = "<group>"; };
 		82DF5DBA1E7047A90027CA1F /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -349,16 +324,9 @@
 				823A34AE1E28A30B0093FBF4 /* libsqlite3.tbd in Frameworks */,
 				823A34AC1E28A2FF0093FBF4 /* AddressBook.framework in Frameworks */,
 				82347E401F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */,
-				823A343C1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */,
 				82E58033200E2763003E2435 /* SnapKit.framework in Frameworks */,
-				823A34301E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */,
-				82DF5DA71E6954950027CA1F /* FirebaseCrash.framework in Frameworks */,
 				82347E431F03A7E2002D8024 /* AlicloudUtils.framework in Frameworks */,
-				823A34361E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
-				823A34391E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */,
-				823A34331E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */,
 				823A34C21E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
-				823A342D1E2758590093FBF4 /* FirebaseAnalytics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,21 +338,15 @@
 				82347E471F03A7E2002D8024 /* UT.framework in Frameworks */,
 				823539B11E3745BB00B102D8 /* libz.tbd in Frameworks */,
 				820B84241F107063007E3C15 /* DZNEmptyDataSet.framework in Frameworks */,
-				823A343D1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */,
-				823A34311E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */,
+				82E5803E200F56CC003E2435 /* NotificationBanner.framework in Frameworks */,
 				82DF5DAB1E6964130027CA1F /* Speech.framework in Frameworks */,
 				82347E571F03A9AE002D8024 /* libresolv.tbd in Frameworks */,
 				823539A41E37251300B102D8 /* AddressBook.framework in Frameworks */,
 				82347E4A1F03A7E2002D8024 /* UTDID.framework in Frameworks */,
 				82347E551F03A9AB002D8024 /* CoreTelephony.framework in Frameworks */,
-				823A34371E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
 				82347E531F03A9A8002D8024 /* SystemConfiguration.framework in Frameworks */,
-				823A343A1E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */,
-				823A34341E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */,
-				82DF5DA81E6954950027CA1F /* FirebaseCrash.framework in Frameworks */,
 				820B841C1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */,
 				82347E411F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */,
-				823A342E1E27585A0093FBF4 /* FirebaseAnalytics.framework in Frameworks */,
 				82347E441F03A7E2002D8024 /* AlicloudUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,9 +355,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				823A343E1E27585A0093FBF4 /* GoogleUtilities.framework in Frameworks */,
 				82347E481F03A7E2002D8024 /* UT.framework in Frameworks */,
-				823A34321E27585A0093FBF4 /* FirebaseCore.framework in Frameworks */,
 				820B84251F107064007E3C15 /* DZNEmptyDataSet.framework in Frameworks */,
 				82347E421F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */,
 				820B841E1F0FE3D8007E3C15 /* Speech.framework in Frameworks */,
@@ -403,14 +363,9 @@
 				82347E561F03A9AB002D8024 /* CoreTelephony.framework in Frameworks */,
 				82347E581F03A9AF002D8024 /* libresolv.tbd in Frameworks */,
 				823539A51E37251400B102D8 /* AddressBook.framework in Frameworks */,
-				820B841F1F0FE3DC007E3C15 /* FirebaseCrash.framework in Frameworks */,
 				82347E541F03A9A9002D8024 /* SystemConfiguration.framework in Frameworks */,
 				823539B01E3745B900B102D8 /* libsqlite3.tbd in Frameworks */,
 				82347E4B1F03A7E2002D8024 /* UTDID.framework in Frameworks */,
-				823A34381E27585A0093FBF4 /* GoogleInterchangeUtilities.framework in Frameworks */,
-				823A343B1E27585A0093FBF4 /* GoogleSymbolUtilities.framework in Frameworks */,
-				823A34351E27585A0093FBF4 /* FirebaseInstanceID.framework in Frameworks */,
-				823A342F1E27585A0093FBF4 /* FirebaseAnalytics.framework in Frameworks */,
 				823539B21E3745BC00B102D8 /* libz.tbd in Frameworks */,
 				82347E451F03A7E2002D8024 /* AlicloudUtils.framework in Frameworks */,
 			);
@@ -480,20 +435,21 @@
 				82347E3F1F03A7E2002D8024 /* UTDID.framework */,
 				82DF5DBA1E7047A90027CA1F /* ImageIO.framework */,
 				82DF5DA91E6964010027CA1F /* Speech.framework */,
-				82DF5DA61E6954950027CA1F /* FirebaseCrash.framework */,
 				823539A81E37256900B102D8 /* XCTest.framework */,
 				823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */,
 				823A34AF1E28A3130093FBF4 /* libz.tbd */,
 				823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */,
 				823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */,
-				823A34271E2758590093FBF4 /* FirebaseAnalytics.framework */,
-				823A34281E2758590093FBF4 /* FirebaseCore.framework */,
-				823A34291E2758590093FBF4 /* FirebaseInstanceID.framework */,
-				823A342A1E2758590093FBF4 /* GoogleInterchangeUtilities.framework */,
-				823A342B1E2758590093FBF4 /* GoogleSymbolUtilities.framework */,
-				823A342C1E2758590093FBF4 /* GoogleUtilities.framework */,
 			);
 			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		823DD5DE204D86C700861214 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				823DD5DF204D86DA00861214 /* audiowave.gif */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		825DEB0C1DD9DC070065090F = {
@@ -526,6 +482,7 @@
 		825DEB171DD9DC070065090F /* Remember */ = {
 			isa = PBXGroup;
 			children = (
+				823DD5DE204D86C700861214 /* Resource */,
 				825DEB181DD9DC070065090F /* AppDelegate.swift */,
 				825DEB221DD9DC070065090F /* Assets.xcassets */,
 				825DEB521DDA0B9B0065090F /* Controller */,
@@ -743,6 +700,7 @@
 				825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */,
 				82303BD41F24F3EE004C06F1 /* 2.png in Resources */,
 				82303BCC1F24F2C0004C06F1 /* .gitattributes in Resources */,
+				823DD5E0204D86DA00861214 /* audiowave.gif in Resources */,
 				82303BD31F24F3EE004C06F1 /* 1.png in Resources */,
 				823876C71F30D3F6001EA4B4 /* 7.png in Resources */,
 				82303BDB1F24F5A3004C06F1 /* .travis.yml in Resources */,
@@ -1121,6 +1079,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RememberTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1142,6 +1101,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RememberTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
