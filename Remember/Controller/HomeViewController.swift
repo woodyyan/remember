@@ -39,6 +39,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.title = "丁丁记事"
         self.view.backgroundColor = UIColor.background()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
+        self.navigationController?.navigationBar.tintColor = UIColor.remember()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(HomeViewController.pushToAboutPage(_:)))
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.remember()
@@ -511,8 +512,14 @@ extension HomeViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
         return NSAttributedString(string: "添加一个小事吧", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)])
     }
     
-    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: Constants.sampleThing, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12)])
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+        let tipsString = NSAttributedString(string: "使用小提示", attributes: [NSAttributedStringKey.foregroundColor : UIColor.remember()])
+        return tipsString
+    }
+    
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+        let tipsViewController = TipsViewController(style: .plain)
+        self.navigationController?.pushViewController(tipsViewController, animated: true)
     }
 }
 
