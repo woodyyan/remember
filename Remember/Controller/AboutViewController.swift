@@ -57,9 +57,9 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         case 2:
             return 44
         case 3:
-            return 100
-        case 4:
             return 54
+        case 4:
+            return 100
         default:
             return 44
         }
@@ -91,7 +91,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         bottomView.addSubview(starStack)
         
         let companyLabel = UILabel(frame: CGRect(x: 0, y: 40, width: self.view.frame.width, height: 15))
-        companyLabel.text = "Copyright ©2017 略懂工作室 All Rights Reserved"
+        companyLabel.text = "Copyright ©2018 略懂工作室 All Rights Reserved"
         companyLabel.textColor = UIColor.gray
         companyLabel.font = UIFont.systemFont(ofSize: 10)
         companyLabel.textAlignment = NSTextAlignment.center
@@ -144,11 +144,11 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
             //slogan：记住你容易忘记的小事
             return getSloganCell()
         case 3:
-            //介绍
-            return getDescriptionCell()
-        case 4:
             //版本号
             return getVersionCell()
+        case 4:
+            //介绍
+            return getDescriptionCell()
         default:
             return UITableViewCell()
         }
@@ -196,5 +196,10 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.textColor = UIColor.gray
         cell.textLabel?.textAlignment = .justified
         return cell
+    }
+    
+    @objc func tipsClick(_ sender:UIButton) {
+        let tipsViewController = TipsViewController(style: .plain)
+        self.navigationController?.pushViewController(tipsViewController, animated: true)
     }
 }
