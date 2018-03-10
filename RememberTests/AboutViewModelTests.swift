@@ -36,7 +36,7 @@ class AboutViewModelTests: XCTestCase {
     }
     
     func testShouldGetDescriptionCorrectly() {
-        let text = "丁丁记事是一个帮助你记住平时容易忘记的小事的轻量级备忘录，你可以非常快速而简单的记录一切容易忘记的小事，当你忘记它们的时候，可以很方便的从这里找到它们。"
+        let text = "丁丁记事是一个帮助你记住平时容易忘记的小事的轻量级备忘录，你可以非常快速而简单的记录一切的小事，当你忘记它们的时候，可以很方便的从这里找到它们。"
         
         let description = viewModel.getDescription()
         
@@ -54,6 +54,6 @@ class AboutViewModelTests: XCTestCase {
         
         XCTAssert(versionInfo.hasPrefix("版本号：V"))
         XCTAssert(versionInfo.contains("."))
-        XCTAssert(versionInfo.components(separatedBy: ".").count == 2)
+        XCTAssert(versionInfo.components(separatedBy: ".").count >= 2)
     }
 }

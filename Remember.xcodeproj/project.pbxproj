@@ -32,43 +32,25 @@
 		820B83F41F0F971D007E3C15 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83E91F0F971D007E3C15 /* HomeService.swift */; };
 		820B83F51F0F971D007E3C15 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83E91F0F971D007E3C15 /* HomeService.swift */; };
 		820B83FF1F0F971D007E3C15 /* ThingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83ED1F0F971D007E3C15 /* ThingService.swift */; };
-		820B84001F0F971D007E3C15 /* ThingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83ED1F0F971D007E3C15 /* ThingService.swift */; };
-		820B84011F0F971D007E3C15 /* ThingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83ED1F0F971D007E3C15 /* ThingService.swift */; };
 		820B84051F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */; };
-		820B84061F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */; };
-		820B84071F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */; };
 		820B840A1F0F97B5007E3C15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84091F0F97B5007E3C15 /* Constants.swift */; };
 		820B840B1F0F97B5007E3C15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84091F0F97B5007E3C15 /* Constants.swift */; };
 		820B840C1F0F97B5007E3C15 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84091F0F97B5007E3C15 /* Constants.swift */; };
 		820B84111F0F9AFE007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840E1F0F9AFE007E3C15 /* TagStorage.swift */; };
-		820B84121F0F9AFE007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840E1F0F9AFE007E3C15 /* TagStorage.swift */; };
-		820B84131F0F9AFE007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840E1F0F9AFE007E3C15 /* TagStorage.swift */; };
 		820B84141F0F9AFE007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */; };
-		820B84151F0F9AFE007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */; };
-		820B84161F0F9AFE007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */; };
 		820B84171F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */; };
-		820B84181F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */; };
-		820B84191F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */; };
 		820B841C1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DBA1E7047A90027CA1F /* ImageIO.framework */; };
 		820B841D1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DBA1E7047A90027CA1F /* ImageIO.framework */; };
 		820B841E1F0FE3D8007E3C15 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
 		820B84241F107063007E3C15 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
 		820B84251F107064007E3C15 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
 		820B84271F107183007E3C15 /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84261F107183007E3C15 /* TagService.swift */; };
-		820B84281F107183007E3C15 /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84261F107183007E3C15 /* TagService.swift */; };
-		820B84291F107183007E3C15 /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84261F107183007E3C15 /* TagService.swift */; };
 		820B842B1F1119A7007E3C15 /* TagManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B842A1F1119A7007E3C15 /* TagManagementView.swift */; };
-		820B842C1F1119A7007E3C15 /* TagManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B842A1F1119A7007E3C15 /* TagManagementView.swift */; };
-		820B842D1F1119A7007E3C15 /* TagManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B842A1F1119A7007E3C15 /* TagManagementView.swift */; };
-		820B842E1F11C262007E3C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
-		820B842F1F11C263007E3C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		821FC4CA1E71407600A64E94 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
 		821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
 		821FC4CD1E7141B100A64E94 /* voicewave.gif in Resources */ = {isa = PBXBuildFile; fileRef = 821FC4CC1E7141B100A64E94 /* voicewave.gif */; };
 		821FC4CE1E7141B100A64E94 /* voicewave.gif in Resources */ = {isa = PBXBuildFile; fileRef = 821FC4CC1E7141B100A64E94 /* voicewave.gif */; };
 		82303BAF1F245454004C06F1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82303BAE1F245454004C06F1 /* SearchViewController.swift */; };
-		82303BB01F245454004C06F1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82303BAE1F245454004C06F1 /* SearchViewController.swift */; };
-		82303BB11F245454004C06F1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82303BAE1F245454004C06F1 /* SearchViewController.swift */; };
 		82303BC51F24ADC4004C06F1 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 82303BC31F24ADC4004C06F1 /* Cartfile */; };
 		82303BC61F24ADC4004C06F1 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 82303BC31F24ADC4004C06F1 /* Cartfile */; };
 		82303BC71F24ADC4004C06F1 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 82303BC31F24ADC4004C06F1 /* Cartfile */; };
@@ -83,14 +65,8 @@
 		82303BD71F24F3EE004C06F1 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 82303BD21F24F3EE004C06F1 /* 5.png */; };
 		82303BDB1F24F5A3004C06F1 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 82303BDA1F24F5A2004C06F1 /* .travis.yml */; };
 		82303BDD1F25B2FF004C06F1 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82303BDC1F25B2FF004C06F1 /* SearchService.swift */; };
-		82303BDE1F25B2FF004C06F1 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82303BDC1F25B2FF004C06F1 /* SearchService.swift */; };
-		82303BDF1F25B2FF004C06F1 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82303BDC1F25B2FF004C06F1 /* SearchService.swift */; };
 		82347E401F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */; };
-		82347E411F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */; };
-		82347E421F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3C1F03A7E1002D8024 /* AlicloudMobileAnalitics.framework */; };
 		82347E431F03A7E2002D8024 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3D1F03A7E2002D8024 /* AlicloudUtils.framework */; };
-		82347E441F03A7E2002D8024 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3D1F03A7E2002D8024 /* AlicloudUtils.framework */; };
-		82347E451F03A7E2002D8024 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3D1F03A7E2002D8024 /* AlicloudUtils.framework */; };
 		82347E461F03A7E2002D8024 /* UT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3E1F03A7E2002D8024 /* UT.framework */; };
 		82347E471F03A7E2002D8024 /* UT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3E1F03A7E2002D8024 /* UT.framework */; };
 		82347E481F03A7E2002D8024 /* UT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E3E1F03A7E2002D8024 /* UT.framework */; };
@@ -112,20 +88,11 @@
 		823539B01E3745B900B102D8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */; };
 		823539B11E3745BB00B102D8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AF1E28A3130093FBF4 /* libz.tbd */; };
 		823539B21E3745BC00B102D8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AF1E28A3130093FBF4 /* libz.tbd */; };
-		823539B71E3885E400B102D8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
-		823539B91E38863400B102D8 /* InputThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputThingView.swift */; };
-		823539BA1E38863500B102D8 /* InputThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB501DDA0B640065090F /* InputThingView.swift */; };
 		823876BE1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */; };
-		823876BF1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */; };
-		823876C01F2D6727001EA4B4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */; };
 		823876C21F2D766F001EA4B4 /* TagManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876C11F2D766F001EA4B4 /* TagManageViewController.swift */; };
-		823876C31F2D766F001EA4B4 /* TagManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876C11F2D766F001EA4B4 /* TagManageViewController.swift */; };
-		823876C41F2D766F001EA4B4 /* TagManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823876C11F2D766F001EA4B4 /* TagManageViewController.swift */; };
 		823876C71F30D3F6001EA4B4 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 823876C51F30D3F6001EA4B4 /* 7.png */; };
 		823876C81F30D3F6001EA4B4 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 823876C61F30D3F6001EA4B4 /* 6.png */; };
 		823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
-		823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
-		823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A341E1E252EBA0093FBF4 /* AboutViewController.swift */; };
 		823A34AC1E28A2FF0093FBF4 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */; };
 		823A34AE1E28A30B0093FBF4 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */; };
 		823A34B01E28A3130093FBF4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AF1E28A3130093FBF4 /* libz.tbd */; };
@@ -136,17 +103,12 @@
 		823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34B61E2E26C60093FBF4 /* InputTextField.swift */; };
 		823A34B91E2E26C60093FBF4 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34B61E2E26C60093FBF4 /* InputTextField.swift */; };
 		823A34BC1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */; };
-		823A34BD1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */; };
-		823A34BE1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */; };
 		823A34C21E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
 		823A34CA1E31FE1A0093FBF4 /* DZNEmptyDataSet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
 		823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
 		823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823A34CC1E320DC00093FBF4 /* MessageBox.swift */; };
 		823DD5E0204D86DA00861214 /* audiowave.gif in Resources */ = {isa = PBXBuildFile; fileRef = 823DD5DF204D86DA00861214 /* audiowave.gif */; };
-		825BA5F71ED47E1600B4545B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB541DDA0B9B0065090F /* HomeViewController.swift */; };
-		825BA5F81ED4817400B4545B /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
-		825BA5F91ED4818600B4545B /* EditThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */; };
 		825BA5FB1ED4819600B4545B /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
@@ -162,11 +124,9 @@
 		82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
 		82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
 		82DF5DA11E657EAE0027CA1F /* EditThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */; };
-		82DF5DA21E657EB10027CA1F /* EditThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */; };
 		82DF5DAA1E6964010027CA1F /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
 		82DF5DAB1E6964130027CA1F /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
 		82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
-		82DF5DAE1E6D58740027CA1F /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
 		82DF5DBB1E7047A90027CA1F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DBA1E7047A90027CA1F /* ImageIO.framework */; };
 		82E58033200E2763003E2435 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58032200E2763003E2435 /* SnapKit.framework */; };
 		82E58037200E45AE003E2435 /* NotificationBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58036200E45AE003E2435 /* NotificationBanner.framework */; };
@@ -176,6 +136,10 @@
 		82E5803C200E570B003E2435 /* SCLAlertView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82F3F4452008A99C00CFC0E2 /* SCLAlertView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82E5803D200E571E003E2435 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58032200E2763003E2435 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82E5803E200F56CC003E2435 /* NotificationBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58036200E45AE003E2435 /* NotificationBanner.framework */; };
+		82E7AC542053F39F006FC9E5 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AC532053F39F006FC9E5 /* TipsViewController.swift */; };
+		82E7AC5720541945006FC9E5 /* TipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AC5620541945006FC9E5 /* TipsViewModel.swift */; };
+		82E7AC58205420A1006FC9E5 /* TipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AC5620541945006FC9E5 /* TipsViewModel.swift */; };
+		82E7AC5D205420D3006FC9E5 /* TipsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AC5C205420D3006FC9E5 /* TipsViewModelTests.swift */; };
 		82F3F4462008A99C00CFC0E2 /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F3F4452008A99C00CFC0E2 /* SCLAlertView.framework */; };
 		82F934911F1F5F5D00AE31DE /* ThingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F934901F1F5F5D00AE31DE /* ThingServiceTests.swift */; };
 		82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7D51E0A78AC00FDDFD2 /* Remember.xcdatamodeld */; };
@@ -300,6 +264,9 @@
 		82E58032200E2763003E2435 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = SOURCE_ROOT; };
 		82E58036200E45AE003E2435 /* NotificationBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationBanner.framework; path = Carthage/Build/iOS/NotificationBanner.framework; sourceTree = SOURCE_ROOT; };
 		82E58038200E45B6003E2435 /* MarqueeLabelSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarqueeLabelSwift.framework; path = Carthage/Build/iOS/MarqueeLabelSwift.framework; sourceTree = SOURCE_ROOT; };
+		82E7AC532053F39F006FC9E5 /* TipsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
+		82E7AC5620541945006FC9E5 /* TipsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewModel.swift; sourceTree = "<group>"; };
+		82E7AC5C205420D3006FC9E5 /* TipsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsViewModelTests.swift; sourceTree = "<group>"; };
 		82F3F4452008A99C00CFC0E2 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = Carthage/Build/iOS/SCLAlertView.framework; sourceTree = SOURCE_ROOT; };
 		82F934901F1F5F5D00AE31DE /* ThingServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingServiceTests.swift; sourceTree = "<group>"; };
 		82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
@@ -346,8 +313,6 @@
 				82347E551F03A9AB002D8024 /* CoreTelephony.framework in Frameworks */,
 				82347E531F03A9A8002D8024 /* SystemConfiguration.framework in Frameworks */,
 				820B841C1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */,
-				82347E411F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */,
-				82347E441F03A7E2002D8024 /* AlicloudUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,7 +322,6 @@
 			files = (
 				82347E481F03A7E2002D8024 /* UT.framework in Frameworks */,
 				820B84251F107064007E3C15 /* DZNEmptyDataSet.framework in Frameworks */,
-				82347E421F03A7E2002D8024 /* AlicloudMobileAnalitics.framework in Frameworks */,
 				820B841E1F0FE3D8007E3C15 /* Speech.framework in Frameworks */,
 				820B841D1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */,
 				82347E561F03A9AB002D8024 /* CoreTelephony.framework in Frameworks */,
@@ -367,7 +331,6 @@
 				823539B01E3745B900B102D8 /* libsqlite3.tbd in Frameworks */,
 				82347E4B1F03A7E2002D8024 /* UTDID.framework in Frameworks */,
 				823539B21E3745BC00B102D8 /* libz.tbd in Frameworks */,
-				82347E451F03A7E2002D8024 /* AlicloudUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +445,7 @@
 		825DEB171DD9DC070065090F /* Remember */ = {
 			isa = PBXGroup;
 			children = (
+				82E7AC5520541933006FC9E5 /* ViewModel */,
 				823DD5DE204D86C700861214 /* Resource */,
 				825DEB181DD9DC070065090F /* AppDelegate.swift */,
 				825DEB221DD9DC070065090F /* Assets.xcassets */,
@@ -508,6 +472,7 @@
 		825DEB2F1DD9DC070065090F /* RememberTests */ = {
 			isa = PBXGroup;
 			children = (
+				82E7AC59205420AD006FC9E5 /* ViewModelTests */,
 				820B84301F11C2A0007E3C15 /* Remember-Bridging-Header.h */,
 				825DEB301DD9DC070065090F /* RememberTests.swift */,
 				825DEB321DD9DC070065090F /* Info.plist */,
@@ -552,8 +517,25 @@
 				82303BAE1F245454004C06F1 /* SearchViewController.swift */,
 				823876BD1F2D6727001EA4B4 /* SettingsViewController.swift */,
 				823876C11F2D766F001EA4B4 /* TagManageViewController.swift */,
+				82E7AC532053F39F006FC9E5 /* TipsViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		82E7AC5520541933006FC9E5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				82E7AC5620541945006FC9E5 /* TipsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		82E7AC59205420AD006FC9E5 /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				82E7AC5C205420D3006FC9E5 /* TipsViewModelTests.swift */,
+			);
+			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
 		82FED7CE1E0A631700FDDFD2 /* Model */ = {
@@ -759,11 +741,13 @@
 				820B83F31F0F971D007E3C15 /* HomeService.swift in Sources */,
 				820B83B51F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
 				825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */,
+				82E7AC5720541945006FC9E5 /* TipsViewModel.swift in Sources */,
 				823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				823876BE1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */,
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				823876C21F2D766F001EA4B4 /* TagManageViewController.swift in Sources */,
+				82E7AC542053F39F006FC9E5 /* TipsViewController.swift in Sources */,
 				82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
 				82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
 				823A34BC1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
@@ -795,36 +779,20 @@
 				825DEB311DD9DC070065090F /* RememberTests.swift in Sources */,
 				820B83DD1F0E8AA6007E3C15 /* ThingModel.swift in Sources */,
 				820B840B1F0F97B5007E3C15 /* Constants.swift in Sources */,
-				820B84181F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
 				820B83E51F0E8D3D007E3C15 /* TagModel.swift in Sources */,
-				82303BDE1F25B2FF004C06F1 /* SearchService.swift in Sources */,
 				82DB5C221E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 				82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */,
 				820B83F41F0F971D007E3C15 /* HomeService.swift in Sources */,
-				823A34201E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
-				820B84061F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */,
-				823539B91E38863400B102D8 /* InputThingView.swift in Sources */,
 				82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */,
-				82303BB01F245454004C06F1 /* SearchViewController.swift in Sources */,
-				820B84001F0F971D007E3C15 /* ThingService.swift in Sources */,
-				823539B71E3885E400B102D8 /* HomeViewController.swift in Sources */,
-				823876C31F2D766F001EA4B4 /* TagManageViewController.swift in Sources */,
+				82E7AC5D205420D3006FC9E5 /* TipsViewModelTests.swift in Sources */,
 				820B83BE1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				820B83C61F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
-				820B84121F0F9AFE007E3C15 /* TagStorage.swift in Sources */,
-				82DF5DA21E657EB10027CA1F /* EditThingViewController.swift in Sources */,
+				82E7AC58205420A1006FC9E5 /* TipsViewModel.swift in Sources */,
 				820B83F11F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
-				82DF5DAE1E6D58740027CA1F /* VoiceInputController.swift in Sources */,
 				82F934911F1F5F5D00AE31DE /* ThingServiceTests.swift in Sources */,
-				823876BF1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */,
 				820B83B61F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
-				820B842C1F1119A7007E3C15 /* TagManagementView.swift in Sources */,
-				820B842E1F11C262007E3C15 /* AppDelegate.swift in Sources */,
-				820B84151F0F9AFE007E3C15 /* ThingStorage.swift in Sources */,
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
-				823A34BD1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
-				820B84281F107183007E3C15 /* TagService.swift in Sources */,
 				820B83E11F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 				821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */,
 				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
@@ -835,38 +803,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				823A34BE1E2F4EAF0093FBF4 /* ThingTableViewCell.swift in Sources */,
 				820B83F21F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
 				820B83F51F0F971D007E3C15 /* HomeService.swift in Sources */,
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
-				820B842F1F11C263007E3C15 /* AppDelegate.swift in Sources */,
 				820B83B71F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
-				825BA5F81ED4817400B4545B /* VoiceInputController.swift in Sources */,
 				820B83C71F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
-				825BA5F71ED47E1600B4545B /* HomeViewController.swift in Sources */,
-				825BA5F91ED4818600B4545B /* EditThingViewController.swift in Sources */,
 				823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				825BA5FB1ED4819600B4545B /* UIImage+Gif.swift in Sources */,
-				820B84131F0F9AFE007E3C15 /* TagStorage.swift in Sources */,
 				820B840C1F0F97B5007E3C15 /* Constants.swift in Sources */,
-				820B842D1F1119A7007E3C15 /* TagManagementView.swift in Sources */,
-				820B84071F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */,
-				820B84191F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
 				820B83E61F0E8D3D007E3C15 /* TagModel.swift in Sources */,
 				820B83BF1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
-				820B84011F0F971D007E3C15 /* ThingService.swift in Sources */,
-				823876C01F2D6727001EA4B4 /* SettingsViewController.swift in Sources */,
-				823A34211E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				823A34B91E2E26C60093FBF4 /* InputTextField.swift in Sources */,
-				823539BA1E38863500B102D8 /* InputThingView.swift in Sources */,
 				820B83DE1F0E8AA6007E3C15 /* ThingModel.swift in Sources */,
 				820B83E21F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
-				820B84161F0F9AFE007E3C15 /* ThingStorage.swift in Sources */,
 				82DB5C231E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
-				823876C41F2D766F001EA4B4 /* TagManageViewController.swift in Sources */,
-				82303BDF1F25B2FF004C06F1 /* SearchService.swift in Sources */,
-				820B84291F107183007E3C15 /* TagService.swift in Sources */,
-				82303BB11F245454004C06F1 /* SearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

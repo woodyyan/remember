@@ -45,7 +45,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 0:
             return 1
         case 1:
-            return 2
+            return 3
         case 2:
             return 1
         default: return 0
@@ -63,8 +63,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 1:
             switch indexPath.row {
             case 0:
-                return getCell(.recommand)
+                return getCell(.tips)
             case 1:
+                return getCell(.recommand)
+            case 2:
                 return getCell(.comment)
             default:
                 return UITableViewCell()
@@ -83,8 +85,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 1:
             switch indexPath.row {
             case 0:
-                recommandToFriends()
+                openTips()
             case 1:
+                recommandToFriends()
+            case 2:
                 commentAppInStore()
             default:
                 break
@@ -98,6 +102,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     // MARK: - Private Methods
+    
+    private func openTips() {
+        let controller = TipsViewController(style: .plain)
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     fileprivate func commentAppInStore() {
         if let url = URL(string: appStoreUrl) {
             UIApplication.shared.open(url, options: [String : Any](), completionHandler: nil)
@@ -122,6 +132,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case .recommand:
             cell.textLabel?.text = "告诉小伙伴"
             cell.imageView?.image = #imageLiteral(resourceName: "share_gray")
+        case .tips:
+            cell.textLabel?.text = "使用小提示"
+            cell.imageView?.image = #imageLiteral(resourceName: "tips")
         case .comment:
             cell.textLabel?.text = "给我们评分"
             cell.imageView?.image = #imageLiteral(resourceName: "like_gray")
@@ -142,4 +155,5 @@ fileprivate enum CellType {
     case recommand
     case comment
     case about
+    case tips
 }
