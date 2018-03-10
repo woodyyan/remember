@@ -282,7 +282,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     let index = self.things[indexPath!.row].index
                     self.things[indexPath!.row].index = self.things[tempIndexPath.row].index
                     self.things[tempIndexPath.row].index = index
-                    swap(&self.things[indexPath!.row], &self.things[tempIndexPath.row])
+                    self.things.swapAt(indexPath!.row, tempIndexPath.row)
                     self.tableView.moveRow(at: tempIndexPath, to: indexPath!)
                     sourceIndexPath = indexPath
                 }
