@@ -260,11 +260,19 @@ class TagManagementView: UIView {
     }
     
     @objc func keyboardWillShow(_ notice:Notification){
-        let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
-        let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
-        let endFrame = endFrameValue.cgRectValue
-        //因为self的高度不对，所以只能这么计算y
-        self.tagScrollView?.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - self.frame.origin.y - 44 - 64 - endFrame.height, width: self.bounds.width, height: 44)
+        if let endFrame = notice.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            //因为self的高度不对，所以只能这么计算y
+            var y:CGFloat = 0
+            if UIDevice().userInterfaceIdiom == .phone {
+                switch UIScreen.main.nativeBounds.height {
+                case 2436:
+                    y = endFrame.cgPointValue.y - self.frame.origin.y - 44 - 84
+                default:
+                    y = UIScreen.main.bounds.height - self.frame.origin.y - 44 - 64 - endFrame.cgRectValue.height
+                }
+            }
+            self.tagScrollView?.frame = CGRect(x: 0, y: y, width: self.bounds.width, height: 44)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
