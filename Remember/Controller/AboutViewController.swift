@@ -84,10 +84,10 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         lineView.backgroundColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
         bottomView.addSubview(lineView)
         
-        let feedbackButton = UIButton(type: UIButtonType.system)
-        feedbackButton.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
-        feedbackButton.setTitle("反馈", for: UIControlState())
-        feedbackButton.addTarget(self, action: #selector(AboutViewController.feedbackClick(_:)), for: .touchUpInside)
+        let contactButton = UIButton(type: UIButtonType.system)
+        contactButton.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
+        contactButton.setTitle("邮箱", for: UIControlState())
+        contactButton.addTarget(self, action: #selector(AboutViewController.contactClick(_:)), for: .touchUpInside)
         
         //微博按钮
         let weiboButton = UIButton(type: UIButtonType.system)
@@ -95,7 +95,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         weiboButton.setTitle("微博", for: UIControlState())
         weiboButton.addTarget(self, action: #selector(AboutViewController.weiboClick(_:)), for: UIControlEvents.touchUpInside)
         
-        let starStack = UIStackView(arrangedSubviews: [feedbackButton, weiboButton])
+        let starStack = UIStackView(arrangedSubviews: [contactButton, weiboButton])
         starStack.frame = CGRect(x: 0, y: 10, width: self.view.frame.width, height: 30)
         starStack.distribution = .fillEqually
         bottomView.addSubview(starStack)
@@ -108,11 +108,11 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         bottomView.addSubview(companyLabel)
     }
     
-    @objc func feedbackClick(_ sender:UIButton) {
+    @objc func contactClick(_ sender:UIButton) {
         if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
-            mailComposerVC.setSubject("丁丁记事反馈")
+            mailComposerVC.setSubject("丁丁记事")
             mailComposerVC.setToRecipients(["easystudio@outlook.com"])
             self.present(mailComposerVC, animated: true, completion: nil)
         } else {
