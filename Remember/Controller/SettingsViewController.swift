@@ -10,9 +10,20 @@ import UIKit
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     fileprivate let service = AboutViewModel()
+    private let feedbackKit = BCFeedbackKit(appKey: GlobleParameters.aliyunAppKey, appSecret: GlobleParameters.aliyunAppSecret)
     fileprivate var appStoreUrl = "https://itunes.apple.com/us/app/id1192994573"
     
     var tableView:UITableView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ALBBMANPageHitHelper.getInstance().pageAppear(self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        ALBBMANPageHitHelper.getInstance().pageDisAppear(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +56,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 0:
             return 1
         case 1:
-            return 3
+            return 4
         case 2:
             return 1
         default: return 0
@@ -68,6 +79,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 return getCell(.recommand)
             case 2:
                 return getCell(.comment)
+            case 3:
+                return getCell(.feedback)
             default:
                 return UITableViewCell()
             }
@@ -90,6 +103,10 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 recommandToFriends()
             case 2:
                 commentAppInStore()
+            case 3:
+                let cell = tableView.cellForRow(at: indexPath)
+                cell?.detailTextLabel?.text = ""
+                feedback()
             default:
                 break
             }
@@ -112,6 +129,21 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if let url = URL(string: appStoreUrl) {
             UIApplication.shared.open(url, options: [String : Any](), completionHandler: nil)
         }
+    }
+    
+    private func feedback() {
+        feedbackKit?.extInfo = [
+            "app_version":AboutViewModel().getCurrentVersion(),
+            "device_model":UIDevice.current.model
+        ]
+        feedbackKit?.makeFeedbackViewController(completionBlock: { (controller, error) in
+            if let feedbackController = controller {
+                 self.navigationController?.pushViewController(feedbackController, animated: true)
+                feedbackController.closeBlock = { controller in
+                    controller?.navigationController?.popViewController(animated: true)
+                }
+            }
+        })
     }
     
     fileprivate func recommandToFriends() {
@@ -138,6 +170,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case .comment:
             cell.textLabel?.text = "给我们评分"
             cell.imageView?.image = #imageLiteral(resourceName: "like_gray")
+        case .feedback:
+            let feedbackCell = UITableViewCell(style: .value1, reuseIdentifier:"feedback")
+            feedbackCell.accessoryType = .disclosureIndicator
+            feedbackCell.textLabel?.text = "反馈与建议"
+            feedbackCell.imageView?.image = #imageLiteral(resourceName: "feedback")
+            feedbackKit?.getUnreadCount(completionBlock: { (count, error) in
+                if count == 0 {
+                    feedbackCell.detailTextLabel?.text = ""
+                }else {
+                    feedbackCell.detailTextLabel?.text = String(count)
+                }
+            })
+            return feedbackCell
         case .about:
             let newCell = UITableViewCell(style: .value1, reuseIdentifier:"about")
             newCell.textLabel?.text = "关于"
@@ -156,4 +201,5 @@ fileprivate enum CellType {
     case comment
     case about
     case tips
+    case feedback
 }

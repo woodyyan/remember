@@ -7,3 +7,5 @@
 //
 
 #import <AlicloudMobileAnalitics/ALBBMAN.h>
+#import <YWFeedbackFMWK/YWFeedbackKit.h>
+#import <YWFeedbackFMWK/YWFeedbackViewController.h>

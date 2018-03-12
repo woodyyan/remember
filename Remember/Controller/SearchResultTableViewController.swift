@@ -15,6 +15,16 @@ class SearchResultTableViewController : UITableViewController, UISearchResultsUp
     var searchResultDelegate:SearchResultTableDelegate?
     var things = [ThingModel]()
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ALBBMANPageHitHelper.getInstance().pageAppear(self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        ALBBMANPageHitHelper.getInstance().pageDisAppear(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")

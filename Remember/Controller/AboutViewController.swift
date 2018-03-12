@@ -14,6 +14,16 @@ import NotificationBanner
 class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
     private let viewModel = AboutViewModel()
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        ALBBMANPageHitHelper.getInstance().pageAppear(self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        ALBBMANPageHitHelper.getInstance().pageDisAppear(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
