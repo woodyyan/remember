@@ -102,7 +102,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
             print("audioEngine couldn't start because of an error.")
         }
         
-        textView.text = "说出你要记的小事吧"
+        textView.text = NSLocalizedString("sayThing", comment: "")
     }
     
     private func requestAuthorization(){

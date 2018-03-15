@@ -10,19 +10,15 @@ import Foundation
 
 class AboutViewModel {
     func getAppName() -> String{
-        return "丁丁记事"
+        return NSLocalizedString("appName", comment: "丁丁记事")
     }
     
     func getSlogan() -> String{
-        return "记住你容易忘记的小事"
+        return NSLocalizedString("rememberEveryThing", comment: "")
     }
     
     func getVersionInfo() -> String{
-        return "版本号：V\(getCurrentVersion())"
-    }
-    
-    func getDescription() -> String{
-        return Constants.description
+        return "\(NSLocalizedString("version", comment: "版本号"))V\(getCurrentVersion())"
     }
     
     func getGettingStarted() -> String{

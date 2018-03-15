@@ -33,7 +33,7 @@ class EditThingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "编辑"
+        self.title = NSLocalizedString("edit", comment: "编辑")
         self.view.backgroundColor = UIColor.background()
         self.navigationController?.navigationBar.tintColor = UIColor.remember()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
@@ -59,17 +59,17 @@ class EditThingViewController: UIViewController {
             showCloseButton: false
         )
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("确认删除", backgroundColor: UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+        alertView.addButton(NSLocalizedString("confirmDelete", comment: ""), backgroundColor: UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
             if let currentThing = self.thing{
                 self.service.delete(currentThing)
                 self.delegate?.editThing(isDeleted: true, thing: currentThing)
                 self.navigationController?.popViewController(animated: true)
             }
         })
-        alertView.addButton("取消", backgroundColor: UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+        alertView.addButton(NSLocalizedString("cancel", comment: "取消"), backgroundColor: UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
         })
         
-        alertView.showWarning("确定要删除吗？", subTitle: "删除后就找不回来啦。")
+        alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
     }
     
     private func initUI(){

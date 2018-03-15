@@ -46,7 +46,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initUI(){
-        self.title = "丁丁记事"
+        self.title = NSLocalizedString("appName", comment: "丁丁记事")
         self.view.backgroundColor = UIColor.background()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
         self.navigationController?.navigationBar.tintColor = UIColor.remember()
@@ -136,7 +136,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func getSearchButton() -> UIView{
         let searchButton = UIButton(type: UIButtonType.system)
-        searchButton.setTitle(" 搜索你忘记的小事", for: UIControlState.normal)
+        searchButton.setTitle(NSLocalizedString("searchPlaceHolder", comment: "搜索"), for: UIControlState.normal)
         searchButton.setImage(UIImage(named: "Search"), for: UIControlState.normal)
         searchButton.frame = CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 40)
         searchButton.layer.borderColor = UIColor.inputGray().cgColor
@@ -155,7 +155,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         pasteboardView.backgroundColor = UIColor.white
         let tipTextLabel = UILabel(frame: CGRect(x: 10, y: 5, width: pasteboardView.frame.width, height: 20))
         tipTextLabel.textColor = UIColor.remember()
-        tipTextLabel.text = "是否要添加粘贴板的内容："
+        tipTextLabel.text = NSLocalizedString("addPasteboardContent", comment: "")
         tipTextLabel.font = UIFont.systemFont(ofSize: 12)
         pasteboardView.addSubview(tipTextLabel)
         tipTextLabel.snp.makeConstraints { (maker) in
@@ -439,14 +439,14 @@ extension HomeViewController{
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "标签") { (action, index) -> Void in
+        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: NSLocalizedString("tag", comment: "标签")) { (action, index) -> Void in
             let index = indexPath.row
             let thing = self.things[index]
             self.editThing(thing, isTag: true)
             tableView.isEditing = false
         }
         
-        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "分享") { (action, index) -> Void in
+        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: NSLocalizedString("share", comment: "分享")) { (action, index) -> Void in
             let index=(indexPath as NSIndexPath).row as Int
             let thing = self.things[index]
             let activityController = HomeService.getActivityViewController(content: thing.content!)
@@ -454,23 +454,23 @@ extension HomeViewController{
         }
         shareAction.backgroundColor = UIColor.remember()
         
-        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "删除") { (action, index) -> Void in
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: NSLocalizedString("delete", comment: "删除")) { (action, index) -> Void in
             
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false
             )
             let alertView = SCLAlertView(appearance: appearance)
-            alertView.addButton("确认删除", backgroundColor: UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+            alertView.addButton(NSLocalizedString("confirmDelete", comment: ""), backgroundColor: UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
                 let index=(indexPath as NSIndexPath).row as Int
                 let thing = self.things[index]
                 self.things.remove(at: index)
                 self.service.delete(thing)
                 tableView.reloadData()
             })
-            alertView.addButton("取消", backgroundColor: UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+            alertView.addButton(NSLocalizedString("cancel", comment: "取消"), backgroundColor: UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
                 tableView.setEditing(false, animated: true)
             })
-            alertView.showWarning("确定要删除吗？", subTitle: "删除后就找不回来啦。")
+            alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
         }
         return [deleteAction, shareAction,editAction]
     }
@@ -519,11 +519,11 @@ extension HomeViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "添加一个小事吧", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)])
+        return NSAttributedString(string: NSLocalizedString("addOneThing", comment: ""), attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)])
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        let tipsString = NSAttributedString(string: "使用小提示", attributes: [NSAttributedStringKey.foregroundColor : UIColor.remember()])
+        let tipsString = NSAttributedString(string: NSLocalizedString("tips", comment: "提示"), attributes: [NSAttributedStringKey.foregroundColor : UIColor.remember()])
         return tipsString
     }
     

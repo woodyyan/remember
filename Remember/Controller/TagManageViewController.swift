@@ -28,7 +28,7 @@ class TagManageViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "标签管理"
+        self.title = NSLocalizedString("tagManager", comment: "标签管理")
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.tableFooterView = UIView(frame:CGRect.zero)
@@ -64,7 +64,7 @@ class TagManageViewController: UITableViewController {
         cell.textLabel?.numberOfLines = 0
         cell.imageView?.image = #imageLiteral(resourceName: "tag_gray")
         let things = searchService.getThings(byTag: tagName!)
-        cell.detailTextLabel?.text = "\(things.count)件小事"
+        cell.detailTextLabel?.text = "\(things.count)\(NSLocalizedString("things", comment: "件小事"))"
         cell.detailTextLabel?.textColor = UIColor.lightGray
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12)
         return cell
@@ -87,13 +87,13 @@ class TagManageViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
-        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: "删除") { (action, index) -> Void in
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: NSLocalizedString("delete", comment: "删除")) { (action, index) -> Void in
             
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false
             )
             let alertView = SCLAlertView(appearance: appearance)
-            alertView.addButton("确认删除", backgroundColor: UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+            alertView.addButton(NSLocalizedString("confirmDelete", comment: "确认删除"), backgroundColor: UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
                 let index=(indexPath as NSIndexPath).row as Int
                 let tag = self.tags[index]
                 self.tags.remove(at: index)
@@ -101,10 +101,10 @@ class TagManageViewController: UITableViewController {
                 tableView.reloadData()
                 self.sendNotification(with: tag)
             })
-            alertView.addButton("取消", backgroundColor: UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+            alertView.addButton(NSLocalizedString("cancel", comment: "取消"), backgroundColor: UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
                 tableView.setEditing(false, animated: true)
             })
-            alertView.showWarning("确定要删除吗？", subTitle: "删除标签不会删除对应的小事。")
+            alertView.showWarning(NSLocalizedString("sureToDelete", comment: "确定要删除吗？"), subTitle: NSLocalizedString("deleteTagNotDeleteThing", comment: "删除提示"))
         }
         return [deleteAction]
     }
@@ -125,6 +125,6 @@ extension TagManageViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegat
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "没有标签", attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)])
+        return NSAttributedString(string: NSLocalizedString("noTag", comment: "没有标签"), attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)])
     }
 }

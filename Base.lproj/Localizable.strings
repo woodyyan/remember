@@ -1,0 +1,65 @@
+/* 
+  Localizable.strings
+  Remember
+
+  Created by Songbai Yan on 14/03/2018.
+  Copyright © 2018 Songbai Yan. All rights reserved.
+*/
+"appName" = "丁丁记事";
+"searchPlaceHolder" = " 搜索你忘记的小事";
+"addThingPlaceHolder" = " 记一点什么吧";
+"settings" = "设置";
+"totalThingsPart1" = "共记了";
+"totalThingsPart2" = "件小事";
+"tagManager" = "标签管理";
+"tellFriends" = "告诉小伙伴";
+"tips" = "使用小提示";
+"reviewInAppStore" = "给我们评分";
+"feedback" = "反馈与建议";
+"about" = "关于";
+"things" = "件小事";
+"delete" = "删除";
+"confirmDelete" = "确认删除";
+"cancel" = "取消";
+"sureToDelete" = "确定要删除吗？";
+"deleteTagNotDeleteThing" = "删除标签不会删除对应的小事。";
+"noTag" = "没有标签";
+"email" = "邮箱";
+"weibo" = "微博";
+"copyright" = "Copyright ©2018 略懂工作室 All Rights Reserved";
+"emailSubject" = "丁丁记事";
+"cannotSendEmail" = "无法发送邮件";
+"checkEmailConfig" = "请检查邮件设置";
+"sendSuccess" = "发送成功";
+"willCheckLater" = "我们会尽快处理";
+"sendFailed" = "发送失败";
+"rememberDescription" = "丁丁记事是一个帮助你记住平时容易忘记的小事的轻量级备忘录，你可以非常快速而简单的记录一切的小事，当你忘记它们的时候，可以很方便的从这里找到它们。";
+"rememberEveryThing" = "记住你容易忘记的小事";
+"version" = "版本号：";
+"addPasteboardContent" = "是否要添加粘贴板的内容：";
+"tag" = "标签";
+"share" = "分享";
+"cannotRecovery" = "删除后就找不回来啦。";
+"addOneThing" = "添加一个小事吧";
+"edit" = "编辑";
+"addTag" = "+添加标签";
+"sayThing" = "说出你要记的小事吧";
+"commonTags" = "常用标签";
+"skill" = "「技巧」";
+"example" = "「例子」";
+"tipLongPressToOrder" = "长按首页的小事可以排序";
+"tipQuickAction" = "3D Touch可以快速搜索和记事";
+"tipLeftSlideToShareDeleteTag" = "首页小事左滑可以分享，删除小事和修改标签";
+"tipTagManagerCanDeleteTag" = "标签管理页面可以删除不用的标签";
+"tipSearchByTag" = "搜索小事时可以通过标签快速过滤";
+"tipShareThing" = "分享小事可以快速把小事分享给别人";
+"tipMultiTagsOneThing" = "同一件小事可以添加多个标签";
+"example1" = "Wine bottle opener is in bookcase drawer";
+"example2" = "家里的Wi-Fi密码是XXX";
+"example3" = "妈妈的生日是6月30日";
+"example4" = "小明家在X小区二期3栋1901";
+"example5" = "万达影城1号厅要买7排才是最佳位置";
+"example6" = "学术论文链接地址是：http://XXX.com";
+"example7" = "7月要看的书单是：解忧杂货店";
+"createAt" = "创建于 ";
+"addTagLabel" = "添加标签";

@@ -1,0 +1,65 @@
+/* 
+  Localizable.strings
+  Remember
+
+  Created by Songbai Yan on 14/03/2018.
+  Copyright © 2018 Songbai Yan. All rights reserved.
+*/
+"appName" = "Remember";
+"searchPlaceHolder" = " Search for things you forgot";
+"addThingPlaceHolder" = " Add something";
+"settings" = "settings";
+"totalThingsPart1" = "";
+"totalThingsPart2" = " thing(s) are remembered";
+"tagManager" = "Tag Management";
+"tellFriends" = "Recommand to friends";
+"tips" = "Tips & Examples";
+"reviewInAppStore" = "Rating in App Store";
+"feedback" = "Feedback & Suggestions";
+"about" = "About";
+"things" = " thing(s)";
+"delete" = "Delete";
+"confirmDelete" = "Delete";
+"cancel" = "Cancel";
+"sureToDelete" = "Are you sure to delete it?";
+"deleteTagNotDeleteThing" = "Deleting a tag does not delete the corresponding thing.";
+"noTag" = "No Tag";
+"email" = "Email";
+"weibo" = "Weibo";
+"copyright" = "Copyright ©2018 Easy Studio All Rights Reserved";
+"emailSubject" = "Remember";
+"cannotSendEmail" = "Cannot send Email";
+"checkEmailConfig" = "Please check your configuration";
+"sendSuccess" = "Sent successfully";
+"willCheckLater" = "We will reply as soon as possible";
+"sendFailed" = "Failed to send";
+"rememberDescription" = "Remember is a lightweight memo that helps you remember every things that are usually forgotten. You can add everything very quickly and simply. When you forget them, you can easily find them from here.";
+"rememberEveryThing" = "Remember what you forget";
+"version" = "Version: ";
+"addPasteboardContent" = "Add the contents of pasteboard:";
+"tag" = "Tag";
+"share" = "Share";
+"cannotRecovery" = "It will permanently disappear";
+"addOneThing" = "Add one thing";
+"edit" = "Edit";
+"addTag" = "+ Add tag";
+"sayThing" = "Say something you want to remember";
+"commonTags" = "Common tags";
+"skill" = "[Tip]";
+"example" = "[example]";
+"tipLongPressToOrder" = " Long press to reorder things";
+"tipQuickAction" = " Use quick actions to search and add";
+"tipLeftSlideToShareDeleteTag" = " Left slip can share, delete things and modify tags";
+"tipTagManagerCanDeleteTag" = " Tag management can delete unused tags";
+"tipSearchByTag" = " Search can quickly filter by tags";
+"tipShareThing" = " Use share button to quickly share things to others";
+"tipMultiTagsOneThing" = " The same thing can add multiple tags";
+"example1" = " Wine bottle opener in bookcase drawer of study";
+"example2" = " The home Wi-Fi password is XXX";
+"example3" = " Mom's birthday is June 30";
+"example4" = " Tom's address is 1717 Queen St";
+"example5" = " The best seat in Cinemas No.1 Hall is 7 rows";
+"example6" = " My home page link is：http://XXX.com";
+"example7" = " The list of books to look at in July is Harry Potter.";
+"createAt" = "Created at ";
+"addTagLabel" = "Add tag";

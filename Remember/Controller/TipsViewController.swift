@@ -24,7 +24,7 @@ class TipsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "使用小提示"
+        self.title = NSLocalizedString("tips", comment: "提示")
         
         self.tableView.dataSource = self
         self.tableView.delegate = self

@@ -27,7 +27,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "关于"
+        self.title = NSLocalizedString("about", comment: "关于")
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.remember()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
@@ -86,13 +86,13 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         let contactButton = UIButton(type: UIButtonType.system)
         contactButton.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
-        contactButton.setTitle("邮箱", for: UIControlState())
+        contactButton.setTitle(NSLocalizedString("email", comment: "邮箱"), for: UIControlState())
         contactButton.addTarget(self, action: #selector(AboutViewController.contactClick(_:)), for: .touchUpInside)
         
         //微博按钮
         let weiboButton = UIButton(type: UIButtonType.system)
         weiboButton.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
-        weiboButton.setTitle("微博", for: UIControlState())
+        weiboButton.setTitle(NSLocalizedString("weibo", comment: "微博"), for: UIControlState())
         weiboButton.addTarget(self, action: #selector(AboutViewController.weiboClick(_:)), for: UIControlEvents.touchUpInside)
         
         let starStack = UIStackView(arrangedSubviews: [contactButton, weiboButton])
@@ -101,7 +101,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         bottomView.addSubview(starStack)
         
         let companyLabel = UILabel(frame: CGRect(x: 0, y: 40, width: self.view.frame.width, height: 15))
-        companyLabel.text = "Copyright ©2018 略懂工作室 All Rights Reserved"
+        companyLabel.text = NSLocalizedString("copyright", comment: "略懂工作室")
         companyLabel.textColor = UIColor.gray
         companyLabel.font = UIFont.systemFont(ofSize: 10)
         companyLabel.textAlignment = NSTextAlignment.center
@@ -112,11 +112,11 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
-            mailComposerVC.setSubject("丁丁记事")
+            mailComposerVC.setSubject(NSLocalizedString("emailSubject", comment: "丁丁记事"))
             mailComposerVC.setToRecipients(["easystudio@outlook.com"])
             self.present(mailComposerVC, animated: true, completion: nil)
         } else {
-            let banner = NotificationBanner(title: "无法发送邮件", subtitle: "请检查邮件设置", style: .warning)
+            let banner = NotificationBanner(title: NSLocalizedString("cannotSendEmail", comment: ""), subtitle: NSLocalizedString("checkEmailConfig", comment: ""), style: .warning)
             banner.show()
         }
     }
@@ -130,12 +130,12 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     internal func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch(result){
         case MFMailComposeResult.sent:
-            let banner = NotificationBanner(title: "反馈发送成功", subtitle: "我们会尽快处理", style: .success)
+            let banner = NotificationBanner(title: NSLocalizedString("sendSuccess", comment: ""), subtitle: NSLocalizedString("willCheckLater", comment: ""), style: .success)
             banner.show()
         case MFMailComposeResult.saved: break
         case MFMailComposeResult.cancelled: break
         case MFMailComposeResult.failed:
-            let banner = NotificationBanner(title: "发送失败", subtitle: "请检查配置", style: .warning)
+            let banner = NotificationBanner(title: NSLocalizedString("sendFailed", comment: ""), subtitle: NSLocalizedString("checkEmailConfig", comment: ""), style: .warning)
             banner.show()
         }
         controller.dismiss(animated: true, completion: nil)
@@ -200,7 +200,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private func getDescriptionCell() -> UITableViewCell{
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        cell.textLabel?.text = viewModel.getDescription()
+        cell.textLabel?.text = NSLocalizedString("rememberDescription", comment: "")
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         cell.textLabel?.textColor = UIColor.gray

@@ -56,7 +56,7 @@ class SearchViewController : UIViewController{
     private func initUI(){
         textField = InputTextField(frame: CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height:  40))
         textField.setLeftImage(with: UIImage(named: "Search")!)
-        textField.setPlaceHolder(with: " 搜索你忘记的小事")
+        textField.setPlaceHolder(with: NSLocalizedString("searchPlaceHolder", comment: ""))
         textField.returnKeyType = .search
         textField.delegate = self
         textField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(sender:)), for: .editingChanged)
@@ -69,7 +69,7 @@ class SearchViewController : UIViewController{
         }
         
         let cancelButton = UIButton(type: .system)
-        cancelButton.setTitle("取消", for: .normal)
+        cancelButton.setTitle(NSLocalizedString("cancel", comment: ""), for: .normal)
         cancelButton.setTitleColor(UIColor.remember(), for: .normal)
         cancelButton.addTarget(self, action: #selector(SearchViewController.cancelTap(sender:)), for: .touchUpInside)
         self.view.addSubview(cancelButton)
@@ -104,7 +104,7 @@ class SearchViewController : UIViewController{
         }
         
         tagLabel = UILabel()
-        tagLabel.text = "常用标签"
+        tagLabel.text = NSLocalizedString("commonTags", comment: "常用标签")
         tagLabel.textColor = UIColor.gray
         tagLabel.font = UIFont.systemFont(ofSize: 12)
         tagView.addSubview(tagLabel)

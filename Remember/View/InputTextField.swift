@@ -16,7 +16,7 @@ class InputTextField: UITextField {
         let leftImage = UIImageView(image: UIImage(named: "PlusMath"))
         self.leftView = leftImage
         self.leftViewMode = .always
-        self.attributedPlaceholder = NSAttributedString(string: " 记一点什么吧", attributes: [NSAttributedStringKey.foregroundColor:UIColor.remember()])
+        self.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("addThingPlaceHolder", comment: "记"), attributes: [NSAttributedStringKey.foregroundColor:UIColor.remember()])
         self.contentMode = .center
         self.backgroundColor = UIColor.inputGray()
         self.layer.borderColor = UIColor.inputGray().cgColor

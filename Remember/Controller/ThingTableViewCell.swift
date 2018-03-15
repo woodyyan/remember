@@ -61,7 +61,7 @@ class ThingTableViewCell: UITableViewCell {
     
     func showAddTagButton(){
         let addTagButton = UIButton(type: .system)
-        addTagButton.setTitle("+添加标签", for: .normal)
+        addTagButton.setTitle(NSLocalizedString("addTag", comment: ""), for: .normal)
         addTagButton.addTarget(self, action: #selector(ThingTableViewCell.addTagTap(sender:)), for: .touchUpInside)
         addTagButton.layer.cornerRadius = 10
         addTagButton.layer.shadowColor = UIColor.black.cgColor
@@ -186,27 +186,27 @@ class ThingTableViewCell: UITableViewCell {
         return true
     }
     
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if [#selector(copyText)].contains(action) {
-            return true
-        }
-        return false
-    }
+//    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+//        if [#selector(copyText)].contains(action) {
+//            return true
+//        }
+//        return false
+//    }
     
-    func showMenuItems() {
-        self.becomeFirstResponder() // 这句很重要
-        let menuController = UIMenuController.shared
-        let copyItem = UIMenuItem(title: "复制", action: #selector(copyText))
-        menuController.menuItems = [copyItem]
-        menuController.setTargetRect(frame, in: superview!)
-        menuController.setMenuVisible(true, animated: true)
-    }
+//    func showMenuItems() {
+//        self.becomeFirstResponder() // 这句很重要
+//        let menuController = UIMenuController.shared
+//        let copyItem = UIMenuItem(title: "复制", action: #selector(copyText))
+//        menuController.menuItems = [copyItem]
+//        menuController.setTargetRect(frame, in: superview!)
+//        menuController.setMenuVisible(true, animated: true)
+//    }
     
-    @objc func copyText() {
-        UIPasteboard.general.string = self.textLabel?.text
-        UserDefaults.standard.set(self.textLabel?.text, forKey: "pasteboardContent")
-        UserDefaults.standard.synchronize()
-    }
+//    @objc func copyText() {
+//        UIPasteboard.general.string = self.textLabel?.text
+//        UserDefaults.standard.set(self.textLabel?.text, forKey: "pasteboardContent")
+//        UserDefaults.standard.synchronize()
+//    }
 }
 
 enum ThingCellBackgroundStyle : Int {

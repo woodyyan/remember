@@ -52,7 +52,7 @@ class ThingService {
     func getCreatedDateText(from date:Date) -> String{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd hh:mm"
-        let dateText = "创建于 " + dateFormatter.string(from: date as Date)
+        let dateText = NSLocalizedString("createAt", comment: "") + dateFormatter.string(from: date as Date)
         return dateText
     }
 }

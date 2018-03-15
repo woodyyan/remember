@@ -28,7 +28,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "设置"
+        self.title = NSLocalizedString("settings", comment: "设置")
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.remember()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
@@ -46,7 +46,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         descriptionLabel.textColor = UIColor.gray
         let thingService = ThingService()
         let count = thingService.getAllThingCount()
-        descriptionLabel.text = "共记了\(count)件小事"
+        descriptionLabel.text = "\(NSLocalizedString("totalThingsPart1", comment: "共记了"))\(count)\(NSLocalizedString("totalThingsPart2", comment: "件小事"))"
         tableView.tableHeaderView = descriptionLabel
     }
     
@@ -159,21 +159,21 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.accessoryType = .disclosureIndicator
         switch cellType {
         case .push:
-            cell.textLabel?.text = "标签管理"
+            cell.textLabel?.text = NSLocalizedString("tagManager", comment: "标签管理")
             cell.imageView?.image = #imageLiteral(resourceName: "tag_gray")
         case .recommand:
-            cell.textLabel?.text = "告诉小伙伴"
+            cell.textLabel?.text = NSLocalizedString("tellFriends", comment: "告诉小伙伴")
             cell.imageView?.image = #imageLiteral(resourceName: "share_gray")
         case .tips:
-            cell.textLabel?.text = "使用小提示"
+            cell.textLabel?.text = NSLocalizedString("tips", comment: "使用小提示")
             cell.imageView?.image = #imageLiteral(resourceName: "tips")
         case .comment:
-            cell.textLabel?.text = "给我们评分"
+            cell.textLabel?.text = NSLocalizedString("reviewInAppStore", comment: "给我们评分")
             cell.imageView?.image = #imageLiteral(resourceName: "like_gray")
         case .feedback:
             let feedbackCell = UITableViewCell(style: .value1, reuseIdentifier:"feedback")
             feedbackCell.accessoryType = .disclosureIndicator
-            feedbackCell.textLabel?.text = "反馈与建议"
+            feedbackCell.textLabel?.text = NSLocalizedString("feedback", comment: "反馈与建议")
             feedbackCell.imageView?.image = #imageLiteral(resourceName: "feedback")
             feedbackKit?.getUnreadCount(completionBlock: { (count, error) in
                 if count == 0 {
@@ -185,7 +185,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             return feedbackCell
         case .about:
             let newCell = UITableViewCell(style: .value1, reuseIdentifier:"about")
-            newCell.textLabel?.text = "关于"
+            newCell.textLabel?.text = NSLocalizedString("about", comment: "关于")
             newCell.imageView?.image = #imageLiteral(resourceName: "about_gray")
             newCell.detailTextLabel?.text = service.getCurrentVersion()
             newCell.accessoryType = .disclosureIndicator

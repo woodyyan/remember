@@ -31,7 +31,7 @@ class TagManagementView: UIView {
         super.init(frame: frame)
         
         addTagButton = UIButton(type: .system)
-        addTagButton.setTitle("+添加标签", for: .normal)
+        addTagButton.setTitle(NSLocalizedString("addTag", comment: ""), for: .normal)
         addTagButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         addTagButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         addTagButton.layer.cornerRadius = 10
@@ -51,7 +51,7 @@ class TagManagementView: UIView {
         addTagTextField.delegate = self
         addTagTextField.font = UIFont.systemFont(ofSize: 12)
         addTagTextField.returnKeyType = .done
-        addTagTextField.placeholder = "添加标签"
+        addTagTextField.placeholder = NSLocalizedString("addTagLabel", comment: "")
         self.addSubview(addTagTextField)
         addTagTextField.snp.makeConstraints { (maker) in
             maker.top.equalTo(self)
