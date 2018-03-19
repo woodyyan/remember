@@ -446,11 +446,10 @@ extension HomeViewController{
             tableView.isEditing = false
         }
         
-        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: NSLocalizedString("share", comment: "分享")) { (action, index) -> Void in
+        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: NSLocalizedString("copy", comment: "复制")) { (action, index) -> Void in
             let index=(indexPath as NSIndexPath).row as Int
             let thing = self.things[index]
-            let activityController = HomeService.getActivityViewController(content: thing.content!)
-            self.present(activityController, animated: true, completion: nil)
+            UIPasteboard.general.string = thing.content
         }
         shareAction.backgroundColor = UIColor.remember()
         
