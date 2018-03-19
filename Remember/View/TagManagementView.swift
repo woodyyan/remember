@@ -285,13 +285,14 @@ extension TagManagementView : UITextFieldDelegate{
         textField.resignFirstResponder()
         
         if let tag = textField.text{
-            if !tag.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty{
-                if !tagService.exists(tag){
-                    self.updateView(with: tag)
+            let trimTag = tag.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            if !trimTag.isEmpty{
+                if !tagService.exists(trimTag){
+                    self.updateView(with: trimTag)
                     textField.text = ""
                     
-                    saveTag(tag)
-                    delegate?.tagManagement(view: self, tag: tag)
+                    saveTag(trimTag)
+                    delegate?.tagManagement(view: self, tag: trimTag)
                 }
             }
         }
