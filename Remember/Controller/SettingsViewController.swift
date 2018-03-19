@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MessageUI
+import NotificationBanner
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     fileprivate let service = AboutViewModel()
@@ -106,7 +108,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             case 3:
                 let cell = tableView.cellForRow(at: indexPath)
                 cell?.detailTextLabel?.text = ""
-                feedback()
+                feedBackOrSendEmail()
             default:
                 break
             }
@@ -131,6 +133,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    private func feedBackOrSendEmail() {
+        let language = Locale.preferredLanguages[0]
+        if language.hasPrefix("en") {
+            sendEmail()
+        } else{
+            feedback()
+        }
+    }
+    
     private func feedback() {
         feedbackKit?.extInfo = [
             "app_version":AboutViewModel().getCurrentVersion(),
@@ -144,6 +155,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
         })
+    }
+    
+    private func sendEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mailComposerVC = MFMailComposeViewController()
+            mailComposerVC.mailComposeDelegate = self
+            mailComposerVC.setSubject(NSLocalizedString("emailSubject", comment: "丁丁记事"))
+            mailComposerVC.setToRecipients(["easystudio@outlook.com"])
+            self.present(mailComposerVC, animated: true, completion: nil)
+        } else {
+            let banner = NotificationBanner(title: NSLocalizedString("cannotSendEmail", comment: ""), subtitle: NSLocalizedString("checkEmailConfig", comment: ""), style: .warning)
+            banner.show()
+        }
     }
     
     fileprivate func recommandToFriends() {
@@ -192,6 +216,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             return newCell
         }
         return cell
+    }
+}
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate{
+    internal func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch(result){
+        case MFMailComposeResult.sent:
+            let banner = NotificationBanner(title: NSLocalizedString("sendSuccess", comment: ""), subtitle: NSLocalizedString("willCheckLater", comment: ""), style: .success)
+            banner.show()
+        case MFMailComposeResult.saved: break
+        case MFMailComposeResult.cancelled: break
+        case MFMailComposeResult.failed:
+            let banner = NotificationBanner(title: NSLocalizedString("sendFailed", comment: ""), subtitle: NSLocalizedString("checkEmailConfig", comment: ""), style: .warning)
+            banner.show()
+        }
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 

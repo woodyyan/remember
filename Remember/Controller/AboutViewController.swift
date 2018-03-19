@@ -141,7 +141,6 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         controller.dismiss(animated: true, completion: nil)
     }
 
-    
     private func getTableViewCell(_ index:Int) -> UITableViewCell{
         switch index {
         case 0:
