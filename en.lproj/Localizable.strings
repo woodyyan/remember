@@ -8,7 +8,7 @@
 "appName" = "Remember";
 "searchPlaceHolder" = " Search for things you forgot";
 "addThingPlaceHolder" = " Add something";
-"settings" = "settings";
+"settings" = "Settings";
 "totalThingsPart1" = "";
 "totalThingsPart2" = " thing(s) are remembered";
 "tagManager" = "Tag Management";
