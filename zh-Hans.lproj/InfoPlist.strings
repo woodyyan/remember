@@ -6,3 +6,7 @@
   Copyright © 2018 Songbai Yan. All rights reserved.
 */
 "CFBundleDisplayName" = "丁丁记事";
+"NSMicrophoneUsageDescription" = "语音输入想获取你的麦克风权限";
+"NSSpeechRecognitionUsageDescription" = "语音输入想获取你的语音识别权限";
+"NSPhotoLibraryUsageDescription" = "访问相册";
+"NSCameraUsageDescription" = "访问相机";
