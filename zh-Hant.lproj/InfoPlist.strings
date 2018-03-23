@@ -5,8 +5,8 @@
   Created by Songbai Yan on 14/03/2018.
   Copyright © 2018 Songbai Yan. All rights reserved.
 */
-"CFBundleDisplayName" = "丁丁记事";
-"NSMicrophoneUsageDescription" = "语音输入想获取你的麦克风权限";
-"NSSpeechRecognitionUsageDescription" = "语音输入想获取你的语音识别权限";
-"NSPhotoLibraryUsageDescription" = "访问相册";
-"NSCameraUsageDescription" = "访问相机";
+"CFBundleDisplayName" = "丁丁記事";
+"NSMicrophoneUsageDescription" = "語音輸入想獲取妳的麥克風權限";
+"NSSpeechRecognitionUsageDescription" = "語音輸入想獲取妳的語音識別權限";
+"NSPhotoLibraryUsageDescription" = "訪問相冊";
+"NSCameraUsageDescription" = "訪問相機";

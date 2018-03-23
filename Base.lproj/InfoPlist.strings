@@ -1,12 +1,12 @@
-/* 
-  InfoPlist.strings
-  Remember
-
-  Created by Songbai Yan on 14/03/2018.
-  Copyright © 2018 Songbai Yan. All rights reserved.
-*/
-"CFBundleDisplayName" = "丁丁记事";
-"NSMicrophoneUsageDescription" = "语音输入想获取你的麦克风权限";
-"NSSpeechRecognitionUsageDescription" = "语音输入想获取你的语音识别权限";
-"NSPhotoLibraryUsageDescription" = "访问相册";
-"NSCameraUsageDescription" = "访问相机";
+/*
+ InfoPlist.strings
+ Remember
+ 
+ Created by Songbai Yan on 14/03/2018.
+ Copyright © 2018 Songbai Yan. All rights reserved.
+ */
+"CFBundleDisplayName" = "Remember";
+"NSMicrophoneUsageDescription" = "Voice input wants to get your microphone permission";
+"NSSpeechRecognitionUsageDescription" = "Voice input wants to get your speech recognition permission";
+"NSPhotoLibraryUsageDescription" = "Access album";
+"NSCameraUsageDescription" = "Access camera";

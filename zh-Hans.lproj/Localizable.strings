@@ -49,7 +49,7 @@
 "example" = "「例子」";
 "tipLongPressToOrder" = "长按首页的小事可以排序";
 "tipQuickAction" = "3D Touch可以快速搜索和记事";
-"tipLeftSlideToShareDeleteTag" = "首页小事左滑可以分享，删除小事和修改标签";
+"tipLeftSlideToShareDeleteTag" = "首页小事左滑可以复制，删除小事和修改标签";
 "tipTagManagerCanDeleteTag" = "标签管理页面可以删除不用的标签";
 "tipSearchByTag" = "搜索小事时可以通过标签快速过滤";
 "tipShareThing" = "分享小事可以快速把小事分享给别人";
