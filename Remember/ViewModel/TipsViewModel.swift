@@ -9,9 +9,22 @@
 import Foundation
 
 class TipsViewModel {
-    func getTipText(_ index:Int) -> NSAttributedString{
-        var attributedString:NSMutableAttributedString!
-        var fullText:String!
+    func getTipText(_ index: Int) -> NSAttributedString {
+        let result = getFullTextAndTypeLength(index: index)
+        let fullText: String! = result.0
+        let typeLength = result.1
+        
+        let attributedString = NSMutableAttributedString(string: fullText)
+        let range = NSRange(location: 0, length: typeLength)
+        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12), range: range)
+        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.remember(), range: range)
+        return attributedString
+    }
+    
+    // swiftlint:disable function_body_length
+    // swiftlint:disable cyclomatic_complexity
+    private func getFullTextAndTypeLength(index: Int) -> (String, Int) {
+        var fullText: String!
         var typeLength = 0
         switch index {
         case 0:
@@ -58,19 +71,15 @@ class TipsViewModel {
             typeLength = Tip.sampleTip7.type.count
         default: break
         }
-        
-        attributedString = NSMutableAttributedString(string: fullText);
-        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12), range: NSRange(location: 0, length: typeLength))
-        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.remember(), range: NSRange(location: 0, length: typeLength));
-        return attributedString
+        return (fullText, typeLength)
     }
     
-    func getTipCount() -> Int{
+    func getTipCount() -> Int {
         return 14
     }
 }
 
-struct Tip{
+struct Tip {
     static let longPressOrderTip = Tip(text: "tipLongPressToOrder", type: TipType.function)
     static let touch3DTip = Tip(text: "tipQuickAction", type: TipType.function)
     static let leftSlideThingTip = Tip(text: "tipLeftSlideToShareDeleteTag", type: TipType.function)
@@ -86,10 +95,10 @@ struct Tip{
     static let sampleTip6 = Tip(text: "example6", type: TipType.sample)
     static let sampleTip7 = Tip(text: "example7", type: TipType.sample)
     
-    let text:String!
-    let type:String!
+    let text: String!
+    let type: String!
     
-    init(text:String, type:TipType) {
+    init(text: String, type: TipType) {
         self.text = NSLocalizedString(text, comment: "")
         self.type = NSLocalizedString(type.rawValue, comment: "")
     }
@@ -99,7 +108,7 @@ struct Tip{
     }
 }
 
-enum TipType:String {
+enum TipType: String {
     case function = "skill"
     case sample = "example"
 }

@@ -12,80 +12,81 @@ import CoreData
 
 class ThingStorage {
     
-    func getThings() -> [ThingModel]{
+    func getThings() -> [ThingModel] {
         return getThingsFromLocalDB()
     }
     
-    func create(_ thing:ThingModel){
+    func create(_ thing: ThingModel) {
         createAndSaveThingInLocalDB(thing: thing)
     }
     
-    func delete(_ thing:ThingModel){
+    func delete(_ thing: ThingModel) {
         deleteThing(by: thing.id)
     }
     
-    func edit(_ thing:ThingModel){
+    func edit(_ thing: ThingModel) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
         request.entity = entity
-        let predicate = NSPredicate(format: "%K == %@","id", thing.id!)
+        let predicate = NSPredicate(format: "%K == %@", "id", thing.id!)
         request.predicate = predicate
-        do{
-            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject]{
+        do {
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject] {
                 for result in results {
                     result.setValue(thing.content, forKey: "content")
                     appDelegate.saveContext()
                 }
             }
-        }catch{
+        } catch {
             
         }
     }
     
-    func save(sorted things:[ThingModel]){
+    func save(sorted things: [ThingModel]) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
         request.entity = entity
-        for thing in things{
-            let predicate = NSPredicate(format: "%K == %@","id", thing.id!)
+        for thing in things {
+            let predicate = NSPredicate(format: "%K == %@", "id", thing.id!)
             request.predicate = predicate
-            do{
-                if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject]{
+            do {
+                if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject] {
                     for result in results {
                         result.setValue(thing.index, forKey: "index")
                     }
                 }
-            }catch{
+            } catch {
                 
             }
         }
         appDelegate.saveContext()
     }
     
-    private func deleteThing(by thingId:String){
+    private func deleteThing(by thingId: String) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: appDelegate.persistentContainer.viewContext)
         request.entity = entity
-        let predicate = NSPredicate(format: "%K == %@","id", thingId)
+        let predicate = NSPredicate(format: "%K == %@", "id", thingId)
         request.predicate = predicate
-        do{
-            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject]{
+        do {
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [NSManagedObject] {
                 for result in results {
                     appDelegate.persistentContainer.viewContext.delete(result)
                     appDelegate.saveContext()
                 }
             }
-        }catch{
+        } catch {
             
         }
     }
     
-    private func createAndSaveThingInLocalDB(thing:ThingModel){
+    private func createAndSaveThingInLocalDB(thing: ThingModel) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let object:NSManagedObject = NSEntityDescription.insertNewObject(forEntityName: "Thing", into: appDelegate.persistentContainer.viewContext)
+        let viewContext = appDelegate.persistentContainer.viewContext
+        let object: NSManagedObject = NSEntityDescription.insertNewObject(forEntityName: "Thing", into: viewContext)
         object.setValue(thing.content, forKey: "content")
         object.setValue(thing.createdAt, forKey: "createdAt")
         object.setValue(thing.id, forKey: "id")
@@ -93,14 +94,14 @@ class ThingStorage {
         appDelegate.saveContext()
     }
     
-    private func getThingsFromLocalDB() -> [ThingModel]{
+    private func getThingsFromLocalDB() -> [ThingModel] {
         var things = [ThingModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
-        do{
+        do {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [ThingEntity]{
-                if results.count > 0{
-                    for result in results{
+            if let results = try appDelegate.persistentContainer.viewContext.fetch(request) as? [ThingEntity] {
+                if !results.isEmpty {
+                    for result in results {
                         things.append(result.toModel())
                     }
                 }
@@ -113,4 +114,3 @@ class ThingStorage {
         return things
     }
 }
-

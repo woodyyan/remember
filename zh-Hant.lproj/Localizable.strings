@@ -64,3 +64,6 @@
 "createAt" = "創建於 ";
 "addTagLabel" = "添加標簽";
 "copy" = "復制";
+"recommendDescription" = "推薦「丁丁記事」給妳";
+"addThingAction" = "添加小事";
+"searchThingAction" = "搜索小事";

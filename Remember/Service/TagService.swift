@@ -12,48 +12,48 @@ class TagService {
     private let tagStorage = TagStorage()
     private let thingTagStorage = ThingTagStorage()
     
-    func saveThingTag(_ thingTag:ThingTagModel){
+    func saveThingTag(_ thingTag: ThingTagModel) {
         thingTagStorage.save(for: thingTag)
     }
     
-    func deleteTag(_ tag:TagModel){
+    func deleteTag(_ tag: TagModel) {
         tagStorage.delete(tag)
         let thingTags = thingTagStorage.getThingTags(by: tag)
-        for thingTag in thingTags{
+        for thingTag in thingTags {
             thingTagStorage.delete(for: thingTag)
         }
     }
     
-    func deleteThingTag(_ thingTag:ThingTagModel){
+    func deleteThingTag(_ thingTag: ThingTagModel) {
         thingTagStorage.delete(for: thingTag)
     }
     
-    func save(_ tag:TagModel){
+    func save(_ tag: TagModel) {
         tagStorage.save(for: tag)
     }
     
-    func exists(_ tag:String) -> Bool{
+    func exists(_ tag: String) -> Bool {
         let tagModel = tagStorage.find(by: tag)
         
         return tagModel != nil
     }
     
-    func updateIndex(for tag:TagModel){
+    func updateIndex(for tag: TagModel) {
         tagStorage.updateIndex(for: tag)
     }
     
-    func getAllTags() -> [TagModel]{
+    func getAllTags() -> [TagModel] {
         return tagStorage.getAllTags()
     }
     
-    func getSelectedTags(by thing:ThingModel) -> [TagModel]{
+    func getSelectedTags(by thing: ThingModel) -> [TagModel] {
         let thingTags = thingTagStorage.getThingTags(by: thing)
         let tagIds = thingTags.filter({ $0.thingId == thing.id }).map({ $0.tagId! })
-        let tags = tagStorage.getTags(by:tagIds)
+        let tags = tagStorage.getTags(by: tagIds)
         return tags
     }
     
-    func getUnselectedTags(by thing:ThingModel) -> [TagModel]{
+    func getUnselectedTags(by thing: ThingModel) -> [TagModel] {
         let tags = tagStorage.getAllTags()
         let thingTags = thingTagStorage.getThingTags(by: thing)
         let unselectedTags = tags.filter { (tag) -> Bool in

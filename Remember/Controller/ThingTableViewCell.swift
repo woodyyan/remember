@@ -15,7 +15,7 @@ class ThingTableViewCell: UITableViewCell {
     
     private var shouldCustomizeActionButtons = false
     
-    var tagLabel:UILabel?
+    var tagLabel: UILabel?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,13 +45,13 @@ class ThingTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         
-        let cellHeight = self.frame.size.height;
-        let cellWidth = self.frame.size.width;
+        let cellHeight = self.frame.size.height
+        let cellWidth = self.frame.size.width
         self.textLabel?.numberOfLines = 0
         self.textLabel?.textColor = UIColor.text()
         self.textLabel?.frame = CGRect(x: 30, y: 15, width: cellWidth - 60, height: cellHeight - 30)
-        if let tag = tagLabel?.text{
-            if !tag.isEmpty{
+        if let tag = tagLabel?.text {
+            if !tag.isEmpty {
                 self.textLabel?.sizeToFit()
             }
         }
@@ -59,7 +59,7 @@ class ThingTableViewCell: UITableViewCell {
         customizeActionButtons()
     }
     
-    func showAddTagButton(){
+    func showAddTagButton() {
         let addTagButton = UIButton(type: .system)
         addTagButton.setTitle(NSLocalizedString("addTag", comment: ""), for: .normal)
         addTagButton.addTarget(self, action: #selector(ThingTableViewCell.addTagTap(sender:)), for: .touchUpInside)
@@ -87,7 +87,7 @@ class ThingTableViewCell: UITableViewCell {
             // 移除添加标签按钮
             UIView.animate(withDuration: 0.5, animations: {
                 addTagButton.alpha = 0
-            }, completion: { (success) in
+            }, completion: { (_) in
                 addTagButton.removeFromSuperview()
             })
         }
@@ -95,20 +95,20 @@ class ThingTableViewCell: UITableViewCell {
     
     var addTagAction: (() -> Swift.Void)?
     
-    @objc func addTagTap(sender:UIButton){
+    @objc func addTagTap(sender: UIButton) {
         addTagAction?()
         sender.removeFromSuperview()
     }
     
-    private func customizeActionButtons(){
+    private func customizeActionButtons() {
         for subView in self.subviews {
-            if subView.isKind(of: NSClassFromString("UITableViewCellDeleteConfirmationView")!){
-                if shouldCustomizeActionButtons{
+            if subView.isKind(of: NSClassFromString("UITableViewCellDeleteConfirmationView")!) {
+                if shouldCustomizeActionButtons {
                     subView.backgroundColor = UIColor.clear
-                    if subView.subviews.count == 3{
+                    if subView.subviews.count == 3 {
                         let deleteButton = subView.subviews[0]
                         let deleteLabel = deleteButton.subviews[0]
-                        if deleteLabel.isKind(of: NSClassFromString("UIButtonLabel")!){
+                        if deleteLabel.isKind(of: NSClassFromString("UIButtonLabel")!) {
                             deleteLabel.removeFromSuperview()
                         }
                         deleteButton.backgroundColor = UIColor.clear
@@ -120,7 +120,7 @@ class ThingTableViewCell: UITableViewCell {
                         
                         let shareButton = subView.subviews[1]
                         let shareLabel = shareButton.subviews[0]
-                        if shareLabel.isKind(of: NSClassFromString("UIButtonLabel")!){
+                        if shareLabel.isKind(of: NSClassFromString("UIButtonLabel")!) {
                             shareLabel.removeFromSuperview()
                         }
                         shareButton.backgroundColor = UIColor.clear
@@ -132,7 +132,7 @@ class ThingTableViewCell: UITableViewCell {
                         
                         let tagButton = subView.subviews[2]
                         let tagLabel = tagButton.subviews[0]
-                        if tagLabel.isKind(of: NSClassFromString("UIButtonLabel")!){
+                        if tagLabel.isKind(of: NSClassFromString("UIButtonLabel")!) {
                             tagLabel.removeFromSuperview()
                         }
                         tagButton.backgroundColor = UIColor.clear
@@ -148,21 +148,21 @@ class ThingTableViewCell: UITableViewCell {
     }
     
     override func willTransition(to state: UITableViewCellStateMask) {
-        if state == UITableViewCellStateMask.showingDeleteConfirmationMask{
+        if state == UITableViewCellStateMask.showingDeleteConfirmationMask {
             shouldCustomizeActionButtons = true
-        }else{
+        } else {
             self.shouldCustomizeActionButtons = false
         }
     }
     
-    func showTags(for thing:ThingModel){
+    func showTags(for thing: ThingModel) {
         let tags = tagService.getSelectedTags(by: thing)
         
         let tagString = tags.filter({$0.name != nil}).map({$0.name!}).joined(separator: "/")
         tagLabel?.text = tagString
     }
     
-    func setBackground(style:ThingCellBackgroundStyle){
+    func setBackground(style: ThingCellBackgroundStyle) {
         switch style {
         case .first:
             self.backgroundView = getBackgroundImageView("FirstCellBackground")
@@ -175,9 +175,10 @@ class ThingTableViewCell: UITableViewCell {
         }
     }
     
-    private func getBackgroundImageView(_ imageName:String) -> UIImageView{
+    private func getBackgroundImageView(_ imageName: String) -> UIImageView {
         let image = UIImage(named: imageName)
-        let resizedImage = image?.resizableImage(withCapInsets: UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20), resizingMode: UIImageResizingMode.stretch)
+        let insets = UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20)
+        let resizedImage = image?.resizableImage(withCapInsets: insets, resizingMode: UIImageResizingMode.stretch)
         let backImage =  UIImageView(image: resizedImage)
         return backImage
     }
@@ -209,7 +210,7 @@ class ThingTableViewCell: UITableViewCell {
 //    }
 }
 
-enum ThingCellBackgroundStyle : Int {
+enum ThingCellBackgroundStyle: Int {
     case normal //正常情况，四个缺角
     case first //第一个cell，只有下面两个缺角
     case last //最后一个cell，只有上面两个缺角

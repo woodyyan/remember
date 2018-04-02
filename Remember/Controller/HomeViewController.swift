@@ -11,17 +11,17 @@ import DZNEmptyDataSet
 import SCLAlertView
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    private let inputViewHeight:CGFloat = 60
+    private let inputViewHeight: CGFloat = 60
     
     fileprivate var shouldInputViewDisplay = true
     fileprivate var service = ThingService()
-    fileprivate var tableView:UITableView!
-    fileprivate var snapshotView:UIView?
-    fileprivate var tableHeaderView:UIView!
+    fileprivate var tableView: UITableView!
+    fileprivate var snapshotView: UIView?
+    fileprivate var tableHeaderView: UIView!
     fileprivate let pasteboardViewTag = 1234
-    fileprivate var sourceIndexPath:IndexPath?
-    fileprivate var pasteContent:String?
-    fileprivate var inputThingView:InputThingView!
+    fileprivate var sourceIndexPath: IndexPath?
+    fileprivate var pasteContent: String?
+    fileprivate var inputThingView: InputThingView!
     
     fileprivate var things = [ThingModel]()
     
@@ -41,17 +41,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         initUI()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.updatePasteboardView(_:)), name: NSNotification.Name(rawValue: "updatePasteboardView"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.tagRemoved(_:)), name: NSNotification.Name(rawValue: "tagRemovedNotification"), object: nil)
+        let UpdatePasteboardName = NSNotification.Name(rawValue: "updatePasteboardView")
+        let selector = #selector(HomeViewController.updatePasteboardView(_:))
+        NotificationCenter.default.addObserver(self, selector: selector, name: UpdatePasteboardName, object: nil)
+        let tagName = NSNotification.Name(rawValue: "tagRemovedNotification")
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.tagRemoved(_:)), name: tagName, object: nil)
     }
     
-    private func initUI(){
+    private func initUI() {
         self.title = NSLocalizedString("appName", comment: "丁丁记事")
         self.view.backgroundColor = UIColor.background()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
         self.navigationController?.navigationBar.tintColor = UIColor.remember()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(HomeViewController.pushToAboutPage(_:)))
+        let rightBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(HomeViewController.pushToAboutPage(_:)))
+        self.navigationItem.rightBarButtonItem = rightBarItem
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.remember()
         
         initTableView()
@@ -63,29 +67,32 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         initData()
     }
     
-    func beginCreateThing(){
+    func beginCreateThing() {
         inputThingView.beginEditing()
     }
     
-    @objc func updatePasteboardView(_ notification: Notification){
+    @objc func updatePasteboardView(_ notification: Notification) {
         addPasteboardViewIfNeeded()
     }
     
-    @objc func tagRemoved(_ notification: Notification){
+    @objc func tagRemoved(_ notification: Notification) {
         self.tableView.reloadData()
     }
     
-    private func initData(){
+    private func initData() {
         things = service.things
     }
     
-    private func setKeyboardNotification(){
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    private func setKeyboardNotification() {
+        let showSelector = #selector(HomeViewController.keyboardWillShow(_:))
+        NotificationCenter.default.addObserver(self, selector: showSelector, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        let hideSelector = #selector(HomeViewController.keyboardWillHide(_:))
+        NotificationCenter.default.addObserver(self, selector: hideSelector, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    private func initInputView(){
-        inputThingView = InputThingView(frame: CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight))
+    private func initInputView() {
+        let rect = CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight)
+        inputThingView = InputThingView(frame: rect)
         inputThingView.delegate = self
         inputThingView.voiceInputAction = {(inputView) -> Void in
             let voiceInputController = VoiceInputController()
@@ -99,7 +106,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.addSubview(inputThingView)
     }
     
-    private func initTableHeaderView(){
+    private func initTableHeaderView() {
         tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
         tableHeaderView.addSubview(getSearchButton())
         
@@ -108,12 +115,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.tableHeaderView = tableHeaderView
     }
     
-    private func addPasteboardViewIfNeeded(){
+    private func addPasteboardViewIfNeeded() {
         //如果已经有粘贴板提示了就返回
-        if self.tableHeaderView.viewWithTag(self.pasteboardViewTag) != nil{
+        if self.tableHeaderView.viewWithTag(self.pasteboardViewTag) != nil {
             return
         }
-        if let tempPasteContent = HomeService.getPasteboardContent(){
+        if let tempPasteContent = HomeService.getPasteboardContent() {
             //add timer
             addPasteDisappearTimer()
             
@@ -125,16 +132,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    private func addPasteDisappearTimer(){
+    private func addPasteDisappearTimer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             // 移除粘贴板提示
-            if self.pasteContent != nil{
+            if self.pasteContent != nil {
                 self.removePasteboardView()
             }
         }
     }
     
-    private func getSearchButton() -> UIView{
+    private func getSearchButton() -> UIView {
         let searchButton = UIButton(type: UIButtonType.system)
         searchButton.setTitle(NSLocalizedString("searchPlaceHolder", comment: "搜索"), for: UIControlState.normal)
         searchButton.setImage(UIImage(named: "Search"), for: UIControlState.normal)
@@ -149,7 +156,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return searchButton
     }
     
-    private func getPasteBoardView(_ content:String) -> UIView{
+    private func getPasteBoardView(_ content: String) -> UIView {
         let pasteboardView = UIView(frame: CGRect(x: 10, y: 60, width: self.view.frame.width - 20, height: 55))
         pasteboardView.layer.cornerRadius = 10
         pasteboardView.backgroundColor = UIColor.white
@@ -191,13 +198,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return pasteboardView
     }
     
-    private func addPasteContentToSettings(_ content:String){
+    private func addPasteContentToSettings(_ content: String) {
         UserDefaults.standard.set(content, forKey: "pasteboardContent")
         UserDefaults.standard.synchronize()
     }
     
-    @objc func pasteOkButtonClick(_ sender:UIButton){
-        if let content = pasteContent{
+    @objc func pasteOkButtonClick(_ sender: UIButton) {
+        if let content = pasteContent {
             let thing = ThingModel(content: content)
             thing.isNew = true
             service.create(thing)
@@ -210,19 +217,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         removePasteboardView()
     }
     
-    private func removePasteboardView(){
+    private func removePasteboardView() {
         //remove pasteboard
 
         self.tableView.beginUpdates()
         self.tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60)
-        if let pasteboardView = self.tableHeaderView.viewWithTag(self.pasteboardViewTag){
+        if let pasteboardView = self.tableHeaderView.viewWithTag(self.pasteboardViewTag) {
             pasteboardView.removeFromSuperview()
         }
         self.tableView.tableHeaderView = self.tableHeaderView
         self.tableView.endUpdates()
     }
     
-    @objc func searchClick(_ sender:UIButton) {
+    @objc func searchClick(_ sender: UIButton) {
         inputThingView.endEditing()
         
         let searchController = SearchViewController()
@@ -230,31 +237,32 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(UINavigationController.init(rootViewController: searchController), animated: false, completion: nil)
     }
     
-    private func initTableView(){
+    private func initTableView() {
         var statusHeight = UIApplication.shared.statusBarFrame.height
-        if let navBarHeight = self.navigationController?.navigationBar.frame.height{
+        if let navBarHeight = self.navigationController?.navigationBar.frame.height {
             statusHeight += navBarHeight
         }
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - inputViewHeight), style: UITableViewStyle.plain)
+        let rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - inputViewHeight)
+        tableView = UITableView(frame: rect, style: UITableViewStyle.plain)
         tableView.backgroundColor = UIColor.background()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(ThingTableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.tableFooterView = UIView(frame:CGRect.zero)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.view.addSubview(tableView)
         
         // EmptyDataSet SDK
-        self.tableView.emptyDataSetSource = self;
-        self.tableView.emptyDataSetDelegate = self;
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
     }
     
-    private func initLongPressForTableView(){
-        let longPress = UILongPressGestureRecognizer(target: self, action:#selector(HomeViewController.longPressGestureRecognized(_:)))
+    private func initLongPressForTableView() {
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(HomeViewController.longPressGestureRecognized(_:)))
         self.tableView.addGestureRecognizer(longPress)
     }
     
-    @objc func longPressGestureRecognized(_ sender:AnyObject) {
+    @objc func longPressGestureRecognized(_ sender: AnyObject) {
         let longPress = sender as! UILongPressGestureRecognizer
         let state = longPress.state
         let location = longPress.location(in: self.tableView)
@@ -263,33 +271,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         switch state {
         case .began:
             if indexPath != nil {
-                sourceIndexPath = indexPath
-                let cell = self.tableView.cellForRow(at: indexPath!)
-                snapshotView = self.customSnapshotFromView(cell!)
-                
-                var center = cell?.center
-                snapshotView?.center = center!
-                snapshotView?.alpha = 0.0
-                self.tableView.addSubview(snapshotView!)
-                
-                UIView.animate(withDuration: 0.25, animations: {
-                    center?.y = location.y
-                    self.snapshotView?.center = center!
-                    self.snapshotView?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
-                    self.snapshotView?.alpha = 0.98
-                    cell?.alpha = 0.0
-                },completion: { (finished) in
-                    cell?.isHidden = true
-                })
+                beganAnimate(indexPath: indexPath!, location: location)
             }
-            break
         case .changed:
-            var  center = snapshotView?.center
+            var center = snapshotView?.center
             center?.y = location.y
             snapshotView?.center = center!
             
             if indexPath != nil && !(indexPath == sourceIndexPath) {
-                if let tempIndexPath = sourceIndexPath{
+                if let tempIndexPath = sourceIndexPath {
                     let index = self.things[indexPath!.row].index
                     self.things[indexPath!.row].index = self.things[tempIndexPath.row].index
                     self.things[tempIndexPath.row].index = index
@@ -298,34 +288,57 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     sourceIndexPath = indexPath
                 }
             }
-            break
         default:
-            if let tempIndexPath = sourceIndexPath{
-                let cell = self.tableView.cellForRow(at: tempIndexPath)
-                cell?.alpha = 0.0
-                
-                UIView.animate(withDuration: 0.25, animations: {
-                    self.snapshotView?.center = cell!.center
-                    self.snapshotView?.transform = CGAffineTransform.identity
-                    self.snapshotView?.alpha = 0.0
-                    cell?.alpha = 1.0
-                    self.sortAndSaveThings()
-                    self.tableView.reloadData()
-                }, completion: { (finished) in
-                    cell?.isHidden = false
-                    self.sourceIndexPath = nil
-                    self.snapshotView?.removeFromSuperview()
-                    self.snapshotView = nil
-                })
+            if let tempIndexPath = sourceIndexPath {
+                defaultAnimate(indexPath: tempIndexPath)
             }
-            break
         }
     }
     
-    fileprivate func sortAndSaveThings(){
+    private func defaultAnimate(indexPath: IndexPath) {
+        let cell = self.tableView.cellForRow(at: indexPath)
+        cell?.alpha = 0.0
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            self.snapshotView?.center = cell!.center
+            self.snapshotView?.transform = CGAffineTransform.identity
+            self.snapshotView?.alpha = 0.0
+            cell?.alpha = 1.0
+            self.sortAndSaveThings()
+            self.tableView.reloadData()
+        }, completion: { (_) in
+            cell?.isHidden = false
+            self.sourceIndexPath = nil
+            self.snapshotView?.removeFromSuperview()
+            self.snapshotView = nil
+        })
+    }
+    
+    private func beganAnimate(indexPath: IndexPath, location: CGPoint) {
+        sourceIndexPath = indexPath
+        let cell = self.tableView.cellForRow(at: indexPath)
+        snapshotView = self.customSnapshotFromView(cell!)
+        
+        var center = cell?.center
+        snapshotView?.center = center!
+        snapshotView?.alpha = 0.0
+        self.tableView.addSubview(snapshotView!)
+        
+        UIView.animate(withDuration: 0.25, animations: {
+            center?.y = location.y
+            self.snapshotView?.center = center!
+            self.snapshotView?.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+            self.snapshotView?.alpha = 0.98
+            cell?.alpha = 0.0
+        }, completion: { (_) in
+            cell?.isHidden = true
+        })
+    }
+    
+    fileprivate func sortAndSaveThings() {
         var set = Set<Int>()
         self.things.forEach { set.insert($0.index) }
-        if set.count < self.things.count || self.things[0].index != 0{
+        if set.count < self.things.count || self.things[0].index != 0 {
             var index = 0
             self.things.forEach({ (thing) in
                 thing.index = index
@@ -336,7 +349,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.service.save(sorted: self.things)
     }
     
-    func customSnapshotFromView(_ inputView:UIView) ->UIView {
+    func customSnapshotFromView(_ inputView: UIView) -> UIView {
         UIGraphicsBeginImageContextWithOptions(inputView.bounds.size, false, 0)
         inputView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -350,23 +363,25 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return snapshot
     }
     
-    @objc func keyboardWillHide(_ notice:Notification){
-        if shouldInputViewDisplay{
-            inputThingView.frame = CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight)
+    @objc func keyboardWillHide(_ notice: Notification) {
+        if shouldInputViewDisplay {
+            let y = self.view.frame.height - inputViewHeight
+            inputThingView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: inputViewHeight)
             self.dismiss(animated: false, completion: nil)
         }
     }
     
-    @objc func keyboardWillShow(_ notice:Notification){
-        if shouldInputViewDisplay && inputThingView.isEditing(){
-            let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
+    @objc func keyboardWillShow(_ notice: Notification) {
+        if shouldInputViewDisplay && inputThingView.isEditing() {
+            let userInfo: NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
             let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
             let endFrame = endFrameValue.cgRectValue
-            inputThingView.frame = CGRect(x: 0, y: self.view.bounds.height - inputViewHeight - endFrame.height, width: self.view.bounds.width, height: inputViewHeight)
+            let y = self.view.bounds.height - inputViewHeight - endFrame.height
+            inputThingView.frame = CGRect(x: 0, y: y, width: self.view.bounds.width, height: inputViewHeight)
         }
     }
     
-    @objc func pushToAboutPage(_ sender:UIBarButtonItem){
+    @objc func pushToAboutPage(_ sender: UIBarButtonItem) {
         inputThingView.endEditing()
         let settingsController = SettingsViewController()
         self.navigationController?.pushViewController(settingsController, animated: true)
@@ -378,7 +393,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 }
 
-extension HomeViewController{
+extension HomeViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.things.count
@@ -397,14 +412,14 @@ extension HomeViewController{
             self.editThing(thing, isTag: true)
         }
         cell.setBackground(style: getCellBackgroundStyle(indexPath.row))
-        if thing.isNew{
+        if thing.isNew {
             cell.showAddTagButton()
             thing.isNew = false
         }
         return cell
     }
     
-    private func getCellBackgroundStyle(_ index:Int) -> ThingCellBackgroundStyle{
+    private func getCellBackgroundStyle(_ index: Int) -> ThingCellBackgroundStyle {
         var style = ThingCellBackgroundStyle.normal
         let lastNumber = things.count - 1
         switch index {
@@ -416,7 +431,7 @@ extension HomeViewController{
             style = ThingCellBackgroundStyle.normal
         }
         
-        if things.count == 1{
+        if things.count == 1 {
             style = ThingCellBackgroundStyle.one
         }
         
@@ -425,11 +440,14 @@ extension HomeViewController{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let thing = things[indexPath.row]
-        let content:NSString = thing.content! as NSString
-        let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 60, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)], context: nil)
+        let content: NSString = thing.content! as NSString
+        let expectSize = CGSize(width: self.view.frame.width - 60, height: CGFloat.greatestFiniteMagnitude)
+        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
+        let option = NSStringDrawingOptions.usesLineFragmentOrigin
+        let size = content.boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
         var height = size.height + 40
         let hasTag = service.hasTag(for: thing)
-        if hasTag{
+        if hasTag {
             height = size.height + 50
         }
         return height
@@ -439,39 +457,45 @@ extension HomeViewController{
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: NSLocalizedString("tag", comment: "标签")) { (action, index) -> Void in
+        let title = NSLocalizedString("tag", comment: "标签")
+        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: title) { (_, index) -> Void in
             let index = indexPath.row
             let thing = self.things[index]
             self.editThing(thing, isTag: true)
             tableView.isEditing = false
         }
         
-        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: NSLocalizedString("copy", comment: "复制")) { (action, index) -> Void in
+        let copyTitle = NSLocalizedString("copy", comment: "复制")
+        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: copyTitle) { (_, index) -> Void in
             let index=(indexPath as NSIndexPath).row as Int
             let thing = self.things[index]
             UIPasteboard.general.string = thing.content
         }
         shareAction.backgroundColor = UIColor.remember()
         
-        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: NSLocalizedString("delete", comment: "删除")) { (action, index) -> Void in
-            
+        let deleteTitle = NSLocalizedString("delete", comment: "删除")
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: deleteTitle) { (action, index) -> Void in
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false
             )
             let alertView = SCLAlertView(appearance: appearance)
-            alertView.addButton(NSLocalizedString("confirmDelete", comment: ""), backgroundColor: UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+            let buttonTitle = NSLocalizedString("confirmDelete", comment: "")
+            let buttonColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
+            alertView.addButton(buttonTitle, backgroundColor: buttonColor, textColor: UIColor.white, showTimeout: nil, action: {
                 let index=(indexPath as NSIndexPath).row as Int
                 let thing = self.things[index]
                 self.things.remove(at: index)
                 self.service.delete(thing)
                 tableView.reloadData()
             })
-            alertView.addButton(NSLocalizedString("cancel", comment: "取消"), backgroundColor: UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+            let cancelColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
+            let cancelTitle = NSLocalizedString("cancel", comment: "取消")
+            alertView.addButton(cancelTitle, backgroundColor: cancelColor, textColor: UIColor.white, showTimeout: nil, action: {
                 tableView.setEditing(false, animated: true)
             })
             alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
         }
-        return [deleteAction, shareAction,editAction]
+        return [deleteAction, shareAction, editAction]
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
@@ -486,7 +510,7 @@ extension HomeViewController{
         openThingViewController(with: thing)
     }
     
-    func openThingViewController(with thing:ThingModel){
+    func openThingViewController(with thing: ThingModel) {
         let editController = EditThingViewController()
         editController.delegate = self
         editController.thing = thing
@@ -501,7 +525,7 @@ extension HomeViewController{
         inputThingView.endEditing()
     }
     
-    private func editThing(_ thing: ThingModel, isTag: Bool = false){
+    private func editThing(_ thing: ThingModel, isTag: Bool = false) {
         self.shouldInputViewDisplay = true
         
         let editController = EditThingViewController()
@@ -512,17 +536,21 @@ extension HomeViewController{
     }
 }
 
-extension HomeViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
+extension HomeViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "EmptyBox")
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: NSLocalizedString("addOneThing", comment: ""), attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)])
+        let text = NSLocalizedString("addOneThing", comment: "")
+        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+        return NSAttributedString(string: text, attributes: attributes)
     }
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        let tipsString = NSAttributedString(string: NSLocalizedString("tips", comment: "提示"), attributes: [NSAttributedStringKey.foregroundColor : UIColor.remember()])
+        let text = NSLocalizedString("tips", comment: "提示")
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
+        let tipsString = NSAttributedString(string: text, attributes: attributes)
         return tipsString
     }
     
@@ -532,13 +560,13 @@ extension HomeViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
     }
 }
 
-extension HomeViewController : UISearchControllerDelegate{
+extension HomeViewController: UISearchControllerDelegate {
     func willDismissSearchController(_ searchController: UISearchController) {
         self.shouldInputViewDisplay = true
     }
 }
 
-extension HomeViewController : ThingInputDelegate{
+extension HomeViewController: ThingInputDelegate {
     func input(inputView: InputThingView, thing: ThingModel) {
         self.things.insert(thing, at: 0)
         self.sortAndSaveThings()
@@ -546,18 +574,18 @@ extension HomeViewController : ThingInputDelegate{
     }
 }
 
-extension HomeViewController : VoiceInputDelegate{
-    func voiceInput(voiceInputView:VoiceInputController, thing:ThingModel){
+extension HomeViewController: VoiceInputDelegate {
+    func voiceInput(voiceInputView: VoiceInputController, thing: ThingModel) {
         self.things.insert(thing, at: 0)
         self.sortAndSaveThings()
         tableView.reloadData()
     }
 }
 
-extension HomeViewController : EditThingDelegate{
+extension HomeViewController: EditThingDelegate {
     func editThing(isDeleted: Bool, thing: ThingModel) {
-        if isDeleted{
-            if let index = self.things.index(where: {$0.id == thing.id}){
+        if isDeleted {
+            if let index = self.things.index(where: {$0.id == thing.id}) {
                 self.things.remove(at: index)
             }
         }
@@ -565,9 +593,8 @@ extension HomeViewController : EditThingDelegate{
     }
 }
 
-extension HomeViewController : SearchResultTableDelegate{
+extension HomeViewController: SearchResultTableDelegate {
     func searchResultTable(view: SearchResultTableViewController, thing: ThingModel) {
         openThingViewController(with: thing)
     }
 }
-

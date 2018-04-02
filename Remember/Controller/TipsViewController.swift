@@ -30,7 +30,7 @@ class TipsViewController: UITableViewController {
         self.tableView.delegate = self
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.allowsSelection = false
-        self.tableView.tableFooterView = UIView(frame:CGRect.zero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.estimatedRowHeight = 44
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -49,7 +49,7 @@ class TipsViewController: UITableViewController {
         return cell
     }
     
-    private func buildTipView(text:String, image:UIImage, width:CGFloat) -> UIView{
+    private func buildTipView(text: String, image: UIImage, width: CGFloat) -> UIView {
         let textLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 30))
         textLabel.text = text
         textLabel.sizeToFit()

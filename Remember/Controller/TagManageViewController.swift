@@ -31,19 +31,20 @@ class TagManageViewController: UITableViewController {
         self.title = NSLocalizedString("tagManager", comment: "标签管理")
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.tableFooterView = UIView(frame:CGRect.zero)
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.allowsSelection = false
         // EmptyDataSet SDK
-        self.tableView.emptyDataSetSource = self;
-        self.tableView.emptyDataSetDelegate = self;
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "edit"), style: .plain, target: self, action: #selector(TagManageViewController.editTags(sender:)))
+        let rightBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "edit"), style: .plain, target: self, action: #selector(TagManageViewController.editTags(sender:)))
+        self.navigationItem.rightBarButtonItem = rightBarItem
         
         let allTags = tagService.getAllTags()
         self.tags = allTags
     }
     
-    @objc func editTags(sender:UIBarButtonItem){
+    @objc func editTags(sender: UIBarButtonItem) {
         self.tableView.isEditing = !self.tableView.isEditing
     }
     
@@ -71,13 +72,14 @@ class TagManageViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.tags.count > indexPath.row
-        {
-            let content:NSString = self.tags[indexPath.row].name as NSString
-            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)], context: nil)
+        if self.tags.count > indexPath.row {
+            let content: NSString = self.tags[indexPath.row].name as NSString
+            let expectSize = CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude)
+            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
+            let option = NSStringDrawingOptions.usesLineFragmentOrigin
+            let size = content.boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
             return size.height + 30
-        }
-        else{
+        } else {
             return UITableViewCell().frame.height
         }
     }
@@ -86,14 +88,16 @@ class TagManageViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        
-        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: NSLocalizedString("delete", comment: "删除")) { (action, index) -> Void in
+        let title = NSLocalizedString("delete", comment: "删除")
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: title) { (action, index) -> Void in
             
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false
             )
             let alertView = SCLAlertView(appearance: appearance)
-            alertView.addButton(NSLocalizedString("confirmDelete", comment: "确认删除"), backgroundColor: UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+            let color = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
+            let deleteTitle = NSLocalizedString("confirmDelete", comment: "确认删除")
+            alertView.addButton(deleteTitle, backgroundColor: color, textColor: UIColor.white, showTimeout: nil, action: {
                 let index=(indexPath as NSIndexPath).row as Int
                 let tag = self.tags[index]
                 self.tags.remove(at: index)
@@ -101,10 +105,13 @@ class TagManageViewController: UITableViewController {
                 tableView.reloadData()
                 self.sendNotification(with: tag)
             })
-            alertView.addButton(NSLocalizedString("cancel", comment: "取消"), backgroundColor: UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+            let cancelColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
+            let cancelTitle = NSLocalizedString("cancel", comment: "取消")
+            alertView.addButton(cancelTitle, backgroundColor: cancelColor, textColor: UIColor.white, showTimeout: nil, action: {
                 tableView.setEditing(false, animated: true)
             })
-            alertView.showWarning(NSLocalizedString("sureToDelete", comment: "确定要删除吗？"), subTitle: NSLocalizedString("deleteTagNotDeleteThing", comment: "删除提示"))
+            let subTitle = NSLocalizedString("deleteTagNotDeleteThing", comment: "删除提示")
+            alertView.showWarning(NSLocalizedString("sureToDelete", comment: "确定要删除吗？"), subTitle: subTitle)
         }
         return [deleteAction]
     }
@@ -113,18 +120,19 @@ class TagManageViewController: UITableViewController {
         return .delete
     }
     
-    private func sendNotification(with tag:TagModel){
+    private func sendNotification(with tag: TagModel) {
         let notify = Notification(name: Notification.Name(rawValue: "tagRemovedNotification"), object: tag, userInfo: nil)
         NotificationCenter.default.post(name: Notification.Name(rawValue: "tagRemovedNotification"), object: notify)
     }
 }
 
-extension TagManageViewController : DZNEmptyDataSetSource,DZNEmptyDataSetDelegate{
+extension TagManageViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "tag")
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: NSLocalizedString("noTag", comment: "没有标签"), attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 16)])
+        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+        return NSAttributedString(string: NSLocalizedString("noTag", comment: "没有标签"), attributes: attributes)
     }
 }

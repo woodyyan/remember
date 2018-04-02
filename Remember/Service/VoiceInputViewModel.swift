@@ -8,10 +8,10 @@
 
 import Foundation
 
-class VoiceInputViewModel{
+class VoiceInputViewModel {
     private let thingStorage = ThingStorage()
     
-    func saveThing(_ content:String) -> ThingModel{
+    func saveThing(_ content: String) -> ThingModel {
         let thing = ThingModel(content: content)
         thing.content = content
         thingStorage.create(thing)

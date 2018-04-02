@@ -64,3 +64,6 @@
 "createAt" = "创建于 ";
 "addTagLabel" = "添加标签";
 "copy" = "复制";
+"recommendDescription" = "推荐「丁丁记事」给你";
+"addThingAction" = "添加小事";
+"searchThingAction" = "搜索小事";

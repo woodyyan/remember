@@ -22,7 +22,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate let backgroundView = UIView()
     fileprivate var textView = UITextView()
     
-    var delegate:VoiceInputDelegate?
+    weak var delegate: VoiceInputDelegate?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -90,7 +90,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         })
         
         let recordingFormat = inputNode.outputFormat(forBus: 0)
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, _) in
             self.recognitionRequest?.append(buffer)
         }
         
@@ -105,7 +105,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         textView.text = NSLocalizedString("sayThing", comment: "")
     }
     
-    private func requestAuthorization(){
+    private func requestAuthorization() {
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
             
             switch authStatus {
@@ -121,32 +121,27 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    private func initUI(){
+    private func initUI() {
         //一个cell的高度
         let height = (self.view.frame.width)/2
         
         backgroundView.backgroundColor = UIColor(white: 1, alpha: 0.9)
         self.view.addSubview(backgroundView)
-        backgroundView.frame = CGRect(origin: CGPoint(x: 0.0, y: self.view.frame.height), size: CGSize(width: self.view.frame.width, height: height))
+        let size = CGSize(width: self.view.frame.width, height: height)
+        backgroundView.frame = CGRect(origin: CGPoint(x: 0.0, y: self.view.frame.height), size: size)
         
         let voiceView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: height))
         voiceView.backgroundColor = UIColor.white
         backgroundView.addSubview(voiceView)
         
-        let cancelButton = UIButton(type: UIButtonType.custom)
-        cancelButton.setImage(UIImage(named: "Cancel"), for: .normal)
-        cancelButton.addTarget(self, action: #selector(VoiceInputController.cancelTapped(sender:)), for: .touchUpInside)
-        cancelButton.sizeToFit()
+        let cancelButton = getCancelButton()
         voiceView.addSubview(cancelButton)
         cancelButton.snp.makeConstraints { (maker) in
             maker.bottom.equalTo(voiceView.snp.bottom).offset(-20)
             maker.left.equalTo(voiceView.snp.left).offset(20)
         }
         
-        let okButton = UIButton(type: UIButtonType.custom)
-        okButton.setImage(UIImage(named: "Checked"), for: .normal)
-        okButton.addTarget(self, action: #selector(VoiceInputController.okTapped(sender:)), for: .touchUpInside)
-        okButton.sizeToFit()
+        let okButton = getOkButton()
         voiceView.addSubview(okButton)
         okButton.snp.makeConstraints { (maker) in
             maker.bottom.equalTo(voiceView.snp.bottom).offset(-20)
@@ -175,14 +170,30 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    @objc func cancelTapped(sender:UIButton){
+    private func getCancelButton() -> UIButton {
+        let cancelButton = UIButton(type: UIButtonType.custom)
+        cancelButton.setImage(UIImage(named: "Cancel"), for: .normal)
+        cancelButton.addTarget(self, action: #selector(VoiceInputController.cancelTapped(sender:)), for: .touchUpInside)
+        cancelButton.sizeToFit()
+        return cancelButton
+    }
+    
+    private func getOkButton() -> UIButton {
+        let okButton = UIButton(type: UIButtonType.custom)
+        okButton.setImage(UIImage(named: "Checked"), for: .normal)
+        okButton.addTarget(self, action: #selector(VoiceInputController.okTapped(sender:)), for: .touchUpInside)
+        okButton.sizeToFit()
+        return okButton
+    }
+    
+    @objc func cancelTapped(sender: UIButton) {
         resetRecognitionTask()
         self.dismissController()
     }
     
-    @objc func okTapped(sender:UIButton){
+    @objc func okTapped(sender: UIButton) {
         resetRecognitionTask()
-        if !self.textView.text.isEmpty && self.hasText{
+        if !self.textView.text.isEmpty && self.hasText {
             let thing = viewModel.saveThing(self.textView.text)
             thing.isNew = true
             delegate?.voiceInput(voiceInputView: self, thing: thing)
@@ -190,14 +201,14 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         self.dismissController()
     }
     
-    private func resetRecognitionTask(){
+    private func resetRecognitionTask() {
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
     }
     
-    private func addDismissGesture(){
+    private func addDismissGesture() {
         //Gesture Recognizer for tapping outside the menu
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(VoiceInputController.dismissController))
         tapGesture.numberOfTapsRequired = 1
@@ -213,12 +224,11 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
                        options: [.beginFromCurrentState, .allowUserInteraction, .overrideInheritedOptions, .curveEaseOut],
                        animations: {
                         self.view.backgroundColor = UIColor.clear
-                        self.backgroundView.frame = CGRect(origin: CGPoint(x: 0.0, y: self.view.frame.height), size: self.backgroundView.frame.size)
+                        let origin = CGPoint(x: 0.0, y: self.view.frame.height)
+                        self.backgroundView.frame = CGRect(origin: origin, size: self.backgroundView.frame.size)
         },
-                       completion: {(finished) in
-                        self.dismiss(animated: true, completion: {() -> Void in
-                            
-                        })
+                       completion: {(_) in
+                        self.dismiss(animated: true, completion: nil)
         })
     }
     
@@ -241,7 +251,8 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
                        initialSpringVelocity: 0.6,
                        options: [.beginFromCurrentState, .allowUserInteraction, .overrideInheritedOptions],
                        animations: {
-                        self.backgroundView.frame = CGRect(origin: CGPoint(x: 0.0, y: self.view.frame.height-self.backgroundView.frame.height), size: self.backgroundView.frame.size)
+                        let origin = CGPoint(x: 0.0, y: self.view.frame.height-self.backgroundView.frame.height)
+                        self.backgroundView.frame = CGRect(origin: origin, size: self.backgroundView.frame.size)
                         self.backgroundView.layoutIfNeeded()
         },
                        completion: nil)
@@ -255,7 +266,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
-extension VoiceInputController : SFSpeechRecognizerDelegate{
+extension VoiceInputController: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
             print("available")
@@ -265,6 +276,6 @@ extension VoiceInputController : SFSpeechRecognizerDelegate{
     }
 }
 
-protocol VoiceInputDelegate : NSObjectProtocol{
-    func voiceInput(voiceInputView:VoiceInputController, thing:ThingModel)
+protocol VoiceInputDelegate: NSObjectProtocol {
+    func voiceInput(voiceInputView: VoiceInputController, thing: ThingModel)
 }

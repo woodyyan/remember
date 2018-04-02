@@ -10,12 +10,12 @@ import UIKit
 import MessageUI
 import NotificationBanner
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     fileprivate let service = AboutViewModel()
     private let feedbackKit = BCFeedbackKit(appKey: GlobleParameters.aliyunAppKey, appSecret: GlobleParameters.aliyunAppSecret)
     fileprivate var appStoreUrl = "https://itunes.apple.com/us/app/id1192994573"
     
-    var tableView:UITableView!
+    var tableView: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -33,7 +33,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.title = NSLocalizedString("settings", comment: "设置")
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.remember()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
         
         tableView = UITableView(frame: self.view.frame, style: UITableViewStyle.grouped)
         tableView.dataSource = self
@@ -48,13 +48,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         descriptionLabel.textColor = UIColor.gray
         let thingService = ThingService()
         let count = thingService.getAllThingCount()
-        descriptionLabel.text = "\(NSLocalizedString("totalThingsPart1", comment: "共记了"))\(count)\(NSLocalizedString("totalThingsPart2", comment: "件小事"))"
+        let part1 = NSLocalizedString("totalThingsPart1", comment: "共记了")
+        let part2 = NSLocalizedString("totalThingsPart2", comment: "件小事")
+        descriptionLabel.text = "\(part1)\(count)\(part2)"
         tableView.tableHeaderView = descriptionLabel
     }
     
     // MARK: - TableView
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        switch(section) {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
         case 0:
             return 1
         case 1:
@@ -69,7 +71,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         return 3
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
             return getCell(.push)
@@ -129,7 +131,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     fileprivate func commentAppInStore() {
         if let url = URL(string: appStoreUrl) {
-            UIApplication.shared.open(url, options: [String : Any](), completionHandler: nil)
+            UIApplication.shared.open(url, options: [String: Any](), completionHandler: nil)
         }
     }
     
@@ -137,17 +139,18 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         let language = Locale.preferredLanguages[0]
         if language.hasPrefix("en") {
             sendEmail()
-        } else{
+        } else {
             feedback()
         }
     }
     
     private func feedback() {
         feedbackKit?.extInfo = [
-            "app_version":AboutViewModel().getCurrentVersion(),
-            "device_model":UIDevice.current.model
+            "app_version": AboutViewModel().getCurrentVersion(),
+            "device_model": UIDevice.current.model
         ]
         feedbackKit?.makeFeedbackViewController(completionBlock: { (controller, error) in
+            print(error ?? "")
             if let feedbackController = controller {
                  self.navigationController?.pushViewController(feedbackController, animated: true)
                 feedbackController.closeBlock = { controller in
@@ -165,20 +168,23 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             mailComposerVC.setToRecipients(["easystudio@outlook.com"])
             self.present(mailComposerVC, animated: true, completion: nil)
         } else {
-            let banner = NotificationBanner(title: NSLocalizedString("cannotSendEmail", comment: ""), subtitle: NSLocalizedString("checkEmailConfig", comment: ""), style: .warning)
+            let title = NSLocalizedString("cannotSendEmail", comment: "")
+            let subTitle = NSLocalizedString("checkEmailConfig", comment: "")
+            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .warning)
             banner.show()
         }
     }
     
     fileprivate func recommandToFriends() {
         if let url = URL(string: appStoreUrl) {
-            let controller = UIActivityViewController(activityItems: ["推荐「丁丁记事」给你", url, UIImage.init(named: "icon")!], applicationActivities: [])
+            let title = NSLocalizedString("recommendDescription", comment: "推荐")
+            let controller = UIActivityViewController(activityItems: [title, url, UIImage.init(named: "icon")!], applicationActivities: [])
             controller.excludedActivityTypes = [.addToReadingList, .assignToContact, .openInIBooks, .saveToCameraRoll]
             self.present(controller, animated: true, completion: nil)
         }
     }
     
-    fileprivate func getCell(_ cellType:CellType) -> UITableViewCell {
+    fileprivate func getCell(_ cellType: CellType) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.accessoryType = .disclosureIndicator
         switch cellType {
@@ -195,20 +201,21 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             cell.textLabel?.text = NSLocalizedString("reviewInAppStore", comment: "给我们评分")
             cell.imageView?.image = #imageLiteral(resourceName: "like_gray")
         case .feedback:
-            let feedbackCell = UITableViewCell(style: .value1, reuseIdentifier:"feedback")
+            let feedbackCell = UITableViewCell(style: .value1, reuseIdentifier: "feedback")
             feedbackCell.accessoryType = .disclosureIndicator
             feedbackCell.textLabel?.text = NSLocalizedString("feedback", comment: "反馈与建议")
             feedbackCell.imageView?.image = #imageLiteral(resourceName: "feedback")
-            feedbackKit?.getUnreadCount(completionBlock: { (count, error) in
+            feedbackKit?.getUnreadCount(completionBlock: { (count, _) in
+                // swiftlint:disable empty_count
                 if count == 0 {
                     feedbackCell.detailTextLabel?.text = ""
-                }else {
+                } else {
                     feedbackCell.detailTextLabel?.text = String(count)
                 }
             })
             return feedbackCell
         case .about:
-            let newCell = UITableViewCell(style: .value1, reuseIdentifier:"about")
+            let newCell = UITableViewCell(style: .value1, reuseIdentifier: "about")
             newCell.textLabel?.text = NSLocalizedString("about", comment: "关于")
             newCell.imageView?.image = #imageLiteral(resourceName: "about_gray")
             newCell.detailTextLabel?.text = service.getCurrentVersion()
@@ -219,23 +226,27 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     }
 }
 
-extension SettingsViewController: MFMailComposeViewControllerDelegate{
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
     internal func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        switch(result){
+        switch result {
         case MFMailComposeResult.sent:
-            let banner = NotificationBanner(title: NSLocalizedString("sendSuccess", comment: ""), subtitle: NSLocalizedString("willCheckLater", comment: ""), style: .success)
+            let title = NSLocalizedString("sendSuccess", comment: "")
+            let subTitle = NSLocalizedString("willCheckLater", comment: "")
+            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .success)
             banner.show()
         case MFMailComposeResult.saved: break
         case MFMailComposeResult.cancelled: break
         case MFMailComposeResult.failed:
-            let banner = NotificationBanner(title: NSLocalizedString("sendFailed", comment: ""), subtitle: NSLocalizedString("checkEmailConfig", comment: ""), style: .warning)
+            let title = NSLocalizedString("sendFailed", comment: "")
+            let subTitle = NSLocalizedString("checkEmailConfig", comment: "")
+            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .warning)
             banner.show()
         }
         controller.dismiss(animated: true, completion: nil)
     }
 }
 
-fileprivate enum CellType {
+private enum CellType {
     case push
     case recommand
     case comment

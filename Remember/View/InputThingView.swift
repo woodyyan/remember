@@ -9,15 +9,15 @@
 import Foundation
 import UIKit
 
-class InputThingView : UIView, UITextFieldDelegate{
+class InputThingView: UIView, UITextFieldDelegate {
     private let thingService = ThingService()
     
-    private var textField:UITextField!
-    private var micButton:UIButton!
+    private var textField: UITextField!
+    private var micButton: UIButton!
     
-    var delegate:ThingInputDelegate?
+    weak var delegate: ThingInputDelegate?
     
-    var voiceInputAction:((InputThingView) -> Void)?
+    var voiceInputAction: ((InputThingView) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,11 +41,11 @@ class InputThingView : UIView, UITextFieldDelegate{
         super.init(coder: aDecoder)
     }
     
-    func isEditing() -> Bool{
+    func isEditing() -> Bool {
         return textField.isEditing
     }
     
-    @objc func micButtonTapped(sender:UIButton){
+    @objc func micButtonTapped(sender: UIButton) {
         self.voiceInputAction?(self)
     }
     
@@ -58,8 +58,8 @@ class InputThingView : UIView, UITextFieldDelegate{
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let content = textField.text{
-            if !content.isEmpty{
+        if let content = textField.text {
+            if !content.isEmpty {
                 let thing = ThingModel(content: content)
                 thing.isNew = true
                 thingService.create(thing)
@@ -83,6 +83,6 @@ class InputThingView : UIView, UITextFieldDelegate{
     }
 }
 
-protocol ThingInputDelegate : NSObjectProtocol{
-    func input(inputView:InputThingView, thing:ThingModel)
+protocol ThingInputDelegate: NSObjectProtocol {
+    func input(inputView: InputThingView, thing: ThingModel)
 }

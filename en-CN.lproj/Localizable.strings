@@ -64,4 +64,6 @@
 "createAt" = "Created at ";
 "addTagLabel" = "Add tag";
 "copy" = "Copy";
-
+"recommendDescription" = "Recommend [Remember] to you";
+"addThingAction" = "Add Thing";
+"searchThingAction" = "Search Thing";

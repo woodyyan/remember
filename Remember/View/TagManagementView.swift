@@ -10,20 +10,20 @@ import Foundation
 import UIKit
 
 class TagManagementView: UIView {
-    private var lastTagButton:UIView?
-    private var lastTopView:UIView?
-    private var lastExistingTagButton:UIView?
-    private var lastExistingTopView:UIView?
-    private var tagScrollView:UIScrollView!
+    private var lastTagButton: UIView?
+    private var lastTopView: UIView?
+    private var lastExistingTagButton: UIView?
+    private var lastExistingTopView: UIView?
+    private var tagScrollView: UIScrollView!
     private var selectedTags = [TagModel]()
     private var unselectedTags = [TagModel]()
     private var tagButtons = [UIButton]()
     private var isEditing = false
     
-    var thing:ThingModel?
-    var addTagTextField:UITextField!
-    var addTagButton:UIButton!
-    var delegate:TagManagementDelegate?
+    var thing: ThingModel?
+    var addTagTextField: UITextField!
+    var addTagButton: UIButton!
+    weak var delegate: TagManagementDelegate?
     
     let tagService = TagService()
     
@@ -66,15 +66,17 @@ class TagManagementView: UIView {
         tagScrollView!.alwaysBounceHorizontal = true
         self.addSubview(tagScrollView!)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(TagManagementView.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(TagManagementView.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        let showSelector = #selector(TagManagementView.keyboardWillShow(_:))
+        NotificationCenter.default.addObserver(self, selector: showSelector, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        let hideSelector = #selector(TagManagementView.keyboardWillHide(_:))
+        NotificationCenter.default.addObserver(self, selector: hideSelector, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    @objc func addTagTap(sender:UIButton){
+    @objc func addTagTap(sender: UIButton) {
         self.startEdit()
     }
     
-    func startEdit(){
+    func startEdit() {
         isEditing = true
         addTagTextField.isHidden = false
         addTagTextField.becomeFirstResponder()
@@ -83,41 +85,41 @@ class TagManagementView: UIView {
         showUnselectedExistingTags()
     }
     
-    func endEdit(){
+    func endEdit() {
         isEditing = false
         changeTagButton(false)
     }
     
-    private func changeTagButton(_ isEditing:Bool){
+    private func changeTagButton(_ isEditing: Bool) {
         tagButtons.forEach { (button) in
-            if isEditing{
+            if isEditing {
                 button.setImage(UIImage(named: "cross"), for: .normal)
                 button.tintColor = UIColor.white
-            }else{
+            } else {
                 button.setImage(nil, for: .normal)
             }
         }
     }
     
-    private func showUnselectedExistingTags(){
-        if let currentThing = self.thing{
-            for view in self.tagScrollView!.subviews{
+    private func showUnselectedExistingTags() {
+        if let currentThing = self.thing {
+            for view in self.tagScrollView!.subviews {
                 view.removeFromSuperview()
             }
             
-            var lastButton:UIButton?
-            var width:CGFloat = 0
+            var lastButton: UIButton?
+            var width: CGFloat = 0
             unselectedTags = tagService.getUnselectedTags(by: currentThing)
-            if unselectedTags.count > 0{
+            if !unselectedTags.isEmpty {
                 self.tagScrollView?.isHidden = false
-                for tag in unselectedTags{
+                for tag in unselectedTags {
                     let tagButton = createExistingTagButton(with: tag.name, last: nil, last: nil)
                     tagScrollView.addSubview(tagButton)
                     tagButton.snp.makeConstraints({ (maker) in
                         maker.centerY.equalTo(tagScrollView!)
-                        if let button = lastButton{
+                        if let button = lastButton {
                             maker.left.equalTo(button.snp.right).offset(10)
-                        }else{
+                        } else {
                             maker.left.equalTo(tagScrollView!).offset(10)
                         }
                     })
@@ -127,13 +129,13 @@ class TagManagementView: UIView {
                 }
                 tagScrollView.sizeToFit()
                 tagScrollView.contentSize = CGSize(width: width, height: tagScrollView.frame.height)
-            }else{
+            } else {
                 tagScrollView.isHidden = true
             }
         }
     }
     
-    func createExistingTagButton(with tag:String, last leftView:UIView?, last topView:UIView?) -> UIButton{
+    func createExistingTagButton(with tag: String, last leftView: UIView?, last topView: UIView?) -> UIButton {
         let tagbutton = UIButton(type: .system)
         tagbutton.setTitle("#\(tag)", for: .normal)
         tagbutton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
@@ -143,11 +145,11 @@ class TagManagementView: UIView {
         return tagbutton
     }
     
-    @objc func addExitingTagTap(sender:UIButton){
-        if let tag = sender.titleLabel?.text?.trimmingCharacters(in: CharacterSet.init(charactersIn: "#")){
-            if let tagModel = unselectedTags.first(where: { (t) -> Bool in
-                return t.name == tag
-            }){
+    @objc func addExitingTagTap(sender: UIButton) {
+        if let tag = sender.titleLabel?.text?.trimmingCharacters(in: CharacterSet.init(charactersIn: "#")) {
+            if let tagModel = unselectedTags.first(where: { (model) -> Bool in
+                return model.name == tag
+            }) {
                 let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
                 tagService.saveThingTag(thingTagModel)
                 tagModel.index += 1
@@ -161,37 +163,40 @@ class TagManagementView: UIView {
         }
     }
     
-    func updateView(with tag:String){
+    func updateView(with tag: String) {
         updateView(for: tag)
     }
     
-    func updateView(by thing:ThingModel){
+    func updateView(by thing: ThingModel) {
         self.tagButtons.forEach { (button) in
             button.removeFromSuperview()
         }
         
         selectedTags = tagService.getSelectedTags(by: thing)
-        if selectedTags.count > 0{
-            for tag in selectedTags{
+        if !selectedTags.isEmpty {
+            for tag in selectedTags {
                 updateView(for: tag.name)
             }
         }
     }
     
-    private func updateView(for tag:String){
-        var leftView:UIView? = addTagButton
-        var topView:UIView?
+    private func updateView(for tag: String) {
+        var leftView: UIView? = addTagButton
+        var topView: UIView?
         
-        if lastTagButton != nil{
+        if lastTagButton != nil {
             let rightPoint = lastTagButton!.frame.origin.x + lastTagButton!.frame.width
             let width = self.frame.width - rightPoint
-            let tagBounds = NSString(string: tag).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12)], context: nil)
-            if width < 70 || width < tagBounds.width + 20{
+            let size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0)
+            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]
+            let option = NSStringDrawingOptions.usesLineFragmentOrigin
+            let tagBounds = NSString(string: tag).boundingRect(with: size, options: option, attributes: attributes, context: nil)
+            if width < 70 || width < tagBounds.width + 20 {
                 // 说明最右边空间不够了，该换行了
                 leftView = nil
                 topView = lastTagButton!
                 lastTopView = lastTagButton
-            }else{
+            } else {
                 leftView = lastTagButton!
                 topView = lastTopView
             }
@@ -203,7 +208,7 @@ class TagManagementView: UIView {
         self.layoutIfNeeded()
     }
     
-    private func createNewTagButton(with tag:String, last leftView:UIView?, last topView:UIView?) -> UIButton{
+    private func createNewTagButton(with tag: String, last leftView: UIView?, last topView: UIView?) -> UIButton {
         let tagbutton = UIButton(type: .system)
         tagbutton.setTitle(tag, for: .normal)
         tagbutton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
@@ -214,14 +219,14 @@ class TagManagementView: UIView {
         tagbutton.addTarget(self, action: #selector(TagManagementView.tagTap(sender:)), for: .touchUpInside)
         self.addSubview(tagbutton)
         tagbutton.snp.makeConstraints { (maker) in
-            if leftView == nil{
+            if leftView == nil {
                 maker.left.equalTo(self).offset(10)
-            }else{
+            } else {
                 maker.left.equalTo(leftView!.snp.right).offset(10)
             }
-            if topView == nil{
+            if topView == nil {
                 maker.top.equalTo(self)
-            }else{
+            } else {
                 maker.top.equalTo(topView!.snp.bottom).offset(10)
             }
             maker.height.equalTo(20)
@@ -230,17 +235,17 @@ class TagManagementView: UIView {
         return tagbutton
     }
     
-    @objc func tagTap(sender:UIButton){
-        if isEditing{
-            if let tag = sender.titleLabel?.text{
-                if let tagModel = selectedTags.first(where: { (t) -> Bool in
-                    return t.name == tag
-                }){
+    @objc func tagTap(sender: UIButton) {
+        if isEditing {
+            if let tag = sender.titleLabel?.text {
+                if let tagModel = selectedTags.first(where: { (model) -> Bool in
+                    return model.name == tag
+                }) {
                     let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
                     tagService.deleteThingTag(thingTagModel)
                     lastTopView = nil
                     lastTagButton = nil
-                    if tagModel.index > 0{
+                    if tagModel.index > 0 {
                         tagModel.index -= 1
                         tagService.updateIndex(for: tagModel)
                     }
@@ -250,20 +255,20 @@ class TagManagementView: UIView {
                     self.delegate?.tagManagement(view: self, tag: tag)
                 }
             }
-        }else{
+        } else {
             startEdit()
         }
     }
     
-    @objc func keyboardWillHide(_ notice:Notification){
+    @objc func keyboardWillHide(_ notice: Notification) {
         self.tagScrollView?.isHidden = true
     }
     
-    @objc func keyboardWillShow(_ notice:Notification){
+    @objc func keyboardWillShow(_ notice: Notification) {
         if let endFrame = notice.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             //因为self的高度不对，所以只能这么计算y
-            var y:CGFloat = 0
-            if UIDevice().userInterfaceIdiom == .phone {
+            var y: CGFloat = 0
+            if UIDevice.current.userInterfaceIdiom == .phone {
                 switch UIScreen.main.nativeBounds.height {
                 case 2436:
                     y = endFrame.cgPointValue.y - self.frame.origin.y - 44 - 84
@@ -280,14 +285,14 @@ class TagManagementView: UIView {
     }
 }
 
-extension TagManagementView : UITextFieldDelegate{
+extension TagManagementView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        if let tag = textField.text{
+        if let tag = textField.text {
             let trimTag = tag.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-            if !trimTag.isEmpty{
-                if !tagService.exists(trimTag){
+            if !trimTag.isEmpty {
+                if !tagService.exists(trimTag) {
                     self.updateView(with: trimTag)
                     textField.text = ""
                     
@@ -304,7 +309,7 @@ extension TagManagementView : UITextFieldDelegate{
         return true
     }
     
-    private func saveTag(_ tag:String){
+    private func saveTag(_ tag: String) {
         let tagModel = TagModel(name: tag)
         tagModel.index = 1
         let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
@@ -314,6 +319,6 @@ extension TagManagementView : UITextFieldDelegate{
     }
 }
 
-protocol TagManagementDelegate {
-    func tagManagement(view:TagManagementView, tag:String)
+protocol TagManagementDelegate: class {
+    func tagManagement(view: TagManagementView, tag: String)
 }

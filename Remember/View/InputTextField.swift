@@ -16,7 +16,9 @@ class InputTextField: UITextField {
         let leftImage = UIImageView(image: UIImage(named: "PlusMath"))
         self.leftView = leftImage
         self.leftViewMode = .always
-        self.attributedPlaceholder = NSAttributedString(string: NSLocalizedString("addThingPlaceHolder", comment: "记"), attributes: [NSAttributedStringKey.foregroundColor:UIColor.remember()])
+        let text = NSLocalizedString("addThingPlaceHolder", comment: "记")
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
+        self.attributedPlaceholder = NSAttributedString(string: text, attributes: attributes)
         self.contentMode = .center
         self.backgroundColor = UIColor.inputGray()
         self.layer.borderColor = UIColor.inputGray().cgColor
@@ -26,12 +28,12 @@ class InputTextField: UITextField {
         self.returnKeyType = .done
     }
     
-    func setLeftImage(with image:UIImage){
+    func setLeftImage(with image: UIImage) {
         self.leftView = UIImageView(image: image)
     }
     
-    func setPlaceHolder(with text:String){
-        self.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor:UIColor.remember()])
+    func setPlaceHolder(with text: String) {
+        self.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor: UIColor.remember()])
     }
     
     required init?(coder aDecoder: NSCoder) {

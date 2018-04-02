@@ -9,28 +9,24 @@
 import Foundation
 
 class AboutViewModel {
-    func getAppName() -> String{
+    func getAppName() -> String {
         return NSLocalizedString("appName", comment: "丁丁记事")
     }
     
-    func getSlogan() -> String{
+    func getSlogan() -> String {
         return NSLocalizedString("rememberEveryThing", comment: "")
     }
     
-    func getVersionInfo() -> String{
+    func getVersionInfo() -> String {
         return "\(NSLocalizedString("version", comment: "版本号"))V\(getCurrentVersion())"
     }
     
-    func getGettingStarted() -> String{
-        return Constants.sampleThing
-    }
-    
-    func getCurrentVersion(_ bundleVersion:Bool = false) -> String{
+    func getCurrentVersion(_ bundleVersion: Bool = false) -> String {
         guard let infoDic = Bundle.main.infoDictionary else {return ""}
         guard let currentVersion = infoDic["CFBundleShortVersionString"] as? String else {return ""}
-        if let buildVersion = infoDic["CFBundleVersion"] as? String , bundleVersion == true {
+        if let buildVersion = infoDic["CFBundleVersion"] as? String, bundleVersion == true {
             return currentVersion + buildVersion
-        }else {
+        } else {
             return currentVersion
         }
     }

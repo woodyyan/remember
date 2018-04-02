@@ -20,8 +20,8 @@ public class ThingTagEntity: NSManagedObject {
     @NSManaged public var id: String?
 }
 
-extension ThingTagEntity{
-    func toModel() -> ThingTagModel{
+extension ThingTagEntity {
+    func toModel() -> ThingTagModel {
         let thingTagModel = ThingTagModel(thingId: self.thingId!, tagId: self.tagId!)
         thingTagModel.id = self.id
         return thingTagModel

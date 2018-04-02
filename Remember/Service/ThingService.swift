@@ -19,37 +19,37 @@ class ThingService {
         things = thingStorage.getThings()
     }
     
-    func create(_ thing:ThingModel){
+    func create(_ thing: ThingModel) {
         thingStorage.create(thing)
     }
     
-    func delete(_ thing:ThingModel){
+    func delete(_ thing: ThingModel) {
         thingStorage.delete(thing)
         let thingTags = thingTagStorage.getThingTags(by: thing)
-        for thingTag in thingTags{
+        for thingTag in thingTags {
             thingTagStorage.delete(for: thingTag)
         }
     }
     
-    func save(sorted things:[ThingModel]){
+    func save(sorted things: [ThingModel]) {
         thingStorage.save(sorted: things)
     }
     
-    func hasTag(for thing:ThingModel) -> Bool{
+    func hasTag(for thing: ThingModel) -> Bool {
         let tags = tagService.getSelectedTags(by: thing)
-        return tags.count > 0
+        return !tags.isEmpty
     }
     
-    func edit(_ thing:ThingModel){
+    func edit(_ thing: ThingModel) {
         thingStorage.edit(thing)
     }
     
-    func getAllThingCount() -> Int{
+    func getAllThingCount() -> Int {
         let things = thingStorage.getThings()
         return things.count
     }
     
-    func getCreatedDateText(from date:Date) -> String{
+    func getCreatedDateText(from date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd hh:mm"
         let dateText = NSLocalizedString("createAt", comment: "") + dateFormatter.string(from: date as Date)

@@ -17,11 +17,11 @@ class SearchService {
         things = thingStorage.getThings()
     }
     
-    func getThings(byTag tag:String) -> [ThingModel]{
+    func getThings(byTag tag: String) -> [ThingModel] {
         let thingTagStorage = ThingTagStorage()
         let tagStorage = TagStorage()
         var filteredThings = [ThingModel]()
-        if let tagModel = tagStorage.getTag(by: tag){
+        if let tagModel = tagStorage.getTag(by: tag) {
             let thingTags = thingTagStorage.getThingTags(by: tagModel)
             let thingTagIds = thingTags.map({$0.thingId!})
             filteredThings = things.filter { (thing) -> Bool in
@@ -31,7 +31,7 @@ class SearchService {
         return filteredThings
     }
     
-    func getThings(byText searchText:String) -> [ThingModel]{
+    func getThings(byText searchText: String) -> [ThingModel] {
         let filteredThings = self.things.filter({ (thing) -> Bool in
             return thing.content!.contains(searchText)
         })

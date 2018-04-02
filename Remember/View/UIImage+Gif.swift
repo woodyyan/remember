@@ -72,11 +72,12 @@ extension UIImage {
         // Get dictionaries
         let cfProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil)
         let gifPropertiesPointer = UnsafeMutablePointer<UnsafeRawPointer?>.allocate(capacity: 0)
-        if CFDictionaryGetValueIfPresent(cfProperties, Unmanaged.passUnretained(kCGImagePropertyGIFDictionary).toOpaque(), gifPropertiesPointer) == false {
+        let opaque = Unmanaged.passUnretained(kCGImagePropertyGIFDictionary).toOpaque()
+        if CFDictionaryGetValueIfPresent(cfProperties, opaque, gifPropertiesPointer) == false {
             return delay
         }
         
-        let gifProperties:CFDictionary = unsafeBitCast(gifPropertiesPointer.pointee, to: CFDictionary.self)
+        let gifProperties: CFDictionary = unsafeBitCast(gifPropertiesPointer.pointee, to: CFDictionary.self)
         
         // Get delay time
         var delayObject: AnyObject = unsafeBitCast(
@@ -84,8 +85,8 @@ extension UIImage {
                                  Unmanaged.passUnretained(kCGImagePropertyGIFUnclampedDelayTime).toOpaque()),
             to: AnyObject.self)
         if delayObject.doubleValue == 0 {
-            delayObject = unsafeBitCast(CFDictionaryGetValue(gifProperties,
-                                                             Unmanaged.passUnretained(kCGImagePropertyGIFDelayTime).toOpaque()), to: AnyObject.self)
+            let key = Unmanaged.passUnretained(kCGImagePropertyGIFDelayTime).toOpaque()
+            delayObject = unsafeBitCast(CFDictionaryGetValue(gifProperties, key), to: AnyObject.self)
         }
         
         delay = delayObject as? Double ?? 0
@@ -97,42 +98,42 @@ extension UIImage {
         return delay
     }
     
-    internal class func gcdForPair(_ a: Int?, _ b: Int?) -> Int {
-        var a = a
-        var b = b
+    internal class func gcdForPair(_ aPair: Int?, _ bPair: Int?) -> Int {
+        var aPair = aPair
+        var bPair = bPair
         // Check if one of them is nil
-        if b == nil || a == nil {
-            if b != nil {
-                return b!
-            } else if a != nil {
-                return a!
+        if bPair == nil || aPair == nil {
+            if bPair != nil {
+                return bPair!
+            } else if aPair != nil {
+                return aPair!
             } else {
                 return 0
             }
         }
         
         // Swap for modulo
-        if a! < b! {
-            let c = a
-            a = b
-            b = c
+        if aPair! < bPair! {
+            let c = aPair
+            aPair = bPair
+            bPair = c
         }
         
         // Get greatest common divisor
         var rest: Int
         while true {
-            rest = a! % b!
+            rest = aPair! % bPair!
             
             if rest == 0 {
-                return b! // Found it
+                return bPair! // Found it
             } else {
-                a = b
-                b = rest
+                aPair = bPair
+                bPair = rest
             }
         }
     }
     
-    internal class func gcdForArray(_ array: Array<Int>) -> Int {
+    internal class func gcdForArray(_ array: [Int]) -> Int {
         if array.isEmpty {
             return 1
         }

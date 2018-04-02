@@ -9,19 +9,19 @@
 import Foundation
 import UIKit
 
-class SearchViewController : UIViewController{
-    fileprivate var lastTopView:UIView?
-    fileprivate var lastTagButton:UIView?
-    fileprivate var tagLabel:UILabel!
+class SearchViewController: UIViewController {
+    fileprivate var lastTopView: UIView?
+    fileprivate var lastTagButton: UIView?
+    fileprivate var tagLabel: UILabel!
     
-    fileprivate var tagView:UIView!
-    fileprivate var textField:InputTextField!
-    fileprivate var tableView:UITableView!
+    fileprivate var tagView: UIView!
+    fileprivate var textField: InputTextField!
+    fileprivate var tableView: UITableView!
     fileprivate let tagService = TagService()
     fileprivate let searchService = SearchService()
     fileprivate var filteredThings = [ThingModel]()
     
-    var homeController:HomeViewController?
+    var homeController: HomeViewController?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -41,11 +41,12 @@ class SearchViewController : UIViewController{
         
         initUI()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(SearchViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        let selector = #selector(SearchViewController.keyboardWillShow(_:))
+        NotificationCenter.default.addObserver(self, selector: selector, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
     }
     
-    @objc func keyboardWillShow(_ notice:Notification){
-        let userInfo:NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
+    @objc func keyboardWillShow(_ notice: Notification) {
+        let userInfo: NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
         let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
         let endFrame = endFrameValue.cgRectValue
         tableView.snp.makeConstraints { (maker) in
@@ -53,25 +54,10 @@ class SearchViewController : UIViewController{
         }
     }
     
-    private func initUI(){
-        textField = InputTextField(frame: CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height:  40))
-        textField.setLeftImage(with: UIImage(named: "Search")!)
-        textField.setPlaceHolder(with: NSLocalizedString("searchPlaceHolder", comment: ""))
-        textField.returnKeyType = .search
-        textField.delegate = self
-        textField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(sender:)), for: .editingChanged)
-        self.view.addSubview(textField)
-        textField.snp.makeConstraints { (maker) in
-            maker.left.equalTo(self.view).offset(10)
-            maker.top.equalTo(self.view).offset(30)
-            maker.right.equalTo(self.view).offset(-50)
-            maker.height.equalTo(40)
-        }
+    private func initUI() {
+        initTextField()
         
-        let cancelButton = UIButton(type: .system)
-        cancelButton.setTitle(NSLocalizedString("cancel", comment: ""), for: .normal)
-        cancelButton.setTitleColor(UIColor.remember(), for: .normal)
-        cancelButton.addTarget(self, action: #selector(SearchViewController.cancelTap(sender:)), for: .touchUpInside)
+        let cancelButton = getCancelButton()
         self.view.addSubview(cancelButton)
         cancelButton.snp.makeConstraints { (maker) in
             maker.left.equalTo(textField.snp.right)
@@ -80,12 +66,13 @@ class SearchViewController : UIViewController{
             maker.height.equalTo(40)
         }
         
-        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), style: UITableViewStyle.plain)
+        let rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        tableView = UITableView(frame: rect, style: UITableViewStyle.plain)
         tableView.backgroundColor = UIColor.background()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.tableFooterView = UIView(frame:CGRect.zero)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { (maker) in
             maker.top.equalTo(textField.snp.bottom).offset(10)
@@ -119,50 +106,77 @@ class SearchViewController : UIViewController{
         textField.becomeFirstResponder()
     }
     
-    @objc func textFieldDidChange(sender:UITextField){
-        if let isEmpty = sender.text?.isEmpty{
-            if isEmpty{
+    private func initTextField() {
+        textField = InputTextField(frame: CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 40))
+        textField.setLeftImage(with: UIImage(named: "Search")!)
+        textField.setPlaceHolder(with: NSLocalizedString("searchPlaceHolder", comment: ""))
+        textField.returnKeyType = .search
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(sender:)), for: .editingChanged)
+        self.view.addSubview(textField)
+        textField.snp.makeConstraints { (maker) in
+            maker.left.equalTo(self.view).offset(10)
+            maker.top.equalTo(self.view).offset(30)
+            maker.right.equalTo(self.view).offset(-50)
+            maker.height.equalTo(40)
+        }
+    }
+    
+    private func getCancelButton() -> UIButton {
+        let cancelButton = UIButton(type: .system)
+        cancelButton.setTitle(NSLocalizedString("cancel", comment: ""), for: .normal)
+        cancelButton.setTitleColor(UIColor.remember(), for: .normal)
+        cancelButton.addTarget(self, action: #selector(SearchViewController.cancelTap(sender:)), for: .touchUpInside)
+        return cancelButton
+    }
+    
+    @objc func textFieldDidChange(sender: UITextField) {
+        if let isEmpty = sender.text?.isEmpty {
+            if isEmpty {
                 showAllTags()
             }
         }
     }
     
-    func showAllTags(){
+    func showAllTags() {
         self.filteredThings.removeAll()
         self.tableView.reloadData()
         self.tagView.isHidden = false
     }
     
-    @objc func cancelTap(sender:UIButton){
+    @objc func cancelTap(sender: UIButton) {
         self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
 
-    private func showTags(){
+    private func showTags() {
         let allTags = tagService.getAllTags()
-        if allTags.count > 0{
-            for tag in allTags{
+        if !allTags.isEmpty {
+            for tag in allTags {
                 updateView(for: tag.name)
             }
-        }else{
+        } else {
             self.tagView.isHidden = true
         }
     }
     
-    private func updateView(for tag:String){
-        var leftView:UIView?
-        var topView:UIView! = tagLabel
+    private func updateView(for tag: String) {
+        var leftView: UIView?
+        var topView: UIView! = tagLabel
         
-        if lastTagButton != nil{
+        if lastTagButton != nil {
             let rightPoint = lastTagButton!.frame.origin.x + lastTagButton!.frame.width
             let width = self.view.frame.width - rightPoint
-            let tagBounds = NSString(string: tag).boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12)], context: nil)
-            if width < 70 || width < tagBounds.width + 30{
+            let expectSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0)
+            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]
+            let option = NSStringDrawingOptions.usesLineFragmentOrigin
+            let tagBounds = NSString(string: tag).boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
+            if width < 70 || width < tagBounds.width + 30 {
                 // 说明最右边空间不够了，该换行了
                 leftView = nil
                 topView = lastTagButton!
                 lastTopView = lastTagButton
-            }else{
+            } else {
                 leftView = lastTagButton!
                 topView = lastTopView
             }
@@ -174,7 +188,7 @@ class SearchViewController : UIViewController{
         self.view.layoutIfNeeded()
     }
     
-    private func createNewTagButton(with tag:String, last leftView:UIView?, last topView:UIView) -> UIButton{
+    private func createNewTagButton(with tag: String, last leftView: UIView?, last topView: UIView) -> UIButton {
         let tagbutton = UIButton(type: .system)
         tagbutton.setTitle(tag, for: .normal)
         tagbutton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
@@ -185,9 +199,9 @@ class SearchViewController : UIViewController{
         tagbutton.addTarget(self, action: #selector(SearchViewController.tagTap(sender:)), for: .touchUpInside)
         self.tagView.addSubview(tagbutton)
         tagbutton.snp.makeConstraints { (maker) in
-            if leftView == nil{
+            if leftView == nil {
                 maker.left.equalTo(self.tagView).offset(20)
-            }else{
+            } else {
                 maker.left.equalTo(leftView!.snp.right).offset(10)
             }
             maker.top.equalTo(topView.snp.bottom).offset(10)
@@ -196,8 +210,8 @@ class SearchViewController : UIViewController{
         return tagbutton
     }
     
-    @objc func tagTap(sender:UIButton){
-        if let tag = sender.titleLabel?.text{
+    @objc func tagTap(sender: UIButton) {
+        if let tag = sender.titleLabel?.text {
             self.tagView.isHidden = true
             self.filteredThings = searchService.getThings(byTag: tag)
             self.tableView.reloadData()
@@ -206,7 +220,7 @@ class SearchViewController : UIViewController{
     }
 }
 
-extension SearchViewController : UITableViewDelegate, UITableViewDataSource{
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.filteredThings.count
     }
@@ -224,13 +238,14 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.filteredThings.count > indexPath.row
-        {
-            let content:NSString = self.filteredThings[indexPath.row].content! as NSString
-            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)], context: nil)
+        if self.filteredThings.count > indexPath.row {
+            let content: NSString = self.filteredThings[indexPath.row].content! as NSString
+            let expectSize = CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude)
+            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
+            let option = NSStringDrawingOptions.usesLineFragmentOrigin
+            let size = content.boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
             return size.height + 30
-        }
-        else{
+        } else {
             return UITableViewCell().frame.height
         }
     }
@@ -244,14 +259,15 @@ extension SearchViewController : UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-extension SearchViewController : UITextFieldDelegate{
+extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let searchText = textField.text{
-            if !searchText.isEmpty{
+        if let searchText = textField.text {
+            if !searchText.isEmpty {
                 self.tagView.isHidden = true
-                if searchText.hasPrefix("#"){
-                    self.filteredThings = searchService.getThings(byTag: searchText.trimmingCharacters(in: CharacterSet.init(charactersIn: "#")))
-                }else{
+                if searchText.hasPrefix("#") {
+                    let trimText = searchText.trimmingCharacters(in: CharacterSet.init(charactersIn: "#"))
+                    self.filteredThings = searchService.getThings(byTag: trimText)
+                } else {
                     self.filteredThings = self.searchService.getThings(byText: searchText)
                 }
                 self.tableView.reloadData()

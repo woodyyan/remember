@@ -30,14 +30,15 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.title = NSLocalizedString("about", comment: "关于")
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.remember()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.remember()];
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
         
         initTableView()
         initBottomView()
     }
     
-    func initTableView(){
-        let tableView = UITableView(frame: CGRect.init(x: 0, y: 60, width: self.view.frame.width, height: self.view.frame.height), style: .plain)
+    func initTableView() {
+        let rect = CGRect.init(x: 0, y: 60, width: self.view.frame.width, height: self.view.frame.height)
+        let tableView = UITableView(frame: rect, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -75,7 +76,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    private func initBottomView(){
+    private func initBottomView() {
         let bottomView = UIView(frame: CGRect(x: 0, y: self.view.frame.height - 70, width: self.view.frame.width, height: 70))
         bottomView.backgroundColor = UIColor.white
         self.view.addSubview(bottomView)
@@ -108,7 +109,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         bottomView.addSubview(companyLabel)
     }
     
-    @objc func contactClick(_ sender:UIButton) {
+    @objc func contactClick(_ sender: UIButton) {
         if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
@@ -116,32 +117,38 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
             mailComposerVC.setToRecipients(["easystudio@outlook.com"])
             self.present(mailComposerVC, animated: true, completion: nil)
         } else {
-            let banner = NotificationBanner(title: NSLocalizedString("cannotSendEmail", comment: ""), subtitle: NSLocalizedString("checkEmailConfig", comment: ""), style: .warning)
+            let title = NSLocalizedString("cannotSendEmail", comment: "")
+            let subTitle = NSLocalizedString("checkEmailConfig", comment: "")
+            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .warning)
             banner.show()
         }
     }
     
-    @objc func weiboClick(_ sender:UIButton) {
+    @objc func weiboClick(_ sender: UIButton) {
         if let url = URL(string: "http://weibo.com/u/5613355795") {
-            UIApplication.shared.open(url, options: [String : Any](), completionHandler: nil)
+            UIApplication.shared.open(url, options: [String: Any](), completionHandler: nil)
         }
     }
     
     internal func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        switch(result){
+        switch result {
         case MFMailComposeResult.sent:
-            let banner = NotificationBanner(title: NSLocalizedString("sendSuccess", comment: ""), subtitle: NSLocalizedString("willCheckLater", comment: ""), style: .success)
+            let title = NSLocalizedString("sendSuccess", comment: "")
+            let subTitle = NSLocalizedString("willCheckLater", comment: "")
+            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .success)
             banner.show()
         case MFMailComposeResult.saved: break
         case MFMailComposeResult.cancelled: break
         case MFMailComposeResult.failed:
-            let banner = NotificationBanner(title: NSLocalizedString("sendFailed", comment: ""), subtitle: NSLocalizedString("checkEmailConfig", comment: ""), style: .warning)
+            let title = NSLocalizedString("sendFailed", comment: "")
+            let subTitle = NSLocalizedString("checkEmailConfig", comment: "")
+            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .warning)
             banner.show()
         }
         controller.dismiss(animated: true, completion: nil)
     }
 
-    private func getTableViewCell(_ index:Int) -> UITableViewCell{
+    private func getTableViewCell(_ index: Int) -> UITableViewCell {
         switch index {
         case 0:
             //图标
@@ -163,7 +170,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    private func getAppIconCell() -> UITableViewCell{
+    private func getAppIconCell() -> UITableViewCell {
         let logoImage = UIImageView(image: UIImage(named: "icon"))
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         logoImage.center.x = self.view.center.x
@@ -171,7 +178,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    private func getAppNameCell() -> UITableViewCell{
+    private func getAppNameCell() -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = viewModel.getAppName()
         cell.textLabel?.textAlignment = .center
@@ -179,7 +186,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    private func getSloganCell() -> UITableViewCell{
+    private func getSloganCell() -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = viewModel.getSlogan()
         cell.textLabel?.textColor = UIColor.darkGray
@@ -188,7 +195,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    private func getVersionCell() -> UITableViewCell{
+    private func getVersionCell() -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = viewModel.getVersionInfo()
         cell.textLabel?.textAlignment = .center
@@ -197,7 +204,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    private func getDescriptionCell() -> UITableViewCell{
+    private func getDescriptionCell() -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = NSLocalizedString("rememberDescription", comment: "")
         cell.textLabel?.numberOfLines = 0
@@ -207,7 +214,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    @objc func tipsClick(_ sender:UIButton) {
+    @objc func tipsClick(_ sender: UIButton) {
         let tipsViewController = TipsViewController(style: .plain)
         self.navigationController?.pushViewController(tipsViewController, animated: true)
     }

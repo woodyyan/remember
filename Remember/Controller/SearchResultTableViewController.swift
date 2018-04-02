@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-class SearchResultTableViewController : UITableViewController, UISearchResultsUpdating{
+class SearchResultTableViewController: UITableViewController, UISearchResultsUpdating {
     private var filteredThings = [ThingModel]()
     
-    var searchResultDelegate:SearchResultTableDelegate?
+    weak var searchResultDelegate: SearchResultTableDelegate?
     var things = [ThingModel]()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,7 +31,7 @@ class SearchResultTableViewController : UITableViewController, UISearchResultsUp
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text{
+        if let searchText = searchController.searchBar.text {
             filterResultsForSearchText(searchText)
         }
         self.tableView.reloadData()
@@ -61,25 +61,24 @@ class SearchResultTableViewController : UITableViewController, UISearchResultsUp
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.filteredThings.count > indexPath.row
-        {
-            let content:NSString = self.filteredThings[indexPath.row].content! as NSString
-            let size = content.boundingRect(with: CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)], context: nil)
+        if self.filteredThings.count > indexPath.row {
+            let content: NSString = self.filteredThings[indexPath.row].content! as NSString
+            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
+            let expectSize = CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude)
+            let size = content.boundingRect(with: expectSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
             return size.height + 30
-        }
-        else{
+        } else {
             return UITableViewCell().frame.height
         }
     }
     
-    
-    private func filterResultsForSearchText(_ searchText: String){
+    private func filterResultsForSearchText(_ searchText: String) {
         self.filteredThings = self.things.filter({ (thing) -> Bool in
             return thing.content!.contains(searchText)
         })
     }
 }
 
-protocol SearchResultTableDelegate {
-    func searchResultTable(view: SearchResultTableViewController, thing:ThingModel)
+protocol SearchResultTableDelegate: class {
+    func searchResultTable(view: SearchResultTableViewController, thing: ThingModel)
 }

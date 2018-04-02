@@ -11,9 +11,9 @@ import Foundation
 class ThingTagModel {
     var thingId: String!
     var tagId: String!
-    var id:String!
+    var id: String!
     
-    init(thingId:String, tagId:String){
+    init(thingId: String, tagId: String) {
         self.thingId = thingId
         self.tagId = tagId
         self.id = UUID().uuidString

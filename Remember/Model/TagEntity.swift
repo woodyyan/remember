@@ -20,8 +20,8 @@ public class TagEntity: NSManagedObject {
     @NSManaged public var name: String?
 }
 
-extension TagEntity{
-    func toModel() -> TagModel{
+extension TagEntity {
+    func toModel() -> TagModel {
         let tagModel = TagModel(name: self.name!)
         tagModel.id = self.id
         tagModel.index = Int(self.index)
