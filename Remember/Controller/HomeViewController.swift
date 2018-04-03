@@ -7,23 +7,19 @@
 //
 
 import UIKit
-import DZNEmptyDataSet
 import SCLAlertView
 
+// swiftlint:disable file_length
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let inputViewHeight: CGFloat = 60
-    
-    fileprivate var shouldInputViewDisplay = true
-    fileprivate var service = ThingService()
-    fileprivate var tableView: UITableView!
-    fileprivate var snapshotView: UIView?
-    fileprivate var tableHeaderView: UIView!
-    fileprivate let pasteboardViewTag = 1234
-    fileprivate var sourceIndexPath: IndexPath?
-    fileprivate var pasteContent: String?
-    fileprivate var inputThingView: InputThingView!
-    
-    fileprivate var things = [ThingModel]()
+    private var shouldInputViewDisplay = true
+    private var tableView: UITableView!
+    private var snapshotView: UIView?
+    private var tableHeaderView: UIView!
+    private let pasteboardViewTag = 1234
+    private var sourceIndexPath: IndexPath?
+    private var inputThingView: InputThingView!
+    private let viewModel = HomeViewModel()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -63,8 +59,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         initTableHeaderView()
         initLongPressForTableView()
         setKeyboardNotification()
-        
-        initData()
     }
     
     func beginCreateThing() {
@@ -77,10 +71,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func tagRemoved(_ notification: Notification) {
         self.tableView.reloadData()
-    }
-    
-    private func initData() {
-        things = service.things
     }
     
     private func setKeyboardNotification() {
@@ -120,11 +110,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if self.tableHeaderView.viewWithTag(self.pasteboardViewTag) != nil {
             return
         }
-        if let tempPasteContent = HomeService.getPasteboardContent() {
+        if let tempPasteContent = PasteboardUtils.getPasteboardContent() {
             //add timer
             addPasteDisappearTimer()
-            
-            pasteContent = tempPasteContent
+            self.viewModel.pasteContent = tempPasteContent
             self.tableView.beginUpdates()
             tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 130)
             tableHeaderView.addSubview(getPasteBoardView(tempPasteContent))
@@ -135,7 +124,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func addPasteDisappearTimer() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             // 移除粘贴板提示
-            if self.pasteContent != nil {
+            if self.viewModel.pasteContent != nil {
                 self.removePasteboardView()
             }
         }
@@ -204,13 +193,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func pasteOkButtonClick(_ sender: UIButton) {
-        if let content = pasteContent {
-            let thing = ThingModel(content: content)
-            thing.isNew = true
-            service.create(thing)
-            self.things.insert(thing, at: 0)
-            self.sortAndSaveThings()
-            pasteContent = nil
+        if self.viewModel.addPastContent() {
             tableView.reloadData()
         }
         
@@ -219,7 +202,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func removePasteboardView() {
         //remove pasteboard
-
         self.tableView.beginUpdates()
         self.tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60)
         if let pasteboardView = self.tableHeaderView.viewWithTag(self.pasteboardViewTag) {
@@ -280,10 +262,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             if indexPath != nil && !(indexPath == sourceIndexPath) {
                 if let tempIndexPath = sourceIndexPath {
-                    let index = self.things[indexPath!.row].index
-                    self.things[indexPath!.row].index = self.things[tempIndexPath.row].index
-                    self.things[tempIndexPath.row].index = index
-                    self.things.swapAt(indexPath!.row, tempIndexPath.row)
+                    let index = self.viewModel.things[indexPath!.row].index
+                    self.viewModel.things[indexPath!.row].index = self.viewModel.things[tempIndexPath.row].index
+                    self.viewModel.things[tempIndexPath.row].index = index
+                    self.viewModel.things.swapAt(indexPath!.row, tempIndexPath.row)
                     self.tableView.moveRow(at: tempIndexPath, to: indexPath!)
                     sourceIndexPath = indexPath
                 }
@@ -304,7 +286,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.snapshotView?.transform = CGAffineTransform.identity
             self.snapshotView?.alpha = 0.0
             cell?.alpha = 1.0
-            self.sortAndSaveThings()
+            self.viewModel.sortAndSaveThings()
             self.tableView.reloadData()
         }, completion: { (_) in
             cell?.isHidden = false
@@ -333,20 +315,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }, completion: { (_) in
             cell?.isHidden = true
         })
-    }
-    
-    fileprivate func sortAndSaveThings() {
-        var set = Set<Int>()
-        self.things.forEach { set.insert($0.index) }
-        if set.count < self.things.count || self.things[0].index != 0 {
-            var index = 0
-            self.things.forEach({ (thing) in
-                thing.index = index
-                index += 1
-            })
-        }
-        
-        self.service.save(sorted: self.things)
     }
     
     func customSnapshotFromView(_ inputView: UIView) -> UIView {
@@ -396,7 +364,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 extension HomeViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.things.count
+        return self.viewModel.things.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -405,7 +373,7 @@ extension HomeViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ThingTableViewCell
-        let thing = self.things[indexPath.row]
+        let thing = self.viewModel.things[indexPath.row]
         cell.textLabel?.text = thing.content
         cell.showTags(for: thing)
         cell.addTagAction = { () in
@@ -421,7 +389,7 @@ extension HomeViewController {
     
     private func getCellBackgroundStyle(_ index: Int) -> ThingCellBackgroundStyle {
         var style = ThingCellBackgroundStyle.normal
-        let lastNumber = things.count - 1
+        let lastNumber = self.viewModel.things.count - 1
         switch index {
         case 0:
             style = ThingCellBackgroundStyle.first
@@ -431,7 +399,7 @@ extension HomeViewController {
             style = ThingCellBackgroundStyle.normal
         }
         
-        if things.count == 1 {
+        if self.viewModel.things.count == 1 {
             style = ThingCellBackgroundStyle.one
         }
         
@@ -439,18 +407,7 @@ extension HomeViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let thing = things[indexPath.row]
-        let content: NSString = thing.content! as NSString
-        let expectSize = CGSize(width: self.view.frame.width - 60, height: CGFloat.greatestFiniteMagnitude)
-        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
-        let option = NSStringDrawingOptions.usesLineFragmentOrigin
-        let size = content.boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
-        var height = size.height + 40
-        let hasTag = service.hasTag(for: thing)
-        if hasTag {
-            height = size.height + 50
-        }
-        return height
+        return viewModel.calculateCellHeight(viewWidth: self.view.frame.width, row: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -460,7 +417,7 @@ extension HomeViewController {
         let title = NSLocalizedString("tag", comment: "标签")
         let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: title) { (_, index) -> Void in
             let index = indexPath.row
-            let thing = self.things[index]
+            let thing = self.viewModel.things[index]
             self.editThing(thing, isTag: true)
             tableView.isEditing = false
         }
@@ -468,7 +425,7 @@ extension HomeViewController {
         let copyTitle = NSLocalizedString("copy", comment: "复制")
         let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: copyTitle) { (_, index) -> Void in
             let index=(indexPath as NSIndexPath).row as Int
-            let thing = self.things[index]
+            let thing = self.viewModel.things[index]
             UIPasteboard.general.string = thing.content
         }
         shareAction.backgroundColor = UIColor.remember()
@@ -482,10 +439,7 @@ extension HomeViewController {
             let buttonTitle = NSLocalizedString("confirmDelete", comment: "")
             let buttonColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
             alertView.addButton(buttonTitle, backgroundColor: buttonColor, textColor: UIColor.white, showTimeout: nil, action: {
-                let index=(indexPath as NSIndexPath).row as Int
-                let thing = self.things[index]
-                self.things.remove(at: index)
-                self.service.delete(thing)
+                self.viewModel.deleteThing(index: (indexPath as NSIndexPath).row as Int)
                 tableView.reloadData()
             })
             let cancelColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
@@ -506,7 +460,7 @@ extension HomeViewController {
         inputThingView.endEditing()
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let thing = self.things[indexPath.row]
+        let thing = self.viewModel.things[indexPath.row]
         openThingViewController(with: thing)
     }
     
@@ -536,30 +490,6 @@ extension HomeViewController {
     }
 }
 
-extension HomeViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
-    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "EmptyBox")
-    }
-    
-    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let text = NSLocalizedString("addOneThing", comment: "")
-        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
-        return NSAttributedString(string: text, attributes: attributes)
-    }
-    
-    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        let text = NSLocalizedString("tips", comment: "提示")
-        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
-        let tipsString = NSAttributedString(string: text, attributes: attributes)
-        return tipsString
-    }
-    
-    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
-        let tipsViewController = TipsViewController(style: .plain)
-        self.navigationController?.pushViewController(tipsViewController, animated: true)
-    }
-}
-
 extension HomeViewController: UISearchControllerDelegate {
     func willDismissSearchController(_ searchController: UISearchController) {
         self.shouldInputViewDisplay = true
@@ -568,16 +498,16 @@ extension HomeViewController: UISearchControllerDelegate {
 
 extension HomeViewController: ThingInputDelegate {
     func input(inputView: InputThingView, thing: ThingModel) {
-        self.things.insert(thing, at: 0)
-        self.sortAndSaveThings()
+        self.viewModel.things.insert(thing, at: 0)
+        self.viewModel.sortAndSaveThings()
         tableView.reloadData()
     }
 }
 
 extension HomeViewController: VoiceInputDelegate {
     func voiceInput(voiceInputView: VoiceInputController, thing: ThingModel) {
-        self.things.insert(thing, at: 0)
-        self.sortAndSaveThings()
+        self.viewModel.things.insert(thing, at: 0)
+        self.viewModel.sortAndSaveThings()
         tableView.reloadData()
     }
 }
@@ -585,8 +515,8 @@ extension HomeViewController: VoiceInputDelegate {
 extension HomeViewController: EditThingDelegate {
     func editThing(isDeleted: Bool, thing: ThingModel) {
         if isDeleted {
-            if let index = self.things.index(where: {$0.id == thing.id}) {
-                self.things.remove(at: index)
+            if let index = self.viewModel.things.index(where: {$0.id == thing.id}) {
+                self.viewModel.things.remove(at: index)
             }
         }
         tableView.reloadData()

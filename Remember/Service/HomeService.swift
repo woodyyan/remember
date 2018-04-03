@@ -20,33 +20,6 @@ class HomeService {
         }
         return activityController
     }
-    
-    class func getPasteboardContent() -> String? {
-        var pasteContent: String?
-        let pasteboard = UIPasteboard.general
-        if pasteboard.hasStrings || pasteboard.hasURLs {
-            pasteContent = pasteboard.string
-            if pasteContent == nil {
-                pasteContent = pasteboard.url?.absoluteString
-            }
-        }
-        
-        //如果存在表示已经提示过，就不再提示
-        if checkPasteContentHasShowed(pasteContent) {
-            pasteContent = nil
-        }
-        
-        return pasteContent
-    }
-    
-    private class func checkPasteContentHasShowed(_ pasteContent: String?) -> Bool {
-        if let content = UserDefaults.standard.string(forKey: "pasteboardContent") {
-            if content == pasteContent {
-                return true
-            }
-        }
-        return false
-    }
 }
 
 extension UIColor {
