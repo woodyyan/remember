@@ -1,5 +1,5 @@
 //
-//  StorageService.swift
+//  CoreStorage.swift
 //  Remember
 //
 //  Created by Songbai Yan on 03/04/2018.
@@ -9,17 +9,15 @@
 import Foundation
 import CoreData
 
-class StorageService {
-    private static var single: StorageService!
+class CoreStorage {
+    private static var single: CoreStorage!
     
-    static var shared: StorageService {
+    static var shared: CoreStorage {
         if single == nil {
-            single = StorageService()
+            single = CoreStorage()
         }
         return single
     }
-    
-    private init() {}
     
     // MARK: - Core Data stack
     
@@ -46,7 +44,7 @@ class StorageService {
                  * The store could not be migrated to the current model version.
                  Check the error message to determine what the actual problem was.
                  */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                // fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container

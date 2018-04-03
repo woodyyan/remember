@@ -102,7 +102,7 @@
 		824267FB2072823B009FD115 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824267FA2072823B009FD115 /* HomeViewModel.swift */; };
 		824267FD2073C33B009FD115 /* PasteboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824267FC2073C33B009FD115 /* PasteboardUtils.swift */; };
 		824267FF2073C725009FD115 /* HomeViewController+DZNEmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824267FE2073C725009FD115 /* HomeViewController+DZNEmptyDataSet.swift */; };
-		824268012073C873009FD115 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824268002073C873009FD115 /* StorageService.swift */; };
+		824A14AF2073D7D4004D7F21 /* CoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A14AE2073D7D4004D7F21 /* CoreStorage.swift */; };
 		825BA5FB1ED4819600B4545B /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
@@ -273,7 +273,7 @@
 		824267FA2072823B009FD115 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		824267FC2073C33B009FD115 /* PasteboardUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardUtils.swift; sourceTree = "<group>"; };
 		824267FE2073C725009FD115 /* HomeViewController+DZNEmptyDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+DZNEmptyDataSet.swift"; sourceTree = "<group>"; };
-		824268002073C873009FD115 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		824A14AE2073D7D4004D7F21 /* CoreStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorage.swift; sourceTree = "<group>"; };
 		825DEB151DD9DC070065090F /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB181DD9DC070065090F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		825DEB1D1DD9DC070065090F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -400,7 +400,6 @@
 				820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */,
 				820B84261F107183007E3C15 /* TagService.swift */,
 				82303BDC1F25B2FF004C06F1 /* SearchService.swift */,
-				824268002073C873009FD115 /* StorageService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -420,6 +419,7 @@
 				820B840E1F0F9AFE007E3C15 /* TagStorage.swift */,
 				820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */,
 				820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */,
+				824A14AE2073D7D4004D7F21 /* CoreStorage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -832,7 +832,6 @@
 				820B83F01F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
 				820B83F31F0F971D007E3C15 /* HomeService.swift in Sources */,
 				820B83B51F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
-				824268012073C873009FD115 /* StorageService.swift in Sources */,
 				824267FF2073C725009FD115 /* HomeViewController+DZNEmptyDataSet.swift in Sources */,
 				825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */,
 				82E7AC5720541945006FC9E5 /* TipsViewModel.swift in Sources */,
@@ -841,6 +840,7 @@
 				82E7AC7320553BB1006FC9E5 /* GlobleParameters.swift in Sources */,
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
+				824A14AF2073D7D4004D7F21 /* CoreStorage.swift in Sources */,
 				823876C21F2D766F001EA4B4 /* TagManageViewController.swift in Sources */,
 				82E7AC542053F39F006FC9E5 /* TipsViewController.swift in Sources */,
 				82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,

@@ -10,28 +10,28 @@ import Foundation
 import UIKit
 import CoreData
 
-class ThingTagStorage {
+class ThingTagStorage: CoreStorage {
     func save(for thingTag: ThingTagModel) {
-        let entity = NSEntityDescription.insertNewObject(forEntityName: "ThingTag", into: StorageService.shared.persistentContainer.viewContext)
+        let entity = NSEntityDescription.insertNewObject(forEntityName: "ThingTag", into: self.persistentContainer.viewContext)
         entity.setValue(thingTag.id, forKey: "id")
         entity.setValue(thingTag.tagId, forKey: "tagId")
         entity.setValue(thingTag.thingId, forKey: "thingId")
-        StorageService.shared.saveContext()
+        self.saveContext()
     }
     
     func delete(for thingTag: ThingTagModel) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ThingTag")
-        let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: StorageService.shared.persistentContainer.viewContext)
+        let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: self.persistentContainer.viewContext)
         request.entity = entity
         let predicate = NSPredicate(format: "thingId == %@ && tagId == %@", thingTag.thingId, thingTag.tagId)
         request.predicate = predicate
         do {
-            if let results = try StorageService.shared.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity] {
+            if let results = try self.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity] {
                 if !results.isEmpty {
                     for result in results {
-                        StorageService.shared.persistentContainer.viewContext.delete(result)
+                        self.persistentContainer.viewContext.delete(result)
                     }
-                    StorageService.shared.saveContext()
+                    self.saveContext()
                 }
             }
         } catch {
@@ -41,12 +41,12 @@ class ThingTagStorage {
     func getThingTags(by tag: TagModel) -> [ThingTagModel] {
         var thingTags = [ThingTagModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ThingTag")
-        let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: StorageService.shared.persistentContainer.viewContext)
+        let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: self.persistentContainer.viewContext)
         request.entity = entity
         let predicate = NSPredicate(format: "%K == %@", "tagId", tag.id!)
         request.predicate = predicate
         do {
-            if let results = try StorageService.shared.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity] {
+            if let results = try self.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity] {
                 for result in results {
                     thingTags.append(result.toModel())
                 }
@@ -59,12 +59,12 @@ class ThingTagStorage {
     func getThingTags(by thing: ThingModel) -> [ThingTagModel] {
         var thingTags = [ThingTagModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ThingTag")
-        let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: StorageService.shared.persistentContainer.viewContext)
+        let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: self.persistentContainer.viewContext)
         request.entity = entity
         let predicate = NSPredicate(format: "%K == %@", "thingId", thing.id!)
         request.predicate = predicate
         do {
-            if let results = try StorageService.shared.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity] {
+            if let results = try self.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity] {
                 for result in results {
                     thingTags.append(result.toModel())
                 }

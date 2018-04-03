@@ -10,13 +10,13 @@ import Foundation
 import UIKit
 import CoreData
 
-class TagStorage {
+class TagStorage: CoreStorage {
     func save(for tag: TagModel) {
-        let entity = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: StorageService.shared.persistentContainer.viewContext)
+        let entity = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: self.persistentContainer.viewContext)
         entity.setValue(tag.id, forKey: "id")
         entity.setValue(tag.name, forKey: "name")
         entity.setValue(tag.index, forKey: "index")
-        StorageService.shared.saveContext()
+        self.saveContext()
     }
     
     func delete(_ tag: TagModel) {
@@ -24,12 +24,12 @@ class TagStorage {
         let predicate = NSPredicate(format: "%K == %@", "id", tag.id)
         request.predicate = predicate
         do {
-            if let results = try StorageService.shared.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
+            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
                 if !results.isEmpty {
                     for result in results {
-                        StorageService.shared.persistentContainer.viewContext.delete(result)
+                        self.persistentContainer.viewContext.delete(result)
                     }
-                    StorageService.shared.saveContext()
+                    self.saveContext()
                 }
             }
         } catch {
@@ -40,7 +40,7 @@ class TagStorage {
         var tags = [TagModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
         do {
-            if let results = try StorageService.shared.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
+            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
                 if !results.isEmpty {
                     for result in results {
                         tags.append(result.toModel())
@@ -61,7 +61,7 @@ class TagStorage {
         let predicate = NSPredicate(format: "%K == %@", "name", name)
         request.predicate = predicate
         do {
-            if let results = try StorageService.shared.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
+            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
                 if !results.isEmpty {
                     tag = results[0].toModel()
                 }
@@ -78,7 +78,7 @@ class TagStorage {
         let predicate = NSPredicate(format: "%K IN %@", "id", ids)
         request.predicate = predicate
         do {
-            if let results = try StorageService.shared.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
+            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
                 if !results.isEmpty {
                     for result in results {
                         tags.append(result.toModel())
@@ -95,15 +95,15 @@ class TagStorage {
     
     func updateIndex(for tag: TagModel) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
-        let entity = NSEntityDescription.entity(forEntityName: "Tag", in: StorageService.shared.persistentContainer.viewContext)
+        let entity = NSEntityDescription.entity(forEntityName: "Tag", in: self.persistentContainer.viewContext)
         request.entity = entity
         let predicate = NSPredicate(format: "%K == %@", "id", tag.id!)
         request.predicate = predicate
         do {
-            if let results = try StorageService.shared.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
+            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
                 for result in results {
                     result.setValue(tag.index, forKey: "index")
-                    StorageService.shared.saveContext()
+                    self.saveContext()
                 }
             }
         } catch {
@@ -117,7 +117,7 @@ class TagStorage {
         let predicate = NSPredicate(format: "%K == %@", "name", tagName)
         request.predicate = predicate
         do {
-            if let results = try StorageService.shared.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
+            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
                 tag = results.first?.toModel()
             }
         } catch {
