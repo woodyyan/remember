@@ -519,6 +519,7 @@ extension HomeViewController: EditThingDelegate {
                 self.viewModel.things.remove(at: index)
             }
         }
+        self.viewModel.refreshThings()
         tableView.reloadData()
     }
 }

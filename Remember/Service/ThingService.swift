@@ -19,6 +19,10 @@ class ThingService {
         things = thingStorage.getThings()
     }
     
+    func refresh() {
+        things = thingStorage.getThings()
+    }
+    
     func create(_ thing: ThingModel) {
         thingStorage.create(thing)
     }

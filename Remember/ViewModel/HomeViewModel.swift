@@ -18,6 +18,11 @@ class HomeViewModel {
         initData()
     }
     
+    func refreshThings() {
+        service.refresh()
+        initData()
+    }
+    
     func addPastContent() -> Bool {
         if let content = pasteContent {
             let thing = ThingModel(content: content)
