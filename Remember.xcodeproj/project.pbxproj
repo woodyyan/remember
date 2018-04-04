@@ -103,6 +103,8 @@
 		824267FD2073C33B009FD115 /* PasteboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824267FC2073C33B009FD115 /* PasteboardUtils.swift */; };
 		824267FF2073C725009FD115 /* HomeViewController+DZNEmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824267FE2073C725009FD115 /* HomeViewController+DZNEmptyDataSet.swift */; };
 		824A14AF2073D7D4004D7F21 /* CoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A14AE2073D7D4004D7F21 /* CoreStorage.swift */; };
+		824A14B2207502F7004D7F21 /* PasteboardUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A14B1207502F7004D7F21 /* PasteboardUtilsTests.swift */; };
+		824A14B32075032E004D7F21 /* PasteboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824267FC2073C33B009FD115 /* PasteboardUtils.swift */; };
 		825BA5FB1ED4819600B4545B /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
 		825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825DEB181DD9DC070065090F /* AppDelegate.swift */; };
 		825DEB1E1DD9DC070065090F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 825DEB1C1DD9DC070065090F /* Main.storyboard */; };
@@ -274,6 +276,7 @@
 		824267FC2073C33B009FD115 /* PasteboardUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardUtils.swift; sourceTree = "<group>"; };
 		824267FE2073C725009FD115 /* HomeViewController+DZNEmptyDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+DZNEmptyDataSet.swift"; sourceTree = "<group>"; };
 		824A14AE2073D7D4004D7F21 /* CoreStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorage.swift; sourceTree = "<group>"; };
+		824A14B1207502F7004D7F21 /* PasteboardUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardUtilsTests.swift; sourceTree = "<group>"; };
 		825DEB151DD9DC070065090F /* Remember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Remember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		825DEB181DD9DC070065090F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		825DEB1D1DD9DC070065090F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -477,6 +480,14 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		824A14B0207502DD004D7F21 /* UtilTests */ = {
+			isa = PBXGroup;
+			children = (
+				824A14B1207502F7004D7F21 /* PasteboardUtilsTests.swift */,
+			);
+			path = UtilTests;
+			sourceTree = "<group>";
+		};
 		825DEB0C1DD9DC070065090F = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +547,7 @@
 		825DEB2F1DD9DC070065090F /* RememberTests */ = {
 			isa = PBXGroup;
 			children = (
+				824A14B0207502DD004D7F21 /* UtilTests */,
 				82E7AC59205420AD006FC9E5 /* ViewModelTests */,
 				820B84301F11C2A0007E3C15 /* Remember-Bridging-Header.h */,
 				825DEB301DD9DC070065090F /* RememberTests.swift */,
@@ -882,10 +894,12 @@
 				82E7AC5D205420D3006FC9E5 /* TipsViewModelTests.swift in Sources */,
 				820B83BE1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				820B83C61F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
+				824A14B32075032E004D7F21 /* PasteboardUtils.swift in Sources */,
 				82E7AC58205420A1006FC9E5 /* TipsViewModel.swift in Sources */,
 				820B83F11F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
 				82F934911F1F5F5D00AE31DE /* ThingServiceTests.swift in Sources */,
 				820B83B61F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
+				824A14B2207502F7004D7F21 /* PasteboardUtilsTests.swift in Sources */,
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				820B83E11F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,

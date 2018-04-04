@@ -9,13 +9,11 @@
 import XCTest
 
 class AboutViewModelTests: XCTestCase {
-    var viewModel:AboutViewModel!
+    var viewModel = AboutViewModel()
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        viewModel = AboutViewModel()
     }
     
     override func tearDown() {
@@ -26,34 +24,27 @@ class AboutViewModelTests: XCTestCase {
     func testShouldGetSloganCorrectly() {
         let slogan = viewModel.getSlogan()
         
-        XCTAssert(slogan == "记住你容易忘记的小事")
+        XCTAssert(slogan == "Remember the things you often forget")
     }
     
     func testShouldGetAppNameCorrectly(){
         let appName = viewModel.getAppName()
         
-        XCTAssert(appName == "丁丁记事")
+        XCTAssert(appName == "Remember")
     }
     
-    func testShouldGetDescriptionCorrectly() {
-        let text = "丁丁记事是一个帮助你记住平时容易忘记的小事的轻量级备忘录，你可以非常快速而简单的记录一切的小事，当你忘记它们的时候，可以很方便的从这里找到它们。"
+    func testShouldGetVersionInfoCorrectly() {
+        let versionInfo = viewModel.getVersionInfo()
         
-        let description = viewModel.getDescription()
-        
-        XCTAssert(description == text)
-    }
-    
-    func testShouldGetGettingStarted(){
-        let gettingStarted = viewModel.getGettingStarted()
-        
-        XCTAssert(!gettingStarted.isEmpty)
+        XCTAssert(versionInfo.hasPrefix("Version: V"))
+        XCTAssert(versionInfo.contains("."))
+        XCTAssert(versionInfo.components(separatedBy: ".").count >= 2)
     }
     
     func testShouldGetCurrentVersionCorrectly() {
-        let versionInfo = viewModel.getVersionInfo()
+        let version = viewModel.getCurrentVersion()
         
-        XCTAssert(versionInfo.hasPrefix("版本号：V"))
-        XCTAssert(versionInfo.contains("."))
-        XCTAssert(versionInfo.components(separatedBy: ".").count >= 2)
+        XCTAssert(version.contains("."))
+        XCTAssert(version.components(separatedBy: ".").count >= 2)
     }
 }

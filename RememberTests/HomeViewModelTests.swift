@@ -18,31 +18,4 @@ class HomeViewModelTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testShoulddGetPasteboardContentWhenCopyAString() {
-        UserDefaults.standard.set("", forKey: "pasteboardContent")
-        UserDefaults.standard.synchronize()
-        
-        let content = "content"
-        UIPasteboard.general.string = content;
-        
-        let result = HomeService.getPasteboardContent()
-        
-        XCTAssert(result == content)
-    }
-    
-    func testShoulddGetPasteboardContentWhenCopyAnUrl() {
-        let url = "http://google.com"
-        UIPasteboard.general.url = URL.init(string: url);
-        
-        let result = HomeService.getPasteboardContent()
-        
-        XCTAssert(result == url)
-    }
-    
-    func testShoulddGetNilPasteboardContentWhenNothingCopied() {
-        let result = HomeService.getPasteboardContent()
-        
-        XCTAssert(result == nil)
-    }
 }
