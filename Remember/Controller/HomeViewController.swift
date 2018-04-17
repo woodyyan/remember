@@ -376,31 +376,12 @@ extension HomeViewController {
         cell.addTagAction = { () in
             self.editThing(thing, isTag: true)
         }
-        cell.setBackground(style: getCellBackgroundStyle(indexPath.row))
+        cell.setBackground(style: viewModel.getCellBackgroundStyle(indexPath.row))
         if thing.isNew {
             cell.showAddTagButton()
             thing.isNew = false
         }
         return cell
-    }
-    
-    private func getCellBackgroundStyle(_ index: Int) -> ThingCellBackgroundStyle {
-        var style = ThingCellBackgroundStyle.normal
-        let lastNumber = self.viewModel.things.count - 1
-        switch index {
-        case 0:
-            style = ThingCellBackgroundStyle.first
-        case lastNumber:
-            style = ThingCellBackgroundStyle.last
-        default:
-            style = ThingCellBackgroundStyle.normal
-        }
-        
-        if self.viewModel.things.count == 1 {
-            style = ThingCellBackgroundStyle.one
-        }
-        
-        return style
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

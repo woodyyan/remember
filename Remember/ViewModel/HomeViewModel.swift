@@ -36,6 +36,25 @@ class HomeViewModel {
         return false
     }
     
+    func getCellBackgroundStyle(_ index: Int) -> ThingCellBackgroundStyle {
+        var style = ThingCellBackgroundStyle.normal
+        let lastNumber = self.things.count - 1
+        switch index {
+        case 0:
+            style = ThingCellBackgroundStyle.first
+        case lastNumber:
+            style = ThingCellBackgroundStyle.last
+        default:
+            style = ThingCellBackgroundStyle.normal
+        }
+        
+        if self.things.count == 1 {
+            style = ThingCellBackgroundStyle.one
+        }
+        
+        return style
+    }
+    
     func calculateCellHeight(viewWidth: CGFloat, row: Int) -> CGFloat {
         let thing = self.things[row]
         let content: NSString = thing.content! as NSString
