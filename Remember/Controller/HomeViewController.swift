@@ -37,11 +37,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         initUI()
         
-        let UpdatePasteboardName = NSNotification.Name(rawValue: "updatePasteboardView")
+        initNotification()
+    }
+    
+    private func initNotification() {
         let selector = #selector(HomeViewController.updatePasteboardView(_:))
-        NotificationCenter.default.addObserver(self, selector: selector, name: UpdatePasteboardName, object: nil)
-        let tagName = NSNotification.Name(rawValue: "tagRemovedNotification")
-        NotificationCenter.default.addObserver(self, selector: #selector(HomeViewController.tagRemoved(_:)), name: tagName, object: nil)
+        NotificationCenter.addObserver(self, selector, "updatePasteboardView")
+        NotificationCenter.addObserver(self, #selector(HomeViewController.tagRemoved(_:)), "tagRemovedNotification")
     }
     
     private func initUI() {
@@ -75,9 +77,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func setKeyboardNotification() {
         let showSelector = #selector(HomeViewController.keyboardWillShow(_:))
-        NotificationCenter.default.addObserver(self, selector: showSelector, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.addObserver(self, showSelector, NSNotification.Name.UIKeyboardWillShow)
         let hideSelector = #selector(HomeViewController.keyboardWillHide(_:))
-        NotificationCenter.default.addObserver(self, selector: hideSelector, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.addObserver(self, hideSelector, NSNotification.Name.UIKeyboardWillHide)
     }
     
     private func initInputView() {
@@ -85,15 +87,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputThingView = InputThingView(frame: rect)
         inputThingView.delegate = self
         inputThingView.voiceInputAction = {(inputView) -> Void in
-            let voiceInputController = VoiceInputController()
-            voiceInputController.delegate = self
-            voiceInputController.modalPresentationStyle = .custom
-            voiceInputController.modalTransitionStyle = .crossDissolve
-            self.present(voiceInputController, animated: false, completion: {
-                voiceInputController.show()
-            })
+            self.showVoiceView()
         }
         self.view.addSubview(inputThingView)
+    }
+    
+    private func showVoiceView() {
+        let voiceInputController = VoiceInputController()
+        voiceInputController.delegate = self
+        voiceInputController.modalPresentationStyle = .custom
+        voiceInputController.modalTransitionStyle = .crossDissolve
+        self.present(voiceInputController, animated: false, completion: {
+            voiceInputController.show()
+        })
     }
     
     private func initTableHeaderView() {
@@ -130,17 +136,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    private func getSearchButton() -> UIView {
-        let searchButton = UIButton(type: UIButtonType.system)
-        searchButton.setTitle(NSLocalizedString("searchPlaceHolder", comment: "搜索"), for: UIControlState.normal)
-        searchButton.setImage(UIImage(named: "Search"), for: UIControlState.normal)
-        searchButton.frame = CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 40)
-        searchButton.layer.borderColor = UIColor.inputGray.cgColor
-        searchButton.layer.borderWidth = 1
-        searchButton.layer.cornerRadius = 20
-        searchButton.backgroundColor = UIColor.inputGray
-        searchButton.setTitleColor(UIColor.remember, for: UIControlState.normal)
-        searchButton.tintColor = UIColor.remember
+    private func getSearchButton() -> SearchButton {
+        let frame = CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 40)
+        let searchButton = SearchButton(frame: frame)
         searchButton.addTarget(self, action: #selector(HomeViewController.searchClick(_:)), for: UIControlEvents.touchUpInside)
         return searchButton
     }
@@ -335,7 +333,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if shouldInputViewDisplay {
             let y = self.view.frame.height - inputViewHeight
             inputThingView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: inputViewHeight)
-            self.dismiss(animated: false, completion: nil)
         }
     }
     

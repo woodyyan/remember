@@ -117,6 +117,8 @@
 		8280CDCA20861E8700C7A1F5 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDC920861E8700C7A1F5 /* UIColorExtensions.swift */; };
 		8280CDCB2086290300C7A1F5 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDC920861E8700C7A1F5 /* UIColorExtensions.swift */; };
 		8280CDCC2086291A00C7A1F5 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDC920861E8700C7A1F5 /* UIColorExtensions.swift */; };
+		8280CDCE20862B0500C7A1F5 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDCD20862B0500C7A1F5 /* NotificationCenterExtension.swift */; };
+		8280CDD020862D8500C7A1F5 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDCF20862D8500C7A1F5 /* SearchButton.swift */; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
 		82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923661EF17962004937EA /* AboutViewModelTests.swift */; };
 		82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8055C2077425100AF4AB0 /* UIViewExtension.swift */; };
@@ -293,6 +295,8 @@
 		825DEB501DDA0B640065090F /* InputThingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputThingView.swift; sourceTree = "<group>"; };
 		825DEB541DDA0B9B0065090F /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8280CDC920861E8700C7A1F5 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		8280CDCD20862B0500C7A1F5 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
+		8280CDCF20862D8500C7A1F5 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82D8055C2077425100AF4AB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -578,6 +582,7 @@
 				823A34CC1E320DC00093FBF4 /* MessageBox.swift */,
 				821FC4C91E71407600A64E94 /* UIImage+Gif.swift */,
 				820B842A1F1119A7007E3C15 /* TagManagementView.swift */,
+				8280CDCF20862D8500C7A1F5 /* SearchButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -605,6 +610,7 @@
 			children = (
 				82D8055C2077425100AF4AB0 /* UIViewExtension.swift */,
 				8280CDC920861E8700C7A1F5 /* UIColorExtensions.swift */,
+				8280CDCD20862B0500C7A1F5 /* NotificationCenterExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -859,6 +865,7 @@
 				82E7AC5720541945006FC9E5 /* TipsViewModel.swift in Sources */,
 				823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				823876BE1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */,
+				8280CDCE20862B0500C7A1F5 /* NotificationCenterExtension.swift in Sources */,
 				82E7AC7320553BB1006FC9E5 /* GlobleConfigs.swift in Sources */,
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */,
@@ -883,6 +890,7 @@
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
+				8280CDD020862D8500C7A1F5 /* SearchButton.swift in Sources */,
 				820B83DC1F0E8AA6007E3C15 /* ThingModel.swift in Sources */,
 				820B84141F0F9AFE007E3C15 /* ThingStorage.swift in Sources */,
 				820B83E01F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
