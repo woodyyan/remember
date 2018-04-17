@@ -83,7 +83,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initInputView() {
-        let rect = CGRect(x: 0, y: self.view.frame.height - inputViewHeight, width: self.view.frame.width, height: inputViewHeight)
+        let rect = CGRect(x: 0, y: self.height - inputViewHeight, width: self.width, height: inputViewHeight)
         inputThingView = InputThingView(frame: rect)
         inputThingView.delegate = self
         inputThingView.voiceInputAction = {(inputView) -> Void in
@@ -103,7 +103,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initTableHeaderView() {
-        tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
+        tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.width, height: 60))
         tableHeaderView.addSubview(getSearchButton())
         
         addPasteboardViewIfNeeded()
@@ -121,7 +121,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             addPasteDisappearTimer()
             self.viewModel.pasteContent = tempPasteContent
             self.tableView.beginUpdates()
-            tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 130)
+            tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.width, height: 130)
             tableHeaderView.addSubview(getPasteBoardView(tempPasteContent))
             self.tableView.endUpdates()
         }
@@ -137,17 +137,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func getSearchButton() -> SearchButton {
-        let frame = CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 40)
+        let frame = CGRect(x: 10, y: 10, width: self.width - 20, height: 40)
         let searchButton = SearchButton(frame: frame)
         searchButton.addTarget(self, action: #selector(HomeViewController.searchClick(_:)), for: UIControlEvents.touchUpInside)
         return searchButton
     }
     
     private func getPasteBoardView(_ content: String) -> UIView {
-        let pasteboardView = UIView(frame: CGRect(x: 10, y: 60, width: self.view.frame.width - 20, height: 55))
+        let pasteboardView = UIView(frame: CGRect(x: 10, y: 60, width: self.width - 20, height: 55))
         pasteboardView.layer.cornerRadius = 10
         pasteboardView.backgroundColor = UIColor.white
-        let tipTextLabel = UILabel(frame: CGRect(x: 10, y: 5, width: pasteboardView.frame.width, height: 20))
+        let tipTextLabel = UILabel(frame: CGRect(x: 10, y: 5, width: pasteboardView.width, height: 20))
         tipTextLabel.textColor = UIColor.remember
         tipTextLabel.text = NSLocalizedString("addPasteboardContent", comment: "")
         tipTextLabel.font = UIFont.systemFont(ofSize: 12)
@@ -201,7 +201,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func removePasteboardView() {
         //remove pasteboard
         self.tableView.beginUpdates()
-        self.tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60)
+        self.tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.width, height: 60)
         if let pasteboardView = self.tableHeaderView.viewWithTag(self.pasteboardViewTag) {
             pasteboardView.removeFromSuperview()
         }
@@ -222,7 +222,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if let navBarHeight = self.navigationController?.navigationBar.frame.height {
             statusHeight += navBarHeight
         }
-        let rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - inputViewHeight)
+        let rect = CGRect(x: 0, y: 0, width: self.width, height: self.height - inputViewHeight)
         tableView = UITableView(frame: rect, style: UITableViewStyle.plain)
         tableView.backgroundColor = UIColor.background
         tableView.delegate = self
@@ -331,8 +331,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func keyboardWillHide(_ notice: Notification) {
         if shouldInputViewDisplay {
-            let y = self.view.frame.height - inputViewHeight
-            inputThingView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: inputViewHeight)
+            let y = self.height - inputViewHeight
+            inputThingView.frame = CGRect(x: 0, y: y, width: self.width, height: inputViewHeight)
         }
     }
     
@@ -341,8 +341,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let userInfo: NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
             let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
             let endFrame = endFrameValue.cgRectValue
-            let y = self.view.bounds.height - inputViewHeight - endFrame.height
-            inputThingView.frame = CGRect(x: 0, y: y, width: self.view.bounds.width, height: inputViewHeight)
+            let y = self.height - inputViewHeight - endFrame.height
+            inputThingView.frame = CGRect(x: 0, y: y, width: self.width, height: inputViewHeight)
         }
     }
     
@@ -404,7 +404,7 @@ extension HomeViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return viewModel.calculateCellHeight(viewWidth: self.view.frame.width, row: indexPath.row)
+        return viewModel.calculateCellHeight(viewWidth: self.width, row: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

@@ -9,7 +9,21 @@
 import Foundation
 
 extension UIView {
-//    let height: CGFloat {
-//        return self.frame.height
-//    }
+    var height: CGFloat {
+        return self.frame.height
+    }
+    
+    var width: CGFloat {
+        return self.frame.width
+    }
+}
+
+extension UIViewController {
+    var height: CGFloat {
+        return self.view.frame.height
+    }
+    
+    var width: CGFloat {
+        return self.view.frame.width
+    }
 }
