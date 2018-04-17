@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SCLAlertView
+//import SCLAlertView
 
 class EditThingViewController: UIViewController {
     fileprivate var service = ThingService()
@@ -34,9 +34,9 @@ class EditThingViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = NSLocalizedString("edit", comment: "编辑")
-        self.view.backgroundColor = UIColor.background()
-        self.navigationController?.navigationBar.tintColor = UIColor.remember()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
+        self.view.backgroundColor = UIColor.background
+        self.navigationController?.navigationBar.tintColor = UIColor.remember
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
         
         let shareSelector = #selector(EditThingViewController.shareTap(sender:))
         let shareButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: shareSelector)
@@ -57,25 +57,25 @@ class EditThingViewController: UIViewController {
     }
     
     @objc func deleteTap(sender: UIBarButtonItem) {
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false
-        )
-        let alertView = SCLAlertView(appearance: appearance)
-        let backgroundColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
-        let title = NSLocalizedString("confirmDelete", comment: "")
-        alertView.addButton(title, backgroundColor: backgroundColor, textColor: UIColor.white, showTimeout: nil, action: {
-            if let currentThing = self.thing {
-                self.service.delete(currentThing)
-                self.delegate?.editThing(isDeleted: true, thing: currentThing)
-                self.navigationController?.popViewController(animated: true)
-            }
-        })
-        //let backgroudColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
-        let cancelTitle = NSLocalizedString("cancel", comment: "取消")
-        alertView.addButton(cancelTitle, backgroundColor: #colorLiteral(red: 0.9960784314, green: 0.8156862745, blue: 0.2039215686, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
-        })
-        
-        alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
+//        let appearance = SCLAlertView.SCLAppearance(
+//            showCloseButton: false
+//        )
+//        let alertView = SCLAlertView(appearance: appearance)
+//        let backgroundColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
+//        let title = NSLocalizedString("confirmDelete", comment: "")
+//        alertView.addButton(title, backgroundColor: backgroundColor, textColor: UIColor.white, showTimeout: nil, action: {
+//            if let currentThing = self.thing {
+//                self.service.delete(currentThing)
+//                self.delegate?.editThing(isDeleted: true, thing: currentThing)
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//        })
+//        //let backgroudColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
+//        let cancelTitle = NSLocalizedString("cancel", comment: "取消")
+//        alertView.addButton(cancelTitle, backgroundColor: #colorLiteral(red: 0.9960784314, green: 0.8156862745, blue: 0.2039215686, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+//        })
+//        
+//        alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
     }
     
     private func initUI() {
@@ -125,7 +125,7 @@ class EditThingViewController: UIViewController {
         editView.font = UIFont.systemFont(ofSize: 18)
         editView.layer.cornerRadius = 8
         editView.backgroundColor = UIColor.white
-        editView.textColor = UIColor.text()
+        editView.textColor = UIColor.text
         editView.text = thing?.content
         editView.returnKeyType = .done
         editView.delegate = self

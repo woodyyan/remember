@@ -24,7 +24,7 @@ class ThingTableViewCell: UITableViewCell {
         setBackground(style: .normal)
         
         tagLabel = UILabel(frame: CGRect(x: 30, y: 20, width: 60, height: 20))
-        tagLabel?.textColor = UIColor.remember()
+        tagLabel?.textColor = UIColor.remember
         tagLabel?.textAlignment = .right
         tagLabel?.font = UIFont.systemFont(ofSize: 10)
         self.addSubview(tagLabel!)
@@ -48,7 +48,7 @@ class ThingTableViewCell: UITableViewCell {
         let cellHeight = self.frame.size.height
         let cellWidth = self.frame.size.width
         self.textLabel?.numberOfLines = 0
-        self.textLabel?.textColor = UIColor.text()
+        self.textLabel?.textColor = UIColor.text
         self.textLabel?.frame = CGRect(x: 30, y: 15, width: cellWidth - 60, height: cellHeight - 30)
         if let tag = tagLabel?.text {
             if !tag.isEmpty {
@@ -68,7 +68,7 @@ class ThingTableViewCell: UITableViewCell {
         addTagButton.layer.shadowOpacity = 0.8
         addTagButton.layer.shadowOffset = CGSize(width: 1, height: 1)
         addTagButton.alpha = 0
-        addTagButton.backgroundColor = UIColor.remember()
+        addTagButton.backgroundColor = UIColor.remember
         addTagButton.setTitleColor(UIColor.white, for: .normal)
         addTagButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         self.addSubview(addTagButton)

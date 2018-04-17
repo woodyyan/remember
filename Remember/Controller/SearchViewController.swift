@@ -68,7 +68,7 @@ class SearchViewController: UIViewController {
         
         let rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         tableView = UITableView(frame: rect, style: UITableViewStyle.plain)
-        tableView.backgroundColor = UIColor.background()
+        tableView.backgroundColor = UIColor.background
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -125,7 +125,7 @@ class SearchViewController: UIViewController {
     private func getCancelButton() -> UIButton {
         let cancelButton = UIButton(type: .system)
         cancelButton.setTitle(NSLocalizedString("cancel", comment: ""), for: .normal)
-        cancelButton.setTitleColor(UIColor.remember(), for: .normal)
+        cancelButton.setTitleColor(UIColor.remember, for: .normal)
         cancelButton.addTarget(self, action: #selector(SearchViewController.cancelTap(sender:)), for: .touchUpInside)
         return cancelButton
     }
@@ -194,7 +194,7 @@ class SearchViewController: UIViewController {
         tagbutton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
         tagbutton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         tagbutton.layer.cornerRadius = 11
-        tagbutton.backgroundColor = UIColor.remember()
+        tagbutton.backgroundColor = UIColor.remember
         tagbutton.setTitleColor(UIColor.white, for: .normal)
         tagbutton.addTarget(self, action: #selector(SearchViewController.tagTap(sender:)), for: .touchUpInside)
         self.tagView.addSubview(tagbutton)
@@ -232,7 +232,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = self.filteredThings[indexPath.row].content
-        cell.textLabel?.textColor = UIColor.text()
+        cell.textLabel?.textColor = UIColor.text
         cell.textLabel?.numberOfLines = 0
         return cell
     }

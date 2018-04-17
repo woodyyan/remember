@@ -22,7 +22,7 @@ extension HomeViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
         let text = NSLocalizedString("tips", comment: "提示")
-        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
         let tipsString = NSAttributedString(string: text, attributes: attributes)
         return tipsString
     }

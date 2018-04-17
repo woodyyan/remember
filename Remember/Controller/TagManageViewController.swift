@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SCLAlertView
+//import SCLAlertView
 import DZNEmptyDataSet
 
 class TagManageViewController: UITableViewController {
@@ -61,7 +61,7 @@ class TagManageViewController: UITableViewController {
         let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
         let tagName = self.tags[indexPath.row].name
         cell.textLabel?.text = "#" + tagName!
-        cell.textLabel?.textColor = UIColor.text()
+        cell.textLabel?.textColor = UIColor.text
         cell.textLabel?.numberOfLines = 0
         cell.imageView?.image = #imageLiteral(resourceName: "tag_gray")
         let things = searchService.getThings(byTag: tagName!)
@@ -91,27 +91,27 @@ class TagManageViewController: UITableViewController {
         let title = NSLocalizedString("delete", comment: "删除")
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: title) { (action, index) -> Void in
             
-            let appearance = SCLAlertView.SCLAppearance(
-                showCloseButton: false
-            )
-            let alertView = SCLAlertView(appearance: appearance)
-            let color = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
-            let deleteTitle = NSLocalizedString("confirmDelete", comment: "确认删除")
-            alertView.addButton(deleteTitle, backgroundColor: color, textColor: UIColor.white, showTimeout: nil, action: {
-                let index=(indexPath as NSIndexPath).row as Int
-                let tag = self.tags[index]
-                self.tags.remove(at: index)
-                self.tagService.deleteTag(tag)
-                tableView.reloadData()
-                self.sendNotification(with: tag)
-            })
-            let cancelColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
-            let cancelTitle = NSLocalizedString("cancel", comment: "取消")
-            alertView.addButton(cancelTitle, backgroundColor: cancelColor, textColor: UIColor.white, showTimeout: nil, action: {
-                tableView.setEditing(false, animated: true)
-            })
-            let subTitle = NSLocalizedString("deleteTagNotDeleteThing", comment: "删除提示")
-            alertView.showWarning(NSLocalizedString("sureToDelete", comment: "确定要删除吗？"), subTitle: subTitle)
+//            let appearance = SCLAlertView.SCLAppearance(
+//                showCloseButton: false
+//            )
+//            let alertView = SCLAlertView(appearance: appearance)
+//            let color = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
+//            let deleteTitle = NSLocalizedString("confirmDelete", comment: "确认删除")
+//            alertView.addButton(deleteTitle, backgroundColor: color, textColor: UIColor.white, showTimeout: nil, action: {
+//                let index=(indexPath as NSIndexPath).row as Int
+//                let tag = self.tags[index]
+//                self.tags.remove(at: index)
+//                self.tagService.deleteTag(tag)
+//                tableView.reloadData()
+//                self.sendNotification(with: tag)
+//            })
+//            let cancelColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
+//            let cancelTitle = NSLocalizedString("cancel", comment: "取消")
+//            alertView.addButton(cancelTitle, backgroundColor: cancelColor, textColor: UIColor.white, showTimeout: nil, action: {
+//                tableView.setEditing(false, animated: true)
+//            })
+//            let subTitle = NSLocalizedString("deleteTagNotDeleteThing", comment: "删除提示")
+//            alertView.showWarning(NSLocalizedString("sureToDelete", comment: "确定要删除吗？"), subTitle: subTitle)
         }
         return [deleteAction]
     }

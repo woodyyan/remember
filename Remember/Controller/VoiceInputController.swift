@@ -149,7 +149,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         textView = UITextView()
-        textView.textColor = UIColor.text()
+        textView.textColor = UIColor.text
         voiceView.addSubview(textView)
         textView.snp.makeConstraints { (maker) in
             maker.top.equalTo(voiceView.snp.top).offset(20)

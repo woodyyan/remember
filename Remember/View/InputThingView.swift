@@ -22,7 +22,7 @@ class InputThingView: UIView, UITextFieldDelegate {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.background()
+        self.backgroundColor = UIColor.background
         
         textField = InputTextField(frame: CGRect(x: 10, y: 10, width: frame.width - 20, height: frame.height - 20))
         textField.delegate = self

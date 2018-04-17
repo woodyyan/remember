@@ -29,8 +29,8 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.title = NSLocalizedString("about", comment: "关于")
         self.view.backgroundColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.remember()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
+        self.navigationController?.navigationBar.tintColor = UIColor.remember
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
         
         initTableView()
         initBottomView()

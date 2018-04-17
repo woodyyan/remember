@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initAliyunService() {
         let man = ALBBMANAnalytics.getInstance()
         //man?.turnOnDebug()
-        man?.initWithAppKey(GlobleParameters.aliyunAppKey, secretKey: GlobleParameters.aliyunAppSecret)
+        man?.initWithAppKey(GlobleConfigs.aliyunAppKey, secretKey: GlobleConfigs.aliyunAppSecret)
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {

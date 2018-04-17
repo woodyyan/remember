@@ -48,7 +48,7 @@ class SearchResultTableViewController: UITableViewController, UISearchResultsUpd
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = self.filteredThings[indexPath.row].content
-        cell.textLabel?.textColor = UIColor.text()
+        cell.textLabel?.textColor = UIColor.text
         cell.textLabel?.numberOfLines = 0
         return cell
     }

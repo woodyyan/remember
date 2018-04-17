@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GlobleParameters {
+struct GlobleConfigs {
     static let aliyunAppKey = "24527009"
     static let aliyunAppSecret = "241a802ec6df5bbf6255cee25e4b1919"
 }

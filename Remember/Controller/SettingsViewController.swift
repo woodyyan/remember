@@ -12,7 +12,7 @@ import NotificationBanner
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     fileprivate let service = AboutViewModel()
-    private let feedbackKit = BCFeedbackKit(appKey: GlobleParameters.aliyunAppKey, appSecret: GlobleParameters.aliyunAppSecret)
+    private let feedbackKit = BCFeedbackKit(appKey: GlobleConfigs.aliyunAppKey, appSecret: GlobleConfigs.aliyunAppSecret)
     fileprivate var appStoreUrl = "https://itunes.apple.com/us/app/id1192994573"
     
     var tableView: UITableView!
@@ -32,13 +32,13 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.title = NSLocalizedString("settings", comment: "设置")
         self.view.backgroundColor = UIColor.white
-        self.navigationController?.navigationBar.tintColor = UIColor.remember()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
+        self.navigationController?.navigationBar.tintColor = UIColor.remember
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
         
         tableView = UITableView(frame: self.view.frame, style: UITableViewStyle.grouped)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = UIColor.background()
+        tableView.backgroundColor = UIColor.background
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
         

@@ -43,7 +43,7 @@ class TipsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.textColor = UIColor.text()
+        cell.textLabel?.textColor = UIColor.text
         cell.imageView?.image = #imageLiteral(resourceName: "tiptopic")
         cell.textLabel?.attributedText = viewModel.getTipText(indexPath.row)
         return cell

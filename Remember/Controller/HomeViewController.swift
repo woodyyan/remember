@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SCLAlertView
+//import SCLAlertView
 
 // swiftlint:disable file_length
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -46,13 +46,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func initUI() {
         self.title = NSLocalizedString("appName", comment: "丁丁记事")
-        self.view.backgroundColor = UIColor.background()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember()]
-        self.navigationController?.navigationBar.tintColor = UIColor.remember()
+        self.view.backgroundColor = UIColor.background
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
+        self.navigationController?.navigationBar.tintColor = UIColor.remember
         
         let rightBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(HomeViewController.pushToAboutPage(_:)))
         self.navigationItem.rightBarButtonItem = rightBarItem
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.remember()
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.remember
         
         initTableView()
         initInputView()
@@ -135,12 +135,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         searchButton.setTitle(NSLocalizedString("searchPlaceHolder", comment: "搜索"), for: UIControlState.normal)
         searchButton.setImage(UIImage(named: "Search"), for: UIControlState.normal)
         searchButton.frame = CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 40)
-        searchButton.layer.borderColor = UIColor.inputGray().cgColor
+        searchButton.layer.borderColor = UIColor.inputGray.cgColor
         searchButton.layer.borderWidth = 1
         searchButton.layer.cornerRadius = 20
-        searchButton.backgroundColor = UIColor.inputGray()
-        searchButton.setTitleColor(UIColor.remember(), for: UIControlState.normal)
-        searchButton.tintColor = UIColor.remember()
+        searchButton.backgroundColor = UIColor.inputGray
+        searchButton.setTitleColor(UIColor.remember, for: UIControlState.normal)
+        searchButton.tintColor = UIColor.remember
         searchButton.addTarget(self, action: #selector(HomeViewController.searchClick(_:)), for: UIControlEvents.touchUpInside)
         return searchButton
     }
@@ -150,7 +150,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         pasteboardView.layer.cornerRadius = 10
         pasteboardView.backgroundColor = UIColor.white
         let tipTextLabel = UILabel(frame: CGRect(x: 10, y: 5, width: pasteboardView.frame.width, height: 20))
-        tipTextLabel.textColor = UIColor.remember()
+        tipTextLabel.textColor = UIColor.remember
         tipTextLabel.text = NSLocalizedString("addPasteboardContent", comment: "")
         tipTextLabel.font = UIFont.systemFont(ofSize: 12)
         pasteboardView.addSubview(tipTextLabel)
@@ -171,7 +171,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         let pasteContentLabel = UILabel()
-        pasteContentLabel.textColor = UIColor.text()
+        pasteContentLabel.textColor = UIColor.text
         pasteContentLabel.text = content
         pasteboardView.addSubview(pasteContentLabel)
         pasteContentLabel.snp.makeConstraints { (maker) in
@@ -226,7 +226,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         let rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - inputViewHeight)
         tableView = UITableView(frame: rect, style: UITableViewStyle.plain)
-        tableView.backgroundColor = UIColor.background()
+        tableView.backgroundColor = UIColor.background
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -428,26 +428,26 @@ extension HomeViewController {
             let thing = self.viewModel.things[index]
             UIPasteboard.general.string = thing.content
         }
-        shareAction.backgroundColor = UIColor.remember()
+        shareAction.backgroundColor = UIColor.remember
         
         let deleteTitle = NSLocalizedString("delete", comment: "删除")
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: deleteTitle) { (action, index) -> Void in
-            let appearance = SCLAlertView.SCLAppearance(
-                showCloseButton: false
-            )
-            let alertView = SCLAlertView(appearance: appearance)
-            let buttonTitle = NSLocalizedString("confirmDelete", comment: "")
-            let buttonColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
-            alertView.addButton(buttonTitle, backgroundColor: buttonColor, textColor: UIColor.white, showTimeout: nil, action: {
-                self.viewModel.deleteThing(index: (indexPath as NSIndexPath).row as Int)
-                tableView.reloadData()
-            })
-            let cancelColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
-            let cancelTitle = NSLocalizedString("cancel", comment: "取消")
-            alertView.addButton(cancelTitle, backgroundColor: cancelColor, textColor: UIColor.white, showTimeout: nil, action: {
-                tableView.setEditing(false, animated: true)
-            })
-            alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
+//            let appearance = SCLAlertView.SCLAppearance(
+//                showCloseButton: false
+//            )
+//            let alertView = SCLAlertView(appearance: appearance)
+//            let buttonTitle = NSLocalizedString("confirmDelete", comment: "")
+//            let buttonColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
+//            alertView.addButton(buttonTitle, backgroundColor: buttonColor, textColor: UIColor.white, showTimeout: nil, action: {
+//                self.viewModel.deleteThing(index: (indexPath as NSIndexPath).row as Int)
+//                tableView.reloadData()
+//            })
+//            let cancelColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
+//            let cancelTitle = NSLocalizedString("cancel", comment: "取消")
+//            alertView.addButton(cancelTitle, backgroundColor: cancelColor, textColor: UIColor.white, showTimeout: nil, action: {
+//                tableView.setEditing(false, animated: true)
+//            })
+//            alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
         }
         return [deleteAction, shareAction, editAction]
     }

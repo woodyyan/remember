@@ -35,7 +35,7 @@ class TagManagementView: UIView {
         addTagButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         addTagButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         addTagButton.layer.cornerRadius = 10
-        addTagButton.backgroundColor = UIColor.remember()
+        addTagButton.backgroundColor = UIColor.remember
         addTagButton.setTitleColor(UIColor.white, for: .normal)
         addTagButton.addTarget(self, action: #selector(TagManagementView.addTagTap(sender:)), for: .touchUpInside)
         self.addSubview(addTagButton)
@@ -140,7 +140,7 @@ class TagManagementView: UIView {
         tagbutton.setTitle("#\(tag)", for: .normal)
         tagbutton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
         tagbutton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        tagbutton.setTitleColor(UIColor.remember(), for: .normal)
+        tagbutton.setTitleColor(UIColor.remember, for: .normal)
         tagbutton.addTarget(self, action: #selector(TagManagementView.addExitingTagTap(sender:)), for: .touchUpInside)
         return tagbutton
     }
@@ -214,7 +214,7 @@ class TagManagementView: UIView {
         tagbutton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
         tagbutton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         tagbutton.layer.cornerRadius = 10
-        tagbutton.backgroundColor = UIColor.remember()
+        tagbutton.backgroundColor = UIColor.remember
         tagbutton.setTitleColor(UIColor.white, for: .normal)
         tagbutton.addTarget(self, action: #selector(TagManagementView.tagTap(sender:)), for: .touchUpInside)
         self.addSubview(tagbutton)
