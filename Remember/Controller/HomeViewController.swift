@@ -144,50 +144,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func getPasteBoardView(_ content: String) -> UIView {
-        let pasteboardView = UIView(frame: CGRect(x: 10, y: 60, width: self.width - 20, height: 55))
-        pasteboardView.layer.cornerRadius = 10
-        pasteboardView.backgroundColor = UIColor.white
-        let tipTextLabel = UILabel(frame: CGRect(x: 10, y: 5, width: pasteboardView.width, height: 20))
-        tipTextLabel.textColor = UIColor.remember
-        tipTextLabel.text = NSLocalizedString("addPasteboardContent", comment: "")
-        tipTextLabel.font = UIFont.systemFont(ofSize: 12)
-        pasteboardView.addSubview(tipTextLabel)
-        tipTextLabel.snp.makeConstraints { (maker) in
-            maker.left.equalTo(pasteboardView).offset(10)
-            maker.top.equalTo(pasteboardView).offset(5)
-            maker.right.equalTo(pasteboardView).offset(-10)
-        }
+        viewModel.addPasteContentToSettings(content)
         
-        let okButton = UIButton(type: UIButtonType.custom)
-        okButton.setImage(UIImage(named: "Checked"), for: .normal)
-        okButton.addTarget(self, action: #selector(HomeViewController.pasteOkButtonClick(_:)), for: .touchUpInside)
-        okButton.sizeToFit()
-        pasteboardView.addSubview(okButton)
-        okButton.snp.makeConstraints { (maker) in
-            maker.centerY.equalTo(pasteboardView)
-            maker.right.equalTo(pasteboardView.snp.right).offset(-10)
-        }
-        
-        let pasteContentLabel = UILabel()
-        pasteContentLabel.textColor = UIColor.text
-        pasteContentLabel.text = content
-        pasteboardView.addSubview(pasteContentLabel)
-        pasteContentLabel.snp.makeConstraints { (maker) in
-            maker.top.equalTo(tipTextLabel.snp.bottom).offset(5)
-            maker.left.equalTo(tipTextLabel)
-            maker.right.lessThanOrEqualTo(okButton.snp.left).offset(-5)
-            maker.height.equalTo(20)
-        }
-        
-        addPasteContentToSettings(content)
-        
+        let pasteboardView = PasteboardView(frame: CGRect(x: 10, y: 60, width: self.width - 20, height: 55))
+        pasteboardView.okButton.addTarget(self, action: #selector(HomeViewController.pasteOkButtonClick(_:)), for: .touchUpInside)
+        pasteboardView.pasteContentLabel.text = content
         pasteboardView.tag = pasteboardViewTag
         return pasteboardView
-    }
-    
-    private func addPasteContentToSettings(_ content: String) {
-        UserDefaults.standard.set(content, forKey: "pasteboardContent")
-        UserDefaults.standard.synchronize()
     }
     
     @objc func pasteOkButtonClick(_ sender: UIButton) {
