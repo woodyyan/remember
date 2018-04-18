@@ -52,7 +52,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
         self.navigationController?.navigationBar.tintColor = UIColor.remember
         
-        let rightBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(HomeViewController.pushToAboutPage(_:)))
+        let rightBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(HomeViewController.pushToSettingsPage(_:)))
         self.navigationItem.rightBarButtonItem = rightBarItem
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.remember
         
@@ -297,23 +297,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @objc func keyboardWillShow(_ notice: Notification) {
         if shouldInputViewDisplay && inputThingView.isEditing() {
-            let userInfo: NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
-            let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
-            let endFrame = endFrameValue.cgRectValue
-            let y = self.height - inputViewHeight - endFrame.height
-            inputThingView.frame = CGRect(x: 0, y: y, width: self.width, height: inputViewHeight)
+            if let userInfo = notice.userInfo {
+                if let endFrameValue: NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                    let endFrame = endFrameValue.cgRectValue
+                    let y = self.height - inputViewHeight - endFrame.height
+                    inputThingView.frame = CGRect(x: 0, y: y, width: self.width, height: inputViewHeight)
+                }
+            }
         }
     }
     
-    @objc func pushToAboutPage(_ sender: UIBarButtonItem) {
+    @objc func pushToSettingsPage(_ sender: UIBarButtonItem) {
         inputThingView.endEditing()
         let settingsController = SettingsViewController()
         self.navigationController?.pushViewController(settingsController, animated: true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 
