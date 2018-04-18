@@ -120,6 +120,7 @@
 		8280CDCE20862B0500C7A1F5 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDCD20862B0500C7A1F5 /* NotificationCenterExtension.swift */; };
 		8280CDD020862D8500C7A1F5 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDCF20862D8500C7A1F5 /* SearchButton.swift */; };
 		8280CDD220870A1A00C7A1F5 /* PasteboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDD120870A1A00C7A1F5 /* PasteboardView.swift */; };
+		8280CDD4208736EA00C7A1F5 /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDD3208736EA00C7A1F5 /* UIApplicationExtensions.swift */; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
 		82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923661EF17962004937EA /* AboutViewModelTests.swift */; };
 		82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8055C2077425100AF4AB0 /* UIViewExtension.swift */; };
@@ -299,6 +300,7 @@
 		8280CDCD20862B0500C7A1F5 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		8280CDCF20862D8500C7A1F5 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		8280CDD120870A1A00C7A1F5 /* PasteboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardView.swift; sourceTree = "<group>"; };
+		8280CDD3208736EA00C7A1F5 /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82D8055C2077425100AF4AB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -614,6 +616,7 @@
 				82D8055C2077425100AF4AB0 /* UIViewExtension.swift */,
 				8280CDC920861E8700C7A1F5 /* UIColorExtensions.swift */,
 				8280CDCD20862B0500C7A1F5 /* NotificationCenterExtension.swift */,
+				8280CDD3208736EA00C7A1F5 /* UIApplicationExtensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				820B842B1F1119A7007E3C15 /* TagManagementView.swift in Sources */,
 				820B84051F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */,
 				820B84171F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
+				8280CDD4208736EA00C7A1F5 /* UIApplicationExtensions.swift in Sources */,
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				824267FD2073C33B009FD115 /* PasteboardUtils.swift in Sources */,
 				820B83E41F0E8D3D007E3C15 /* TagModel.swift in Sources */,

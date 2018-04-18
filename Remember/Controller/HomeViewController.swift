@@ -68,7 +68,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func updatePasteboardView(_ notification: Notification) {
-        addPasteboardViewIfNeeded()
+        self.addPasteboardViewIfNeeded()
     }
     
     @objc func tagRemoved(_ notification: Notification) {
@@ -181,10 +181,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initTableView() {
-        var statusHeight = UIApplication.shared.statusBarFrame.height
-        if let navBarHeight = self.navigationController?.navigationBar.frame.height {
-            statusHeight += navBarHeight
-        }
         let rect = CGRect(x: 0, y: 0, width: self.width, height: self.height - inputViewHeight)
         tableView = UITableView(frame: rect, style: UITableViewStyle.plain)
         tableView.backgroundColor = UIColor.background
