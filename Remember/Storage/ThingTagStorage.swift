@@ -61,7 +61,7 @@ class ThingTagStorage: CoreStorage {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ThingTag")
         let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: self.persistentContainer.viewContext)
         request.entity = entity
-        let predicate = NSPredicate(format: "%K == %@", "thingId", thing.id!)
+        let predicate = NSPredicate(format: "%K == %@", "thingId", thing.id)
         request.predicate = predicate
         do {
             if let results = try self.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity] {

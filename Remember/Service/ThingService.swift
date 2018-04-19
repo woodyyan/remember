@@ -16,11 +16,11 @@ class ThingService {
     private(set) var things = [ThingModel]()
     
     init() {
-        things = thingStorage.getThings()
+        things = thingStorage.findAll()
     }
     
     func refresh() {
-        things = thingStorage.getThings()
+        things = thingStorage.findAll()
     }
     
     func create(_ thing: ThingModel) {
@@ -49,7 +49,7 @@ class ThingService {
     }
     
     func getAllThingCount() -> Int {
-        let things = thingStorage.getThings()
+        let things = thingStorage.findAll()
         return things.count
     }
     

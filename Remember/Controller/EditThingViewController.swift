@@ -168,10 +168,10 @@ extension EditThingViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n"{
             textView.resignFirstResponder()
-            if let tempThing = thing {
-                tempThing.content = editView.text
-                self.service.edit(tempThing)
-                delegate?.editThing(isDeleted: false, thing: tempThing)
+            if thing != nil {
+                thing?.content = editView.text
+                self.service.edit(thing!)
+                delegate?.editThing(isDeleted: false, thing: thing!)
             }
             return false
         }

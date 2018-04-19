@@ -25,7 +25,7 @@ class HomeViewModel {
     
     func addPastContent() -> Bool {
         if let content = pasteContent {
-            let thing = ThingModel(content: content)
+            var thing = ThingModel(content: content)
             thing.isNew = true
             self.service.create(thing)
             self.things.insert(thing, at: 0)
@@ -62,7 +62,7 @@ class HomeViewModel {
     
     func calculateCellHeight(viewWidth: CGFloat, row: Int) -> CGFloat {
         let thing = self.things[row]
-        let content: NSString = thing.content! as NSString
+        let content: NSString = thing.content as NSString
         let expectSize = CGSize(width: viewWidth - 60, height: CGFloat.greatestFiniteMagnitude)
         let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
@@ -85,11 +85,9 @@ class HomeViewModel {
         var set = Set<Int>()
         self.things.forEach { set.insert($0.index) }
         if set.count < self.things.count || self.things[0].index != 0 {
-            var index = 0
-            self.things.forEach({ (thing) in
-                thing.index = index
-                index += 1
-            })
+            for i in 0..<self.things.count {
+                self.things[i].index = i
+            }
         }
         
         self.service.save(sorted: self.things)

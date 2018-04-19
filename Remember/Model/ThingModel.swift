@@ -8,10 +8,10 @@
 
 import Foundation
 
-class ThingModel {
-    var content: String!
-    var createdAt: Date!
-    var id: String!
+struct ThingModel {
+    var content: String
+    var createdAt: Date
+    var id: String
     var index: Int = 0
     var isNew = false
     

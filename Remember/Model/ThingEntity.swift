@@ -22,9 +22,9 @@ public class ThingEntity: NSManagedObject {
 
 extension ThingEntity {
     func toModel() -> ThingModel {
-        let thingModel = ThingModel(content: self.content!)
+        var thingModel = ThingModel(content: self.content!)
         thingModel.createdAt = self.createdAt! as Date
-        thingModel.id = self.id
+        thingModel.id = self.id!
         thingModel.index = Int(self.index)
         
         return thingModel

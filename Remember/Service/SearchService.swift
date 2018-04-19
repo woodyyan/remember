@@ -14,7 +14,7 @@ class SearchService {
     private(set) var things = [ThingModel]()
     
     init() {
-        things = thingStorage.getThings()
+        things = thingStorage.findAll()
     }
     
     func getThings(byTag tag: String) -> [ThingModel] {
@@ -33,7 +33,7 @@ class SearchService {
     
     func getThings(byText searchText: String) -> [ThingModel] {
         let filteredThings = self.things.filter({ (thing) -> Bool in
-            return thing.content!.contains(searchText)
+            return thing.content.contains(searchText)
         })
         return filteredThings
     }

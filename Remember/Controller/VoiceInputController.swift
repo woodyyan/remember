@@ -194,7 +194,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     @objc func okTapped(sender: UIButton) {
         resetRecognitionTask()
         if !self.textView.text.isEmpty && self.hasText {
-            let thing = viewModel.saveThing(self.textView.text)
+            var thing = viewModel.saveThing(self.textView.text)
             thing.isNew = true
             delegate?.voiceInput(voiceInputView: self, thing: thing)
         }

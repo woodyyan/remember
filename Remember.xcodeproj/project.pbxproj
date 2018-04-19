@@ -121,6 +121,9 @@
 		8280CDD020862D8500C7A1F5 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDCF20862D8500C7A1F5 /* SearchButton.swift */; };
 		8280CDD220870A1A00C7A1F5 /* PasteboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDD120870A1A00C7A1F5 /* PasteboardView.swift */; };
 		8280CDD4208736EA00C7A1F5 /* UIApplicationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDD3208736EA00C7A1F5 /* UIApplicationExtensions.swift */; };
+		8280CDD72088D48200C7A1F5 /* ThingStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDD62088D48200C7A1F5 /* ThingStorageTests.swift */; };
+		8280CDD82088D49400C7A1F5 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */; };
+		8280CDD92088D4A300C7A1F5 /* CoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A14AE2073D7D4004D7F21 /* CoreStorage.swift */; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
 		82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923661EF17962004937EA /* AboutViewModelTests.swift */; };
 		82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8055C2077425100AF4AB0 /* UIViewExtension.swift */; };
@@ -301,6 +304,7 @@
 		8280CDCF20862D8500C7A1F5 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		8280CDD120870A1A00C7A1F5 /* PasteboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardView.swift; sourceTree = "<group>"; };
 		8280CDD3208736EA00C7A1F5 /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
+		8280CDD62088D48200C7A1F5 /* ThingStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingStorageTests.swift; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82D8055C2077425100AF4AB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -556,6 +560,7 @@
 		825DEB2F1DD9DC070065090F /* RememberTests */ = {
 			isa = PBXGroup;
 			children = (
+				8280CDD52088D41200C7A1F5 /* Storage */,
 				824A14B0207502DD004D7F21 /* UtilTests */,
 				82E7AC59205420AD006FC9E5 /* ViewModelTests */,
 				820B84301F11C2A0007E3C15 /* Remember-Bridging-Header.h */,
@@ -608,6 +613,14 @@
 				824267FE2073C725009FD115 /* HomeViewController+DZNEmptyDataSet.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		8280CDD52088D41200C7A1F5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				8280CDD62088D48200C7A1F5 /* ThingStorageTests.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		82D8055B2077424100AF4AB0 /* Extension */ = {
@@ -926,11 +939,14 @@
 				82E7AC58205420A1006FC9E5 /* TipsViewModel.swift in Sources */,
 				820B83F11F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
 				82F934911F1F5F5D00AE31DE /* ThingServiceTests.swift in Sources */,
+				8280CDD72088D48200C7A1F5 /* ThingStorageTests.swift in Sources */,
 				820B83B61F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
 				824A14B2207502F7004D7F21 /* PasteboardUtilsTests.swift in Sources */,
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				8280CDCB2086290300C7A1F5 /* UIColorExtensions.swift in Sources */,
 				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
+				8280CDD92088D4A300C7A1F5 /* CoreStorage.swift in Sources */,
+				8280CDD82088D49400C7A1F5 /* ThingStorage.swift in Sources */,
 				820B83E11F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 				821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */,
 				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,

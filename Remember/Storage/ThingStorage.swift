@@ -12,7 +12,7 @@ import CoreData
 
 class ThingStorage: CoreStorage {
     
-    func getThings() -> [ThingModel] {
+    func findAll() -> [ThingModel] {
         return getThingsFromLocalDB()
     }
     
@@ -28,7 +28,7 @@ class ThingStorage: CoreStorage {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: self.persistentContainer.viewContext)
         request.entity = entity
-        let predicate = NSPredicate(format: "%K == %@", "id", thing.id!)
+        let predicate = NSPredicate(format: "%K == %@", "id", thing.id)
         request.predicate = predicate
         do {
             if let results = try self.persistentContainer.viewContext.fetch(request) as? [NSManagedObject] {
@@ -47,7 +47,7 @@ class ThingStorage: CoreStorage {
         let entity = NSEntityDescription.entity(forEntityName: "Thing", in: self.persistentContainer.viewContext)
         request.entity = entity
         for thing in things {
-            let predicate = NSPredicate(format: "%K == %@", "id", thing.id!)
+            let predicate = NSPredicate(format: "%K == %@", "id", thing.id)
             request.predicate = predicate
             do {
                 if let results = try self.persistentContainer.viewContext.fetch(request) as? [NSManagedObject] {

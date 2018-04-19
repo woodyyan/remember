@@ -248,7 +248,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.filteredThings.count > indexPath.row {
-            let content: NSString = self.filteredThings[indexPath.row].content! as NSString
+            let content: NSString = self.filteredThings[indexPath.row].content as NSString
             let expectSize = CGSize(width: self.width - 30, height: CGFloat.greatestFiniteMagnitude)
             let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
             let option = NSStringDrawingOptions.usesLineFragmentOrigin
