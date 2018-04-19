@@ -10,16 +10,16 @@ import Foundation
 import UIKit
 
 class SearchViewController: UIViewController {
-    fileprivate var lastTopView: UIView?
-    fileprivate var lastTagButton: UIView?
-    fileprivate var tagLabel: UILabel!
+    private var lastTopView: UIView?
+    private var lastTagButton: UIView?
+    private var tagLabel: UILabel!
     
-    fileprivate var tagView: UIView!
-    fileprivate var textField: InputTextField!
-    fileprivate var tableView: UITableView!
-    fileprivate let tagService = TagService()
-    fileprivate let searchService = SearchService()
-    fileprivate var filteredThings = [ThingModel]()
+    private var tagView: UIView!
+    private var textField: InputTextField!
+    private var tableView: UITableView!
+    private let tagService = TagService()
+    private let searchService = SearchService()
+    private var filteredThings = [ThingModel]()
     
     var homeController: HomeViewController?
     
@@ -42,7 +42,7 @@ class SearchViewController: UIViewController {
         initUI()
         
         let selector = #selector(SearchViewController.keyboardWillShow(_:))
-        NotificationCenter.default.addObserver(self, selector: selector, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.addObserver(self, selector, NSNotification.Name.UIKeyboardWillShow)
     }
     
     @objc func keyboardWillShow(_ notice: Notification) {
@@ -66,7 +66,7 @@ class SearchViewController: UIViewController {
             maker.height.equalTo(40)
         }
         
-        let rect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        let rect = CGRect(x: 0, y: 0, width: self.width, height: self.height)
         tableView = UITableView(frame: rect, style: UITableViewStyle.plain)
         tableView.backgroundColor = UIColor.background
         tableView.delegate = self
@@ -76,18 +76,14 @@ class SearchViewController: UIViewController {
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { (maker) in
             maker.top.equalTo(textField.snp.bottom).offset(10)
-            maker.left.equalTo(self.view)
-            maker.right.equalTo(self.view)
-            maker.bottom.equalTo(self.view)
+            maker.left.right.bottom.equalTo(self.view)
         }
         
         tagView = UIView()
         self.view.addSubview(tagView)
         tagView.snp.makeConstraints { (maker) in
-            maker.left.equalTo(self.view)
             maker.top.equalTo(textField.snp.bottom)
-            maker.right.equalTo(self.view)
-            maker.bottom.equalTo(self.view)
+            maker.left.right.bottom.equalTo(self.view)
         }
         
         tagLabel = UILabel()
@@ -107,7 +103,7 @@ class SearchViewController: UIViewController {
     }
     
     private func initTextField() {
-        textField = InputTextField(frame: CGRect(x: 10, y: 10, width: self.view.frame.width - 20, height: 40))
+        textField = InputTextField(frame: CGRect(x: 10, y: 10, width: self.width - 20, height: 40))
         textField.setLeftImage(with: UIImage(named: "Search")!)
         textField.setPlaceHolder(with: NSLocalizedString("searchPlaceHolder", comment: ""))
         textField.returnKeyType = .search
@@ -131,11 +127,24 @@ class SearchViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(sender: UITextField) {
-        if let isEmpty = sender.text?.isEmpty {
-            if isEmpty {
+        if let text = sender.text {
+            if text.isEmpty {
                 showAllTags()
+            } else {
+                search(text: text)
             }
         }
+    }
+    
+    private func search(text: String) {
+        self.tagView.isHidden = true
+        if text.hasPrefix("#") {
+            let trimText = text.trimmingCharacters(in: CharacterSet.init(charactersIn: "#"))
+            self.filteredThings = searchService.getThings(byTag: trimText)
+        } else {
+            self.filteredThings = self.searchService.getThings(byText: text)
+        }
+        self.tableView.reloadData()
     }
     
     func showAllTags() {
@@ -165,8 +174,8 @@ class SearchViewController: UIViewController {
         var topView: UIView! = tagLabel
         
         if lastTagButton != nil {
-            let rightPoint = lastTagButton!.frame.origin.x + lastTagButton!.frame.width
-            let width = self.view.frame.width - rightPoint
+            let rightPoint = lastTagButton!.frame.origin.x + lastTagButton!.width
+            let width = self.width - rightPoint
             let expectSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0)
             let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]
             let option = NSStringDrawingOptions.usesLineFragmentOrigin
@@ -240,13 +249,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.filteredThings.count > indexPath.row {
             let content: NSString = self.filteredThings[indexPath.row].content! as NSString
-            let expectSize = CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude)
+            let expectSize = CGSize(width: self.width - 30, height: CGFloat.greatestFiniteMagnitude)
             let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
             let option = NSStringDrawingOptions.usesLineFragmentOrigin
             let size = content.boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
             return size.height + 30
         } else {
-            return UITableViewCell().frame.height
+            return UITableViewCell().height
         }
     }
     
@@ -263,14 +272,7 @@ extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let searchText = textField.text {
             if !searchText.isEmpty {
-                self.tagView.isHidden = true
-                if searchText.hasPrefix("#") {
-                    let trimText = searchText.trimmingCharacters(in: CharacterSet.init(charactersIn: "#"))
-                    self.filteredThings = searchService.getThings(byTag: trimText)
-                } else {
-                    self.filteredThings = self.searchService.getThings(byText: searchText)
-                }
-                self.tableView.reloadData()
+                search(text: searchText)
             }
         }
         
