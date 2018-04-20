@@ -10,7 +10,7 @@ import Foundation
 
 class ThingService {
     private var thingStorage = ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext)
-    private let thingTagStorage = ThingTagStorage()
+    private let thingTagStorage = ThingTagStorage(context: CoreStorage.shared.persistentContainer.viewContext)
     private let tagService = TagService()
     
     private(set) var things = [ThingModel]()
@@ -29,7 +29,7 @@ class ThingService {
     
     func delete(_ thing: ThingModel) {
         thingStorage.delete(thing)
-        let thingTags = thingTagStorage.getThingTags(by: thing)
+        let thingTags = thingTagStorage.findThingTagsBy(thingId: thing.id)
         for thingTag in thingTags {
             thingTagStorage.delete(for: thingTag)
         }

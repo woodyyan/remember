@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ThingTagModel {
+struct ThingTagModel {
     var thingId: String!
     var tagId: String!
     var id: String!

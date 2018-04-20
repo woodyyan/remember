@@ -34,4 +34,14 @@ extension NSManagedObject {
         tagModel.index = index
         return tagModel
     }
+    
+    func toThingTagModel() -> ThingTagModel {
+        let id = self.value(forKey: "id") as! String
+        let tagId = self.value(forKey: "tagId") as! String
+        let thingId = self.value(forKey: "thingId") as! String
+        
+        var thingTagModel = ThingTagModel(thingId: thingId, tagId: tagId)
+        thingTagModel.id = id
+        return thingTagModel
+    }
 }

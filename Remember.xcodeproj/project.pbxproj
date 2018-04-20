@@ -141,6 +141,8 @@
 		8280CDF42089E72500C7A1F5 /* MarqueeLabelSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58038200E45B6003E2435 /* MarqueeLabelSwift.framework */; };
 		8280CDF52089E72900C7A1F5 /* NotificationBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58036200E45AE003E2435 /* NotificationBanner.framework */; };
 		8280CDF62089E72C00C7A1F5 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58032200E2763003E2435 /* SnapKit.framework */; };
+		8280CDF8208A2E6700C7A1F5 /* ThingTagStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDF7208A2E6700C7A1F5 /* ThingTagStorageTests.swift */; };
+		8280CDF9208A2E9300C7A1F5 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
 		82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923661EF17962004937EA /* AboutViewModelTests.swift */; };
 		82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8055C2077425100AF4AB0 /* UIViewExtension.swift */; };
@@ -326,6 +328,7 @@
 		8280CDDF2089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtensions.swift; sourceTree = "<group>"; };
 		8280CDE22089E06E00C7A1F5 /* TagStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStorageTests.swift; sourceTree = "<group>"; };
 		8280CDE42089E0CB00C7A1F5 /* StorageTestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTestUtil.swift; sourceTree = "<group>"; };
+		8280CDF7208A2E6700C7A1F5 /* ThingTagStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingTagStorageTests.swift; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82D8055C2077425100AF4AB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -651,6 +654,7 @@
 				8280CDD62088D48200C7A1F5 /* ThingStorageTests.swift */,
 				8280CDE22089E06E00C7A1F5 /* TagStorageTests.swift */,
 				8280CDE42089E0CB00C7A1F5 /* StorageTestUtil.swift */,
+				8280CDF7208A2E6700C7A1F5 /* ThingTagStorageTests.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -984,10 +988,12 @@
 				8280CDE52089E0CB00C7A1F5 /* StorageTestUtil.swift in Sources */,
 				8280CDCB2086290300C7A1F5 /* UIColorExtensions.swift in Sources */,
 				8280CDE32089E06E00C7A1F5 /* TagStorageTests.swift in Sources */,
+				8280CDF8208A2E6700C7A1F5 /* ThingTagStorageTests.swift in Sources */,
 				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				8280CDD92088D4A300C7A1F5 /* CoreStorage.swift in Sources */,
 				8280CDE62089E13800C7A1F5 /* TagStorage.swift in Sources */,
 				8280CDD82088D49400C7A1F5 /* ThingStorage.swift in Sources */,
+				8280CDF9208A2E9300C7A1F5 /* ThingTagStorage.swift in Sources */,
 				820B83E11F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 				821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */,
 				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,

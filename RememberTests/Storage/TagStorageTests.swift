@@ -51,7 +51,7 @@ class TagStorageTests: XCTestCase {
         let tag = TagModel(name: "test")
         tagStorage.save(for: tag)
         
-        let tagModel = tagStorage.getTag(by: "test")
+        let tagModel = tagStorage.find(by: "test")
         
         XCTAssertNotNil(tagModel)
         XCTAssertEqual(tagModel?.name, "test")
@@ -74,7 +74,7 @@ class TagStorageTests: XCTestCase {
         
         tag.index = 5
         tagStorage.updateIndex(for: tag)
-        let tagModel = tagStorage.getTag(by: "test")
+        let tagModel = tagStorage.find(by: "test")
         
         XCTAssertEqual(tagModel?.index, 5)
     }

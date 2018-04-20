@@ -10,7 +10,7 @@ import Foundation
 
 class TagService {
     private let tagStorage = TagStorage(context: CoreStorage.shared.persistentContainer.viewContext)
-    private let thingTagStorage = ThingTagStorage()
+    private let thingTagStorage = ThingTagStorage(context: CoreStorage.shared.persistentContainer.viewContext)
     
     func saveThingTag(_ thingTag: ThingTagModel) {
         thingTagStorage.save(for: thingTag)
@@ -18,7 +18,7 @@ class TagService {
     
     func deleteTag(_ tag: TagModel) {
         tagStorage.delete(tag)
-        let thingTags = thingTagStorage.getThingTags(by: tag)
+        let thingTags = thingTagStorage.findThingTagsBy(tagId: tag.id)
         for thingTag in thingTags {
             thingTagStorage.delete(for: thingTag)
         }
@@ -47,7 +47,7 @@ class TagService {
     }
     
     func getSelectedTags(by thing: ThingModel) -> [TagModel] {
-        let thingTags = thingTagStorage.getThingTags(by: thing)
+        let thingTags = thingTagStorage.findThingTagsBy(thingId: thing.id)
         let tagIds = thingTags.filter({ $0.thingId == thing.id }).map({ $0.tagId! })
         let tags = tagStorage.getTags(by: tagIds)
         return tags
@@ -55,7 +55,7 @@ class TagService {
     
     func getUnselectedTags(by thing: ThingModel) -> [TagModel] {
         let tags = tagStorage.findAll()
-        let thingTags = thingTagStorage.getThingTags(by: thing)
+        let thingTags = thingTagStorage.findThingTagsBy(thingId: thing.id)
         let unselectedTags = tags.filter { (tag) -> Bool in
             return !thingTags.contains(where: { (thingTag) -> Bool in
                 return thingTag.tagId == tag.id

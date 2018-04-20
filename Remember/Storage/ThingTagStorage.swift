@@ -10,45 +10,53 @@ import Foundation
 import UIKit
 import CoreData
 
-class ThingTagStorage: CoreStorage {
+class ThingTagStorage {
+    private let thingTagName = "ThingTag"
+    
+    private var context: NSManagedObjectContext!
+    
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
+    
     func save(for thingTag: ThingTagModel) {
-        let entity = NSEntityDescription.insertNewObject(forEntityName: "ThingTag", into: self.persistentContainer.viewContext)
+        let entity = NSEntityDescription.insertNewObject(forEntityName: "ThingTag", into: self.context)
         entity.setValue(thingTag.id, forKey: "id")
         entity.setValue(thingTag.tagId, forKey: "tagId")
         entity.setValue(thingTag.thingId, forKey: "thingId")
-        self.saveContext()
+        self.context.saveIfNeeded()
     }
     
     func delete(for thingTag: ThingTagModel) {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ThingTag")
-        let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: self.persistentContainer.viewContext)
+        let entity = NSEntityDescription.entity(forEntityName: thingTagName, in: self.context)
         request.entity = entity
         let predicate = NSPredicate(format: "thingId == %@ && tagId == %@", thingTag.thingId, thingTag.tagId)
         request.predicate = predicate
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity] {
+            if let results = try self.context.fetch(request) as? [NSManagedObject] {
                 if !results.isEmpty {
                     for result in results {
-                        self.persistentContainer.viewContext.delete(result)
+                        self.context.delete(result)
                     }
-                    self.saveContext()
+                    self.context.saveIfNeeded()
                 }
             }
         } catch {
         }
     }
     
-    func getThingTags(by tag: TagModel) -> [ThingTagModel] {
+    func findThingTagsBy(tagId: String) -> [ThingTagModel] {
         var thingTags = [ThingTagModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ThingTag")
-        let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: self.persistentContainer.viewContext)
+        let entity = NSEntityDescription.entity(forEntityName: thingTagName, in: self.context)
         request.entity = entity
-        let predicate = NSPredicate(format: "%K == %@", "tagId", tag.id!)
+        let predicate = NSPredicate(format: "%K == %@", "tagId", tagId)
         request.predicate = predicate
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity] {
+            if let results = try self.context.fetch(request) as? [NSManagedObject] {
                 for result in results {
-                    thingTags.append(result.toModel())
+                    thingTags.append(result.toThingTagModel())
                 }
             }
         } catch {
@@ -56,17 +64,17 @@ class ThingTagStorage: CoreStorage {
         return thingTags
     }
     
-    func getThingTags(by thing: ThingModel) -> [ThingTagModel] {
+    func findThingTagsBy(thingId: String) -> [ThingTagModel] {
         var thingTags = [ThingTagModel]()
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ThingTag")
-        let entity = NSEntityDescription.entity(forEntityName: "ThingTag", in: self.persistentContainer.viewContext)
+        let entity = NSEntityDescription.entity(forEntityName: thingTagName, in: self.context)
         request.entity = entity
-        let predicate = NSPredicate(format: "%K == %@", "thingId", thing.id)
+        let predicate = NSPredicate(format: "%K == %@", "thingId", thingId)
         request.predicate = predicate
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [ThingTagEntity] {
+            if let results = try self.context.fetch(request) as? [NSManagedObject] {
                 for result in results {
-                    thingTags.append(result.toModel())
+                    thingTags.append(result.toThingTagModel())
                 }
             }
         } catch {

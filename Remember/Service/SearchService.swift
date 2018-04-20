@@ -18,11 +18,11 @@ class SearchService {
     }
     
     func getThings(byTag tag: String) -> [ThingModel] {
-        let thingTagStorage = ThingTagStorage()
+        let thingTagStorage = ThingTagStorage(context: CoreStorage.shared.persistentContainer.viewContext)
         let tagStorage = TagStorage(context: CoreStorage.shared.persistentContainer.viewContext)
         var filteredThings = [ThingModel]()
         if let tagModel = tagStorage.find(by: tag) {
-            let thingTags = thingTagStorage.getThingTags(by: tagModel)
+            let thingTags = thingTagStorage.findThingTagsBy(tagId: tagModel.id)
             let thingTagIds = thingTags.map({$0.thingId!})
             filteredThings = things.filter { (thing) -> Bool in
                 return thingTagIds.contains(thing.id)
