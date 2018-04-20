@@ -9,7 +9,7 @@
 import Foundation
 
 class SearchService {
-    private let thingStorage = ThingStorage()
+    private let thingStorage = ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext)
     
     private(set) var things = [ThingModel]()
     

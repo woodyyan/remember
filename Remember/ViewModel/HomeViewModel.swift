@@ -88,6 +88,7 @@ class HomeViewModel {
             for i in 0..<self.things.count {
                 self.things[i].index = i
             }
+
         }
         
         self.service.save(sorted: self.things)

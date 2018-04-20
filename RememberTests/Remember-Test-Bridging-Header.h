@@ -7,3 +7,4 @@
 //
 
 #import <AlicloudMobileAnalitics/ALBBMAN.h>
+#import "Remember-Bridging-Header.h"

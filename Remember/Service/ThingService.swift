@@ -9,7 +9,7 @@
 import Foundation
 
 class ThingService {
-    private let thingStorage = ThingStorage()
+    private var thingStorage = ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext)
     private let thingTagStorage = ThingTagStorage()
     private let tagService = TagService()
     

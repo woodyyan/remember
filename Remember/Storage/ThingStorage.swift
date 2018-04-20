@@ -10,7 +10,14 @@ import Foundation
 import UIKit
 import CoreData
 
-class ThingStorage: CoreStorage {
+class ThingStorage {
+    private let thingName = "Thing"
+    
+    private var context: NSManagedObjectContext!
+    
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
     
     func findAll() -> [ThingModel] {
         return getThingsFromLocalDB()
@@ -25,16 +32,16 @@ class ThingStorage: CoreStorage {
     }
     
     func edit(_ thing: ThingModel) {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
-        let entity = NSEntityDescription.entity(forEntityName: "Thing", in: self.persistentContainer.viewContext)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: thingName)
+        let entity = NSEntityDescription.entity(forEntityName: thingName, in: self.context)
         request.entity = entity
         let predicate = NSPredicate(format: "%K == %@", "id", thing.id)
         request.predicate = predicate
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [NSManagedObject] {
+            if let results = try context.fetch(request) as? [NSManagedObject] {
                 for result in results {
                     result.setValue(thing.content, forKey: "content")
-                    self.saveContext()
+                    self.context.saveIfNeeded()
                 }
             }
         } catch {
@@ -43,14 +50,14 @@ class ThingStorage: CoreStorage {
     }
     
     func save(sorted things: [ThingModel]) {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
-        let entity = NSEntityDescription.entity(forEntityName: "Thing", in: self.persistentContainer.viewContext)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: thingName)
+        let entity = NSEntityDescription.entity(forEntityName: thingName, in: context)
         request.entity = entity
         for thing in things {
             let predicate = NSPredicate(format: "%K == %@", "id", thing.id)
             request.predicate = predicate
             do {
-                if let results = try self.persistentContainer.viewContext.fetch(request) as? [NSManagedObject] {
+                if let results = try context.fetch(request) as? [NSManagedObject] {
                     for result in results {
                         result.setValue(thing.index, forKey: "index")
                     }
@@ -59,20 +66,20 @@ class ThingStorage: CoreStorage {
                 
             }
         }
-        self.saveContext()
+        self.context.saveIfNeeded()
     }
     
     private func deleteThing(by thingId: String) {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
-        let entity = NSEntityDescription.entity(forEntityName: "Thing", in: self.persistentContainer.viewContext)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: thingName)
+        let entity = NSEntityDescription.entity(forEntityName: thingName, in: context)
         request.entity = entity
         let predicate = NSPredicate(format: "%K == %@", "id", thingId)
         request.predicate = predicate
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [NSManagedObject] {
+            if let results = try context.fetch(request) as? [NSManagedObject] {
                 for result in results {
-                    self.persistentContainer.viewContext.delete(result)
-                    self.saveContext()
+                    self.context.delete(result)
+                    self.context.saveIfNeeded()
                 }
             }
         } catch {
@@ -81,20 +88,19 @@ class ThingStorage: CoreStorage {
     }
     
     private func createAndSaveThingInLocalDB(thing: ThingModel) {
-        let viewContext = self.persistentContainer.viewContext
-        let object: NSManagedObject = NSEntityDescription.insertNewObject(forEntityName: "Thing", into: viewContext)
+        let object: NSManagedObject = NSEntityDescription.insertNewObject(forEntityName: thingName, into: context)
         object.setValue(thing.content, forKey: "content")
         object.setValue(thing.createdAt, forKey: "createdAt")
         object.setValue(thing.id, forKey: "id")
         object.setValue(thing.index, forKey: "index")
-        self.saveContext()
+        self.context.saveIfNeeded()
     }
     
     private func getThingsFromLocalDB() -> [ThingModel] {
         var things = [ThingModel]()
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Thing")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: thingName)
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [ThingEntity] {
+            if let results = try self.context.fetch(request) as? [NSManagedObject] {
                 if !results.isEmpty {
                     for result in results {
                         things.append(result.toModel())
@@ -102,6 +108,7 @@ class ThingStorage: CoreStorage {
                 }
             }
         } catch {
+            print(error.localizedDescription)
         }
         
         things.sort { $0.index < $1.index }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		820B83B51F0E81A0007E3C15 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83B31F0E81A0007E3C15 /* ThingEntity.swift */; };
-		820B83B61F0E81A0007E3C15 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83B31F0E81A0007E3C15 /* ThingEntity.swift */; };
 		820B83B71F0E81A0007E3C15 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83B31F0E81A0007E3C15 /* ThingEntity.swift */; };
 		820B83BD1F0E81FE007E3C15 /* TagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83BB1F0E81FE007E3C15 /* TagEntity.swift */; };
 		820B83BE1F0E81FE007E3C15 /* TagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83BB1F0E81FE007E3C15 /* TagEntity.swift */; };
@@ -124,6 +123,11 @@
 		8280CDD72088D48200C7A1F5 /* ThingStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDD62088D48200C7A1F5 /* ThingStorageTests.swift */; };
 		8280CDD82088D49400C7A1F5 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */; };
 		8280CDD92088D4A300C7A1F5 /* CoreStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824A14AE2073D7D4004D7F21 /* CoreStorage.swift */; };
+		8280CDDB2088DF4D00C7A1F5 /* NSManagedObjectContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDDA2088DF4D00C7A1F5 /* NSManagedObjectContextExtension.swift */; };
+		8280CDDC2088E0A700C7A1F5 /* NSManagedObjectContextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDDA2088DF4D00C7A1F5 /* NSManagedObjectContextExtension.swift */; };
+		8280CDDE2089B93500C7A1F5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83B31F0E81A0007E3C15 /* ThingEntity.swift */; };
+		8280CDE02089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDDF2089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift */; };
+		8280CDE12089CDA400C7A1F5 /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDDF2089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift */; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
 		82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923661EF17962004937EA /* AboutViewModelTests.swift */; };
 		82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8055C2077425100AF4AB0 /* UIViewExtension.swift */; };
@@ -214,7 +218,7 @@
 		820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTagStorage.swift; sourceTree = "<group>"; };
 		820B84261F107183007E3C15 /* TagService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagService.swift; sourceTree = "<group>"; };
 		820B842A1F1119A7007E3C15 /* TagManagementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagManagementView.swift; sourceTree = "<group>"; };
-		820B84301F11C2A0007E3C15 /* Remember-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Remember-Bridging-Header.h"; sourceTree = "<group>"; };
+		820B84301F11C2A0007E3C15 /* Remember-Test-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Remember-Test-Bridging-Header.h"; sourceTree = "<group>"; };
 		820B84311F11C4A7007E3C15 /* Remember-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Remember-Bridging-Header.h"; sourceTree = "<group>"; };
 		821C0CFB2063FEFE009D7D67 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		821C0CFC2063FEFE009D7D67 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 		8280CDD120870A1A00C7A1F5 /* PasteboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardView.swift; sourceTree = "<group>"; };
 		8280CDD3208736EA00C7A1F5 /* UIApplicationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExtensions.swift; sourceTree = "<group>"; };
 		8280CDD62088D48200C7A1F5 /* ThingStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingStorageTests.swift; sourceTree = "<group>"; };
+		8280CDDA2088DF4D00C7A1F5 /* NSManagedObjectContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtension.swift; sourceTree = "<group>"; };
+		8280CDDF2089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtensions.swift; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82D8055C2077425100AF4AB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -563,7 +569,7 @@
 				8280CDD52088D41200C7A1F5 /* Storage */,
 				824A14B0207502DD004D7F21 /* UtilTests */,
 				82E7AC59205420AD006FC9E5 /* ViewModelTests */,
-				820B84301F11C2A0007E3C15 /* Remember-Bridging-Header.h */,
+				820B84301F11C2A0007E3C15 /* Remember-Test-Bridging-Header.h */,
 				825DEB301DD9DC070065090F /* RememberTests.swift */,
 				825DEB321DD9DC070065090F /* Info.plist */,
 				82A923641EF17728004937EA /* HomeViewModelTests.swift */,
@@ -630,6 +636,8 @@
 				8280CDC920861E8700C7A1F5 /* UIColorExtensions.swift */,
 				8280CDCD20862B0500C7A1F5 /* NotificationCenterExtension.swift */,
 				8280CDD3208736EA00C7A1F5 /* UIApplicationExtensions.swift */,
+				8280CDDA2088DF4D00C7A1F5 /* NSManagedObjectContextExtension.swift */,
+				8280CDDF2089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -899,11 +907,13 @@
 				820B84111F0F9AFE007E3C15 /* TagStorage.swift in Sources */,
 				820B842B1F1119A7007E3C15 /* TagManagementView.swift in Sources */,
 				820B84051F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */,
+				8280CDDB2088DF4D00C7A1F5 /* NSManagedObjectContextExtension.swift in Sources */,
 				820B84171F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
 				8280CDD4208736EA00C7A1F5 /* UIApplicationExtensions.swift in Sources */,
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				824267FD2073C33B009FD115 /* PasteboardUtils.swift in Sources */,
 				820B83E41F0E8D3D007E3C15 /* TagModel.swift in Sources */,
+				8280CDE02089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift in Sources */,
 				824267FB2072823B009FD115 /* HomeViewModel.swift in Sources */,
 				82303BDD1F25B2FF004C06F1 /* SearchService.swift in Sources */,
 				820B83FF1F0F971D007E3C15 /* ThingService.swift in Sources */,
@@ -940,9 +950,10 @@
 				820B83F11F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
 				82F934911F1F5F5D00AE31DE /* ThingServiceTests.swift in Sources */,
 				8280CDD72088D48200C7A1F5 /* ThingStorageTests.swift in Sources */,
-				820B83B61F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
+				8280CDDE2089B93500C7A1F5 /* ThingEntity.swift in Sources */,
 				824A14B2207502F7004D7F21 /* PasteboardUtilsTests.swift in Sources */,
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
+				8280CDE12089CDA400C7A1F5 /* NSManagedObjectExtensions.swift in Sources */,
 				8280CDCB2086290300C7A1F5 /* UIColorExtensions.swift in Sources */,
 				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				8280CDD92088D4A300C7A1F5 /* CoreStorage.swift in Sources */,
@@ -950,6 +961,7 @@
 				820B83E11F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 				821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */,
 				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
+				8280CDDC2088E0A700C7A1F5 /* NSManagedObjectContextExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1245,7 +1257,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.RememberTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "RememberTests/Remember-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RememberTests/Remember-Test-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Remember.app/Remember";
@@ -1267,7 +1279,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.RememberTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "RememberTests/Remember-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "RememberTests/Remember-Test-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Remember.app/Remember";
