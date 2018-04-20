@@ -103,7 +103,7 @@ class ThingStorage {
             if let results = try self.context.fetch(request) as? [NSManagedObject] {
                 if !results.isEmpty {
                     for result in results {
-                        things.append(result.toModel())
+                        things.append(result.toThingModel())
                     }
                 }
             }

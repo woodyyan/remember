@@ -11,14 +11,7 @@ import CoreData
 
 class ThingStorageTests: XCTestCase {
     
-    private var storage:ThingStorage!
-    
-    override func setUp() {
-        super.setUp()
-        
-        let context = setUpInMemoryManagedObjectContext()
-        storage = ThingStorage(context: context)
-    }
+    private var storage:ThingStorage = ThingStorage(context: StorageTestUtil.setUpInMemoryManagedObjectContext())
     
     func testShouldGetOneThingAfterCreateOne() {
         let thing = ThingModel(content: "test")
@@ -27,6 +20,20 @@ class ThingStorageTests: XCTestCase {
         let things = storage.findAll()
         XCTAssertEqual(things.count, 1)
         XCTAssertEqual(things[0].content, "test")
+    }
+    
+    func testShouldGetSortedTwoThingsAfterCreateTwo() {
+        var thing1 = ThingModel(content: "test")
+        thing1.index = 2
+        var thing2 = ThingModel(content: "test")
+        thing2.index = 1
+        storage.create(thing1)
+        storage.create(thing2)
+        
+        let things = storage.findAll()
+        XCTAssertEqual(things.count, 2)
+        XCTAssertEqual(things[0].index, 1)
+        XCTAssertEqual(things[1].index, 2)
     }
     
     func testShouldFindZeroAfterDeleteOneThingGivenOneThingInDB() {
@@ -72,22 +79,5 @@ class ThingStorageTests: XCTestCase {
         things = storage.findAll()
         XCTAssertEqual(things[0].index, 0)
         XCTAssertEqual(things[1].index, 1)
-    }
-    
-    private func setUpInMemoryManagedObjectContext() -> NSManagedObjectContext {
-        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle.main])!
-        
-        let persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        
-        do {
-            try persistentStoreCoordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
-        } catch {
-            print("Adding in-memory persistent store failed")
-        }
-        
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
-        managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
-        
-        return managedObjectContext
     }
 }

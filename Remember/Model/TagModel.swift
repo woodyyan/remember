@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TagModel: Hashable {
+struct TagModel: Hashable {
     var id: String!
     var index = 0
     var name: String!

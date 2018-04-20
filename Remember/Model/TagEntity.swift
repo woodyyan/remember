@@ -22,7 +22,7 @@ public class TagEntity: NSManagedObject {
 
 extension TagEntity {
     func toModel() -> TagModel {
-        let tagModel = TagModel(name: self.name!)
+        var tagModel = TagModel(name: self.name!)
         tagModel.id = self.id
         tagModel.index = Int(self.index)
         return tagModel

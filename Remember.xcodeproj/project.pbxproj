@@ -38,8 +38,6 @@
 		820B841C1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DBA1E7047A90027CA1F /* ImageIO.framework */; };
 		820B841D1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DBA1E7047A90027CA1F /* ImageIO.framework */; };
 		820B841E1F0FE3D8007E3C15 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
-		820B84241F107063007E3C15 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
-		820B84251F107064007E3C15 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
 		820B84271F107183007E3C15 /* TagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84261F107183007E3C15 /* TagService.swift */; };
 		820B842B1F1119A7007E3C15 /* TagManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B842A1F1119A7007E3C15 /* TagManagementView.swift */; };
 		821FC4CA1E71407600A64E94 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821FC4C91E71407600A64E94 /* UIImage+Gif.swift */; };
@@ -66,12 +64,8 @@
 		82347E511F03A80F002D8024 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E501F03A80F002D8024 /* SystemConfiguration.framework */; };
 		82347E531F03A9A8002D8024 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E501F03A80F002D8024 /* SystemConfiguration.framework */; };
 		82347E541F03A9A9002D8024 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E501F03A80F002D8024 /* SystemConfiguration.framework */; };
-		82347E551F03A9AB002D8024 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E4E1F03A809002D8024 /* CoreTelephony.framework */; };
-		82347E561F03A9AB002D8024 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E4E1F03A809002D8024 /* CoreTelephony.framework */; };
 		82347E571F03A9AE002D8024 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E4C1F03A803002D8024 /* libresolv.tbd */; };
 		82347E581F03A9AF002D8024 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E4C1F03A803002D8024 /* libresolv.tbd */; };
-		823539A41E37251300B102D8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */; };
-		823539A51E37251400B102D8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */; };
 		823539AF1E3745B800B102D8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */; };
 		823539B01E3745B900B102D8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AD1E28A30B0093FBF4 /* libsqlite3.tbd */; };
 		823539B11E3745BB00B102D8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AF1E28A3130093FBF4 /* libz.tbd */; };
@@ -128,6 +122,25 @@
 		8280CDDE2089B93500C7A1F5 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83B31F0E81A0007E3C15 /* ThingEntity.swift */; };
 		8280CDE02089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDDF2089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift */; };
 		8280CDE12089CDA400C7A1F5 /* NSManagedObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDDF2089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift */; };
+		8280CDE32089E06E00C7A1F5 /* TagStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDE22089E06E00C7A1F5 /* TagStorageTests.swift */; };
+		8280CDE52089E0CB00C7A1F5 /* StorageTestUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDE42089E0CB00C7A1F5 /* StorageTestUtil.swift */; };
+		8280CDE62089E13800C7A1F5 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840E1F0F9AFE007E3C15 /* TagStorage.swift */; };
+		8280CDE72089E6DD00C7A1F5 /* YWFeedbackFMWK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7AC6120553781006FC9E5 /* YWFeedbackFMWK.framework */; };
+		8280CDE82089E6DF00C7A1F5 /* YWFeedbackBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 82E7AC6620553783006FC9E5 /* YWFeedbackBundle.bundle */; };
+		8280CDE92089E6E200C7A1F5 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7AC5E20553780006FC9E5 /* UTDID.framework */; };
+		8280CDEA2089E6E500C7A1F5 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7AC5F20553780006FC9E5 /* UTMini.framework */; };
+		8280CDEB2089E6E800C7A1F5 /* CrashReporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7AC6020553781006FC9E5 /* CrashReporter.framework */; };
+		8280CDEC2089E6EB00C7A1F5 /* BCHybridWebViewFMWK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7AC6520553783006FC9E5 /* BCHybridWebViewFMWK.framework */; };
+		8280CDED2089E6ED00C7A1F5 /* BCConnectorBundle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7AC6220553782006FC9E5 /* BCConnectorBundle.framework */; };
+		8280CDEE2089E6F000C7A1F5 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7AC6320553782006FC9E5 /* AlicloudUtils.framework */; };
+		8280CDEF2089E6F300C7A1F5 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7AC6420553782006FC9E5 /* AlicloudMobileAnalitics.framework */; };
+		8280CDF02089E6F600C7A1F5 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7AC70205537D3006FC9E5 /* CoreMotion.framework */; };
+		8280CDF12089E71800C7A1F5 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34AB1E28A2FF0093FBF4 /* AddressBook.framework */; };
+		8280CDF22089E71B00C7A1F5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E4E1F03A809002D8024 /* CoreTelephony.framework */; };
+		8280CDF32089E71D00C7A1F5 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 823A34C11E31FBA60093FBF4 /* DZNEmptyDataSet.framework */; };
+		8280CDF42089E72500C7A1F5 /* MarqueeLabelSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58038200E45B6003E2435 /* MarqueeLabelSwift.framework */; };
+		8280CDF52089E72900C7A1F5 /* NotificationBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58036200E45AE003E2435 /* NotificationBanner.framework */; };
+		8280CDF62089E72C00C7A1F5 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58032200E2763003E2435 /* SnapKit.framework */; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
 		82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923661EF17962004937EA /* AboutViewModelTests.swift */; };
 		82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8055C2077425100AF4AB0 /* UIViewExtension.swift */; };
@@ -311,6 +324,8 @@
 		8280CDD62088D48200C7A1F5 /* ThingStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingStorageTests.swift; sourceTree = "<group>"; };
 		8280CDDA2088DF4D00C7A1F5 /* NSManagedObjectContextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContextExtension.swift; sourceTree = "<group>"; };
 		8280CDDF2089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSManagedObjectExtensions.swift; sourceTree = "<group>"; };
+		8280CDE22089E06E00C7A1F5 /* TagStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStorageTests.swift; sourceTree = "<group>"; };
+		8280CDE42089E0CB00C7A1F5 /* StorageTestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTestUtil.swift; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82D8055C2077425100AF4AB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -383,12 +398,9 @@
 			files = (
 				823539AF1E3745B800B102D8 /* libsqlite3.tbd in Frameworks */,
 				823539B11E3745BB00B102D8 /* libz.tbd in Frameworks */,
-				820B84241F107063007E3C15 /* DZNEmptyDataSet.framework in Frameworks */,
 				82E5803E200F56CC003E2435 /* NotificationBanner.framework in Frameworks */,
 				82DF5DAB1E6964130027CA1F /* Speech.framework in Frameworks */,
 				82347E571F03A9AE002D8024 /* libresolv.tbd in Frameworks */,
-				823539A41E37251300B102D8 /* AddressBook.framework in Frameworks */,
-				82347E551F03A9AB002D8024 /* CoreTelephony.framework in Frameworks */,
 				82347E531F03A9A8002D8024 /* SystemConfiguration.framework in Frameworks */,
 				820B841C1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */,
 			);
@@ -398,15 +410,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				820B84251F107064007E3C15 /* DZNEmptyDataSet.framework in Frameworks */,
 				820B841E1F0FE3D8007E3C15 /* Speech.framework in Frameworks */,
 				820B841D1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */,
-				82347E561F03A9AB002D8024 /* CoreTelephony.framework in Frameworks */,
+				8280CDF42089E72500C7A1F5 /* MarqueeLabelSwift.framework in Frameworks */,
+				8280CDF62089E72C00C7A1F5 /* SnapKit.framework in Frameworks */,
+				8280CDF12089E71800C7A1F5 /* AddressBook.framework in Frameworks */,
+				8280CDEC2089E6EB00C7A1F5 /* BCHybridWebViewFMWK.framework in Frameworks */,
+				8280CDF22089E71B00C7A1F5 /* CoreTelephony.framework in Frameworks */,
+				8280CDEA2089E6E500C7A1F5 /* UTMini.framework in Frameworks */,
 				82347E581F03A9AF002D8024 /* libresolv.tbd in Frameworks */,
-				823539A51E37251400B102D8 /* AddressBook.framework in Frameworks */,
 				82347E541F03A9A9002D8024 /* SystemConfiguration.framework in Frameworks */,
+				8280CDEB2089E6E800C7A1F5 /* CrashReporter.framework in Frameworks */,
+				8280CDE72089E6DD00C7A1F5 /* YWFeedbackFMWK.framework in Frameworks */,
+				8280CDE92089E6E200C7A1F5 /* UTDID.framework in Frameworks */,
+				8280CDED2089E6ED00C7A1F5 /* BCConnectorBundle.framework in Frameworks */,
+				8280CDF52089E72900C7A1F5 /* NotificationBanner.framework in Frameworks */,
 				823539B01E3745B900B102D8 /* libsqlite3.tbd in Frameworks */,
 				823539B21E3745BC00B102D8 /* libz.tbd in Frameworks */,
+				8280CDF32089E71D00C7A1F5 /* DZNEmptyDataSet.framework in Frameworks */,
+				8280CDEF2089E6F300C7A1F5 /* AlicloudMobileAnalitics.framework in Frameworks */,
+				8280CDF02089E6F600C7A1F5 /* CoreMotion.framework in Frameworks */,
+				8280CDEE2089E6F000C7A1F5 /* AlicloudUtils.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +649,8 @@
 			isa = PBXGroup;
 			children = (
 				8280CDD62088D48200C7A1F5 /* ThingStorageTests.swift */,
+				8280CDE22089E06E00C7A1F5 /* TagStorageTests.swift */,
+				8280CDE42089E0CB00C7A1F5 /* StorageTestUtil.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -842,6 +868,7 @@
 			files = (
 				82303BC71F24ADC4004C06F1 /* Cartfile in Resources */,
 				82303BCA1F24ADC4004C06F1 /* Cartfile.resolved in Resources */,
+				8280CDE82089E6DF00C7A1F5 /* YWFeedbackBundle.bundle in Resources */,
 				823A34B41E28A72C0093FBF4 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -954,9 +981,12 @@
 				824A14B2207502F7004D7F21 /* PasteboardUtilsTests.swift in Sources */,
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				8280CDE12089CDA400C7A1F5 /* NSManagedObjectExtensions.swift in Sources */,
+				8280CDE52089E0CB00C7A1F5 /* StorageTestUtil.swift in Sources */,
 				8280CDCB2086290300C7A1F5 /* UIColorExtensions.swift in Sources */,
+				8280CDE32089E06E00C7A1F5 /* TagStorageTests.swift in Sources */,
 				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				8280CDD92088D4A300C7A1F5 /* CoreStorage.swift in Sources */,
+				8280CDE62089E13800C7A1F5 /* TagStorage.swift in Sources */,
 				8280CDD82088D49400C7A1F5 /* ThingStorage.swift in Sources */,
 				820B83E11F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 				821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */,
@@ -1294,6 +1324,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RememberUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1314,6 +1345,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = RememberUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

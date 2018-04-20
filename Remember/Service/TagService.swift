@@ -9,7 +9,7 @@
 import Foundation
 
 class TagService {
-    private let tagStorage = TagStorage()
+    private let tagStorage = TagStorage(context: CoreStorage.shared.persistentContainer.viewContext)
     private let thingTagStorage = ThingTagStorage()
     
     func saveThingTag(_ thingTag: ThingTagModel) {
@@ -43,7 +43,7 @@ class TagService {
     }
     
     func getAllTags() -> [TagModel] {
-        return tagStorage.getAllTags()
+        return tagStorage.findAll()
     }
     
     func getSelectedTags(by thing: ThingModel) -> [TagModel] {
@@ -54,7 +54,7 @@ class TagService {
     }
     
     func getUnselectedTags(by thing: ThingModel) -> [TagModel] {
-        let tags = tagStorage.getAllTags()
+        let tags = tagStorage.findAll()
         let thingTags = thingTagStorage.getThingTags(by: thing)
         let unselectedTags = tags.filter { (tag) -> Bool in
             return !thingTags.contains(where: { (thingTag) -> Bool in

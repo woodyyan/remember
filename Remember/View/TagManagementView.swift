@@ -152,8 +152,9 @@ class TagManagementView: UIView {
             }) {
                 let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
                 tagService.saveThingTag(thingTagModel)
-                tagModel.index += 1
-                tagService.updateIndex(for: tagModel)
+                var tempTagModel = tagModel
+                tempTagModel.index += 1
+                tagService.updateIndex(for: tempTagModel)
                 selectedTags.append(tagModel)
                 updateView(for: tag)
                 changeTagButton(true)
@@ -246,8 +247,9 @@ class TagManagementView: UIView {
                     lastTopView = nil
                     lastTagButton = nil
                     if tagModel.index > 0 {
-                        tagModel.index -= 1
-                        tagService.updateIndex(for: tagModel)
+                        var tempTagModel = tagModel
+                        tempTagModel.index -= 1
+                        tagService.updateIndex(for: tempTagModel)
                     }
                     updateView(by: self.thing!)
                     changeTagButton(true)
@@ -310,7 +312,7 @@ extension TagManagementView: UITextFieldDelegate {
     }
     
     private func saveTag(_ tag: String) {
-        let tagModel = TagModel(name: tag)
+        var tagModel = TagModel(name: tag)
         tagModel.index = 1
         let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
         

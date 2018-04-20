@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension NSManagedObject {
-    func toModel() -> ThingModel {
+    func toThingModel() -> ThingModel {
         let content = self.value(forKey: "content") as! String
         let createdAt = self.value(forKey: "createdAt") as! Date
         let id = self.value(forKey: "id") as! String
@@ -22,5 +22,16 @@ extension NSManagedObject {
         thingModel.index = index
         
         return thingModel
+    }
+    
+    func toTagModel() -> TagModel {
+        let name = self.value(forKey: "name") as! String
+        let id = self.value(forKey: "id") as! String
+        let index = self.value(forKey: "index") as! Int
+        
+        var tagModel = TagModel(name: name)
+        tagModel.id = id
+        tagModel.index = index
+        return tagModel
     }
 }

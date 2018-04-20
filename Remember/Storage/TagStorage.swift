@@ -10,40 +10,48 @@ import Foundation
 import UIKit
 import CoreData
 
-class TagStorage: CoreStorage {
+class TagStorage {
+    private let tagName = "Tag"
+    
+    private var context: NSManagedObjectContext!
+    
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
+    
     func save(for tag: TagModel) {
-        let entity = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: self.persistentContainer.viewContext)
+        let entity = NSEntityDescription.insertNewObject(forEntityName: tagName, into: self.context)
         entity.setValue(tag.id, forKey: "id")
         entity.setValue(tag.name, forKey: "name")
         entity.setValue(tag.index, forKey: "index")
-        self.saveContext()
+        self.context.saveIfNeeded()
     }
     
     func delete(_ tag: TagModel) {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: tagName)
         let predicate = NSPredicate(format: "%K == %@", "id", tag.id)
         request.predicate = predicate
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
+            if let results = try self.context.fetch(request) as? [NSManagedObject] {
                 if !results.isEmpty {
                     for result in results {
-                        self.persistentContainer.viewContext.delete(result)
+                        self.context.delete(result)
                     }
-                    self.saveContext()
+                    self.context.saveIfNeeded()
                 }
             }
         } catch {
         }
     }
     
-    func getAllTags() -> [TagModel] {
+    func findAll() -> [TagModel] {
         var tags = [TagModel]()
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: tagName)
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
+            if let results = try self.context.fetch(request) as? [NSManagedObject] {
                 if !results.isEmpty {
                     for result in results {
-                        tags.append(result.toModel())
+                        tags.append(result.toTagModel())
                     }
                 }
             }
@@ -55,33 +63,16 @@ class TagStorage: CoreStorage {
         return tags
     }
     
-    func getTag(by name: String) -> TagModel? {
-        var tag: TagModel?
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
-        let predicate = NSPredicate(format: "%K == %@", "name", name)
-        request.predicate = predicate
-        do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
-                if !results.isEmpty {
-                    tag = results[0].toModel()
-                }
-            }
-        } catch {
-        }
-        
-        return tag
-    }
-    
     func getTags(by ids: [String]) -> [TagModel] {
         var tags = [TagModel]()
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: tagName)
         let predicate = NSPredicate(format: "%K IN %@", "id", ids)
         request.predicate = predicate
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
+            if let results = try self.context.fetch(request) as? [NSManagedObject] {
                 if !results.isEmpty {
                     for result in results {
-                        tags.append(result.toModel())
+                        tags.append(result.toTagModel())
                     }
                 }
             }
@@ -94,16 +85,16 @@ class TagStorage: CoreStorage {
     }
     
     func updateIndex(for tag: TagModel) {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
-        let entity = NSEntityDescription.entity(forEntityName: "Tag", in: self.persistentContainer.viewContext)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: tagName)
+        let entity = NSEntityDescription.entity(forEntityName: tagName, in: self.context)
         request.entity = entity
         let predicate = NSPredicate(format: "%K == %@", "id", tag.id!)
         request.predicate = predicate
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
+            if let results = try self.context.fetch(request) as? [NSManagedObject] {
                 for result in results {
                     result.setValue(tag.index, forKey: "index")
-                    self.saveContext()
+                    self.context.saveIfNeeded()
                 }
             }
         } catch {
@@ -111,14 +102,14 @@ class TagStorage: CoreStorage {
         }
     }
     
-    func find(by tagName: String) -> TagModel? {
+    func find(by name: String) -> TagModel? {
         var tag: TagModel?
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
-        let predicate = NSPredicate(format: "%K == %@", "name", tagName)
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: tagName)
+        let predicate = NSPredicate(format: "%K == %@", "name", name)
         request.predicate = predicate
         do {
-            if let results = try self.persistentContainer.viewContext.fetch(request) as? [TagEntity] {
-                tag = results.first?.toModel()
+            if let results = try self.context.fetch(request) as? [NSManagedObject] {
+                tag = results.first?.toTagModel()
             }
         } catch {
         }
