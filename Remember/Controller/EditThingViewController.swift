@@ -51,7 +51,7 @@ class EditThingViewController: UIViewController {
     
     @objc func shareTap(sender: UIBarButtonItem) {
         if let content = thing?.content {
-            let activityController = HomeService.getActivityViewController(content: content)
+            let activityController = getActivityViewController(content: content)
             self.present(activityController, animated: true, completion: nil)
         }
     }
@@ -153,6 +153,16 @@ class EditThingViewController: UIViewController {
             dateText = service.getCreatedDateText(from: date as Date)
         }
         return dateText
+    }
+    
+    private func getActivityViewController(content: String) -> UIActivityViewController {
+        let activityController = UIActivityViewController(activityItems: [content], applicationActivities: [])
+        activityController.excludedActivityTypes = [.openInIBooks, .addToReadingList, .saveToCameraRoll]
+        activityController.completionWithItemsHandler = {
+            (type, flag, array, error) -> Swift.Void in
+            print(type ?? "")
+        }
+        return activityController
     }
 }
 

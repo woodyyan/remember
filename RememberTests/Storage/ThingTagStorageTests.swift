@@ -29,4 +29,15 @@ class ThingTagStorageTests: XCTestCase {
         
         XCTAssertEqual(thingTags.count, 1)
     }
+    
+    func testShouldDeleteThingTagSuccessfully() {
+        let model = ThingTagModel(thingId: "1", tagId: "2")
+        storage.save(for: model)
+        
+        storage.delete(for: model)
+        
+        let result = storage.findThingTagsBy(tagId: "2")
+        
+        XCTAssertEqual(result.count, 0)
+    }
 }
