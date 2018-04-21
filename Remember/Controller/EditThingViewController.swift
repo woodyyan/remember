@@ -10,8 +10,8 @@ import UIKit
 //import SCLAlertView
 
 class EditThingViewController: UIViewController {
-    fileprivate var service = ThingService()
-    fileprivate var tagService = TagService()
+    private var tagService = TagService()
+    private let viewModel = EditThingViewModel(thingStorage: ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext))
     
     var isEditTag = false
     var thing: ThingModel?
@@ -148,11 +148,7 @@ class EditThingViewController: UIViewController {
     }
     
     private func getCreatedDateText() -> String {
-        var dateText = ""
-        if let date = thing?.createdAt {
-            dateText = service.getCreatedDateText(from: date as Date)
-        }
-        return dateText
+        return thing?.createdAt.toDateText() ?? ""
     }
     
     private func getActivityViewController(content: String) -> UIActivityViewController {
@@ -180,7 +176,7 @@ extension EditThingViewController: UITextViewDelegate {
             textView.resignFirstResponder()
             if thing != nil {
                 thing?.content = editView.text
-                self.service.edit(thing!)
+                self.viewModel.edit(thing!)
                 delegate?.editThing(isDeleted: false, thing: thing!)
             }
             return false

@@ -18,16 +18,6 @@ class AboutViewModel {
     }
     
     func getVersionInfo() -> String {
-        return "\(NSLocalizedString("version", comment: "版本号"))V\(getCurrentVersion())"
-    }
-    
-    func getCurrentVersion(_ bundleVersion: Bool = false) -> String {
-        guard let infoDic = Bundle.main.infoDictionary else {return ""}
-        guard let currentVersion = infoDic["CFBundleShortVersionString"] as? String else {return ""}
-        if let buildVersion = infoDic["CFBundleVersion"] as? String, bundleVersion == true {
-            return currentVersion + buildVersion
-        } else {
-            return currentVersion
-        }
+        return "\(NSLocalizedString("version", comment: "版本号"))V\(VersionUtils.getCurrentVersion())"
     }
 }

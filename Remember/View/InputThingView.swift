@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 class InputThingView: UIView, UITextFieldDelegate {
-    private let thingService = ThingService()
-    
     private var textField: UITextField!
     private var micButton: UIButton!
+    
+    private let viewModel = InputThingViewModel(thingStorage: ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext))
     
     weak var delegate: ThingInputDelegate?
     
@@ -60,10 +60,7 @@ class InputThingView: UIView, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let content = textField.text {
             if !content.isEmpty {
-                var thing = ThingModel(content: content)
-                thing.isNew = true
-                thingService.create(thing)
-                
+                let thing = self.viewModel.createThing(with: content)
                 delegate?.input(inputView: self, thing: thing)
             }
         }

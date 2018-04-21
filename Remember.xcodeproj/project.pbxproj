@@ -27,7 +27,6 @@
 		820B83F01F0F971D007E3C15 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83E81F0F971D007E3C15 /* AboutViewModel.swift */; };
 		820B83F11F0F971D007E3C15 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83E81F0F971D007E3C15 /* AboutViewModel.swift */; };
 		820B83F21F0F971D007E3C15 /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83E81F0F971D007E3C15 /* AboutViewModel.swift */; };
-		820B83FF1F0F971D007E3C15 /* ThingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83ED1F0F971D007E3C15 /* ThingService.swift */; };
 		820B84051F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */; };
 		820B84111F0F9AFE007E3C15 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840E1F0F9AFE007E3C15 /* TagStorage.swift */; };
 		820B84141F0F9AFE007E3C15 /* ThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */; };
@@ -140,6 +139,11 @@
 		8280CDF62089E72C00C7A1F5 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58032200E2763003E2435 /* SnapKit.framework */; };
 		8280CDF8208A2E6700C7A1F5 /* ThingTagStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDF7208A2E6700C7A1F5 /* ThingTagStorageTests.swift */; };
 		8280CDF9208A2E9300C7A1F5 /* ThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B84101F0F9AFE007E3C15 /* ThingTagStorage.swift */; };
+		8280CDFB208ACE0A00C7A1F5 /* EditThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDFA208ACE0A00C7A1F5 /* EditThingViewModel.swift */; };
+		8280CDFD208ACE9900C7A1F5 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDFC208ACE9900C7A1F5 /* DateExtensions.swift */; };
+		8280CDFF208ACF5F00C7A1F5 /* InputThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDFE208ACF5F00C7A1F5 /* InputThingViewModel.swift */; };
+		8280CE01208AD12D00C7A1F5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE00208AD12D00C7A1F5 /* SettingsViewModel.swift */; };
+		8280CE03208AD22C00C7A1F5 /* VersionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE02208AD22C00C7A1F5 /* VersionUtils.swift */; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
 		82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923661EF17962004937EA /* AboutViewModelTests.swift */; };
 		82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8055C2077425100AF4AB0 /* UIViewExtension.swift */; };
@@ -175,7 +179,6 @@
 		82E7AC7320553BB1006FC9E5 /* GlobleConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AC7220553BB1006FC9E5 /* GlobleConfigs.swift */; };
 		82E7AC7C20597780006FC9E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82E7AC7E20597780006FC9E5 /* InfoPlist.strings */; };
 		82E7AC832059788C006FC9E5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 82E7AC852059788C006FC9E5 /* Localizable.strings */; };
-		82F934911F1F5F5D00AE31DE /* ThingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F934901F1F5F5D00AE31DE /* ThingServiceTests.swift */; };
 		82FED7D71E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7D51E0A78AC00FDDFD2 /* Remember.xcdatamodeld */; };
 		82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82FED7D51E0A78AC00FDDFD2 /* Remember.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -222,7 +225,6 @@
 		820B83DF1F0E8D16007E3C15 /* ThingTagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTagModel.swift; sourceTree = "<group>"; };
 		820B83E31F0E8D3D007E3C15 /* TagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		820B83E81F0F971D007E3C15 /* AboutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
-		820B83ED1F0F971D007E3C15 /* ThingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingService.swift; sourceTree = "<group>"; };
 		820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoiceInputViewModel.swift; sourceTree = "<group>"; };
 		820B840E1F0F9AFE007E3C15 /* TagStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagStorage.swift; sourceTree = "<group>"; };
 		820B840F1F0F9AFE007E3C15 /* ThingStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingStorage.swift; sourceTree = "<group>"; };
@@ -325,6 +327,11 @@
 		8280CDE22089E06E00C7A1F5 /* TagStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStorageTests.swift; sourceTree = "<group>"; };
 		8280CDE42089E0CB00C7A1F5 /* StorageTestUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageTestUtil.swift; sourceTree = "<group>"; };
 		8280CDF7208A2E6700C7A1F5 /* ThingTagStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingTagStorageTests.swift; sourceTree = "<group>"; };
+		8280CDFA208ACE0A00C7A1F5 /* EditThingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditThingViewModel.swift; sourceTree = "<group>"; };
+		8280CDFC208ACE9900C7A1F5 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		8280CDFE208ACF5F00C7A1F5 /* InputThingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputThingViewModel.swift; sourceTree = "<group>"; };
+		8280CE00208AD12D00C7A1F5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		8280CE02208AD22C00C7A1F5 /* VersionUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUtils.swift; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82D8055C2077425100AF4AB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -358,7 +365,6 @@
 		82E7AC842059788C006FC9E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		82E7AC862059788D006FC9E5 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		82E7AC8720597892006FC9E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		82F934901F1F5F5D00AE31DE /* ThingServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingServiceTests.swift; sourceTree = "<group>"; };
 		82FED7D61E0A78AC00FDDFD2 /* Remember.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Remember.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -439,7 +445,6 @@
 		820B83E71F0F96CC007E3C15 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				820B83ED1F0F971D007E3C15 /* ThingService.swift */,
 				820B84261F107183007E3C15 /* TagService.swift */,
 				82303BDC1F25B2FF004C06F1 /* SearchService.swift */,
 			);
@@ -451,6 +456,7 @@
 			children = (
 				82E7AC7220553BB1006FC9E5 /* GlobleConfigs.swift */,
 				824267FC2073C33B009FD115 /* PasteboardUtils.swift */,
+				8280CE02208AD22C00C7A1F5 /* VersionUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -594,7 +600,6 @@
 				825DEB321DD9DC070065090F /* Info.plist */,
 				82A923641EF17728004937EA /* HomeViewModelTests.swift */,
 				82A923661EF17962004937EA /* AboutViewModelTests.swift */,
-				82F934901F1F5F5D00AE31DE /* ThingServiceTests.swift */,
 			);
 			path = RememberTests;
 			sourceTree = "<group>";
@@ -661,6 +666,7 @@
 				8280CDD3208736EA00C7A1F5 /* UIApplicationExtensions.swift */,
 				8280CDDA2088DF4D00C7A1F5 /* NSManagedObjectContextExtension.swift */,
 				8280CDDF2089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift */,
+				8280CDFC208ACE9900C7A1F5 /* DateExtensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -672,6 +678,9 @@
 				820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */,
 				82E7AC5620541945006FC9E5 /* TipsViewModel.swift */,
 				824267FA2072823B009FD115 /* HomeViewModel.swift */,
+				8280CDFA208ACE0A00C7A1F5 /* EditThingViewModel.swift */,
+				8280CDFE208ACF5F00C7A1F5 /* InputThingViewModel.swift */,
+				8280CE00208AD12D00C7A1F5 /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -920,6 +929,7 @@
 				8280CDCE20862B0500C7A1F5 /* NotificationCenterExtension.swift in Sources */,
 				82E7AC7320553BB1006FC9E5 /* GlobleConfigs.swift in Sources */,
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
+				8280CE03208AD22C00C7A1F5 /* VersionUtils.swift in Sources */,
 				82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */,
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				8280CDD220870A1A00C7A1F5 /* PasteboardView.swift in Sources */,
@@ -934,14 +944,17 @@
 				820B84051F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */,
 				8280CDDB2088DF4D00C7A1F5 /* NSManagedObjectContextExtension.swift in Sources */,
 				820B84171F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
+				8280CDFF208ACF5F00C7A1F5 /* InputThingViewModel.swift in Sources */,
+				8280CE01208AD12D00C7A1F5 /* SettingsViewModel.swift in Sources */,
 				8280CDD4208736EA00C7A1F5 /* UIApplicationExtensions.swift in Sources */,
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				824267FD2073C33B009FD115 /* PasteboardUtils.swift in Sources */,
+				8280CDFB208ACE0A00C7A1F5 /* EditThingViewModel.swift in Sources */,
 				820B83E41F0E8D3D007E3C15 /* TagModel.swift in Sources */,
+				8280CDFD208ACE9900C7A1F5 /* DateExtensions.swift in Sources */,
 				8280CDE02089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift in Sources */,
 				824267FB2072823B009FD115 /* HomeViewModel.swift in Sources */,
 				82303BDD1F25B2FF004C06F1 /* SearchService.swift in Sources */,
-				820B83FF1F0F971D007E3C15 /* ThingService.swift in Sources */,
 				820B83BD1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
@@ -972,7 +985,6 @@
 				824A14B32075032E004D7F21 /* PasteboardUtils.swift in Sources */,
 				82E7AC58205420A1006FC9E5 /* TipsViewModel.swift in Sources */,
 				820B83F11F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
-				82F934911F1F5F5D00AE31DE /* ThingServiceTests.swift in Sources */,
 				8280CDD72088D48200C7A1F5 /* ThingStorageTests.swift in Sources */,
 				8280CDDE2089B93500C7A1F5 /* ThingEntity.swift in Sources */,
 				824A14B2207502F7004D7F21 /* PasteboardUtilsTests.swift in Sources */,

@@ -19,7 +19,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let pasteboardViewTag = 1234
     private var sourceIndexPath: IndexPath?
     private var inputThingView: InputThingView!
-    private let viewModel = HomeViewModel()
+    private let viewModel = HomeViewModel(thingStorage: ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext))
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

@@ -9,25 +9,27 @@
 import Foundation
 
 class HomeViewModel {
-    private let service = ThingService()
+    private var thingStorage: ThingStorage!
+    
+    private let tagService = TagService()
     
     var pasteContent: String?
     var things = [ThingModel]()
     
-    init() {
-        initData()
+    init(thingStorage: ThingStorage) {
+        self.thingStorage = thingStorage
+        refreshThings()
     }
     
     func refreshThings() {
-        service.refresh()
-        initData()
+        things = thingStorage.findAll()
     }
     
     func addPastContent() -> Bool {
         if let content = pasteContent {
             var thing = ThingModel(content: content)
             thing.isNew = true
-            self.service.create(thing)
+            self.thingStorage.create(thing)
             self.things.insert(thing, at: 0)
             self.sortAndSaveThings()
             pasteContent = nil
@@ -68,7 +70,8 @@ class HomeViewModel {
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
         let size = content.boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
         var height = size.height + 40
-        let hasTag = service.hasTag(for: thing)
+        let tags = tagService.getSelectedTags(by: thing)
+        let hasTag = !tags.isEmpty
         if hasTag {
             height = size.height + 50
         }
@@ -78,7 +81,7 @@ class HomeViewModel {
     func deleteThing(index: Int) {
         let thing = self.things[index]
         self.things.remove(at: index)
-        self.service.delete(thing)
+        self.thingStorage.delete(thing)
     }
     
     func sortAndSaveThings() {
@@ -91,10 +94,6 @@ class HomeViewModel {
 
         }
         
-        self.service.save(sorted: self.things)
-    }
-    
-    private func initData() {
-        things = service.things
+        self.thingStorage.save(sorted: self.things)
     }
 }

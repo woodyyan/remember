@@ -11,9 +11,8 @@ import MessageUI
 import NotificationBanner
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    fileprivate let service = AboutViewModel()
+    private let viewModel = SettingsViewModel(thingStorage: ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext))
     private let feedbackKit = BCFeedbackKit(appKey: GlobleConfigs.aliyunAppKey, appSecret: GlobleConfigs.aliyunAppSecret)
-    fileprivate var appStoreUrl = "https://itunes.apple.com/us/app/id1192994573"
     
     var tableView: UITableView!
     
@@ -46,8 +45,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
         descriptionLabel.textColor = UIColor.gray
-        let thingService = ThingService()
-        let count = thingService.getAllThingCount()
+        let count = self.viewModel.getAllThingCount()
         let part1 = NSLocalizedString("totalThingsPart1", comment: "共记了")
         let part2 = NSLocalizedString("totalThingsPart2", comment: "件小事")
         descriptionLabel.text = "\(part1)\(count)\(part2)"
@@ -129,8 +127,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    fileprivate func commentAppInStore() {
-        if let url = URL(string: appStoreUrl) {
+    private func commentAppInStore() {
+        if let url = URL(string: GlobleConfigs.appStoreUrl) {
             UIApplication.shared.open(url, options: [String: Any](), completionHandler: nil)
         }
     }
@@ -146,7 +144,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func feedback() {
         feedbackKit?.extInfo = [
-            "app_version": AboutViewModel().getCurrentVersion(),
+            "app_version": VersionUtils.getCurrentVersion(),
             "device_model": UIDevice.current.model
         ]
         feedbackKit?.makeFeedbackViewController(completionBlock: { (controller, error) in
@@ -175,8 +173,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    fileprivate func recommandToFriends() {
-        if let url = URL(string: appStoreUrl) {
+    private func recommandToFriends() {
+        if let url = URL(string: GlobleConfigs.appStoreUrl) {
             let title = NSLocalizedString("recommendDescription", comment: "推荐")
             let controller = UIActivityViewController(activityItems: [title, url, UIImage.init(named: "icon")!], applicationActivities: [])
             controller.excludedActivityTypes = [.addToReadingList, .assignToContact, .openInIBooks, .saveToCameraRoll]
@@ -184,7 +182,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    fileprivate func getCell(_ cellType: CellType) -> UITableViewCell {
+    private func getCell(_ cellType: CellType) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.accessoryType = .disclosureIndicator
         switch cellType {
@@ -218,7 +216,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let newCell = UITableViewCell(style: .value1, reuseIdentifier: "about")
             newCell.textLabel?.text = NSLocalizedString("about", comment: "关于")
             newCell.imageView?.image = #imageLiteral(resourceName: "about_gray")
-            newCell.detailTextLabel?.text = service.getCurrentVersion()
+            newCell.detailTextLabel?.text = VersionUtils.getCurrentVersion()
             newCell.accessoryType = .disclosureIndicator
             return newCell
         }
