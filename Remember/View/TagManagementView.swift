@@ -20,12 +20,13 @@ class TagManagementView: UIView {
     private var tagButtons = [UIButton]()
     private var isEditing = false
     
+    private static let context = CoreStorage.shared.persistentContainer.viewContext
+    private let viewModel = TagManagementViewModel(tagStorage: TagStorage(context: context), thingTagStorage: ThingTagStorage(context: context))
+    
     var thing: ThingModel?
     var addTagTextField: UITextField!
     var addTagButton: UIButton!
     weak var delegate: TagManagementDelegate?
-    
-    let tagService = TagService()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -109,7 +110,7 @@ class TagManagementView: UIView {
             
             var lastButton: UIButton?
             var width: CGFloat = 0
-            unselectedTags = tagService.getUnselectedTags(by: currentThing)
+            unselectedTags = self.viewModel.getUnselectedTags(by: currentThing)
             if !unselectedTags.isEmpty {
                 self.tagScrollView?.isHidden = false
                 for tag in unselectedTags {
@@ -151,10 +152,10 @@ class TagManagementView: UIView {
                 return model.name == tag
             }) {
                 let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
-                tagService.saveThingTag(thingTagModel)
+                self.viewModel.saveThingTag(thingTagModel)
                 var tempTagModel = tagModel
                 tempTagModel.index += 1
-                tagService.updateIndex(for: tempTagModel)
+                viewModel.updateIndex(for: tempTagModel)
                 selectedTags.append(tagModel)
                 updateView(for: tag)
                 changeTagButton(true)
@@ -173,7 +174,7 @@ class TagManagementView: UIView {
             button.removeFromSuperview()
         }
         
-        selectedTags = tagService.getSelectedTags(by: thing)
+        selectedTags = viewModel.getSelectedTags(by: thing)
         if !selectedTags.isEmpty {
             for tag in selectedTags {
                 updateView(for: tag.name)
@@ -243,13 +244,13 @@ class TagManagementView: UIView {
                     return model.name == tag
                 }) {
                     let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
-                    tagService.deleteThingTag(thingTagModel)
+                    self.viewModel.deleteThingTag(thingTagModel)
                     lastTopView = nil
                     lastTagButton = nil
                     if tagModel.index > 0 {
                         var tempTagModel = tagModel
                         tempTagModel.index -= 1
-                        tagService.updateIndex(for: tempTagModel)
+                        viewModel.updateIndex(for: tempTagModel)
                     }
                     updateView(by: self.thing!)
                     changeTagButton(true)
@@ -294,11 +295,11 @@ extension TagManagementView: UITextFieldDelegate {
         if let tag = textField.text {
             let trimTag = tag.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             if !trimTag.isEmpty {
-                if !tagService.exists(trimTag) {
+                if !self.viewModel.exists(trimTag) {
                     self.updateView(with: trimTag)
                     textField.text = ""
                     
-                    saveTag(trimTag)
+                    self.viewModel.saveTagAndThingTag(trimTag, thingId: self.thing!.id)
                     delegate?.tagManagement(view: self, tag: trimTag)
                 }
             }
@@ -309,15 +310,6 @@ extension TagManagementView: UITextFieldDelegate {
         endEdit()
         
         return true
-    }
-    
-    private func saveTag(_ tag: String) {
-        var tagModel = TagModel(name: tag)
-        tagModel.index = 1
-        let thingTagModel = ThingTagModel(thingId: self.thing!.id, tagId: tagModel.id)
-        
-        tagService.save(tagModel)
-        tagService.saveThingTag(thingTagModel)
     }
 }
 

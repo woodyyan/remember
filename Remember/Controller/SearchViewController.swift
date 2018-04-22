@@ -17,9 +17,10 @@ class SearchViewController: UIViewController {
     private var tagView: UIView!
     private var textField: InputTextField!
     private var tableView: UITableView!
-    private let tagService = TagService()
     private let searchService = SearchService()
     private var filteredThings = [ThingModel]()
+    
+    private let viewModel = SearchViewModel(tagStorage: TagStorage(context: CoreStorage.shared.persistentContainer.viewContext))
     
     var homeController: HomeViewController?
     
@@ -159,7 +160,7 @@ class SearchViewController: UIViewController {
     }
 
     private func showTags() {
-        let allTags = tagService.getAllTags()
+        let allTags = viewModel.getAllTags()
         if !allTags.isEmpty {
             for tag in allTags {
                 updateView(for: tag.name)

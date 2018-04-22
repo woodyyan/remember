@@ -12,8 +12,10 @@ import DZNEmptyDataSet
 
 class TagManageViewController: UITableViewController {
     private var tags = [TagModel]()
-    private let tagService = TagService()
     private let searchService = SearchService()
+    
+    private static let context = CoreStorage.shared.persistentContainer.viewContext
+    private let viewModel = TagManagementViewControllerModel(tagStorage: TagStorage(context: context), thingTagStorage: ThingTagStorage(context: context))
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -40,8 +42,7 @@ class TagManageViewController: UITableViewController {
         let rightBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "edit"), style: .plain, target: self, action: #selector(TagManageViewController.editTags(sender:)))
         self.navigationItem.rightBarButtonItem = rightBarItem
         
-        let allTags = tagService.getAllTags()
-        self.tags = allTags
+        self.tags = self.viewModel.getAllTags()
     }
     
     @objc func editTags(sender: UIBarButtonItem) {

@@ -11,7 +11,8 @@ import UIKit
 import SnapKit
 
 class ThingTableViewCell: UITableViewCell {
-    private let tagService = TagService()
+    private static let context = CoreStorage.shared.persistentContainer.viewContext
+    private let viewModel = ThingTableCellViewModel(tagStorage: TagStorage(context: context), thingTagStorage: ThingTagStorage(context: context))
     
     private var shouldCustomizeActionButtons = false
     
@@ -156,10 +157,7 @@ class ThingTableViewCell: UITableViewCell {
     }
     
     func showTags(for thing: ThingModel) {
-        let tags = tagService.getSelectedTags(by: thing)
-        
-        let tagString = tags.filter({$0.name != nil}).map({$0.name!}).joined(separator: "/")
-        tagLabel?.text = tagString
+        tagLabel?.text = viewModel.getJointTagText(for: thing)
     }
     
     func setBackground(style: ThingCellBackgroundStyle) {

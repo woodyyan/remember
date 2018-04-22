@@ -9,15 +9,17 @@
 import Foundation
 
 class HomeViewModel {
+    private var tagStorage: TagStorage!
     private var thingStorage: ThingStorage!
-    
-    private let tagService = TagService()
+    private var thingTagStorage: ThingTagStorage!
     
     var pasteContent: String?
     var things = [ThingModel]()
     
-    init(thingStorage: ThingStorage) {
+    init(tagStorage: TagStorage, thingStorage: ThingStorage, thingTagStorage: ThingTagStorage!) {
+        self.tagStorage = tagStorage
         self.thingStorage = thingStorage
+        self.thingTagStorage = thingTagStorage
         refreshThings()
     }
     
@@ -70,7 +72,7 @@ class HomeViewModel {
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
         let size = content.boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
         var height = size.height + 40
-        let tags = tagService.getSelectedTags(by: thing)
+        let tags = thing.getSelectedTags(tagStorage: tagStorage, thingTagStorage: thingTagStorage)
         let hasTag = !tags.isEmpty
         if hasTag {
             height = size.height + 50

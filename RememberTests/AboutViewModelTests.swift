@@ -42,7 +42,7 @@ class AboutViewModelTests: XCTestCase {
     }
     
     func testShouldGetCurrentVersionCorrectly() {
-        let version = viewModel.getCurrentVersion()
+        let version = VersionUtils.getCurrentVersion()
         
         XCTAssert(version.contains("."))
         XCTAssert(version.components(separatedBy: ".").count >= 2)

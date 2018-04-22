@@ -21,3 +21,12 @@ struct ThingModel {
         self.createdAt = Date()
     }
 }
+
+extension ThingModel {
+    func getSelectedTags(tagStorage: TagStorage, thingTagStorage: ThingTagStorage) -> [TagModel] {
+        let thingTags = thingTagStorage.findThingTagsBy(thingId: self.id)
+        let tagIds = thingTags.filter({ $0.thingId == self.id }).map({ $0.tagId! })
+        let tags = tagStorage.getTags(by: tagIds)
+        return tags
+    }
+}
