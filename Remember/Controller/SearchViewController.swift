@@ -17,10 +17,9 @@ class SearchViewController: UIViewController {
     private var tagView: UIView!
     private var textField: InputTextField!
     private var tableView: UITableView!
-    private let searchService = SearchService()
     private var filteredThings = [ThingModel]()
     
-    private let viewModel = SearchViewModel(tagStorage: TagStorage(context: CoreStorage.shared.persistentContainer.viewContext))
+    private let viewModel = SearchViewModel(tagStorage: TagStorage(context: CoreStorage.shared.persistentContainer.viewContext), thingStorage: ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext), thingTagStorage: ThingTagStorage(context: CoreStorage.shared.persistentContainer.viewContext))
     
     var homeController: HomeViewController?
     
@@ -141,9 +140,9 @@ class SearchViewController: UIViewController {
         self.tagView.isHidden = true
         if text.hasPrefix("#") {
             let trimText = text.trimmingCharacters(in: CharacterSet.init(charactersIn: "#"))
-            self.filteredThings = searchService.getThings(byTag: trimText)
+            self.filteredThings = self.viewModel.getThings(byTag: trimText)
         } else {
-            self.filteredThings = self.searchService.getThings(byText: text)
+            self.filteredThings = self.viewModel.getThings(byText: text)
         }
         self.tableView.reloadData()
     }
@@ -223,7 +222,7 @@ class SearchViewController: UIViewController {
     @objc func tagTap(sender: UIButton) {
         if let tag = sender.titleLabel?.text {
             self.tagView.isHidden = true
-            self.filteredThings = searchService.getThings(byTag: tag)
+            self.filteredThings = self.viewModel.getThings(byTag: tag)
             self.tableView.reloadData()
             self.textField.text = "#\(tag)"
         }

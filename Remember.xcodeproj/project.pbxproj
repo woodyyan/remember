@@ -51,7 +51,6 @@
 		82303BD61F24F3EE004C06F1 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 82303BD11F24F3EE004C06F1 /* 4.png */; };
 		82303BD71F24F3EE004C06F1 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 82303BD21F24F3EE004C06F1 /* 5.png */; };
 		82303BDB1F24F5A3004C06F1 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = 82303BDA1F24F5A2004C06F1 /* .travis.yml */; };
-		82303BDD1F25B2FF004C06F1 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82303BDC1F25B2FF004C06F1 /* SearchService.swift */; };
 		82347E4D1F03A803002D8024 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E4C1F03A803002D8024 /* libresolv.tbd */; };
 		82347E4F1F03A809002D8024 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E4E1F03A809002D8024 /* CoreTelephony.framework */; };
 		82347E511F03A80F002D8024 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82347E501F03A80F002D8024 /* SystemConfiguration.framework */; };
@@ -272,7 +271,6 @@
 		82303BD21F24F3EE004C06F1 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 		82303BD81F24F41E004C06F1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		82303BDA1F24F5A2004C06F1 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
-		82303BDC1F25B2FF004C06F1 /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		82347E4C1F03A803002D8024 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		82347E4E1F03A809002D8024 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		82347E501F03A80F002D8024 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -443,14 +441,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		820B83E71F0F96CC007E3C15 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				82303BDC1F25B2FF004C06F1 /* SearchService.swift */,
-			);
-			path = Service;
-			sourceTree = "<group>";
-		};
 		820B84081F0F97B5007E3C15 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,7 +570,6 @@
 				82347E521F03A869002D8024 /* Remember-Bridging-Header.h */,
 				823A34B51E28ADE30093FBF4 /* Remember.entitlements */,
 				82FED7D51E0A78AC00FDDFD2 /* Remember.xcdatamodeld */,
-				820B83E71F0F96CC007E3C15 /* Service */,
 				820B840D1F0F9AFE007E3C15 /* Storage */,
 				820B84081F0F97B5007E3C15 /* Utils */,
 				825DEB4F1DDA0B640065090F /* View */,
@@ -962,7 +951,6 @@
 				8280CDFD208ACE9900C7A1F5 /* DateExtensions.swift in Sources */,
 				8280CDE02089CA7B00C7A1F5 /* NSManagedObjectExtensions.swift in Sources */,
 				824267FB2072823B009FD115 /* HomeViewModel.swift in Sources */,
-				82303BDD1F25B2FF004C06F1 /* SearchService.swift in Sources */,
 				820B83BD1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,

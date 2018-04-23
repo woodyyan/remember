@@ -10,12 +10,38 @@ import Foundation
 
 class SearchViewModel {
     private var tagStorage: TagStorage!
+    private let thingStorage: ThingStorage!
+    private let thingTagStorage: ThingTagStorage!
     
-    init(tagStorage: TagStorage) {
+    private(set) var things = [ThingModel]()
+    
+    init(tagStorage: TagStorage, thingStorage: ThingStorage, thingTagStorage: ThingTagStorage) {
         self.tagStorage = tagStorage
+        self.thingStorage = thingStorage
+        self.thingTagStorage = thingTagStorage
+        things = thingStorage.findAll()
     }
     
     func getAllTags() -> [TagModel] {
         return tagStorage.findAll()
+    }
+    
+    func getThings(byText searchText: String) -> [ThingModel] {
+        let filteredThings = self.things.filter({ (thing) -> Bool in
+            return thing.content.contains(searchText)
+        })
+        return filteredThings
+    }
+    
+    func getThings(byTag tag: String) -> [ThingModel] {
+        var filteredThings = [ThingModel]()
+        if let tagModel = tagStorage.find(by: tag) {
+            let thingTags = thingTagStorage.findThingTagsBy(tagId: tagModel.id)
+            let thingTagIds = thingTags.map({$0.thingId!})
+            filteredThings = things.filter { (thing) -> Bool in
+                return thingTagIds.contains(thing.id)
+            }
+        }
+        return filteredThings
     }
 }

@@ -12,7 +12,6 @@ import DZNEmptyDataSet
 
 class TagManageViewController: UITableViewController {
     private var tags = [TagModel]()
-    private let searchService = SearchService()
     
     private static let context = CoreStorage.shared.persistentContainer.viewContext
     private let viewModel = TagManagementViewControllerModel(tagStorage: TagStorage(context: context), thingTagStorage: ThingTagStorage(context: context))
@@ -65,8 +64,8 @@ class TagManageViewController: UITableViewController {
         cell.textLabel?.textColor = UIColor.text
         cell.textLabel?.numberOfLines = 0
         cell.imageView?.image = #imageLiteral(resourceName: "tag_gray")
-        let things = searchService.getThings(byTag: tagName!)
-        cell.detailTextLabel?.text = "\(things.count)\(NSLocalizedString("things", comment: "件小事"))"
+        let count = self.viewModel.getThingCount(byTag: tagName!)
+        cell.detailTextLabel?.text = "\(count)\(NSLocalizedString("things", comment: "件小事"))"
         cell.detailTextLabel?.textColor = UIColor.lightGray
         cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12)
         return cell
