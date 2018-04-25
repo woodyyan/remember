@@ -11,7 +11,7 @@ import MessageUI
 import NotificationBanner
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    private let viewModel = SettingsViewModel(thingStorage: ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext))
+    private let viewModel: SettingsViewModel = ViewModelFactory.shared.create()
     private let feedbackKit = BCFeedbackKit(appKey: GlobleConfigs.aliyunAppKey, appSecret: GlobleConfigs.aliyunAppSecret)
     
     var tableView: UITableView!

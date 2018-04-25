@@ -13,8 +13,7 @@ import DZNEmptyDataSet
 class TagManageViewController: UITableViewController {
     private var tags = [TagModel]()
     
-    private static let context = CoreStorage.shared.persistentContainer.viewContext
-    private let viewModel = TagManagementViewControllerModel(tagStorage: TagStorage(context: context), thingTagStorage: ThingTagStorage(context: context))
+    private let viewModel: TagManagementViewControllerModel = ViewModelFactory.shared.create()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

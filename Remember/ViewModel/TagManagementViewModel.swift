@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TagManagementViewModel {
+class TagManagementViewModel: BaseViewModel {
     private var tagStorage: TagStorage!
     private var thingTagStorage: ThingTagStorage!
     

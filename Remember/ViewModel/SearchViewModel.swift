@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SearchViewModel {
+class SearchViewModel: BaseViewModel {
     private var tagStorage: TagStorage!
     private let thingStorage: ThingStorage!
     private let thingTagStorage: ThingTagStorage!

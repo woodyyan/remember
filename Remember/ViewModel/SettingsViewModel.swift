@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SettingsViewModel {
+class SettingsViewModel: BaseViewModel {
     private var thingStorage: ThingStorage!
     
     init(thingStorage: ThingStorage) {

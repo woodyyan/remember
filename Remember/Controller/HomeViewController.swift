@@ -21,7 +21,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var inputThingView: InputThingView!
     
     private static let context = CoreStorage.shared.persistentContainer.viewContext
-    private let viewModel = HomeViewModel(tagStorage: TagStorage(context: context), thingStorage: ThingStorage(context: context), thingTagStorage: ThingTagStorage(context: context))
+    private let viewModel: HomeViewModel = ViewModelFactory.shared.create()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

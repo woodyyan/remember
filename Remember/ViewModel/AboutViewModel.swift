@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AboutViewModel {
+class AboutViewModel: BaseViewModel {
     func getAppName() -> String {
         return NSLocalizedString("appName", comment: "丁丁记事")
     }

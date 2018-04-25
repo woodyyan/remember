@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TipsViewModel {
+class TipsViewModel: BaseViewModel {
     func getTipText(_ index: Int) -> NSAttributedString {
         let result = getFullTextAndTypeLength(index: index)
         let fullText: String! = result.0

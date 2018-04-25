@@ -10,7 +10,7 @@ import UIKit
 //import SCLAlertView
 
 class EditThingViewController: UIViewController {
-    private let viewModel = EditThingViewModel(thingStorage: ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext))
+    private let viewModel: EditThingViewModel = ViewModelFactory.shared.create()
     
     var isEditTag = false
     var thing: ThingModel?

@@ -20,8 +20,7 @@ class TagManagementView: UIView {
     private var tagButtons = [UIButton]()
     private var isEditing = false
     
-    private static let context = CoreStorage.shared.persistentContainer.viewContext
-    private let viewModel = TagManagementViewModel(tagStorage: TagStorage(context: context), thingTagStorage: ThingTagStorage(context: context))
+    private let viewModel: TagManagementViewModel = ViewModelFactory.shared.create()
     
     var thing: ThingModel?
     var addTagTextField: UITextField!

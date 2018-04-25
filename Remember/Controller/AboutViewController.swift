@@ -12,7 +12,7 @@ import MessageUI
 import NotificationBanner
 
 class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
-    private let viewModel = AboutViewModel()
+    private let viewModel: AboutViewModel = ViewModelFactory.shared.create()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

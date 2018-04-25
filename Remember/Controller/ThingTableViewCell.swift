@@ -11,8 +11,7 @@ import UIKit
 import SnapKit
 
 class ThingTableViewCell: UITableViewCell {
-    private static let context = CoreStorage.shared.persistentContainer.viewContext
-    private let viewModel = ThingTableCellViewModel(tagStorage: TagStorage(context: context), thingTagStorage: ThingTagStorage(context: context))
+    private let viewModel: ThingTableCellViewModel = ViewModelFactory.shared.create()
     
     private var shouldCustomizeActionButtons = false
     

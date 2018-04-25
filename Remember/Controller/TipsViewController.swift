@@ -9,7 +9,7 @@
 import Foundation
 
 class TipsViewController: UITableViewController {
-    private let viewModel = TipsViewModel()
+    private let viewModel: TipsViewModel = ViewModelFactory.shared.create()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

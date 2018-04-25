@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeViewModel {
+class HomeViewModel: BaseViewModel {
     private var tagStorage: TagStorage!
     private var thingStorage: ThingStorage!
     private var thingTagStorage: ThingTagStorage!
@@ -17,10 +17,11 @@ class HomeViewModel {
     var things = [ThingModel]()
     
     init(tagStorage: TagStorage, thingStorage: ThingStorage, thingTagStorage: ThingTagStorage!) {
+        super.init()
         self.tagStorage = tagStorage
         self.thingStorage = thingStorage
         self.thingTagStorage = thingTagStorage
-        refreshThings()
+        self.refreshThings()
     }
     
     func refreshThings() {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ThingTableCellViewModel {
+class ThingTableCellViewModel: BaseViewModel {
     private var tagStorage: TagStorage!
     private var thingTagStorage: ThingTagStorage!
     

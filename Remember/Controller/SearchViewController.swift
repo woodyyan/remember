@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
     private var tableView: UITableView!
     private var filteredThings = [ThingModel]()
     
-    private let viewModel = SearchViewModel(tagStorage: TagStorage(context: CoreStorage.shared.persistentContainer.viewContext), thingStorage: ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext), thingTagStorage: ThingTagStorage(context: CoreStorage.shared.persistentContainer.viewContext))
+    private let viewModel: SearchViewModel = ViewModelFactory.shared.create()
     
     var homeController: HomeViewController?
     

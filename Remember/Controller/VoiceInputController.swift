@@ -18,7 +18,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     private let audioEngine = AVAudioEngine()
     private var hasText = false
     
-    fileprivate var viewModel = VoiceInputViewModel()
+    fileprivate var viewModel: VoiceInputViewModel = ViewModelFactory.shared.create()
     fileprivate let backgroundView = UIView()
     fileprivate var textView = UITextView()
     
