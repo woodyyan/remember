@@ -11,9 +11,11 @@ import CoreData
 
 class ThingStorageTests: XCTestCase {
     
-    private var storage:ThingStorage = ThingStorage(context: StorageTestUtil.setUpInMemoryManagedObjectContext())
+    private var storage:ThingStorage!
     
     func testShouldGetOneThingAfterCreateOne() {
+        storage = ThingStorage(context: StorageTestUtil.setUpInMemoryManagedObjectContext())
+        
         let thing = ThingModel(content: "test")
         storage.create(thing)
         
@@ -23,6 +25,8 @@ class ThingStorageTests: XCTestCase {
     }
     
     func testShouldGetSortedTwoThingsAfterCreateTwo() {
+        storage = ThingStorage(context: StorageTestUtil.setUpInMemoryManagedObjectContext())
+        
         var thing1 = ThingModel(content: "test")
         thing1.index = 2
         var thing2 = ThingModel(content: "test")
@@ -37,6 +41,8 @@ class ThingStorageTests: XCTestCase {
     }
     
     func testShouldFindZeroAfterDeleteOneThingGivenOneThingInDB() {
+        storage = ThingStorage(context: StorageTestUtil.setUpInMemoryManagedObjectContext())
+        
         let thing = ThingModel(content: "test")
         storage.create(thing)
         
@@ -50,6 +56,8 @@ class ThingStorageTests: XCTestCase {
     }
     
     func testShouldEditContentToTest1GivenPreviousContentIsTest() {
+        storage = ThingStorage(context: StorageTestUtil.setUpInMemoryManagedObjectContext())
+        
         var thing = ThingModel(content: "test")
         storage.create(thing)
         
@@ -62,6 +70,8 @@ class ThingStorageTests: XCTestCase {
     }
     
     func testShouldSortAndSaveThings() {
+        storage = ThingStorage(context: StorageTestUtil.setUpInMemoryManagedObjectContext())
+        
         var thing1 = ThingModel(content: "test")
         thing1.index = 4
         var thing2 = ThingModel(content: "test")

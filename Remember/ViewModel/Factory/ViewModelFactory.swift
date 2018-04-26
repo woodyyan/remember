@@ -27,7 +27,7 @@ class ViewModelFactory {
         let thingTagStorage = ThingTagStorage(context: context)
         viewModels.append(HomeViewModel(tagStorage: tagStorage, thingStorage: thingStorage, thingTagStorage: thingTagStorage))
         viewModels.append(AboutViewModel())
-        viewModels.append(VoiceInputViewModel())
+        viewModels.append(VoiceInputViewModel(thingStorage: thingStorage))
         viewModels.append(TipsViewModel())
         viewModels.append(EditThingViewModel(thingStorage: thingStorage))
         viewModels.append(InputThingViewModel(thingStorage: thingStorage))

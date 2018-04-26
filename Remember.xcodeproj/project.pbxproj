@@ -146,13 +146,27 @@
 		8280CE0C208CD8D700C7A1F5 /* VersionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE02208AD22C00C7A1F5 /* VersionUtils.swift */; };
 		8280CE0F208DDFDF00C7A1F5 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE0E208DDFDF00C7A1F5 /* ViewModelFactory.swift */; };
 		8280CE11208DE4AB00C7A1F5 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE10208DE4AB00C7A1F5 /* BaseViewModel.swift */; };
+		8280CE122090695200C7A1F5 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE10208DE4AB00C7A1F5 /* BaseViewModel.swift */; };
+		8280CE132091992500C7A1F5 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E7AC6420553782006FC9E5 /* AlicloudMobileAnalitics.framework */; };
+		8280CE1520919F8F00C7A1F5 /* ViewModelFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE1420919F8F00C7A1F5 /* ViewModelFactoryTests.swift */; };
+		8280CE1620919FAA00C7A1F5 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE0E208DDFDF00C7A1F5 /* ViewModelFactory.swift */; };
+		8280CE1720919FD200C7A1F5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824267FA2072823B009FD115 /* HomeViewModel.swift */; };
+		8280CE1A2091A06600C7A1F5 /* ThingCellBackgroundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE192091A06600C7A1F5 /* ThingCellBackgroundStyle.swift */; };
+		8280CE1B2091A07400C7A1F5 /* ThingCellBackgroundStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE192091A06600C7A1F5 /* ThingCellBackgroundStyle.swift */; };
+		8280CE1C2091A09500C7A1F5 /* VoiceInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */; };
+		8280CE1D2091A0DA00C7A1F5 /* EditThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDFA208ACE0A00C7A1F5 /* EditThingViewModel.swift */; };
+		8280CE1E2091A0E200C7A1F5 /* InputThingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CDFE208ACF5F00C7A1F5 /* InputThingViewModel.swift */; };
+		8280CE1F2091A0EA00C7A1F5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE00208AD12D00C7A1F5 /* SettingsViewModel.swift */; };
+		8280CE202091A0F200C7A1F5 /* TagManagementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE04208AD6C300C7A1F5 /* TagManagementViewModel.swift */; };
+		8280CE212091A0F700C7A1F5 /* TagManagementViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE06208AD7F000C7A1F5 /* TagManagementViewControllerModel.swift */; };
+		8280CE222091A0FC00C7A1F5 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE08208AD9AE00C7A1F5 /* SearchViewModel.swift */; };
+		8280CE232091A10100C7A1F5 /* ThingTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE0A208AE0DA00C7A1F5 /* ThingTableCellViewModel.swift */; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
 		82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923661EF17962004937EA /* AboutViewModelTests.swift */; };
 		82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8055C2077425100AF4AB0 /* UIViewExtension.swift */; };
 		82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
 		82DF5DA11E657EAE0027CA1F /* EditThingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */; };
 		82DF5DAA1E6964010027CA1F /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
-		82DF5DAB1E6964130027CA1F /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DA91E6964010027CA1F /* Speech.framework */; };
 		82DF5DAD1E6D58740027CA1F /* VoiceInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */; };
 		82DF5DBB1E7047A90027CA1F /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DF5DBA1E7047A90027CA1F /* ImageIO.framework */; };
 		82E58033200E2763003E2435 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58032200E2763003E2435 /* SnapKit.framework */; };
@@ -161,7 +175,6 @@
 		82E5803A200E552B003E2435 /* NotificationBanner.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58036200E45AE003E2435 /* NotificationBanner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82E5803B200E55C0003E2435 /* MarqueeLabelSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58038200E45B6003E2435 /* MarqueeLabelSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82E5803D200E571E003E2435 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58032200E2763003E2435 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		82E5803E200F56CC003E2435 /* NotificationBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E58036200E45AE003E2435 /* NotificationBanner.framework */; };
 		82E7AC542053F39F006FC9E5 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AC532053F39F006FC9E5 /* TipsViewController.swift */; };
 		82E7AC5720541945006FC9E5 /* TipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AC5620541945006FC9E5 /* TipsViewModel.swift */; };
 		82E7AC58205420A1006FC9E5 /* TipsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AC5620541945006FC9E5 /* TipsViewModel.swift */; };
@@ -336,6 +349,8 @@
 		8280CE0A208AE0DA00C7A1F5 /* ThingTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingTableCellViewModel.swift; sourceTree = "<group>"; };
 		8280CE0E208DDFDF00C7A1F5 /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		8280CE10208DE4AB00C7A1F5 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		8280CE1420919F8F00C7A1F5 /* ViewModelFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactoryTests.swift; sourceTree = "<group>"; };
+		8280CE192091A06600C7A1F5 /* ThingCellBackgroundStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingCellBackgroundStyle.swift; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82D8055C2077425100AF4AB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -407,8 +422,6 @@
 			files = (
 				823539AF1E3745B800B102D8 /* libsqlite3.tbd in Frameworks */,
 				823539B11E3745BB00B102D8 /* libz.tbd in Frameworks */,
-				82E5803E200F56CC003E2435 /* NotificationBanner.framework in Frameworks */,
-				82DF5DAB1E6964130027CA1F /* Speech.framework in Frameworks */,
 				82347E571F03A9AE002D8024 /* libresolv.tbd in Frameworks */,
 				82347E531F03A9A8002D8024 /* SystemConfiguration.framework in Frameworks */,
 				820B841C1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */,
@@ -424,6 +437,7 @@
 				8280CDF42089E72500C7A1F5 /* MarqueeLabelSwift.framework in Frameworks */,
 				8280CDF62089E72C00C7A1F5 /* SnapKit.framework in Frameworks */,
 				8280CDF12089E71800C7A1F5 /* AddressBook.framework in Frameworks */,
+				8280CE132091992500C7A1F5 /* AlicloudMobileAnalitics.framework in Frameworks */,
 				8280CDEC2089E6EB00C7A1F5 /* BCHybridWebViewFMWK.framework in Frameworks */,
 				8280CDF22089E71B00C7A1F5 /* CoreTelephony.framework in Frameworks */,
 				8280CDEA2089E6E500C7A1F5 /* UTMini.framework in Frameworks */,
@@ -659,6 +673,14 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
+		8280CE182091A05100C7A1F5 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				8280CE192091A06600C7A1F5 /* ThingCellBackgroundStyle.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		82D8055B2077424100AF4AB0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -676,6 +698,7 @@
 		82E7AC5520541933006FC9E5 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8280CE182091A05100C7A1F5 /* Enum */,
 				8280CE0D208DDFBF00C7A1F5 /* Factory */,
 				820B83E81F0F971D007E3C15 /* AboutViewModel.swift */,
 				820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */,
@@ -696,6 +719,7 @@
 			isa = PBXGroup;
 			children = (
 				82E7AC5C205420D3006FC9E5 /* TipsViewModelTests.swift */,
+				8280CE1420919F8F00C7A1F5 /* ViewModelFactoryTests.swift */,
 			);
 			path = ViewModelTests;
 			sourceTree = "<group>";
@@ -954,6 +978,7 @@
 				820B842B1F1119A7007E3C15 /* TagManagementView.swift in Sources */,
 				820B84051F0F971D007E3C15 /* VoiceInputViewModel.swift in Sources */,
 				8280CDDB2088DF4D00C7A1F5 /* NSManagedObjectContextExtension.swift in Sources */,
+				8280CE1A2091A06600C7A1F5 /* ThingCellBackgroundStyle.swift in Sources */,
 				8280CE11208DE4AB00C7A1F5 /* BaseViewModel.swift in Sources */,
 				820B84171F0F9AFE007E3C15 /* ThingTagStorage.swift in Sources */,
 				8280CDFF208ACF5F00C7A1F5 /* InputThingViewModel.swift in Sources */,
@@ -990,18 +1015,27 @@
 				820B83E51F0E8D3D007E3C15 /* TagModel.swift in Sources */,
 				82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */,
 				82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */,
+				8280CE1E2091A0E200C7A1F5 /* InputThingViewModel.swift in Sources */,
 				82E7AC5D205420D3006FC9E5 /* TipsViewModelTests.swift in Sources */,
+				8280CE1F2091A0EA00C7A1F5 /* SettingsViewModel.swift in Sources */,
 				820B83BE1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				820B83C61F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				824A14B32075032E004D7F21 /* PasteboardUtils.swift in Sources */,
+				8280CE202091A0F200C7A1F5 /* TagManagementViewModel.swift in Sources */,
 				82E7AC58205420A1006FC9E5 /* TipsViewModel.swift in Sources */,
 				820B83F11F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
+				8280CE1B2091A07400C7A1F5 /* ThingCellBackgroundStyle.swift in Sources */,
 				8280CDD72088D48200C7A1F5 /* ThingStorageTests.swift in Sources */,
+				8280CE1520919F8F00C7A1F5 /* ViewModelFactoryTests.swift in Sources */,
+				8280CE122090695200C7A1F5 /* BaseViewModel.swift in Sources */,
 				8280CDDE2089B93500C7A1F5 /* ThingEntity.swift in Sources */,
 				824A14B2207502F7004D7F21 /* PasteboardUtilsTests.swift in Sources */,
+				8280CE1720919FD200C7A1F5 /* HomeViewModel.swift in Sources */,
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
+				8280CE1620919FAA00C7A1F5 /* ViewModelFactory.swift in Sources */,
 				8280CDE12089CDA400C7A1F5 /* NSManagedObjectExtensions.swift in Sources */,
 				8280CDE52089E0CB00C7A1F5 /* StorageTestUtil.swift in Sources */,
+				8280CE212091A0F700C7A1F5 /* TagManagementViewControllerModel.swift in Sources */,
 				8280CDCB2086290300C7A1F5 /* UIColorExtensions.swift in Sources */,
 				8280CDE32089E06E00C7A1F5 /* TagStorageTests.swift in Sources */,
 				8280CDF8208A2E6700C7A1F5 /* ThingTagStorageTests.swift in Sources */,
@@ -1009,9 +1043,13 @@
 				8280CDD92088D4A300C7A1F5 /* CoreStorage.swift in Sources */,
 				8280CDE62089E13800C7A1F5 /* TagStorage.swift in Sources */,
 				8280CDD82088D49400C7A1F5 /* ThingStorage.swift in Sources */,
+				8280CE1C2091A09500C7A1F5 /* VoiceInputViewModel.swift in Sources */,
+				8280CE232091A10100C7A1F5 /* ThingTableCellViewModel.swift in Sources */,
 				8280CDF9208A2E9300C7A1F5 /* ThingTagStorage.swift in Sources */,
+				8280CE222091A0FC00C7A1F5 /* SearchViewModel.swift in Sources */,
 				820B83E11F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 				821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */,
+				8280CE1D2091A0DA00C7A1F5 /* EditThingViewModel.swift in Sources */,
 				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
 				8280CDDC2088E0A700C7A1F5 /* NSManagedObjectContextExtension.swift in Sources */,
 			);

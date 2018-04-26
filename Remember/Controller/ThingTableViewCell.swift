@@ -207,13 +207,6 @@ class ThingTableViewCell: UITableViewCell {
 //    }
 }
 
-enum ThingCellBackgroundStyle: Int {
-    case normal //正常情况，四个缺角
-    case first //第一个cell，只有下面两个缺角
-    case last //最后一个cell，只有上面两个缺角
-    case one //只有一个cell，没有缺角
-}
-
 class ThingLabel: UILabel {
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets.init(top: 0, left: 20, bottom: 0, right: 20)

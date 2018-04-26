@@ -9,7 +9,11 @@
 import Foundation
 
 class VoiceInputViewModel: BaseViewModel {
-    private var thingStorage = ThingStorage(context: CoreStorage.shared.persistentContainer.viewContext)
+    private var thingStorage: ThingStorage!
+    
+    init(thingStorage: ThingStorage) {
+        self.thingStorage = thingStorage
+    }
     
     func saveThing(_ content: String) -> ThingModel {
         var thing = ThingModel(content: content)
