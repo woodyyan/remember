@@ -1,26 +1,17 @@
 //
 //  AboutViewModelTests.swift
-//  Remember
+//  RememberTests
 //
-//  Created by Songbai Yan on 14/06/2017.
-//  Copyright © 2017 Songbai Yan. All rights reserved.
+//  Created by Songbai Yan on 2018/4/26.
+//  Copyright © 2018 Songbai Yan. All rights reserved.
 //
 
 import XCTest
 
 class AboutViewModelTests: XCTestCase {
-    var viewModel = AboutViewModel()
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
+    private let viewModel = AboutViewModel()
+   
     func testShouldGetSloganCorrectly() {
         let slogan = viewModel.getSlogan()
         
