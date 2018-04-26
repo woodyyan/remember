@@ -9,13 +9,10 @@
 import Foundation
 
 class VersionUtils {
-    static func getCurrentVersion(_ bundleVersion: Bool = false) -> String {
+    static func getCurrentVersion() -> String {
         guard let infoDic = Bundle.main.infoDictionary else {return ""}
         guard let currentVersion = infoDic["CFBundleShortVersionString"] as? String else {return ""}
-        if let buildVersion = infoDic["CFBundleVersion"] as? String, bundleVersion == true {
-            return currentVersion + buildVersion
-        } else {
-            return currentVersion
-        }
+//        let buildVersion = infoDic["CFBundleVersion"] as? String
+        return currentVersion
     }
 }

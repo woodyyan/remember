@@ -161,6 +161,7 @@
 		8280CE222091A0FC00C7A1F5 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE08208AD9AE00C7A1F5 /* SearchViewModel.swift */; };
 		8280CE232091A10100C7A1F5 /* ThingTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE0A208AE0DA00C7A1F5 /* ThingTableCellViewModel.swift */; };
 		8280CE282091A74F00C7A1F5 /* PasteboardUtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE272091A74F00C7A1F5 /* PasteboardUtilTests.swift */; };
+		8280CE2A2091B4E800C7A1F5 /* VersionUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE292091B4E800C7A1F5 /* VersionUtilsTests.swift */; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
 		82A923671EF17962004937EA /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923661EF17962004937EA /* AboutViewModelTests.swift */; };
 		82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8055C2077425100AF4AB0 /* UIViewExtension.swift */; };
@@ -351,6 +352,7 @@
 		8280CE1420919F8F00C7A1F5 /* ViewModelFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactoryTests.swift; sourceTree = "<group>"; };
 		8280CE192091A06600C7A1F5 /* ThingCellBackgroundStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingCellBackgroundStyle.swift; sourceTree = "<group>"; };
 		8280CE272091A74F00C7A1F5 /* PasteboardUtilTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteboardUtilTests.swift; sourceTree = "<group>"; };
+		8280CE292091B4E800C7A1F5 /* VersionUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUtilsTests.swift; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		82A923661EF17962004937EA /* AboutViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		82D8055C2077425100AF4AB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -677,6 +679,7 @@
 			isa = PBXGroup;
 			children = (
 				8280CE272091A74F00C7A1F5 /* PasteboardUtilTests.swift */,
+				8280CE292091B4E800C7A1F5 /* VersionUtilsTests.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				8280CE1620919FAA00C7A1F5 /* ViewModelFactory.swift in Sources */,
 				8280CDE12089CDA400C7A1F5 /* NSManagedObjectExtensions.swift in Sources */,
+				8280CE2A2091B4E800C7A1F5 /* VersionUtilsTests.swift in Sources */,
 				8280CDE52089E0CB00C7A1F5 /* StorageTestUtil.swift in Sources */,
 				8280CE212091A0F700C7A1F5 /* TagManagementViewControllerModel.swift in Sources */,
 				8280CDCB2086290300C7A1F5 /* UIColorExtensions.swift in Sources */,
