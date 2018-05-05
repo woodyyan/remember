@@ -165,6 +165,12 @@
 		8280CE2C2091C4B200C7A1F5 /* AboutViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE2B2091C4B200C7A1F5 /* AboutViewModelTests.swift */; };
 		8280CE2E2091C6E600C7A1F5 /* VoiceInputViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE2D2091C6E600C7A1F5 /* VoiceInputViewModelTests.swift */; };
 		8280CE312091C74100C7A1F5 /* StubThingStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE302091C74100C7A1F5 /* StubThingStorage.swift */; };
+		8280CE332091CD5A00C7A1F5 /* EditThingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE322091CD5A00C7A1F5 /* EditThingViewModelTests.swift */; };
+		8280CE352091D3C600C7A1F5 /* InputThingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE342091D3C600C7A1F5 /* InputThingViewModelTests.swift */; };
+		8280CE372091D75100C7A1F5 /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE362091D75100C7A1F5 /* SettingsViewModelTests.swift */; };
+		8280CE392091D8A900C7A1F5 /* TagManagementViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE382091D8A900C7A1F5 /* TagManagementViewModelTests.swift */; };
+		8280CE3B20921A0A00C7A1F5 /* StubTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE3A20921A0A00C7A1F5 /* StubTagStorage.swift */; };
+		8280CE3D20921C1C00C7A1F5 /* StubThingTagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8280CE3C20921C1C00C7A1F5 /* StubThingTagStorage.swift */; };
 		82A923651EF17728004937EA /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A923641EF17728004937EA /* HomeViewModelTests.swift */; };
 		82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8055C2077425100AF4AB0 /* UIViewExtension.swift */; };
 		82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */; };
@@ -358,6 +364,12 @@
 		8280CE2B2091C4B200C7A1F5 /* AboutViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewModelTests.swift; sourceTree = "<group>"; };
 		8280CE2D2091C6E600C7A1F5 /* VoiceInputViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceInputViewModelTests.swift; sourceTree = "<group>"; };
 		8280CE302091C74100C7A1F5 /* StubThingStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubThingStorage.swift; sourceTree = "<group>"; };
+		8280CE322091CD5A00C7A1F5 /* EditThingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditThingViewModelTests.swift; sourceTree = "<group>"; };
+		8280CE342091D3C600C7A1F5 /* InputThingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputThingViewModelTests.swift; sourceTree = "<group>"; };
+		8280CE362091D75100C7A1F5 /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
+		8280CE382091D8A900C7A1F5 /* TagManagementViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagManagementViewModelTests.swift; sourceTree = "<group>"; };
+		8280CE3A20921A0A00C7A1F5 /* StubTagStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubTagStorage.swift; sourceTree = "<group>"; };
+		8280CE3C20921C1C00C7A1F5 /* StubThingTagStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubThingTagStorage.swift; sourceTree = "<group>"; };
 		82A923641EF17728004937EA /* HomeViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 		82D8055C2077425100AF4AB0 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewController.swift; sourceTree = "<group>"; };
@@ -692,6 +704,8 @@
 			isa = PBXGroup;
 			children = (
 				8280CE302091C74100C7A1F5 /* StubThingStorage.swift */,
+				8280CE3A20921A0A00C7A1F5 /* StubTagStorage.swift */,
+				8280CE3C20921C1C00C7A1F5 /* StubThingTagStorage.swift */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -737,6 +751,10 @@
 				8280CE1420919F8F00C7A1F5 /* ViewModelFactoryTests.swift */,
 				8280CE2B2091C4B200C7A1F5 /* AboutViewModelTests.swift */,
 				8280CE2D2091C6E600C7A1F5 /* VoiceInputViewModelTests.swift */,
+				8280CE322091CD5A00C7A1F5 /* EditThingViewModelTests.swift */,
+				8280CE342091D3C600C7A1F5 /* InputThingViewModelTests.swift */,
+				8280CE362091D75100C7A1F5 /* SettingsViewModelTests.swift */,
+				8280CE382091D8A900C7A1F5 /* TagManagementViewModelTests.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1043,6 +1061,7 @@
 				8280CE2C2091C4B200C7A1F5 /* AboutViewModelTests.swift in Sources */,
 				8280CE1B2091A07400C7A1F5 /* ThingCellBackgroundStyle.swift in Sources */,
 				8280CDD72088D48200C7A1F5 /* ThingStorageTests.swift in Sources */,
+				8280CE3D20921C1C00C7A1F5 /* StubThingTagStorage.swift in Sources */,
 				8280CE1520919F8F00C7A1F5 /* ViewModelFactoryTests.swift in Sources */,
 				8280CE122090695200C7A1F5 /* BaseViewModel.swift in Sources */,
 				8280CDDE2089B93500C7A1F5 /* ThingEntity.swift in Sources */,
@@ -1051,14 +1070,19 @@
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				8280CE1620919FAA00C7A1F5 /* ViewModelFactory.swift in Sources */,
 				8280CDE12089CDA400C7A1F5 /* NSManagedObjectExtensions.swift in Sources */,
+				8280CE332091CD5A00C7A1F5 /* EditThingViewModelTests.swift in Sources */,
 				8280CE2A2091B4E800C7A1F5 /* VersionUtilsTests.swift in Sources */,
 				8280CDE52089E0CB00C7A1F5 /* StorageTestUtil.swift in Sources */,
 				8280CE212091A0F700C7A1F5 /* TagManagementViewControllerModel.swift in Sources */,
 				8280CDCB2086290300C7A1F5 /* UIColorExtensions.swift in Sources */,
 				8280CDE32089E06E00C7A1F5 /* TagStorageTests.swift in Sources */,
+				8280CE372091D75100C7A1F5 /* SettingsViewModelTests.swift in Sources */,
 				8280CDF8208A2E6700C7A1F5 /* ThingTagStorageTests.swift in Sources */,
 				8280CE282091A74F00C7A1F5 /* PasteboardUtilTests.swift in Sources */,
 				823A34CE1E320DC00093FBF4 /* MessageBox.swift in Sources */,
+				8280CE3B20921A0A00C7A1F5 /* StubTagStorage.swift in Sources */,
+				8280CE352091D3C600C7A1F5 /* InputThingViewModelTests.swift in Sources */,
+				8280CE392091D8A900C7A1F5 /* TagManagementViewModelTests.swift in Sources */,
 				8280CDD92088D4A300C7A1F5 /* CoreStorage.swift in Sources */,
 				8280CDE62089E13800C7A1F5 /* TagStorage.swift in Sources */,
 				8280CDD82088D49400C7A1F5 /* ThingStorage.swift in Sources */,

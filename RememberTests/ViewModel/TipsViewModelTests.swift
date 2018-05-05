@@ -10,18 +10,10 @@ import XCTest
 
 class TipsViewModelTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    private let viewMdoel = TipsViewModel()
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        let viewMdoel = TipsViewModel()
+    func testShouldGetAllTipsSuccessfully() {
+        
         for i in 0...13 {
             let text = viewMdoel.getTipText(i)
             XCTAssert(!text.string.isEmpty)
@@ -30,11 +22,9 @@ class TipsViewModelTests: XCTestCase {
         }
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testShouldGet14ForAllTips() {
+        let count = viewMdoel.getTipCount()
+        
+        XCTAssertEqual(count, 14)
     }
-    
 }

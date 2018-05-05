@@ -9,7 +9,22 @@
 import Foundation
 
 class StubThingStorage: ThingStorage {
+    
+    var things = [ThingModel]()
+    
     init() {
         super.init(context: CoreStorage.shared.persistentContainer.viewContext)
+    }
+    
+    override func create(_ thing: ThingModel) {
+        
+    }
+    
+    override func edit(_ thing: ThingModel) {
+        
+    }
+    
+    override func findAll() -> [ThingModel] {
+        return things
     }
 }

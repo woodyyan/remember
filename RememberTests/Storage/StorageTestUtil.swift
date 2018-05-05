@@ -21,8 +21,9 @@ class StorageTestUtil {
             print("Adding in-memory persistent store failed")
         }
         
-        let managedObjectContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        let managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
+        managedObjectContext.name = "test"
         
         return managedObjectContext
     }
