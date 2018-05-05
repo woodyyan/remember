@@ -24,7 +24,7 @@ class ThingTableViewCell: UITableViewCell {
         setBackground(style: .normal)
         
         tagLabel = UILabel(frame: CGRect(x: 30, y: 20, width: 60, height: 20))
-        tagLabel?.textColor = UIColor.remember
+        tagLabel?.textColor = UIColor.tag
         tagLabel?.textAlignment = .right
         tagLabel?.font = UIFont.systemFont(ofSize: 10)
         self.addSubview(tagLabel!)
