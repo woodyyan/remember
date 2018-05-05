@@ -21,7 +21,18 @@ class StubThingStorage: ThingStorage {
     }
     
     override func edit(_ thing: ThingModel) {
-        
+        let index = things.index { (t) -> Bool in
+            return t.id == thing.id
+        }
+        things.remove(at: index!)
+        things.append(thing)
+    }
+    
+    override func delete(_ thing: ThingModel) {
+        let index = things.index { (t) -> Bool in
+            return t.id == thing.id
+        }
+        things.remove(at: index!)
     }
     
     override func findAll() -> [ThingModel] {

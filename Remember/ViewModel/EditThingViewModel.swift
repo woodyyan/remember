@@ -18,4 +18,8 @@ class EditThingViewModel: BaseViewModel {
     func edit(_ thing: ThingModel) {
         self.thingStorage.edit(thing)
     }
+    
+    func delete(_ thing: ThingModel) {
+        self.thingStorage.delete(thing)
+    }
 }

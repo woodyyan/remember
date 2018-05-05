@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import SCLAlertView
+import SCLAlertView
 
 // swiftlint:disable file_length
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -368,22 +368,22 @@ extension HomeViewController {
         
         let deleteTitle = NSLocalizedString("delete", comment: "删除")
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: deleteTitle) { (action, index) -> Void in
-//            let appearance = SCLAlertView.SCLAppearance(
-//                showCloseButton: false
-//            )
-//            let alertView = SCLAlertView(appearance: appearance)
-//            let buttonTitle = NSLocalizedString("confirmDelete", comment: "")
-//            let buttonColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
-//            alertView.addButton(buttonTitle, backgroundColor: buttonColor, textColor: UIColor.white, showTimeout: nil, action: {
-//                self.viewModel.deleteThing(index: (indexPath as NSIndexPath).row as Int)
-//                tableView.reloadData()
-//            })
-//            let cancelColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
-//            let cancelTitle = NSLocalizedString("cancel", comment: "取消")
-//            alertView.addButton(cancelTitle, backgroundColor: cancelColor, textColor: UIColor.white, showTimeout: nil, action: {
-//                tableView.setEditing(false, animated: true)
-//            })
-//            alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
+            let appearance = SCLAlertView.SCLAppearance(
+                showCloseButton: false
+            )
+            let alertView = SCLAlertView(appearance: appearance)
+            let buttonTitle = NSLocalizedString("confirmDelete", comment: "")
+            let buttonColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
+            alertView.addButton(buttonTitle, backgroundColor: buttonColor, textColor: UIColor.white, showTimeout: nil, action: {
+                self.viewModel.deleteThing(index: (indexPath as NSIndexPath).row as Int)
+                tableView.reloadData()
+            })
+            let cancelColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
+            let cancelTitle = NSLocalizedString("cancel", comment: "取消")
+            alertView.addButton(cancelTitle, backgroundColor: cancelColor, textColor: UIColor.white, showTimeout: nil, action: {
+                tableView.setEditing(false, animated: true)
+            })
+            alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
         }
         return [deleteAction, shareAction, editAction]
     }
