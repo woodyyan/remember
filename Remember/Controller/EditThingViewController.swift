@@ -37,44 +37,28 @@ class EditThingViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.remember
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
         
-        let shareSelector = #selector(EditThingViewController.shareTap(sender:))
-        let shareButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: shareSelector)
-        shareButtonItem.imageInsets = UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
-        let deleteSelector = #selector(EditThingViewController.deleteTap(sender:))
-        let deleteButtonItem = UIBarButtonItem(image: UIImage(named: "delete"), style: .plain, target: self, action: deleteSelector)
-        deleteButtonItem.imageInsets = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: -12)
-        self.navigationItem.rightBarButtonItems = [shareButtonItem, deleteButtonItem]
+        let moreSelector = #selector(EditThingViewController.moreTap(sender:))
+        let moreItem = UIBarButtonItem(image: #imageLiteral(resourceName: "more"), style: UIBarButtonItemStyle.plain, target: self, action: moreSelector)
+        self.navigationItem.rightBarButtonItem = moreItem
         
         initUI()
     }
     
-    @objc func shareTap(sender: UIBarButtonItem) {
-        if let content = thing?.content {
-            let activityController = getActivityViewController(content: content)
-            self.present(activityController, animated: true, completion: nil)
+    @objc func moreTap(sender: UIBarButtonItem) {
+        let vc = MoreMenuViewController(style: .grouped)
+        vc.delegate = self
+        let language = viewModel.getCurrentLanguage()
+        if language == Language.EN {
+            vc.preferredContentSize = CGSize(width: 110, height: 120)
+        } else {
+            vc.preferredContentSize = CGSize(width: 90, height: 120)
         }
-    }
-    
-    @objc func deleteTap(sender: UIBarButtonItem) {
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false
-        )
-        let alertView = SCLAlertView(appearance: appearance)
-        let backgroundColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
-        let title = NSLocalizedString("confirmDelete", comment: "")
-        alertView.addButton(title, backgroundColor: backgroundColor, textColor: UIColor.white, showTimeout: nil, action: {
-            if let currentThing = self.thing {
-                self.viewModel.delete(currentThing)
-                self.delegate?.editThing(isDeleted: true, thing: currentThing)
-                self.navigationController?.popViewController(animated: true)
-            }
-        })
-        //let backgroudColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
-        let cancelTitle = NSLocalizedString("cancel", comment: "取消")
-        alertView.addButton(cancelTitle, backgroundColor: #colorLiteral(red: 0.9960784314, green: 0.8156862745, blue: 0.2039215686, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
-        })
-        
-        alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
+        vc.modalPresentationStyle = UIModalPresentationStyle.popover
+        vc.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.any
+        vc.popoverPresentationController?.barButtonItem = sender
+        vc.popoverPresentationController?.delegate = self
+        vc.popoverPresentationController?.backgroundColor = UIColor.white
+        self.present(vc, animated: true, completion: nil)
     }
     
     private func initUI() {
@@ -181,6 +165,66 @@ extension EditThingViewController: UITextViewDelegate {
             return false
         }
         return true
+    }
+}
+
+extension EditThingViewController: MoreMenuViewDelegate {
+    func moreMenuView(view: MoreMenuViewController, selectedAction: MoreMenuAction) {
+        switch selectedAction {
+        case .share:
+            self.share()
+        case .copy:
+            self.copyThing()
+        case .password:
+            self.addOrRemovePassword()
+        case .delete:
+            self.delete()
+        }
+    }
+    
+    private func addOrRemovePassword() {
+        
+    }
+    
+    private func copyThing() {
+        if let content = thing?.content {
+            UIPasteboard.general.string = content
+        }
+    }
+    
+    private func share() {
+        if let content = thing?.content {
+            let activityController = getActivityViewController(content: content)
+            self.present(activityController, animated: true, completion: nil)
+        }
+    }
+    
+    private func delete() {
+        self.editView.resignFirstResponder()
+        let appearance = SCLAlertView.SCLAppearance(
+            showCloseButton: false
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        let backgroundColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
+        let title = NSLocalizedString("confirmDelete", comment: "")
+        alertView.addButton(title, backgroundColor: backgroundColor, textColor: UIColor.white, showTimeout: nil, action: {
+            if let currentThing = self.thing {
+                self.viewModel.delete(currentThing)
+                self.delegate?.editThing(isDeleted: true, thing: currentThing)
+                self.navigationController?.popViewController(animated: true)
+            }
+        })
+        let cancelTitle = NSLocalizedString("cancel", comment: "取消")
+        alertView.addButton(cancelTitle, backgroundColor: #colorLiteral(red: 0.9960784314, green: 0.8156862745, blue: 0.2039215686, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
+        })
+        
+        alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
+    }
+}
+
+extension EditThingViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }
 

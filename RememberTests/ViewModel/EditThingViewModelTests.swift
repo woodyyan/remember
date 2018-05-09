@@ -36,4 +36,10 @@ class EditThingViewModelTests: XCTestCase {
         
         XCTAssertEqual(thingStorage.things.count, 0)
     }
+    
+    func testShouldGetCurrentLanguage() {
+        let language = viewModel.getCurrentLanguage()
+        
+        XCTAssert(language == Language.EN || language == Language.ZH)
+    }
 }

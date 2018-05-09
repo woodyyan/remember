@@ -16,6 +16,14 @@ extension UIView {
     var width: CGFloat {
         return self.frame.width
     }
+    
+    var x: CGFloat {
+        return self.frame.origin.x
+    }
+    
+    var y: CGFloat {
+        return self.frame.origin.y
+    }
 }
 
 extension UIViewController {
