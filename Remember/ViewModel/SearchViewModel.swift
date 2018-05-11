@@ -27,6 +27,7 @@ class SearchViewModel: BaseViewModel {
     }
     
     func getThings(byText searchText: String) -> [ThingModel] {
+        things = thingStorage.findAll()
         let filteredThings = self.things.filter({ (thing) -> Bool in
             return thing.content.contains(searchText)
         })
@@ -34,6 +35,7 @@ class SearchViewModel: BaseViewModel {
     }
     
     func getThings(byTag tag: String) -> [ThingModel] {
+        things = thingStorage.findAll()
         var filteredThings = [ThingModel]()
         if let tagModel = tagStorage.find(by: tag) {
             let thingTags = thingTagStorage.findThingTagsBy(tagId: tagModel.id)
