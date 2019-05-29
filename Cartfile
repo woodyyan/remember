@@ -1,2 +1,3 @@
-github "Daltron/NotificationBanner" "master"
+github "Daltron/NotificationBanner" "2.0.1"
 github "vikmeup/SCLAlertView-Swift" "master"
+github "SnapKit/SnapKit" "master"
