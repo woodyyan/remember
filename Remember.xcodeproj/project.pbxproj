@@ -853,7 +853,7 @@
 					825DEB141DD9DC070065090F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = XD7JAMNS86;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -864,14 +864,14 @@
 					825DEB2B1DD9DC070065090F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = XD7JAMNS86;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 825DEB141DD9DC070065090F;
 					};
 					825DEB361DD9DC070065090F = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = XD7JAMNS86;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 825DEB141DD9DC070065090F;
 					};
@@ -1346,8 +1346,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.remember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Remember/Remember-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$PROJECT_DIR/**";
 			};
@@ -1375,8 +1374,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.remember;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Remember/Remember-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "$PROJECT_DIR/**";
 			};
@@ -1398,8 +1396,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.RememberTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RememberTests/Remember-Test-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Remember.app/Remember";
 			};
 			name = Debug;
@@ -1420,8 +1417,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.RememberTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RememberTests/Remember-Test-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Remember.app/Remember";
 			};
 			name = Release;
@@ -1441,8 +1437,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.RememberUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RememberUITests/Remember-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Remember;
 			};
 			name = Debug;
@@ -1462,8 +1457,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.woodystudio.RememberUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RememberUITests/Remember-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Remember;
 			};
 			name = Release;

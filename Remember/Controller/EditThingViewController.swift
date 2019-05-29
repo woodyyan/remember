@@ -35,10 +35,10 @@ class EditThingViewController: UIViewController {
         self.title = NSLocalizedString("edit", comment: "编辑")
         self.view.backgroundColor = UIColor.background
         self.navigationController?.navigationBar.tintColor = UIColor.remember
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.remember]
         
         let moreSelector = #selector(EditThingViewController.moreTap(sender:))
-        let moreItem = UIBarButtonItem(image: #imageLiteral(resourceName: "more"), style: UIBarButtonItemStyle.plain, target: self, action: moreSelector)
+        let moreItem = UIBarButtonItem(image: #imageLiteral(resourceName: "more"), style: UIBarButtonItem.Style.plain, target: self, action: moreSelector)
         self.navigationItem.rightBarButtonItem = moreItem
         
         initUI()

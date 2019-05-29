@@ -12,7 +12,7 @@ import UIKit
 class PasteboardView: UIView {
     
     let pasteContentLabel = UILabel()
-    let okButton = UIButton(type: UIButtonType.custom)
+    let okButton = UIButton(type: UIButton.ButtonType.custom)
     
     override func layoutSubviews() {
         super.layoutSubviews()

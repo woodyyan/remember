@@ -17,8 +17,8 @@ class TipsViewModelTests: XCTestCase {
         for i in 0...13 {
             let text = viewMdoel.getTipText(i)
             XCTAssert(!text.string.isEmpty)
-            XCTAssert((text.attributes(at: 0, effectiveRange: nil)[NSAttributedStringKey.font]! as! UIFont).pointSize == 12)
-            XCTAssert(text.attributes(at: 0, effectiveRange: nil)[NSAttributedStringKey.foregroundColor] != nil)
+            XCTAssert((text.attributes(at: 0, effectiveRange: nil)[NSAttributedString.Key.font]! as! UIFont).pointSize == 12)
+            XCTAssert(text.attributes(at: 0, effectiveRange: nil)[NSAttributedString.Key.foregroundColor] != nil)
         }
     }
     

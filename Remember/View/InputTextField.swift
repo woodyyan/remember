@@ -17,7 +17,7 @@ class InputTextField: UITextField {
         self.leftView = leftImage
         self.leftViewMode = .always
         let text = NSLocalizedString("addThingPlaceHolder", comment: "记")
-        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.remember]
         self.attributedPlaceholder = NSAttributedString(string: text, attributes: attributes)
         self.contentMode = .center
         self.backgroundColor = UIColor.inputGray
@@ -33,7 +33,7 @@ class InputTextField: UITextField {
     }
     
     func setPlaceHolder(with text: String) {
-        self.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedStringKey.foregroundColor: UIColor.remember])
+        self.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.remember])
     }
     
     required init?(coder aDecoder: NSCoder) {

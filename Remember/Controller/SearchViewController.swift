@@ -42,12 +42,12 @@ class SearchViewController: UIViewController {
         initUI()
         
         let selector = #selector(SearchViewController.keyboardWillShow(_:))
-        NotificationCenter.addObserver(self, selector, NSNotification.Name.UIKeyboardWillShow)
+        NotificationCenter.addObserver(self, selector, UIResponder.keyboardWillShowNotification)
     }
     
     @objc func keyboardWillShow(_ notice: Notification) {
         let userInfo: NSDictionary = (notice as NSNotification).userInfo! as NSDictionary
-        let endFrameValue: NSValue = userInfo.object(forKey: UIKeyboardFrameEndUserInfoKey) as! NSValue
+        let endFrameValue: NSValue = userInfo.object(forKey: UIResponder.keyboardFrameEndUserInfoKey) as! NSValue
         let endFrame = endFrameValue.cgRectValue
         tableView.snp.makeConstraints { (maker) in
             maker.bottom.equalTo(self.view).offset(-endFrame.height)
@@ -67,7 +67,7 @@ class SearchViewController: UIViewController {
         }
         
         let rect = CGRect(x: 0, y: 0, width: self.width, height: self.height)
-        tableView = UITableView(frame: rect, style: UITableViewStyle.plain)
+        tableView = UITableView(frame: rect, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.background
         tableView.delegate = self
         tableView.dataSource = self
@@ -177,7 +177,7 @@ class SearchViewController: UIViewController {
             let rightPoint = lastTagButton!.frame.origin.x + lastTagButton!.width
             let width = self.width - rightPoint
             let expectSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0)
-            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]
+            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]
             let option = NSStringDrawingOptions.usesLineFragmentOrigin
             let tagBounds = NSString(string: tag).boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
             if width < 70 || width < tagBounds.width + 30 {
@@ -250,7 +250,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if self.filteredThings.count > indexPath.row {
             let content: NSString = self.filteredThings[indexPath.row].content as NSString
             let expectSize = CGSize(width: self.width - 30, height: CGFloat.greatestFiniteMagnitude)
-            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
+            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)]
             let option = NSStringDrawingOptions.usesLineFragmentOrigin
             let size = content.boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
             return size.height + 30

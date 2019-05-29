@@ -14,7 +14,7 @@ class MessageBox {
     class func show(_ message: String) {
         
         let messageString = NSString(string: message)
-        let size = messageString.size(withAttributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 13)])
+        let size = messageString.size(withAttributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)])
         
         let window = UIApplication.shared.keyWindow
         let showView = UIView()
@@ -39,7 +39,7 @@ class MessageBox {
         showView.addSubview(label)
         
         // swiftlint:disable multiple_closures_with_trailing_closure
-        UIView.animate(withDuration: 1, delay: 1, options: UIViewAnimationOptions.allowAnimatedContent, animations: { () -> Void in
+        UIView.animate(withDuration: 1, delay: 1, options: UIView.AnimationOptions.allowAnimatedContent, animations: { () -> Void in
             showView.alpha = 0
         }) { (_) -> Void in
             showView.removeFromSuperview()

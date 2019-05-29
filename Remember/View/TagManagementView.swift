@@ -67,9 +67,9 @@ class TagManagementView: UIView {
         self.addSubview(tagScrollView!)
         
         let showSelector = #selector(TagManagementView.keyboardWillShow(_:))
-        NotificationCenter.default.addObserver(self, selector: showSelector, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: showSelector, name: UIResponder.keyboardWillShowNotification, object: nil)
         let hideSelector = #selector(TagManagementView.keyboardWillHide(_:))
-        NotificationCenter.default.addObserver(self, selector: hideSelector, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: hideSelector, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func addTagTap(sender: UIButton) {
@@ -189,7 +189,7 @@ class TagManagementView: UIView {
             let rightPoint = lastTagButton!.frame.origin.x + lastTagButton!.frame.width
             let width = self.frame.width - rightPoint
             let size = CGSize(width: CGFloat.greatestFiniteMagnitude, height: 20.0)
-            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)]
+            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]
             let option = NSStringDrawingOptions.usesLineFragmentOrigin
             let tagBounds = NSString(string: tag).boundingRect(with: size, options: option, attributes: attributes, context: nil)
             if width < 70 || width < tagBounds.width + 20 {
@@ -267,7 +267,7 @@ class TagManagementView: UIView {
     }
     
     @objc func keyboardWillShow(_ notice: Notification) {
-        if let endFrame = notice.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+        if let endFrame = notice.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             //因为self的高度不对，所以只能这么计算y
             var y: CGFloat = 0
             if UIDevice.current.userInterfaceIdiom == .phone {

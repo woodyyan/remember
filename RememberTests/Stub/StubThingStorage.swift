@@ -21,7 +21,7 @@ class StubThingStorage: ThingStorage {
     }
     
     override func edit(_ thing: ThingModel) {
-        let index = things.index { (t) -> Bool in
+        let index = things.firstIndex { (t) -> Bool in
             return t.id == thing.id
         }
         things.remove(at: index!)
@@ -29,7 +29,7 @@ class StubThingStorage: ThingStorage {
     }
     
     override func delete(_ thing: ThingModel) {
-        let index = things.index { (t) -> Bool in
+        let index = things.firstIndex { (t) -> Bool in
             return t.id == thing.id
         }
         things.remove(at: index!)

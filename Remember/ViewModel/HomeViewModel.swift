@@ -69,7 +69,7 @@ class HomeViewModel: BaseViewModel {
         let thing = self.things[row]
         let content: NSString = thing.content as NSString
         let expectSize = CGSize(width: viewWidth - 60, height: CGFloat.greatestFiniteMagnitude)
-        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)]
         let option = NSStringDrawingOptions.usesLineFragmentOrigin
         let size = content.boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
         var height = size.height + 40

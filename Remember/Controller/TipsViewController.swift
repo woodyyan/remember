@@ -32,8 +32,8 @@ class TipsViewController: UITableViewController {
         self.tableView.allowsSelection = false
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.estimatedRowHeight = 44
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

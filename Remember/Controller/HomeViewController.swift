@@ -51,7 +51,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func initUI() {
         self.title = NSLocalizedString("appName", comment: "丁丁记事")
         self.view.backgroundColor = UIColor.background
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.remember]
         self.navigationController?.navigationBar.tintColor = UIColor.remember
         
         let rightBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(HomeViewController.pushToSettingsPage(_:)))
@@ -79,9 +79,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func setKeyboardNotification() {
         let showSelector = #selector(HomeViewController.keyboardWillShow(_:))
-        NotificationCenter.addObserver(self, showSelector, NSNotification.Name.UIKeyboardWillShow)
+        NotificationCenter.addObserver(self, showSelector, UIResponder.keyboardWillShowNotification)
         let hideSelector = #selector(HomeViewController.keyboardWillHide(_:))
-        NotificationCenter.addObserver(self, hideSelector, NSNotification.Name.UIKeyboardWillHide)
+        NotificationCenter.addObserver(self, hideSelector, UIResponder.keyboardWillHideNotification)
     }
     
     private func initInputView() {
@@ -141,7 +141,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func getSearchButton() -> SearchButton {
         let frame = CGRect(x: 10, y: 10, width: self.width - 20, height: 40)
         let searchButton = SearchButton(frame: frame)
-        searchButton.addTarget(self, action: #selector(HomeViewController.searchClick(_:)), for: UIControlEvents.touchUpInside)
+        searchButton.addTarget(self, action: #selector(HomeViewController.searchClick(_:)), for: UIControl.Event.touchUpInside)
         return searchButton
     }
     
@@ -184,7 +184,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func initTableView() {
         let rect = CGRect(x: 0, y: 0, width: self.width, height: self.height - inputViewHeight)
-        tableView = UITableView(frame: rect, style: UITableViewStyle.plain)
+        tableView = UITableView(frame: rect, style: UITableView.Style.plain)
         tableView.backgroundColor = UIColor.background
         tableView.delegate = self
         tableView.dataSource = self
@@ -300,7 +300,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc func keyboardWillShow(_ notice: Notification) {
         if shouldInputViewDisplay && inputThingView.isEditing() {
             if let userInfo = notice.userInfo {
-                if let endFrameValue: NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+                if let endFrameValue: NSValue = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
                     let endFrame = endFrameValue.cgRectValue
                     let y = self.height - inputViewHeight - endFrame.height
                     inputThingView.frame = CGRect(x: 0, y: y, width: self.width, height: inputViewHeight)
@@ -346,12 +346,12 @@ extension HomeViewController {
         return viewModel.calculateCellHeight(viewWidth: self.width, row: indexPath.row)
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let title = NSLocalizedString("tag", comment: "标签")
-        let editAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: title) { (_, index) -> Void in
+        let editAction = UITableViewRowAction(style: UITableViewRowAction.Style.normal, title: title) { (_, index) -> Void in
             let index = indexPath.row
             let thing = self.viewModel.things[index]
             self.editThing(thing, isTag: true)
@@ -359,7 +359,7 @@ extension HomeViewController {
         }
         
         let copyTitle = NSLocalizedString("copy", comment: "复制")
-        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: copyTitle) { (_, index) -> Void in
+        let shareAction = UITableViewRowAction(style: UITableViewRowAction.Style.normal, title: copyTitle) { (_, index) -> Void in
             let index=(indexPath as NSIndexPath).row as Int
             let thing = self.viewModel.things[index]
             UIPasteboard.general.string = thing.content
@@ -367,7 +367,7 @@ extension HomeViewController {
         shareAction.backgroundColor = UIColor.remember
         
         let deleteTitle = NSLocalizedString("delete", comment: "删除")
-        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: deleteTitle) { (action, index) -> Void in
+        let deleteAction = UITableViewRowAction(style: UITableViewRowAction.Style.destructive, title: deleteTitle) { (action, index) -> Void in
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false
             )
@@ -388,7 +388,7 @@ extension HomeViewController {
         return [deleteAction, shareAction, editAction]
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
@@ -451,7 +451,7 @@ extension HomeViewController: VoiceInputDelegate {
 extension HomeViewController: EditThingDelegate {
     func editThing(isDeleted: Bool, thing: ThingModel) {
         if isDeleted {
-            if let index = self.viewModel.things.index(where: {$0.id == thing.id}) {
+            if let index = self.viewModel.things.firstIndex(where: {$0.id == thing.id}) {
                 self.viewModel.things.remove(at: index)
             }
         }

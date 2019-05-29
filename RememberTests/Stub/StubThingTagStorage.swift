@@ -21,7 +21,7 @@ class StubThingTagStorage: ThingTagStorage {
     }
     
     override func delete(for thingTag: ThingTagModel) {
-        let index = thingTags.index { (m) -> Bool in
+        let index = thingTags.firstIndex { (m) -> Bool in
             return thingTag.id == m.id
         }
         thingTags.remove(at: index!)

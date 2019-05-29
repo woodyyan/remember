@@ -17,7 +17,7 @@ class ThingTableViewCell: UITableViewCell {
     
     var tagLabel: UILabel?
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = UIColor.clear
@@ -147,8 +147,8 @@ class ThingTableViewCell: UITableViewCell {
         }
     }
     
-    override func willTransition(to state: UITableViewCellStateMask) {
-        if state == UITableViewCellStateMask.showingDeleteConfirmationMask {
+    override func willTransition(to state: UITableViewCell.StateMask) {
+        if state == UITableViewCell.StateMask.showingDeleteConfirmation {
             shouldCustomizeActionButtons = true
         } else {
             self.shouldCustomizeActionButtons = false
@@ -175,7 +175,7 @@ class ThingTableViewCell: UITableViewCell {
     private func getBackgroundImageView(_ imageName: String) -> UIImageView {
         let image = UIImage(named: imageName)
         let insets = UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20)
-        let resizedImage = image?.resizableImage(withCapInsets: insets, resizingMode: UIImageResizingMode.stretch)
+        let resizedImage = image?.resizableImage(withCapInsets: insets, resizingMode: UIImage.ResizingMode.stretch)
         let backImage =  UIImageView(image: resizedImage)
         return backImage
     }
@@ -210,6 +210,6 @@ class ThingTableViewCell: UITableViewCell {
 class ThingLabel: UILabel {
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets.init(top: 0, left: 20, bottom: 0, right: 20)
-        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
+        super.drawText(in: rect.inset(by: insets))
     }
 }

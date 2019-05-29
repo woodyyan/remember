@@ -13,13 +13,13 @@ class SearchButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
     
-        self.setTitle(NSLocalizedString("searchPlaceHolder", comment: "搜索"), for: UIControlState.normal)
-        self.setImage(UIImage(named: "Search"), for: UIControlState.normal)
+        self.setTitle(NSLocalizedString("searchPlaceHolder", comment: "搜索"), for: UIControl.State.normal)
+        self.setImage(UIImage(named: "Search"), for: UIControl.State.normal)
         self.layer.borderColor = UIColor.inputGray.cgColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 20
         self.backgroundColor = UIColor.inputGray
-        self.setTitleColor(UIColor.remember, for: UIControlState.normal)
+        self.setTitleColor(UIColor.remember, for: UIControl.State.normal)
         self.tintColor = UIColor.remember
     }
 }

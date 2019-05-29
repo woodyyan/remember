@@ -52,9 +52,9 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
-            try audioSession.setMode(AVAudioSessionModeMeasurement)
-            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+            try audioSession.setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.record)))
+            try audioSession.setMode(AVAudioSession.Mode.measurement)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             print("audioSession properties weren't set because of an error.")
         }
@@ -117,6 +117,8 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
                 print("Speech recognition restricted on this device")
             case .notDetermined:
                 print("Speech recognition not yet authorized")
+            @unknown default:
+                print(authStatus)
             }
         }
     }
@@ -171,7 +173,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     private func getCancelButton() -> UIButton {
-        let cancelButton = UIButton(type: UIButtonType.custom)
+        let cancelButton = UIButton(type: UIButton.ButtonType.custom)
         cancelButton.setImage(UIImage(named: "Cancel"), for: .normal)
         cancelButton.addTarget(self, action: #selector(VoiceInputController.cancelTapped(sender:)), for: .touchUpInside)
         cancelButton.sizeToFit()
@@ -179,7 +181,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     private func getOkButton() -> UIButton {
-        let okButton = UIButton(type: UIButtonType.custom)
+        let okButton = UIButton(type: UIButton.ButtonType.custom)
         okButton.setImage(UIImage(named: "Checked"), for: .normal)
         okButton.addTarget(self, action: #selector(VoiceInputController.okTapped(sender:)), for: .touchUpInside)
         okButton.sizeToFit()
@@ -237,7 +239,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         self.view.backgroundColor = UIColor.clear
         UIView.animate(withDuration: 0.8 * 0.4,
                        delay: 0.0,
-                       options: UIViewAnimationOptions.curveEaseOut,
+                       options: UIView.AnimationOptions.curveEaseOut,
                        animations: {
                         self.view.backgroundColor = UIColor(red: 41/255, green: 41/255, blue: 41/255, alpha: 0.8)
         },
@@ -278,4 +280,9 @@ extension VoiceInputController: SFSpeechRecognizerDelegate {
 
 protocol VoiceInputDelegate: NSObjectProtocol {
     func voiceInput(voiceInputView: VoiceInputController, thing: ThingModel)
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+private func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }

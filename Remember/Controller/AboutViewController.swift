@@ -30,7 +30,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.title = NSLocalizedString("about", comment: "关于")
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.remember
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.remember]
         
         initTableView()
         initBottomView()
@@ -85,16 +85,16 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         lineView.backgroundColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
         bottomView.addSubview(lineView)
         
-        let contactButton = UIButton(type: UIButtonType.system)
+        let contactButton = UIButton(type: UIButton.ButtonType.system)
         contactButton.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
-        contactButton.setTitle(NSLocalizedString("email", comment: "邮箱"), for: UIControlState())
+        contactButton.setTitle(NSLocalizedString("email", comment: "邮箱"), for: UIControl.State())
         contactButton.addTarget(self, action: #selector(AboutViewController.contactClick(_:)), for: .touchUpInside)
         
         //微博按钮
-        let weiboButton = UIButton(type: UIButtonType.system)
+        let weiboButton = UIButton(type: UIButton.ButtonType.system)
         weiboButton.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
-        weiboButton.setTitle(NSLocalizedString("weibo", comment: "微博"), for: UIControlState())
-        weiboButton.addTarget(self, action: #selector(AboutViewController.weiboClick(_:)), for: UIControlEvents.touchUpInside)
+        weiboButton.setTitle(NSLocalizedString("weibo", comment: "微博"), for: UIControl.State())
+        weiboButton.addTarget(self, action: #selector(AboutViewController.weiboClick(_:)), for: UIControl.Event.touchUpInside)
         
         let starStack = UIStackView(arrangedSubviews: [contactButton, weiboButton])
         starStack.frame = CGRect(x: 0, y: 10, width: self.view.frame.width, height: 30)
@@ -126,7 +126,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @objc func weiboClick(_ sender: UIButton) {
         if let url = URL(string: "http://weibo.com/u/5613355795") {
-            UIApplication.shared.open(url, options: [String: Any](), completionHandler: nil)
+            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([String: Any]()), completionHandler: nil)
         }
     }
     
@@ -144,6 +144,8 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let subTitle = NSLocalizedString("checkEmailConfig", comment: "")
             let banner = NotificationBanner(title: title, subtitle: subTitle, style: .warning)
             banner.show()
+        @unknown default:
+            print(result)
         }
         controller.dismiss(animated: true, completion: nil)
     }
@@ -218,4 +220,9 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let tipsViewController = TipsViewController(style: .plain)
         self.navigationController?.pushViewController(tipsViewController, animated: true)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+private func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

@@ -16,8 +16,8 @@ class TipsViewModel: BaseViewModel {
         
         let attributedString = NSMutableAttributedString(string: fullText)
         let range = NSRange(location: 0, length: typeLength)
-        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12), range: range)
-        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.remember, range: range)
+        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 12), range: range)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.remember, range: range)
         return attributedString
     }
     

@@ -28,9 +28,9 @@ class InputThingView: UIView, UITextFieldDelegate {
         textField.delegate = self
         self.addSubview(textField)
         
-        micButton = UIButton.init(type: UIButtonType.custom)
+        micButton = UIButton.init(type: UIButton.ButtonType.custom)
         micButton.setImage(UIImage(named: "Microphone"), for: .normal)
-        micButton.addTarget(self, action: #selector(InputThingView.micButtonTapped(sender:)), for: UIControlEvents.touchUpInside)
+        micButton.addTarget(self, action: #selector(InputThingView.micButtonTapped(sender:)), for: UIControl.Event.touchUpInside)
         micButton.sizeToFit()
         micButton.frame = CGRect(x: self.frame.width - self.frame.height + 15, y: 0, width: micButton.frame.width, height: micButton.frame.height)
         micButton.center.y = self.frame.height/2

@@ -32,9 +32,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         self.title = NSLocalizedString("settings", comment: "设置")
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.remember
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.remember]
         
-        tableView = UITableView(frame: self.view.frame, style: UITableViewStyle.grouped)
+        tableView = UITableView(frame: self.view.frame, style: UITableView.Style.grouped)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = UIColor.background
@@ -129,7 +129,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func commentAppInStore() {
         if let url = URL(string: GlobleConfigs.appStoreUrl) {
-            UIApplication.shared.open(url, options: [String: Any](), completionHandler: nil)
+            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([String: Any]()), completionHandler: nil)
         }
     }
     
@@ -239,6 +239,8 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
             let subTitle = NSLocalizedString("checkEmailConfig", comment: "")
             let banner = NotificationBanner(title: title, subtitle: subTitle, style: .warning)
             banner.show()
+        @unknown default:
+            print(result)
         }
         controller.dismiss(animated: true, completion: nil)
     }
@@ -251,4 +253,9 @@ private enum CellType {
     case about
     case tips
     case feedback
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+private func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

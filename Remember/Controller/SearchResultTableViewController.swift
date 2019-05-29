@@ -63,7 +63,7 @@ class SearchResultTableViewController: UITableViewController, UISearchResultsUpd
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.filteredThings.count > indexPath.row {
             let content: NSString = self.filteredThings[indexPath.row].content as NSString
-            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
+            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)]
             let expectSize = CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude)
             let size = content.boundingRect(with: expectSize, options: .usesLineFragmentOrigin, attributes: attributes, context: nil)
             return size.height + 30

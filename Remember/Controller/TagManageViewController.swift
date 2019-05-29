@@ -74,7 +74,7 @@ class TagManageViewController: UITableViewController {
         if self.tags.count > indexPath.row {
             let content: NSString = self.tags[indexPath.row].name as NSString
             let expectSize = CGSize(width: self.view.frame.width - 30, height: CGFloat.greatestFiniteMagnitude)
-            let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
+            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)]
             let option = NSStringDrawingOptions.usesLineFragmentOrigin
             let size = content.boundingRect(with: expectSize, options: option, attributes: attributes, context: nil)
             return size.height + 30
@@ -83,12 +83,12 @@ class TagManageViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let title = NSLocalizedString("delete", comment: "删除")
-        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.destructive, title: title) { (action, index) -> Void in
+        let deleteAction = UITableViewRowAction(style: UITableViewRowAction.Style.destructive, title: title) { (action, index) -> Void in
             
             let appearance = SCLAlertView.SCLAppearance(
                 showCloseButton: false
@@ -115,7 +115,7 @@ class TagManageViewController: UITableViewController {
         return [deleteAction]
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
@@ -131,7 +131,7 @@ extension TagManageViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegat
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
         return NSAttributedString(string: NSLocalizedString("noTag", comment: "没有标签"), attributes: attributes)
     }
 }

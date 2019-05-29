@@ -16,13 +16,13 @@ extension HomeViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let text = NSLocalizedString("addOneThing", comment: "")
-        let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)]
+        let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
         return NSAttributedString(string: text, attributes: attributes)
     }
     
-    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
         let text = NSLocalizedString("tips", comment: "提示")
-        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.remember]
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.remember]
         let tipsString = NSAttributedString(string: text, attributes: attributes)
         return tipsString
     }
