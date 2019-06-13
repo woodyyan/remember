@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22D4EB6922AFC2E0005763EC /* CsvExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB6822AFC2E0005763EC /* CsvExporter.swift */; };
+		22D4EB6A22AFC2E0005763EC /* CsvExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB6822AFC2E0005763EC /* CsvExporter.swift */; };
+		22D4EB6B22AFC2E0005763EC /* CsvExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB6822AFC2E0005763EC /* CsvExporter.swift */; };
+		22D4EB6E22B12EBB005763EC /* CsvExporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB6C22B12EBB005763EC /* CsvExporterTests.swift */; };
+		22D4EB7122B131F3005763EC /* CSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D4EB7022B131F3005763EC /* CSV.framework */; };
+		22D4EB7222B131F3005763EC /* CSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D4EB7022B131F3005763EC /* CSV.framework */; };
+		22D4EB7322B131F3005763EC /* CSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D4EB7022B131F3005763EC /* CSV.framework */; };
+		22D4EB7422B131FC005763EC /* CSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22D4EB7022B131F3005763EC /* CSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		820B83B51F0E81A0007E3C15 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83B31F0E81A0007E3C15 /* ThingEntity.swift */; };
 		820B83B71F0E81A0007E3C15 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83B31F0E81A0007E3C15 /* ThingEntity.swift */; };
 		820B83BD1F0E81FE007E3C15 /* TagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83BB1F0E81FE007E3C15 /* TagEntity.swift */; };
@@ -232,6 +240,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				22D4EB7422B131FC005763EC /* CSV.framework in Embed Frameworks */,
 				82290EBC209D4BCA00F00DBD /* SCLAlertView.framework in Embed Frameworks */,
 				82E5803D200E571E003E2435 /* SnapKit.framework in Embed Frameworks */,
 				82E5803B200E55C0003E2435 /* MarqueeLabelSwift.framework in Embed Frameworks */,
@@ -244,6 +253,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		22D4EB6822AFC2E0005763EC /* CsvExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvExporter.swift; sourceTree = "<group>"; };
+		22D4EB6C22B12EBB005763EC /* CsvExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvExporterTests.swift; sourceTree = "<group>"; };
+		22D4EB7022B131F3005763EC /* CSV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSV.framework; path = Carthage/Build/iOS/CSV.framework; sourceTree = SOURCE_ROOT; };
 		820B83B31F0E81A0007E3C15 /* ThingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingEntity.swift; sourceTree = "<group>"; };
 		820B83BB1F0E81FE007E3C15 /* TagEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagEntity.swift; sourceTree = "<group>"; };
 		820B83C31F0E8237007E3C15 /* ThingTagEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTagEntity.swift; sourceTree = "<group>"; };
@@ -438,6 +450,7 @@
 				82E58033200E2763003E2435 /* SnapKit.framework in Frameworks */,
 				82E7AC6920553783006FC9E5 /* CrashReporter.framework in Frameworks */,
 				823A34C21E31FBA60093FBF4 /* DZNEmptyDataSet.framework in Frameworks */,
+				22D4EB7122B131F3005763EC /* CSV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +461,7 @@
 				823539AF1E3745B800B102D8 /* libsqlite3.tbd in Frameworks */,
 				823539B11E3745BB00B102D8 /* libz.tbd in Frameworks */,
 				82347E571F03A9AE002D8024 /* libresolv.tbd in Frameworks */,
+				22D4EB7222B131F3005763EC /* CSV.framework in Frameworks */,
 				82347E531F03A9A8002D8024 /* SystemConfiguration.framework in Frameworks */,
 				820B841C1F0FE3D5007E3C15 /* ImageIO.framework in Frameworks */,
 			);
@@ -472,6 +486,7 @@
 				8280CDE72089E6DD00C7A1F5 /* YWFeedbackFMWK.framework in Frameworks */,
 				8280CDE92089E6E200C7A1F5 /* UTDID.framework in Frameworks */,
 				8280CDED2089E6ED00C7A1F5 /* BCConnectorBundle.framework in Frameworks */,
+				22D4EB7322B131F3005763EC /* CSV.framework in Frameworks */,
 				8280CDF52089E72900C7A1F5 /* NotificationBanner.framework in Frameworks */,
 				823539B01E3745B900B102D8 /* libsqlite3.tbd in Frameworks */,
 				823539B21E3745BC00B102D8 /* libz.tbd in Frameworks */,
@@ -490,6 +505,7 @@
 				82E7AC7220553BB1006FC9E5 /* GlobleConfigs.swift */,
 				824267FC2073C33B009FD115 /* PasteboardUtils.swift */,
 				8280CE02208AD22C00C7A1F5 /* VersionUtils.swift */,
+				22D4EB6822AFC2E0005763EC /* CsvExporter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -522,6 +538,7 @@
 		823A34261E2758410093FBF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22D4EB7022B131F3005763EC /* CSV.framework */,
 				82290EBA209D4B5300F00DBD /* SCLAlertView.framework */,
 				82E7AC70205537D3006FC9E5 /* CoreMotion.framework */,
 				82E7AC6420553782006FC9E5 /* AlicloudMobileAnalitics.framework */,
@@ -705,6 +722,7 @@
 			children = (
 				8280CE272091A74F00C7A1F5 /* PasteboardUtilTests.swift */,
 				8280CE292091B4E800C7A1F5 /* VersionUtilsTests.swift */,
+				22D4EB6C22B12EBB005763EC /* CsvExporterTests.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1040,6 +1058,7 @@
 				820B83BD1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
 				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
+				22D4EB6922AFC2E0005763EC /* CsvExporter.swift in Sources */,
 				82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 				8280CDD020862D8500C7A1F5 /* SearchButton.swift in Sources */,
 				820B83DC1F0E8AA6007E3C15 /* ThingModel.swift in Sources */,
@@ -1075,6 +1094,7 @@
 				8280CE1520919F8F00C7A1F5 /* ViewModelFactoryTests.swift in Sources */,
 				8280CE122090695200C7A1F5 /* BaseViewModel.swift in Sources */,
 				8280CDDE2089B93500C7A1F5 /* ThingEntity.swift in Sources */,
+				22D4EB6E22B12EBB005763EC /* CsvExporterTests.swift in Sources */,
 				8280CE312091C74100C7A1F5 /* StubThingStorage.swift in Sources */,
 				8280CE1720919FD200C7A1F5 /* HomeViewModel.swift in Sources */,
 				823A34B81E2E26C60093FBF4 /* InputTextField.swift in Sources */,
@@ -1101,6 +1121,7 @@
 				8280CDF9208A2E9300C7A1F5 /* ThingTagStorage.swift in Sources */,
 				8280CE222091A0FC00C7A1F5 /* SearchViewModel.swift in Sources */,
 				820B83E11F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
+				22D4EB6A22AFC2E0005763EC /* CsvExporter.swift in Sources */,
 				821FC4CB1E71407600A64E94 /* UIImage+Gif.swift in Sources */,
 				8280CE1D2091A0DA00C7A1F5 /* EditThingViewModel.swift in Sources */,
 				82FED7D81E0A78AC00FDDFD2 /* Remember.xcdatamodeld in Sources */,
@@ -1122,6 +1143,7 @@
 				820B83E61F0E8D3D007E3C15 /* TagModel.swift in Sources */,
 				820B83BF1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				823A34B91E2E26C60093FBF4 /* InputTextField.swift in Sources */,
+				22D4EB6B22AFC2E0005763EC /* CsvExporter.swift in Sources */,
 				820B83E21F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
