@@ -148,11 +148,9 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func exportToCSV() {
         let fileUrl = viewModel.export()
-        if let data = NSData.init(contentsOf: fileUrl) {
-            let controller = UIActivityViewController(activityItems: [fileUrl, data], applicationActivities: [])
-            controller.excludedActivityTypes = [.addToReadingList, .assignToContact, .openInIBooks, .saveToCameraRoll]
-            self.present(controller, animated: true, completion: nil)
-        }
+        let controller = UIActivityViewController(activityItems: [fileUrl], applicationActivities: [])
+        controller.excludedActivityTypes = [.addToReadingList, .assignToContact, .openInIBooks, .saveToCameraRoll]
+        self.present(controller, animated: true, completion: nil)
     }
     
     private func feedback() {
@@ -229,7 +227,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             let exportCell = UITableViewCell(style: .value1, reuseIdentifier: "export")
             exportCell.accessoryType = .disclosureIndicator
             exportCell.textLabel?.text = NSLocalizedString("export", comment: "导出数据")
-            exportCell.imageView?.image = #imageLiteral(resourceName: "like_gray")
+            exportCell.imageView?.image = #imageLiteral(resourceName: "export")
             return exportCell
         case .about:
             let newCell = UITableViewCell(style: .value1, reuseIdentifier: "about")

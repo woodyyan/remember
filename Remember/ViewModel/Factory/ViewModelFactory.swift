@@ -31,7 +31,7 @@ class ViewModelFactory {
         viewModels.append(TipsViewModel())
         viewModels.append(EditThingViewModel(thingStorage: thingStorage))
         viewModels.append(InputThingViewModel(thingStorage: thingStorage))
-        viewModels.append(SettingsViewModel(thingStorage: thingStorage))
+        viewModels.append(SettingsViewModel(thingStorage: thingStorage, tagStorage: tagStorage, thingTagStorage: thingTagStorage))
         viewModels.append(TagManagementViewModel(tagStorage: tagStorage, thingTagStorage: thingTagStorage))
         viewModels.append(TagManagementViewControllerModel(tagStorage: tagStorage, thingTagStorage: thingTagStorage))
         viewModels.append(SearchViewModel(tagStorage: tagStorage, thingStorage: thingStorage, thingTagStorage: thingTagStorage))

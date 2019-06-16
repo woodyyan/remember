@@ -10,9 +10,13 @@ import Foundation
 
 class SettingsViewModel: BaseViewModel {
     private var thingStorage: ThingStorage!
+    private var thingTagStorage: ThingTagStorage!
+    private var tagStorage: TagStorage!
     
-    init(thingStorage: ThingStorage) {
+    init(thingStorage: ThingStorage, tagStorage: TagStorage, thingTagStorage: ThingTagStorage) {
         self.thingStorage = thingStorage
+        self.tagStorage = tagStorage
+        self.thingTagStorage = thingTagStorage
     }
     
     func getAllThingCount() -> Int {
@@ -25,7 +29,9 @@ class SettingsViewModel: BaseViewModel {
         let things = thingStorage.findAll()
         var content = ""
         for thing in things {
-            content += "\(thing.id),\(thing.content),\(thing.createdAt)\n"
+            let tags = thing.getSelectedTags(tagStorage: tagStorage, thingTagStorage: thingTagStorage)
+            let allTag = tags.map { $0.name }.joined(separator: "/")
+            content += "\"\(thing.content)\",\(thing.createdAt),\(allTag)\n"
         }
         return exporter.generateCsv(csv: content)
     }
