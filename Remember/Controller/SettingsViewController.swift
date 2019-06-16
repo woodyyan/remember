@@ -58,7 +58,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         case 0:
             return 1
         case 1:
-            return 4
+            return 5
         case 2:
             return 1
         default: return 0
@@ -83,6 +83,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 return getCell(.comment)
             case 3:
                 return getCell(.feedback)
+            case 4:
+                return getCell(.export)
             default:
                 return UITableViewCell()
             }
@@ -109,6 +111,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 let cell = tableView.cellForRow(at: indexPath)
                 cell?.detailTextLabel?.text = ""
                 feedBackOrSendEmail()
+            case 4:
+                exportToCSV()
             default:
                 break
             }
@@ -139,6 +143,15 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             sendEmail()
         } else {
             feedback()
+        }
+    }
+    
+    private func exportToCSV() {
+        let fileUrl = viewModel.export()
+        if let data = NSData.init(contentsOf: fileUrl) {
+            let controller = UIActivityViewController(activityItems: [fileUrl, data], applicationActivities: [])
+            controller.excludedActivityTypes = [.addToReadingList, .assignToContact, .openInIBooks, .saveToCameraRoll]
+            self.present(controller, animated: true, completion: nil)
         }
     }
     
@@ -212,6 +225,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             })
             return feedbackCell
+        case .export:
+            let exportCell = UITableViewCell(style: .value1, reuseIdentifier: "export")
+            exportCell.accessoryType = .disclosureIndicator
+            exportCell.textLabel?.text = NSLocalizedString("export", comment: "导出数据")
+            exportCell.imageView?.image = #imageLiteral(resourceName: "like_gray")
+            return exportCell
         case .about:
             let newCell = UITableViewCell(style: .value1, reuseIdentifier: "about")
             newCell.textLabel?.text = NSLocalizedString("about", comment: "关于")
@@ -253,6 +272,7 @@ private enum CellType {
     case about
     case tips
     case feedback
+    case export
 }
 
 // Helper function inserted by Swift 4.2 migrator.

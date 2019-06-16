@@ -68,3 +68,4 @@
 "addThingAction" = "添加小事";
 "searchThingAction" = "搜索小事";
 "password" = "密码";
+"export" = "导出到CSV";

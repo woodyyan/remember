@@ -19,4 +19,14 @@ class SettingsViewModel: BaseViewModel {
         let things = thingStorage.findAll()
         return things.count
     }
+    
+    func export() -> URL {
+        let exporter = CsvExporter()
+        let things = thingStorage.findAll()
+        var content = ""
+        for thing in things {
+            content += "\(thing.id),\(thing.content),\(thing.createdAt)\n"
+        }
+        return exporter.generateCsv(csv: content)
+    }
 }

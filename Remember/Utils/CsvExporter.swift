@@ -10,16 +10,8 @@ import Foundation
 import CSV
 
 class CsvExporter {
-    func export(csv: String) {
-        let fileURL = generateCsv(csv: csv)
-        shareCsv(fileURL: fileURL)
-    }
     
-    private func shareCsv(fileURL: URL) {
-        print(fileURL)
-    }
-    
-    private func generateCsv(csv: String) -> URL {
+    func generateCsv(csv: String) -> URL {
         let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("data.csv")
         FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
         

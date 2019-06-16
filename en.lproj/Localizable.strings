@@ -68,3 +68,4 @@
 "addThingAction" = "Add Thing";
 "searchThingAction" = "Search Thing";
 "password" = "Password";
+"export" = "Export to CSV";
