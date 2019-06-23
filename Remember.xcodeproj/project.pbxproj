@@ -15,6 +15,9 @@
 		22D4EB7222B131F3005763EC /* CSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D4EB7022B131F3005763EC /* CSV.framework */; };
 		22D4EB7322B131F3005763EC /* CSV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22D4EB7022B131F3005763EC /* CSV.framework */; };
 		22D4EB7422B131FC005763EC /* CSV.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 22D4EB7022B131F3005763EC /* CSV.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		22D4EB7622BA72B2005763EC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB7522BA72B2005763EC /* Settings.swift */; };
+		22D4EB7722BA72B2005763EC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB7522BA72B2005763EC /* Settings.swift */; };
+		22D4EB7822BA72B2005763EC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB7522BA72B2005763EC /* Settings.swift */; };
 		820B83B51F0E81A0007E3C15 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83B31F0E81A0007E3C15 /* ThingEntity.swift */; };
 		820B83B71F0E81A0007E3C15 /* ThingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83B31F0E81A0007E3C15 /* ThingEntity.swift */; };
 		820B83BD1F0E81FE007E3C15 /* TagEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B83BB1F0E81FE007E3C15 /* TagEntity.swift */; };
@@ -256,6 +259,7 @@
 		22D4EB6822AFC2E0005763EC /* CsvExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvExporter.swift; sourceTree = "<group>"; };
 		22D4EB6C22B12EBB005763EC /* CsvExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvExporterTests.swift; sourceTree = "<group>"; };
 		22D4EB7022B131F3005763EC /* CSV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSV.framework; path = Carthage/Build/iOS/CSV.framework; sourceTree = SOURCE_ROOT; };
+		22D4EB7522BA72B2005763EC /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		820B83B31F0E81A0007E3C15 /* ThingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingEntity.swift; sourceTree = "<group>"; };
 		820B83BB1F0E81FE007E3C15 /* TagEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagEntity.swift; sourceTree = "<group>"; };
 		820B83C31F0E8237007E3C15 /* ThingTagEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTagEntity.swift; sourceTree = "<group>"; };
@@ -795,6 +799,7 @@
 				820B83DB1F0E8AA6007E3C15 /* ThingModel.swift */,
 				820B83DF1F0E8D16007E3C15 /* ThingTagModel.swift */,
 				820B83E31F0E8D3D007E3C15 /* TagModel.swift */,
+				22D4EB7522BA72B2005763EC /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1028,6 +1033,7 @@
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				8280CE03208AD22C00C7A1F5 /* VersionUtils.swift in Sources */,
 				82D8055D2077425100AF4AB0 /* UIViewExtension.swift in Sources */,
+				22D4EB7622BA72B2005763EC /* Settings.swift in Sources */,
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				8280CDD220870A1A00C7A1F5 /* PasteboardView.swift in Sources */,
 				824A14AF2073D7D4004D7F21 /* CoreStorage.swift in Sources */,
@@ -1082,6 +1088,7 @@
 				82E7AC5D205420D3006FC9E5 /* TipsViewModelTests.swift in Sources */,
 				8280CE1F2091A0EA00C7A1F5 /* SettingsViewModel.swift in Sources */,
 				820B83BE1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
+				22D4EB7722BA72B2005763EC /* Settings.swift in Sources */,
 				820B83C61F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				824A14B32075032E004D7F21 /* PasteboardUtils.swift in Sources */,
 				8280CE202091A0F200C7A1F5 /* TagManagementViewModel.swift in Sources */,
@@ -1140,6 +1147,7 @@
 				820B83C71F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				825BA5FB1ED4819600B4545B /* UIImage+Gif.swift in Sources */,
+				22D4EB7822BA72B2005763EC /* Settings.swift in Sources */,
 				820B83E61F0E8D3D007E3C15 /* TagModel.swift in Sources */,
 				820B83BF1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				823A34B91E2E26C60093FBF4 /* InputTextField.swift in Sources */,

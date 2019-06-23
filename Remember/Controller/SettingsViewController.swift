@@ -29,6 +29,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.viewModel.initSettings()
+        
         self.title = NSLocalizedString("settings", comment: "设置")
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.tintColor = UIColor.remember
@@ -54,44 +56,22 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 5
-        case 2:
-            return 1
-        default: return 0
-        }
+        return viewModel.settings.sections[section].count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return viewModel.settings.sections.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            return getCell(.push)
-        case 1:
-            switch indexPath.row {
-            case 0:
-                return getCell(.tips)
-            case 1:
-                return getCell(.recommand)
-            case 2:
-                return getCell(.comment)
-            case 3:
-                return getCell(.feedback)
-            case 4:
-                return getCell(.export)
-            default:
-                return UITableViewCell()
-            }
-        case 2:
-            return getCell(.about)
-        default: fatalError("Unknown number of sections")
-        }
+        let cell = UITableViewCell()
+        cell.accessoryType = .disclosureIndicator
+        let item = viewModel.settings.getSettingItem(indexPath)
+        cell.textLabel?.text = item.title
+        cell.imageView?.image = UIImage(named: item.icon)
+        cell.detailTextLabel?.text = item.detailText
+        //TODO: get feedback
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -193,52 +173,50 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    private func getCell(_ cellType: CellType) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.accessoryType = .disclosureIndicator
-        switch cellType {
-        case .push:
-            cell.textLabel?.text = NSLocalizedString("tagManager", comment: "标签管理")
-            cell.imageView?.image = #imageLiteral(resourceName: "tag_gray")
-        case .recommand:
-            cell.textLabel?.text = NSLocalizedString("tellFriends", comment: "告诉小伙伴")
-            cell.imageView?.image = #imageLiteral(resourceName: "share_gray")
-        case .tips:
-            cell.textLabel?.text = NSLocalizedString("tips", comment: "使用小提示")
-            cell.imageView?.image = #imageLiteral(resourceName: "tips")
-        case .comment:
-            cell.textLabel?.text = NSLocalizedString("reviewInAppStore", comment: "给我们评分")
-            cell.imageView?.image = #imageLiteral(resourceName: "like_gray")
-        case .feedback:
-            let feedbackCell = UITableViewCell(style: .value1, reuseIdentifier: "feedback")
-            feedbackCell.accessoryType = .disclosureIndicator
-            feedbackCell.textLabel?.text = NSLocalizedString("feedback", comment: "反馈与建议")
-            feedbackCell.imageView?.image = #imageLiteral(resourceName: "feedback")
-            feedbackKit?.getUnreadCount(completionBlock: { (count, _) in
-                // swiftlint:disable empty_count
-                if count == 0 {
-                    feedbackCell.detailTextLabel?.text = ""
-                } else {
-                    feedbackCell.detailTextLabel?.text = String(count)
-                }
-            })
-            return feedbackCell
-        case .export:
-            let exportCell = UITableViewCell(style: .value1, reuseIdentifier: "export")
-            exportCell.accessoryType = .disclosureIndicator
-            exportCell.textLabel?.text = NSLocalizedString("export", comment: "导出数据")
-            exportCell.imageView?.image = #imageLiteral(resourceName: "export")
-            return exportCell
-        case .about:
-            let newCell = UITableViewCell(style: .value1, reuseIdentifier: "about")
-            newCell.textLabel?.text = NSLocalizedString("about", comment: "关于")
-            newCell.imageView?.image = #imageLiteral(resourceName: "about_gray")
-            newCell.detailTextLabel?.text = VersionUtils.getCurrentVersion()
-            newCell.accessoryType = .disclosureIndicator
-            return newCell
-        }
-        return cell
-    }
+//    private func getCell(_ cellType: CellType, _ index: IndexPath) -> UITableViewCell {
+//        switch cellType {
+//        case .push:
+//            cell.textLabel?.text = NSLocalizedString("tagManager", comment: "标签管理")
+//            cell.imageView?.image = #imageLiteral(resourceName: "tag_gray")
+//        case .recommand:
+//            cell.textLabel?.text = NSLocalizedString("tellFriends", comment: "告诉小伙伴")
+//            cell.imageView?.image = #imageLiteral(resourceName: "share_gray")
+//        case .tips:
+//            cell.textLabel?.text = NSLocalizedString("tips", comment: "使用小提示")
+//            cell.imageView?.image = #imageLiteral(resourceName: "tips")
+//        case .comment:
+//            cell.textLabel?.text = NSLocalizedString("reviewInAppStore", comment: "给我们评分")
+//            cell.imageView?.image = #imageLiteral(resourceName: "like_gray")
+//        case .feedback:
+//            let feedbackCell = UITableViewCell(style: .value1, reuseIdentifier: "feedback")
+//            feedbackCell.accessoryType = .disclosureIndicator
+//            feedbackCell.textLabel?.text = NSLocalizedString("feedback", comment: "反馈与建议")
+//            feedbackCell.imageView?.image = #imageLiteral(resourceName: "feedback")
+//            feedbackKit?.getUnreadCount(completionBlock: { (count, _) in
+//                // swiftlint:disable empty_count
+//                if count == 0 {
+//                    feedbackCell.detailTextLabel?.text = ""
+//                } else {
+//                    feedbackCell.detailTextLabel?.text = String(count)
+//                }
+//            })
+//            return feedbackCell
+//        case .export:
+//            let exportCell = UITableViewCell(style: .value1, reuseIdentifier: "export")
+//            exportCell.accessoryType = .disclosureIndicator
+//            exportCell.textLabel?.text = NSLocalizedString("export", comment: "导出数据")
+//            exportCell.imageView?.image = #imageLiteral(resourceName: "export")
+//            return exportCell
+//        case .about:
+//            let newCell = UITableViewCell(style: .value1, reuseIdentifier: "about")
+//            newCell.textLabel?.text = NSLocalizedString("about", comment: "关于")
+//            newCell.imageView?.image = #imageLiteral(resourceName: "about_gray")
+//            newCell.detailTextLabel?.text = VersionUtils.getCurrentVersion()
+//            newCell.accessoryType = .disclosureIndicator
+//            return newCell
+//        }
+//        return cell
+//    }
 }
 
 extension SettingsViewController: MFMailComposeViewControllerDelegate {
