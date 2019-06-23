@@ -70,7 +70,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         cell.textLabel?.text = item.title
         cell.imageView?.image = UIImage(named: item.icon)
         cell.detailTextLabel?.text = item.detailText
-        //TODO: get feedback
         return cell
     }
     
@@ -172,51 +171,6 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             self.present(controller, animated: true, completion: nil)
         }
     }
-    
-//    private func getCell(_ cellType: CellType, _ index: IndexPath) -> UITableViewCell {
-//        switch cellType {
-//        case .push:
-//            cell.textLabel?.text = NSLocalizedString("tagManager", comment: "标签管理")
-//            cell.imageView?.image = #imageLiteral(resourceName: "tag_gray")
-//        case .recommand:
-//            cell.textLabel?.text = NSLocalizedString("tellFriends", comment: "告诉小伙伴")
-//            cell.imageView?.image = #imageLiteral(resourceName: "share_gray")
-//        case .tips:
-//            cell.textLabel?.text = NSLocalizedString("tips", comment: "使用小提示")
-//            cell.imageView?.image = #imageLiteral(resourceName: "tips")
-//        case .comment:
-//            cell.textLabel?.text = NSLocalizedString("reviewInAppStore", comment: "给我们评分")
-//            cell.imageView?.image = #imageLiteral(resourceName: "like_gray")
-//        case .feedback:
-//            let feedbackCell = UITableViewCell(style: .value1, reuseIdentifier: "feedback")
-//            feedbackCell.accessoryType = .disclosureIndicator
-//            feedbackCell.textLabel?.text = NSLocalizedString("feedback", comment: "反馈与建议")
-//            feedbackCell.imageView?.image = #imageLiteral(resourceName: "feedback")
-//            feedbackKit?.getUnreadCount(completionBlock: { (count, _) in
-//                // swiftlint:disable empty_count
-//                if count == 0 {
-//                    feedbackCell.detailTextLabel?.text = ""
-//                } else {
-//                    feedbackCell.detailTextLabel?.text = String(count)
-//                }
-//            })
-//            return feedbackCell
-//        case .export:
-//            let exportCell = UITableViewCell(style: .value1, reuseIdentifier: "export")
-//            exportCell.accessoryType = .disclosureIndicator
-//            exportCell.textLabel?.text = NSLocalizedString("export", comment: "导出数据")
-//            exportCell.imageView?.image = #imageLiteral(resourceName: "export")
-//            return exportCell
-//        case .about:
-//            let newCell = UITableViewCell(style: .value1, reuseIdentifier: "about")
-//            newCell.textLabel?.text = NSLocalizedString("about", comment: "关于")
-//            newCell.imageView?.image = #imageLiteral(resourceName: "about_gray")
-//            newCell.detailTextLabel?.text = VersionUtils.getCurrentVersion()
-//            newCell.accessoryType = .disclosureIndicator
-//            return newCell
-//        }
-//        return cell
-//    }
 }
 
 extension SettingsViewController: MFMailComposeViewControllerDelegate {
@@ -239,16 +193,6 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
         }
         controller.dismiss(animated: true, completion: nil)
     }
-}
-
-private enum CellType {
-    case push
-    case recommand
-    case comment
-    case about
-    case tips
-    case feedback
-    case export
 }
 
 // Helper function inserted by Swift 4.2 migrator.

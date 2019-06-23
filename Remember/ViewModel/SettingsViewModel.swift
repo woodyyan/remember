@@ -12,6 +12,7 @@ class SettingsViewModel: BaseViewModel {
     private var thingStorage: ThingStorage!
     private var thingTagStorage: ThingTagStorage!
     private var tagStorage: TagStorage!
+    private let feedbackKit = BCFeedbackKit(appKey: GlobleConfigs.aliyunAppKey, appSecret: GlobleConfigs.aliyunAppSecret)
     
     var settings: Settings!
     
@@ -40,8 +41,13 @@ class SettingsViewModel: BaseViewModel {
         let rateItem = SettingItem(title: NSLocalizedString("reviewInAppStore", comment: "给我们评分"), icon: "like_gray")
         othersSection.items.append(rateItem)
         
-        let feedbackItem = SettingItem(title: NSLocalizedString("feedback", comment: "反馈与建议"), icon: "feedback")
-        // TODO: get feedback
+        var feedbackItem = SettingItem(title: NSLocalizedString("feedback", comment: "反馈与建议"), icon: "feedback")
+        feedbackKit?.getUnreadCount(completionBlock: { (count, _) in
+            // swiftlint:disable empty_count
+            if count > 0 {
+                feedbackItem.detailText = String(count)
+            }
+        })
         othersSection.items.append(feedbackItem)
         
         let exportItem = SettingItem(title: NSLocalizedString("export", comment: "导出数据"), icon: "export")
