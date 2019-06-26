@@ -175,8 +175,8 @@ extension EditThingViewController: MoreMenuViewDelegate {
             self.share()
         case .copy:
             self.copyThing()
-        case .password:
-            self.addOrRemovePassword()
+//        case .password:
+//            self.addOrRemovePassword()
         case .delete:
             self.delete()
         }

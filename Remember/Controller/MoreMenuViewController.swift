@@ -42,13 +42,14 @@ class MoreMenuViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let action = MoreMenuAction(rawValue: indexPath.row)
-        delegate?.moreMenuView(view: self, selectedAction: action!)
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            let action = MoreMenuAction(rawValue: indexPath.row)
+            self.delegate?.moreMenuView(view: self, selectedAction: action!)
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -69,10 +70,10 @@ class MoreMenuViewController: UITableViewController {
         case 1:
             textLabel.text = NSLocalizedString("copy", comment: "复制")
             imageView.image = #imageLiteral(resourceName: "copy")
+//        case 2:
+//            textLabel.text = NSLocalizedString("password", comment: "密码")
+//            imageView.image = #imageLiteral(resourceName: "password")
         case 2:
-            textLabel.text = NSLocalizedString("password", comment: "密码")
-            imageView.image = #imageLiteral(resourceName: "password")
-        case 3:
             textLabel.text = NSLocalizedString("delete", comment: "删除")
             imageView.image = #imageLiteral(resourceName: "delete")
         default: break
@@ -97,8 +98,8 @@ class MoreMenuViewController: UITableViewController {
 enum MoreMenuAction: Int {
     case share = 0
     case copy = 1
-    case password = 2
-    case delete = 3
+//    case password = 2
+    case delete = 2
 }
 
 protocol MoreMenuViewDelegate: class {
