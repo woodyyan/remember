@@ -6,7 +6,7 @@
   Copyright © 2018 Songbai Yan. All rights reserved.
 */
 "CFBundleDisplayName" = "丁丁記事";
-"NSMicrophoneUsageDescription" = "語音輸入想獲取妳的麥克風權限";
-"NSSpeechRecognitionUsageDescription" = "語音輸入想獲取妳的語音識別權限";
+"NSMicrophoneUsageDescription" = "如果不允許，妳將無法使用語音添加小事。";
+"NSSpeechRecognitionUsageDescription" = "如果不允許，妳將無法使用語音添加小事。";
 "NSPhotoLibraryUsageDescription" = "訪問相冊";
 "NSCameraUsageDescription" = "訪問相機";

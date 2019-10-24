@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.7.0</string>
 	<key>CFBundleVersion</key>
-	<string>9</string>
+	<string>10</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
@@ -27,11 +27,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string>访问相机</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>语音输入想获取你的麦克风权限</string>
+	<string>如果不允许，你将无法在语音添加小事。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>访问相册</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>语音输入想获取你的语音识别权限</string>
+	<string>如果不允许，你将无法在语音添加小事。</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

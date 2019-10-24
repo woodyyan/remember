@@ -6,7 +6,7 @@
  Copyright © 2018 Songbai Yan. All rights reserved.
  */
 "CFBundleDisplayName" = "Remember";
-"NSMicrophoneUsageDescription" = "Voice input wants to get your microphone permission";
-"NSSpeechRecognitionUsageDescription" = "Voice input wants to get your speech recognition permission";
+"NSMicrophoneUsageDescription" = "If you don't allow it, you won't be able to add small things with your voice.";
+"NSSpeechRecognitionUsageDescription" = "If you don't allow it, you won't be able to add small things with your voice.";
 "NSPhotoLibraryUsageDescription" = "Access album";
 "NSCameraUsageDescription" = "Access camera";
