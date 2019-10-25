@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import LocalAuthentication
 
 class HomeViewModel: BaseViewModel {
     private var tagStorage: TagStorage!
@@ -98,5 +99,64 @@ class HomeViewModel: BaseViewModel {
         }
         
         self.thingStorage.save(sorted: self.things)
+    }
+    
+    func touchID () {
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "请用指纹解锁", reply: {success, error in
+                if success {
+                    // 成功之后的逻辑， 通常使用多线程来实现跳转逻辑。
+                    print("Face ID successful!")
+                } else {
+                    if let error = error as NSError? {
+                        // 获取错误信息
+                        let message = self.errorMessageForLAErrorCode(errorCode: error.code)
+                        print(message)
+                    }
+                }
+                
+            })
+        }
+    }
+    
+    private func errorMessageForLAErrorCode(errorCode: Int) -> String {
+        var message = ""
+        
+        switch errorCode {
+        case LAError.appCancel.rawValue:
+            message = "Authentication was cancelled by application"
+            
+        case LAError.authenticationFailed.rawValue:
+            message = "The user failed to provide valid credentials"
+            
+        case LAError.invalidContext.rawValue:
+            message = "The context is invalid"
+            
+        case LAError.passcodeNotSet.rawValue:
+            message = "Passcode is not set on the device"
+            
+        case LAError.systemCancel.rawValue:
+            message = "Authentication was cancelled by the system"
+            
+        case LAError.touchIDLockout.rawValue:
+            message = "Too many failed attempts."
+            
+        case LAError.touchIDNotAvailable.rawValue:
+            message = "TouchID is not available on the device"
+//            showPassWordInput()
+            
+        case LAError.userCancel.rawValue:
+            message = "The user did cancel"
+            
+        case LAError.userFallback.rawValue:
+            message = "The user chose to use the fallback"
+            
+        default:
+            message = "Did not find error code on LAError object"
+        }
+        return message
     }
 }

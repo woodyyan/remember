@@ -1,3 +1,4 @@
 language: swift
-xcode_project: Remember
+xcode_project: Remember.xcodeproj
 xcode_scheme: Remember
+xcode_destination: platform=iOS Simulator,OS=10.1,name=iPad Pro (9.7-inch)

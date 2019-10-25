@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22045DB02361F18100E8DE8A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22045DAF2361F18100E8DE8A /* LocalAuthentication.framework */; };
 		22D4EB6922AFC2E0005763EC /* CsvExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB6822AFC2E0005763EC /* CsvExporter.swift */; };
 		22D4EB6A22AFC2E0005763EC /* CsvExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB6822AFC2E0005763EC /* CsvExporter.swift */; };
 		22D4EB6B22AFC2E0005763EC /* CsvExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB6822AFC2E0005763EC /* CsvExporter.swift */; };
@@ -256,6 +257,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		22045DAF2361F18100E8DE8A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		22D4EB6822AFC2E0005763EC /* CsvExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvExporter.swift; sourceTree = "<group>"; };
 		22D4EB6C22B12EBB005763EC /* CsvExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvExporterTests.swift; sourceTree = "<group>"; };
 		22D4EB7022B131F3005763EC /* CSV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSV.framework; path = Carthage/Build/iOS/CSV.framework; sourceTree = SOURCE_ROOT; };
@@ -436,6 +438,7 @@
 				82347E511F03A80F002D8024 /* SystemConfiguration.framework in Frameworks */,
 				82E7AC6B20553783006FC9E5 /* BCConnectorBundle.framework in Frameworks */,
 				82E7AC6E20553783006FC9E5 /* BCHybridWebViewFMWK.framework in Frameworks */,
+				22045DB02361F18100E8DE8A /* LocalAuthentication.framework in Frameworks */,
 				82347E4F1F03A809002D8024 /* CoreTelephony.framework in Frameworks */,
 				82E7AC6820553783006FC9E5 /* UTMini.framework in Frameworks */,
 				82E58037200E45AE003E2435 /* NotificationBanner.framework in Frameworks */,
@@ -542,6 +545,7 @@
 		823A34261E2758410093FBF4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22045DAF2361F18100E8DE8A /* LocalAuthentication.framework */,
 				22D4EB7022B131F3005763EC /* CSV.framework */,
 				82290EBA209D4B5300F00DBD /* SCLAlertView.framework */,
 				82E7AC70205537D3006FC9E5 /* CoreMotion.framework */,
@@ -1361,6 +1365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_ENTITLEMENTS = Remember/Remember.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XD7JAMNS86;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1369,6 +1374,7 @@
 				);
 				INFOPLIST_FILE = Remember/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.8.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lstdc++",
@@ -1389,6 +1395,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_ENTITLEMENTS = Remember/Remember.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XD7JAMNS86;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1397,6 +1404,7 @@
 				);
 				INFOPLIST_FILE = Remember/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 2.8.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lstdc++",

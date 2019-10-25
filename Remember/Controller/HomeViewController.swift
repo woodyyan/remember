@@ -8,6 +8,7 @@
 
 import UIKit
 import SCLAlertView
+import LocalAuthentication
 
 // swiftlint:disable file_length
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -36,6 +37,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        viewModel.touchID()
         
         initUI()
         

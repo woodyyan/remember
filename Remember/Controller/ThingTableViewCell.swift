@@ -102,45 +102,47 @@ class ThingTableViewCell: UITableViewCell {
     
     private func customizeActionButtons() {
         for subView in self.subviews {
-            if subView.isKind(of: NSClassFromString("UITableViewCellDeleteConfirmationView")!) {
-                if shouldCustomizeActionButtons {
-                    subView.backgroundColor = UIColor.clear
-                    if subView.subviews.count == 3 {
-                        let deleteButton = subView.subviews[0]
-                        let deleteLabel = deleteButton.subviews[0]
-                        if deleteLabel.isKind(of: NSClassFromString("UIButtonLabel")!) {
-                            deleteLabel.removeFromSuperview()
+            if NSClassFromString("UITableViewCellDeleteConfirmationView") != nil {
+                if subView.isKind(of: NSClassFromString("UITableViewCellDeleteConfirmationView")!) {
+                    if shouldCustomizeActionButtons {
+                        subView.backgroundColor = UIColor.clear
+                        if subView.subviews.count == 3 {
+                            let deleteButton = subView.subviews[0]
+                            let deleteLabel = deleteButton.subviews[0]
+                            if deleteLabel.isKind(of: NSClassFromString("UIButtonLabel")!) {
+                                deleteLabel.removeFromSuperview()
+                            }
+                            deleteButton.backgroundColor = UIColor.clear
+                            let deleteImage = UIImageView(image: UIImage(named: "delete"))
+                            deleteButton.addSubview(deleteImage)
+                            deleteImage.snp.makeConstraints({ (maker) in
+                                maker.center.equalTo(deleteButton)
+                            })
+                            
+                            let shareButton = subView.subviews[1]
+                            let shareLabel = shareButton.subviews[0]
+                            if shareLabel.isKind(of: NSClassFromString("UIButtonLabel")!) {
+                                shareLabel.removeFromSuperview()
+                            }
+                            shareButton.backgroundColor = UIColor.clear
+                            let shareImage = UIImageView(image: UIImage(named: "share"))
+                            shareButton.addSubview(shareImage)
+                            shareImage.snp.makeConstraints({ (maker) in
+                                maker.center.equalTo(shareButton)
+                            })
+                            
+                            let tagButton = subView.subviews[2]
+                            let tagLabel = tagButton.subviews[0]
+                            if tagLabel.isKind(of: NSClassFromString("UIButtonLabel")!) {
+                                tagLabel.removeFromSuperview()
+                            }
+                            tagButton.backgroundColor = UIColor.clear
+                            let tagImage = UIImageView(image: UIImage(named: "tag"))
+                            tagButton.addSubview(tagImage)
+                            tagImage.snp.makeConstraints({ (maker) in
+                                maker.center.equalTo(tagButton)
+                            })
                         }
-                        deleteButton.backgroundColor = UIColor.clear
-                        let deleteImage = UIImageView(image: UIImage(named: "delete"))
-                        deleteButton.addSubview(deleteImage)
-                        deleteImage.snp.makeConstraints({ (maker) in
-                            maker.center.equalTo(deleteButton)
-                        })
-                        
-                        let shareButton = subView.subviews[1]
-                        let shareLabel = shareButton.subviews[0]
-                        if shareLabel.isKind(of: NSClassFromString("UIButtonLabel")!) {
-                            shareLabel.removeFromSuperview()
-                        }
-                        shareButton.backgroundColor = UIColor.clear
-                        let shareImage = UIImageView(image: UIImage(named: "share"))
-                        shareButton.addSubview(shareImage)
-                        shareImage.snp.makeConstraints({ (maker) in
-                            maker.center.equalTo(shareButton)
-                        })
-                        
-                        let tagButton = subView.subviews[2]
-                        let tagLabel = tagButton.subviews[0]
-                        if tagLabel.isKind(of: NSClassFromString("UIButtonLabel")!) {
-                            tagLabel.removeFromSuperview()
-                        }
-                        tagButton.backgroundColor = UIColor.clear
-                        let tagImage = UIImageView(image: UIImage(named: "tag"))
-                        tagButton.addSubview(tagImage)
-                        tagImage.snp.makeConstraints({ (maker) in
-                            maker.center.equalTo(tagButton)
-                        })
                     }
                 }
             }
