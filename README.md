@@ -43,7 +43,7 @@ App Store下载地址：[丁丁记事 on the App Store](https://itunes.apple.com
 ## License
 
 ```
-Copyright 2017 略懂工作室.
+Copyright ©2019 略懂工作室.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

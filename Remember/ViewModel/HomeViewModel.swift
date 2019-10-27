@@ -101,28 +101,7 @@ class HomeViewModel: BaseViewModel {
         self.thingStorage.save(sorted: self.things)
     }
     
-    func touchID () {
-        let context = LAContext()
-        var error: NSError?
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "请用指纹解锁", reply: {success, error in
-                if success {
-                    // 成功之后的逻辑， 通常使用多线程来实现跳转逻辑。
-                    print("Face ID successful!")
-                } else {
-                    if let error = error as NSError? {
-                        // 获取错误信息
-                        let message = self.errorMessageForLAErrorCode(errorCode: error.code)
-                        print(message)
-                    }
-                }
-                
-            })
-        }
-    }
-    
-    private func errorMessageForLAErrorCode(errorCode: Int) -> String {
+    func errorMessageForLAErrorCode(errorCode: Int) -> String {
         var message = ""
         
         switch errorCode {
@@ -146,7 +125,7 @@ class HomeViewModel: BaseViewModel {
             
         case LAError.touchIDNotAvailable.rawValue:
             message = "TouchID is not available on the device"
-//            showPassWordInput()
+            //            showPassWordInput()
             
         case LAError.userCancel.rawValue:
             message = "The user did cancel"

@@ -8,7 +8,6 @@
 
 import UIKit
 import SCLAlertView
-import LocalAuthentication
 
 // swiftlint:disable file_length
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -22,7 +21,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var inputThingView: InputThingView!
     
     private static let context = CoreStorage.shared.persistentContainer.viewContext
-    private let viewModel: HomeViewModel = ViewModelFactory.shared.create()
+    
+    let viewModel: HomeViewModel = ViewModelFactory.shared.create()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -36,13 +36,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        viewModel.touchID()
         
         initUI()
         
         initNotification()
+        
+        touchId()
     }
     
     private func initNotification() {
