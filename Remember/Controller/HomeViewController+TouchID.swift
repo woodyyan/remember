@@ -61,7 +61,7 @@ extension HomeViewController {
         }
         
         let faceIdButton = UIButton(type: UIButton.ButtonType.system)
-        faceIdButton.setTitle("点击进行指纹解锁", for: UIControl.State.normal)
+        faceIdButton.setTitle(NSLocalizedString("clickToTouchId", comment: "点击进行指纹解锁"), for: UIControl.State.normal)
         faceIdButton.addTarget(self, action: #selector(self.touchId(sender:)), for: UIControl.Event.touchUpInside)
         touchIDView.addSubview(faceIdButton)
         faceIdButton.snp.makeConstraints { (make) in

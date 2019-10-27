@@ -69,3 +69,4 @@
 "searchThingAction" = "搜索小事";
 "password" = "密码";
 "export" = "导出到CSV";
+"clickToTouchId" = "点击进行指纹解锁"
