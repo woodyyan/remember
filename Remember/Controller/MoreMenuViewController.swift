@@ -38,7 +38,7 @@ class MoreMenuViewController: UITableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.isScrollEnabled = false
         self.tableView.separatorStyle = .none
-        self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 0.01))
+        self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 13))
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
