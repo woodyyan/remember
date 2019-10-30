@@ -13,12 +13,18 @@ class MoreMenuViewModel: BaseViewModel {
     var moreMenuSettings: MoreMenuSettings!
     
     override init() {
-        moreMenuSettings = MoreMenuSettings(numberOfRowsInSection: 3, heightForRow: 30)
+        moreMenuSettings = MoreMenuSettings(numberOfRowsInSection: 4, heightForRow: 30)
         
         moreMenuSettings.menuItems.append(MenuItem(text: NSLocalizedString("share", comment: "分享"), imageName: "share"))
         moreMenuSettings.menuItems.append(MenuItem(text: NSLocalizedString("copy", comment: "复制"), imageName: "copy"))
+        moreMenuSettings.menuItems.append(MenuItem(text: NSLocalizedString("password", comment: "密码"), imageName: "password"))
         moreMenuSettings.menuItems.append(MenuItem(text: NSLocalizedString("delete", comment: "删除"), imageName: "delete"))
-        ////            textLabel.text = NSLocalizedString("password", comment: "密码")
-        ////            imageView.image = #imageLiteral(resourceName: "password")
     }
+}
+
+enum MoreMenuAction: Int {
+    case share = 0
+    case copy = 1
+    case password = 2
+    case delete = 3
 }

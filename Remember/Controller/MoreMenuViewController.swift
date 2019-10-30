@@ -85,13 +85,6 @@ class MoreMenuViewController: UITableViewController {
     }
 }
 
-enum MoreMenuAction: Int {
-    case share = 0
-    case copy = 1
-//    case password = 2
-    case delete = 2
-}
-
 protocol MoreMenuViewDelegate: class {
     func moreMenuView(view: MoreMenuViewController, selectedAction: MoreMenuAction)
 }
