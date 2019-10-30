@@ -11,6 +11,8 @@ import UIKit
 
 class MoreMenuViewController: UITableViewController {
     
+    private let viewModel: MoreMenuViewModel = ViewModelFactory.shared.create()
+    
     weak var delegate: MoreMenuViewDelegate?
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,11 +51,11 @@ class MoreMenuViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return viewModel.moreMenuSettings.numberOfRowsInSection
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30
+        return viewModel.moreMenuSettings.heightForRow
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,22 +64,10 @@ class MoreMenuViewController: UITableViewController {
         textLabel.textColor = UIColor.remember
         textLabel.font = UIFont.systemFont(ofSize: 14)
         textLabel.textAlignment = .left
+        let menuItem = viewModel.moreMenuSettings.getMenuItem(index: indexPath.row)
+        textLabel.text = menuItem.text
         let imageView = UIImageView()
-        switch indexPath.row {
-        case 0:
-            textLabel.text = NSLocalizedString("share", comment: "分享")
-            imageView.image = #imageLiteral(resourceName: "share")
-        case 1:
-            textLabel.text = NSLocalizedString("copy", comment: "复制")
-            imageView.image = #imageLiteral(resourceName: "copy")
-//        case 2:
-//            textLabel.text = NSLocalizedString("password", comment: "密码")
-//            imageView.image = #imageLiteral(resourceName: "password")
-        case 2:
-            textLabel.text = NSLocalizedString("delete", comment: "删除")
-            imageView.image = #imageLiteral(resourceName: "delete")
-        default: break
-        }
+        imageView.image = UIImage(named: menuItem.imageName)
         cell.contentView.addSubview(imageView)
         cell.contentView.addSubview(textLabel)
         imageView.snp.makeConstraints { (make) in

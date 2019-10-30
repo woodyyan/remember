@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		22045DB02361F18100E8DE8A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22045DAF2361F18100E8DE8A /* LocalAuthentication.framework */; };
 		22B69E89236587F2007FD8EF /* HomeViewController+TouchID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B69E88236587F2007FD8EF /* HomeViewController+TouchID.swift */; };
+		22B69E8B2369C2D7007FD8EF /* MoreMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B69E8A2369C2D7007FD8EF /* MoreMenuViewModel.swift */; };
+		22B69E8D2369C651007FD8EF /* MoreMenuSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B69E8C2369C651007FD8EF /* MoreMenuSettings.swift */; };
+		22B69E8F2369C97F007FD8EF /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B69E8E2369C97F007FD8EF /* MenuItem.swift */; };
 		22D4EB6922AFC2E0005763EC /* CsvExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB6822AFC2E0005763EC /* CsvExporter.swift */; };
 		22D4EB6A22AFC2E0005763EC /* CsvExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB6822AFC2E0005763EC /* CsvExporter.swift */; };
 		22D4EB6B22AFC2E0005763EC /* CsvExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB6822AFC2E0005763EC /* CsvExporter.swift */; };
@@ -260,6 +263,9 @@
 /* Begin PBXFileReference section */
 		22045DAF2361F18100E8DE8A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		22B69E88236587F2007FD8EF /* HomeViewController+TouchID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TouchID.swift"; sourceTree = "<group>"; };
+		22B69E8A2369C2D7007FD8EF /* MoreMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreMenuViewModel.swift; sourceTree = "<group>"; };
+		22B69E8C2369C651007FD8EF /* MoreMenuSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreMenuSettings.swift; sourceTree = "<group>"; };
+		22B69E8E2369C97F007FD8EF /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		22D4EB6822AFC2E0005763EC /* CsvExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvExporter.swift; sourceTree = "<group>"; };
 		22D4EB6C22B12EBB005763EC /* CsvExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvExporterTests.swift; sourceTree = "<group>"; };
 		22D4EB7022B131F3005763EC /* CSV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSV.framework; path = Carthage/Build/iOS/CSV.framework; sourceTree = SOURCE_ROOT; };
@@ -778,6 +784,7 @@
 				8280CE06208AD7F000C7A1F5 /* TagManagementViewControllerModel.swift */,
 				8280CE08208AD9AE00C7A1F5 /* SearchViewModel.swift */,
 				8280CE0A208AE0DA00C7A1F5 /* ThingTableCellViewModel.swift */,
+				22B69E8A2369C2D7007FD8EF /* MoreMenuViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -807,6 +814,8 @@
 				820B83DF1F0E8D16007E3C15 /* ThingTagModel.swift */,
 				820B83E31F0E8D3D007E3C15 /* TagModel.swift */,
 				22D4EB7522BA72B2005763EC /* Settings.swift */,
+				22B69E8C2369C651007FD8EF /* MoreMenuSettings.swift */,
+				22B69E8E2369C97F007FD8EF /* MenuItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1036,6 +1045,7 @@
 				823A34CD1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				823876BE1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */,
 				8280CDCE20862B0500C7A1F5 /* NotificationCenterExtension.swift in Sources */,
+				22B69E8D2369C651007FD8EF /* MoreMenuSettings.swift in Sources */,
 				82E7AC7320553BB1006FC9E5 /* GlobleConfigs.swift in Sources */,
 				22B69E89236587F2007FD8EF /* HomeViewController+TouchID.swift in Sources */,
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
@@ -1071,11 +1081,13 @@
 				824267FB2072823B009FD115 /* HomeViewModel.swift in Sources */,
 				820B83BD1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				825DEB191DD9DC070065090F /* AppDelegate.swift in Sources */,
+				22B69E8F2369C97F007FD8EF /* MenuItem.swift in Sources */,
 				823A341F1E252EBA0093FBF4 /* AboutViewController.swift in Sources */,
 				22D4EB6922AFC2E0005763EC /* CsvExporter.swift in Sources */,
 				82DB5C211E213B560037FAD5 /* SearchResultTableViewController.swift in Sources */,
 				8280CDD020862D8500C7A1F5 /* SearchButton.swift in Sources */,
 				820B83DC1F0E8AA6007E3C15 /* ThingModel.swift in Sources */,
+				22B69E8B2369C2D7007FD8EF /* MoreMenuViewModel.swift in Sources */,
 				820B84141F0F9AFE007E3C15 /* ThingStorage.swift in Sources */,
 				820B83E01F0E8D16007E3C15 /* ThingTagModel.swift in Sources */,
 				82303BAF1F245454004C06F1 /* SearchViewController.swift in Sources */,
