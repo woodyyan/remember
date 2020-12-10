@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22045DB02361F18100E8DE8A /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22045DAF2361F18100E8DE8A /* LocalAuthentication.framework */; };
+		221448C92373DD280020DD83 /* TitledEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221448C82373DD280020DD83 /* TitledEditView.swift */; };
 		22B69E89236587F2007FD8EF /* HomeViewController+TouchID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B69E88236587F2007FD8EF /* HomeViewController+TouchID.swift */; };
 		22B69E8B2369C2D7007FD8EF /* MoreMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B69E8A2369C2D7007FD8EF /* MoreMenuViewModel.swift */; };
 		22B69E8D2369C651007FD8EF /* MoreMenuSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B69E8C2369C651007FD8EF /* MoreMenuSettings.swift */; };
@@ -262,6 +263,7 @@
 
 /* Begin PBXFileReference section */
 		22045DAF2361F18100E8DE8A /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		221448C82373DD280020DD83 /* TitledEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledEditView.swift; sourceTree = "<group>"; };
 		22B69E88236587F2007FD8EF /* HomeViewController+TouchID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TouchID.swift"; sourceTree = "<group>"; };
 		22B69E8A2369C2D7007FD8EF /* MoreMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreMenuViewModel.swift; sourceTree = "<group>"; };
 		22B69E8C2369C651007FD8EF /* MoreMenuSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreMenuSettings.swift; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 				820B842A1F1119A7007E3C15 /* TagManagementView.swift */,
 				8280CDCF20862D8500C7A1F5 /* SearchButton.swift */,
 				8280CDD120870A1A00C7A1F5 /* PasteboardView.swift */,
+				221448C82373DD280020DD83 /* TitledEditView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1073,6 +1076,7 @@
 				8280CDD4208736EA00C7A1F5 /* UIApplicationExtensions.swift in Sources */,
 				825DEB511DDA0B640065090F /* InputThingView.swift in Sources */,
 				824267FD2073C33B009FD115 /* PasteboardUtils.swift in Sources */,
+				221448C92373DD280020DD83 /* TitledEditView.swift in Sources */,
 				8280CE05208AD6C300C7A1F5 /* TagManagementViewModel.swift in Sources */,
 				8280CDFB208ACE0A00C7A1F5 /* EditThingViewModel.swift in Sources */,
 				820B83E41F0E8D3D007E3C15 /* TagModel.swift in Sources */,

@@ -72,24 +72,24 @@ class EditThingViewController: UIViewController {
             maker.bottom.equalTo(self.view)
         }
         
-        let createdDateLabel = UILabel()
-        createdDateLabel.text = getCreatedDateText()
-        createdDateLabel.textColor = UIColor.gray
-        createdDateLabel.font = UIFont.systemFont(ofSize: 10)
-        scrollView.addSubview(createdDateLabel)
-        createdDateLabel.snp.makeConstraints { (maker) in
-            maker.top.equalTo(scrollView).offset(20)
-            maker.left.equalTo(scrollView).offset(15)
+        let contentView = TitledEditView(frame: .zero)
+        contentView.title = getCreatedDateText()
+        contentView.content = thing?.content
+        contentView.delegate = self
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints {
+            $0.top.equalTo(scrollView).offset(20)
+            $0.left.equalTo(scrollView).offset(10)
+            $0.height.greaterThanOrEqualTo(120)
+            $0.width.equalTo(scrollView.frame.width - 20)
         }
-        
-        initEditView(createdDateLabel: createdDateLabel)
         
         tagManagementView = TagManagementView(frame: CGRect(x: 0, y: 200, width: 375, height: 300))
         tagManagementView.delegate = self
         tagManagementView.thing = self.thing
         scrollView.addSubview(tagManagementView)
         tagManagementView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(editView.snp.bottom).offset(10)
+            maker.top.equalTo(contentView.snp.bottom).offset(10)
             maker.width.equalTo(scrollView)
             maker.left.equalTo(scrollView)
             maker.right.equalTo(scrollView)
@@ -100,24 +100,6 @@ class EditThingViewController: UIViewController {
         
         if isEditTag {
             tagManagementView.startEdit()
-        }
-    }
-    
-    private func initEditView(createdDateLabel: UILabel) {
-        editView = UITextView()
-        editView.font = UIFont.systemFont(ofSize: 18)
-        editView.layer.cornerRadius = 8
-        editView.backgroundColor = UIColor.white
-        editView.textColor = UIColor.text
-        editView.text = thing?.content
-        editView.returnKeyType = .done
-        editView.delegate = self
-        scrollView.addSubview(editView)
-        editView.snp.makeConstraints { (maker) in
-            maker.top.equalTo(createdDateLabel.snp.bottom).offset(10)
-            maker.left.equalTo(scrollView).offset(10)
-            maker.height.greaterThanOrEqualTo(100)
-            maker.width.equalTo(scrollView.frame.width - 20)
         }
     }
     
@@ -153,8 +135,8 @@ extension EditThingViewController: TagManagementDelegate {
     }
 }
 
-extension EditThingViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+extension EditThingViewController: TitledEditViewDelegate {
+    func titledEditView(_ textView: TitledEditView, shouldChangeTextIn range: NSRange, replacementText text: String) {
         if text == "\n"{
             textView.resignFirstResponder()
             if thing != nil {
@@ -162,9 +144,7 @@ extension EditThingViewController: UITextViewDelegate {
                 self.viewModel.edit(thing!)
                 delegate?.editThing(isDeleted: false, thing: thing!)
             }
-            return false
         }
-        return true
     }
 }
 
