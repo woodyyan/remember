@@ -14,7 +14,7 @@ class PasteboardUtils {
         let pasteboard = UIPasteboard.general
         pasteContent = pasteboard.string
         
-        //如果存在表示已经提示过，就不再提示
+        // 如果存在表示已经提示过，就不再提示
         if checkPasteContentHasShowed(pasteContent) {
             pasteContent = nil
         }

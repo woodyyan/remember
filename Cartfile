@@ -1,4 +1,0 @@
-github "Daltron/NotificationBanner" "2.0.1"
-github "vikmeup/SCLAlertView-Swift" "master"
-github "SnapKit/SnapKit" "master"
-github "yaslab/CSV.swift" ~> 2.4.0

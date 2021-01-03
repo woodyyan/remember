@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import MessageUI
-import NotificationBanner
 
 class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate {
     private let viewModel: AboutViewModel = ViewModelFactory.shared.create()
@@ -90,7 +89,7 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
         contactButton.setTitle(NSLocalizedString("email", comment: "邮箱"), for: UIControl.State())
         contactButton.addTarget(self, action: #selector(AboutViewController.contactClick(_:)), for: .touchUpInside)
         
-        //微博按钮
+        // 微博按钮
         let weiboButton = UIButton(type: UIButton.ButtonType.system)
         weiboButton.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
         weiboButton.setTitle(NSLocalizedString("weibo", comment: "微博"), for: UIControl.State())
@@ -117,10 +116,12 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
             mailComposerVC.setToRecipients(["easystudio@outlook.com"])
             self.present(mailComposerVC, animated: true, completion: nil)
         } else {
-            let title = NSLocalizedString("cannotSendEmail", comment: "")
-            let subTitle = NSLocalizedString("checkEmailConfig", comment: "")
-            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .warning)
-            banner.show()
+            let alertController = UIAlertController(title: NSLocalizedString("cannotSendEmail", comment: ""),
+                                                    message: NSLocalizedString("checkEmailConfig", comment: ""), preferredStyle: .alert)
+            self.present(alertController, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+            }
         }
     }
     
@@ -133,17 +134,21 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     internal func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result {
         case MFMailComposeResult.sent:
-            let title = NSLocalizedString("sendSuccess", comment: "")
-            let subTitle = NSLocalizedString("willCheckLater", comment: "")
-            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .success)
-            banner.show()
+            let alertController = UIAlertController(title: NSLocalizedString("sendSuccess", comment: ""),
+                                                    message: NSLocalizedString("willCheckLater", comment: ""), preferredStyle: .alert)
+            self.present(alertController, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+            }
         case MFMailComposeResult.saved: break
         case MFMailComposeResult.cancelled: break
         case MFMailComposeResult.failed:
-            let title = NSLocalizedString("sendFailed", comment: "")
-            let subTitle = NSLocalizedString("checkEmailConfig", comment: "")
-            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .warning)
-            banner.show()
+            let alertController = UIAlertController(title: NSLocalizedString("sendFailed", comment: ""),
+                                                    message: NSLocalizedString("checkEmailConfig", comment: ""), preferredStyle: .alert)
+            self.present(alertController, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+            }
         @unknown default:
             print(result)
         }
@@ -153,19 +158,19 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     private func getTableViewCell(_ index: Int) -> UITableViewCell {
         switch index {
         case 0:
-            //图标
+            // 图标
             return getAppIconCell()
         case 1:
-            //名字
+            // 名字
             return getAppNameCell()
         case 2:
-            //slogan：记住你容易忘记的小事
+            // slogan：记住你容易忘记的小事
             return getSloganCell()
         case 3:
-            //版本号
+            // 版本号
             return getVersionCell()
         case 4:
-            //介绍
+            // 介绍
             return getDescriptionCell()
         default:
             return UITableViewCell()

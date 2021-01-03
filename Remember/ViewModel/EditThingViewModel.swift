@@ -27,9 +27,9 @@ class EditThingViewModel: BaseViewModel {
         let preferredLang = Bundle.main.preferredLocalizations.first! as NSString
         switch String(describing: preferredLang) {
         case "en-US", "en-CN", "en":
-            return Language.EN//英文
+            return Language.EN // 英文
         case "zh-Hans-US", "zh-Hans-CN", "zh-Hant-CN", "zh-TW", "zh-HK", "zh-Hans", "zh":
-            return Language.ZH//中文
+            return Language.ZH // 中文
         default:
             return Language.EN
         }

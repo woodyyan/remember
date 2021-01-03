@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SCLAlertView
 
 // swiftlint:disable file_length
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -90,7 +89,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let rect = CGRect(x: 0, y: self.height - inputViewHeight, width: self.width, height: inputViewHeight)
         inputThingView = InputThingView(frame: rect)
         inputThingView.delegate = self
-        inputThingView.voiceInputAction = {(inputView) -> Void in
+        inputThingView.voiceInputAction = {(_) -> Void in
             self.showVoiceView()
         }
         self.view.addSubview(inputThingView)
@@ -116,12 +115,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func addPasteboardViewIfNeeded() {
-        //如果已经有粘贴板提示了就返回
+        // 如果已经有粘贴板提示了就返回
         if self.tableHeaderView.viewWithTag(self.pasteboardViewTag) != nil {
             return
         }
         if let tempPasteContent = PasteboardUtils.getPasteboardContent() {
-            //add timer
+            // add timer
             addPasteDisappearTimer()
             self.viewModel.pasteContent = tempPasteContent
             self.tableView.beginUpdates()
@@ -166,7 +165,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func removePasteboardView() {
-        //remove pasteboard
+        // remove pasteboard
         self.tableView.beginUpdates()
         self.tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.width, height: 60)
         if let pasteboardView = self.tableHeaderView.viewWithTag(self.pasteboardViewTag) {
@@ -369,23 +368,19 @@ extension HomeViewController {
         shareAction.backgroundColor = UIColor.remember
         
         let deleteTitle = NSLocalizedString("delete", comment: "删除")
-        let deleteAction = UITableViewRowAction(style: UITableViewRowAction.Style.destructive, title: deleteTitle) { (action, index) -> Void in
-            let appearance = SCLAlertView.SCLAppearance(
-                showCloseButton: false
-            )
-            let alertView = SCLAlertView(appearance: appearance)
-            let buttonTitle = NSLocalizedString("confirmDelete", comment: "")
-            let buttonColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
-            alertView.addButton(buttonTitle, backgroundColor: buttonColor, textColor: UIColor.white, showTimeout: nil, action: {
+        let deleteAction = UITableViewRowAction(style: UITableViewRowAction.Style.destructive, title: deleteTitle) { (_, index) -> Void in
+            let alertController = UIAlertController(title: NSLocalizedString("sureToDelete", comment: "确定要删除吗？"),
+                                                    message: NSLocalizedString("cannotRecovery", comment: ""), preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "取消"), style: .cancel, handler: { _ in
+                tableView.setEditing(false, animated: true)
+            })
+            let okAction = UIAlertAction(title: NSLocalizedString("confirmDelete", comment: "确认删除"), style: .destructive, handler: { _ in
                 self.viewModel.deleteThing(index: (indexPath as NSIndexPath).row as Int)
                 tableView.reloadData()
             })
-            let cancelColor = UIColor(red: 254/255, green: 208/255, blue: 52/255, alpha: 1)
-            let cancelTitle = NSLocalizedString("cancel", comment: "取消")
-            alertView.addButton(cancelTitle, backgroundColor: cancelColor, textColor: UIColor.white, showTimeout: nil, action: {
-                tableView.setEditing(false, animated: true)
-            })
-            alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
         }
         return [deleteAction, shareAction, editAction]
     }

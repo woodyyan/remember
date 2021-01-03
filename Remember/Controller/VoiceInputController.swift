@@ -124,7 +124,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     private func initUI() {
-        //一个cell的高度
+        // 一个cell的高度
         let height = (self.view.frame.width)/2
         
         backgroundView.backgroundColor = UIColor(white: 1, alpha: 0.9)
@@ -211,7 +211,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     private func addDismissGesture() {
-        //Gesture Recognizer for tapping outside the menu
+        // Gesture Recognizer for tapping outside the menu
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(VoiceInputController.dismissController))
         tapGesture.numberOfTapsRequired = 1
         tapGesture.delegate = self
@@ -234,7 +234,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         })
     }
     
-    //展示此controller
+    // 展示此controller
     func show() {
         self.view.backgroundColor = UIColor.clear
         UIView.animate(withDuration: 0.8 * 0.4,

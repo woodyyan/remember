@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func initAliyunService() {
         let man = ALBBMANAnalytics.getInstance()
-        //man?.turnOnDebug()
+        // man?.turnOnDebug()
         man?.initWithAppKey(GlobleConfigs.aliyunAppKey, secretKey: GlobleConfigs.aliyunAppSecret)
     }
     
@@ -47,13 +47,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let controller = self.window!.rootViewController?.children.first(where: { (controller) -> Bool in
             return controller is HomeViewController
         }) as? HomeViewController {
-            //延迟执行，因为view可能还没有load
+            // 延迟执行，因为view可能还没有load
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                 if controller.isViewLoaded {
-                    if shortcutItem.type == "search" { //搜索小事
+                    if shortcutItem.type == "search" { // 搜索小事
                         
                         controller.searchClick(UIButton())
-                    } else if shortcutItem.type == "create" { //添加小事
+                    } else if shortcutItem.type == "create" { // 添加小事
                         controller.beginCreateThing()
                     }
                 }

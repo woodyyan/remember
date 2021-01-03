@@ -8,7 +8,6 @@
 
 import UIKit
 import MessageUI
-import NotificationBanner
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let viewModel: SettingsViewModel = ViewModelFactory.shared.create()
@@ -156,10 +155,12 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             mailComposerVC.setToRecipients(["easystudio@outlook.com"])
             self.present(mailComposerVC, animated: true, completion: nil)
         } else {
-            let title = NSLocalizedString("cannotSendEmail", comment: "")
-            let subTitle = NSLocalizedString("checkEmailConfig", comment: "")
-            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .warning)
-            banner.show()
+            let alertController = UIAlertController(title: NSLocalizedString("cannotSendEmail", comment: ""),
+                                                    message: NSLocalizedString("checkEmailConfig", comment: ""), preferredStyle: .alert)
+            self.present(alertController, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+            }
         }
     }
     
@@ -177,17 +178,21 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
     internal func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result {
         case MFMailComposeResult.sent:
-            let title = NSLocalizedString("sendSuccess", comment: "")
-            let subTitle = NSLocalizedString("willCheckLater", comment: "")
-            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .success)
-            banner.show()
+            let alertController = UIAlertController(title: NSLocalizedString("sendSuccess", comment: ""),
+                                                    message: NSLocalizedString("willCheckLater", comment: ""), preferredStyle: .alert)
+            self.present(alertController, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+            }
         case MFMailComposeResult.saved: break
         case MFMailComposeResult.cancelled: break
         case MFMailComposeResult.failed:
-            let title = NSLocalizedString("sendFailed", comment: "")
-            let subTitle = NSLocalizedString("checkEmailConfig", comment: "")
-            let banner = NotificationBanner(title: title, subtitle: subTitle, style: .warning)
-            banner.show()
+            let alertController = UIAlertController(title: NSLocalizedString("sendFailed", comment: ""),
+                                                    message: NSLocalizedString("checkEmailConfig", comment: ""), preferredStyle: .alert)
+            self.present(alertController, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                self.presentedViewController?.dismiss(animated: false, completion: nil)
+            }
         @unknown default:
             print(result)
         }

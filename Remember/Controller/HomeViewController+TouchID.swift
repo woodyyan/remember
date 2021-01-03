@@ -66,7 +66,7 @@ extension HomeViewController {
         touchIDView.addSubview(faceIdButton)
         faceIdButton.snp.makeConstraints { (make) in
             make.centerX.equalTo(fingerprintButton)
-            make.top.equalTo(fingerprintButton.snp_bottom).offset(10)
+            make.top.equalTo(fingerprintButton.snp.bottom).offset(10)
         }
         return touchIDView
     }

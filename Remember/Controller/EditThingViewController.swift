@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SCLAlertView
 
 class EditThingViewController: UIViewController {
     private let viewModel: EditThingViewModel = ViewModelFactory.shared.create()
@@ -15,7 +14,7 @@ class EditThingViewController: UIViewController {
     var isEditTag = false
     var thing: ThingModel?
     weak var delegate: EditThingDelegate?
-    var editView: UITextView!
+    var editView: TitledEditView!
     var scrollView: UIScrollView!
     var tagManagementView: TagManagementView!
     
@@ -119,10 +118,6 @@ class EditThingViewController: UIViewController {
     private func getActivityViewController(content: String) -> UIActivityViewController {
         let activityController = UIActivityViewController(activityItems: [content], applicationActivities: [])
         activityController.excludedActivityTypes = [.openInIBooks, .addToReadingList, .saveToCameraRoll]
-        activityController.completionWithItemsHandler = {
-            (type, flag, array, error) -> Swift.Void in
-            print(type ?? "")
-        }
         return activityController
     }
 }
@@ -140,7 +135,7 @@ extension EditThingViewController: TitledEditViewDelegate {
         if text == "\n"{
             textView.resignFirstResponder()
             if thing != nil {
-                thing?.content = editView.text
+                thing?.content = textView.content ?? ""
                 self.viewModel.edit(thing!)
                 delegate?.editThing(isDeleted: false, thing: thing!)
             }
@@ -180,25 +175,19 @@ extension EditThingViewController: MoreMenuViewDelegate {
     }
     
     private func delete() {
-        self.editView.resignFirstResponder()
-        let appearance = SCLAlertView.SCLAppearance(
-            showCloseButton: false
-        )
-        let alertView = SCLAlertView(appearance: appearance)
-        let backgroundColor = UIColor(red: 251/255, green: 103/255, blue: 83/255, alpha: 1)
-        let title = NSLocalizedString("confirmDelete", comment: "")
-        alertView.addButton(title, backgroundColor: backgroundColor, textColor: UIColor.white, showTimeout: nil, action: {
+        let alertController = UIAlertController(title: NSLocalizedString("sureToDelete", comment: "确定要删除吗？"),
+                                                message: NSLocalizedString("cannotRecovery", comment: ""), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "取消"), style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: NSLocalizedString("confirmDelete", comment: "确认删除"), style: .destructive, handler: { _ in
             if let currentThing = self.thing {
                 self.viewModel.delete(currentThing)
                 self.delegate?.editThing(isDeleted: true, thing: currentThing)
                 self.navigationController?.popViewController(animated: true)
             }
         })
-        let cancelTitle = NSLocalizedString("cancel", comment: "取消")
-        alertView.addButton(cancelTitle, backgroundColor: #colorLiteral(red: 0.9960784314, green: 0.8156862745, blue: 0.2039215686, alpha: 1), textColor: UIColor.white, showTimeout: nil, action: {
-        })
-        
-        alertView.showWarning(NSLocalizedString("sureToDelete", comment: ""), subTitle: NSLocalizedString("cannotRecovery", comment: ""))
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 

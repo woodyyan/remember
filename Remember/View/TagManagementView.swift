@@ -268,7 +268,7 @@ class TagManagementView: UIView {
     
     @objc func keyboardWillShow(_ notice: Notification) {
         if let endFrame = notice.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            //因为self的高度不对，所以只能这么计算y
+            // 因为self的高度不对，所以只能这么计算y
             var y: CGFloat = 0
             if UIDevice.current.userInterfaceIdiom == .phone {
                 switch UIScreen.main.nativeBounds.height {

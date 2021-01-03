@@ -33,8 +33,6 @@ App Store下载地址：[丁丁记事 on the App Store](https://itunes.apple.com
 ## 第三方开源库
 
 * [SnapKit](https://github.com/SnapKit/SnapKit)
-* [NotificationBanner](https://github.com/Daltron/NotificationBanner)
-* [SCLAlertView-Swift](https://github.com/vikmeup/SCLAlertView-Swift)
 
 ## 与我们交流
 * [新浪微博](http://weibo.com/u/5613355795)
@@ -43,7 +41,7 @@ App Store下载地址：[丁丁记事 on the App Store](https://itunes.apple.com
 ## License
 
 ```
-Copyright ©2019 略懂工作室.
+Copyright ©2021 Woody Studio.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
