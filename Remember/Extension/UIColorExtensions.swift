@@ -10,12 +10,37 @@ import Foundation
 import UIKit
 
 extension UIColor {
+    
     public static var remember: UIColor {
         return UIColor(red: 252, green: 156, blue: 43)!
     }
     
     public static var background: UIColor {
-        return UIColor(red: 238, green: 238, blue: 238)!
+        if #available(iOS 13.0, *) {
+            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+                if UITraitCollection.userInterfaceStyle == .dark {
+                    return UIColor.black
+                } else {
+                    return UIColor(red: 238, green: 238, blue: 238)!
+                }
+            }
+        } else {
+            return UIColor(red: 238, green: 238, blue: 238)!
+        }
+    }
+    
+    public static var aboutBottomColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+                if UITraitCollection.userInterfaceStyle == .dark {
+                    return UIColor(red: 28, green: 28, blue: 28)!
+                } else {
+                    return UIColor(red: 248, green: 248, blue: 248)!
+                }
+            }
+        } else {
+            return UIColor(red: 248, green: 248, blue: 248)!
+        }
     }
     
     public static var inputGray: UIColor {

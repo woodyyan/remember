@@ -77,12 +77,8 @@ class AboutViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     private func initBottomView() {
         let bottomView = UIView(frame: CGRect(x: 0, y: self.view.frame.height - 70, width: self.view.frame.width, height: 70))
-        bottomView.backgroundColor = UIColor.white
+        bottomView.backgroundColor = UIColor.aboutBottomColor
         self.view.addSubview(bottomView)
-        
-        let lineView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 1))
-        lineView.backgroundColor = UIColor(red: 229/255, green: 229/255, blue: 229/255, alpha: 1)
-        bottomView.addSubview(lineView)
         
         let contactButton = UIButton(type: UIButton.ButtonType.system)
         contactButton.frame = CGRect(x: 0, y: 0, width: 50, height: 20)
