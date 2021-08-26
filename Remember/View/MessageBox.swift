@@ -16,7 +16,7 @@ class MessageBox {
         let messageString = NSString(string: message)
         let size = messageString.size(withAttributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 13)])
         
-        let window = UIApplication.shared.keyWindow
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         let showView = UIView()
         showView.backgroundColor = UIColor.black
         showView.alpha = 0.8

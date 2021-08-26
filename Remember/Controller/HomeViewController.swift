@@ -8,7 +8,6 @@
 
 import UIKit
 
-// swiftlint:disable file_length
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let inputViewHeight: CGFloat = 60
     private var shouldInputViewDisplay = true
@@ -350,25 +349,25 @@ extension HomeViewController {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let title = NSLocalizedString("tag", comment: "标签")
-        let editAction = UITableViewRowAction(style: UITableViewRowAction.Style.normal, title: title) { (_, index) -> Void in
+        let editAction = UIContextualAction(style: .normal, title: title, handler: { (_, _, _) in
             let index = indexPath.row
             let thing = self.viewModel.things[index]
             self.editThing(thing, isTag: true)
             tableView.isEditing = false
-        }
+        })
         
         let copyTitle = NSLocalizedString("copy", comment: "复制")
-        let shareAction = UITableViewRowAction(style: UITableViewRowAction.Style.normal, title: copyTitle) { (_, index) -> Void in
+        let shareAction = UIContextualAction(style: .normal, title: copyTitle, handler: { (_, _, _) in
             let index=(indexPath as NSIndexPath).row as Int
             let thing = self.viewModel.things[index]
             UIPasteboard.general.string = thing.content
-        }
+        })
         shareAction.backgroundColor = UIColor.remember
         
         let deleteTitle = NSLocalizedString("delete", comment: "删除")
-        let deleteAction = UITableViewRowAction(style: UITableViewRowAction.Style.destructive, title: deleteTitle) { (_, index) -> Void in
+        let deleteAction = UIContextualAction(style: .destructive, title: deleteTitle, handler: { (_, _, _) in
             let alertController = UIAlertController(title: NSLocalizedString("sureToDelete", comment: "确定要删除吗？"),
                                                     message: NSLocalizedString("cannotRecovery", comment: ""), preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "取消"), style: .cancel, handler: { _ in
@@ -381,8 +380,9 @@ extension HomeViewController {
             alertController.addAction(cancelAction)
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
-        }
-        return [deleteAction, shareAction, editAction]
+        })
+
+        return UISwipeActionsConfiguration(actions: [deleteAction, shareAction, editAction])
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {

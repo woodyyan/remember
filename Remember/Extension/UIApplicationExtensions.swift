@@ -11,7 +11,8 @@ import UIKit
 
 extension UIApplication {
     static func barHeight(_ navigationController: UINavigationController?) -> CGFloat {
-        var statusHeight = UIApplication.shared.statusBarFrame.height
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        var statusHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         if let navBarHeight = navigationController?.navigationBar.frame.height {
             statusHeight += navBarHeight
         }

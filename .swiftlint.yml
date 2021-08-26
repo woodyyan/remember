@@ -20,7 +20,7 @@ excluded: # 执行 linting 时忽略的路径。 优先级比 `included` 更高�
 # 二进制规则可以设置他们的严格程度
 # force_cast: warning # 隐式
 force_try:
-severity: warning # 显式
+  severity: warning # 显式
 # 同时有警告和错误等级的规则，可以只设置它的警告等级
 # 隐式
 line_length: 155
@@ -30,21 +30,21 @@ type_body_length:
 - 400 # error
 # 或者也可以同时进行显式设置
 file_length:
-warning: 500
-error: 1200
+  warning: 500
+  error: 1200
 # 命名规则可以设置最小长度和最大程度的警告/错误
 # 此外它们也可以设置排除在外的名字
 type_name:
-min_length: 2 # 只是警告
-max_length: # 警告和错误
-warning: 40
-error: 50
+  min_length: 2 # 只是警告
+  max_length: # 警告和错误
+  warning: 40
+  error: 50
 #excluded: iPhone # 排除某个名字
 identifier_name:
-min_length: 2# 只有最小长度
-#error: 1 # 只有错误
-excluded: # 排除某些名字
-- id
-- URL
-- GlobalAPIKey
+  min_length: 2# 只有最小长度
+  #error: 1 # 只有错误
+  excluded: # 排除某些名字
+  - id
+  - URL
+  - GlobalAPIKey
 reporter: "xcode" # 报告类型 (xcode, json, csv, checkstyle, junit, html, emoji)
