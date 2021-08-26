@@ -44,7 +44,17 @@ extension UIColor {
     }
     
     public static var inputGray: UIColor {
-        return UIColor(red: 216, green: 216, blue: 216)!
+        if #available(iOS 13.0, *) {
+            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+                if UITraitCollection.userInterfaceStyle == .dark {
+                    return UIColor(red: 28, green: 28, blue: 28)!
+                } else {
+                    return UIColor(red: 216, green: 216, blue: 216)!
+                }
+            }
+        } else {
+            return UIColor(red: 216, green: 216, blue: 216)!
+        }
     }
     
     public static var text: UIColor {
