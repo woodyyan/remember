@@ -85,6 +85,6 @@ class MoreMenuViewController: UITableViewController {
     }
 }
 
-protocol MoreMenuViewDelegate: class {
+protocol MoreMenuViewDelegate: AnyObject {
     func moreMenuView(view: MoreMenuViewController, selectedAction: MoreMenuAction)
 }

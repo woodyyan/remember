@@ -119,11 +119,10 @@ class HomeViewModel: BaseViewModel {
             
         case LAError.systemCancel.rawValue:
             message = "Authentication was cancelled by the system"
-            
-        case LAError.touchIDLockout.rawValue:
+        case LAError.biometryLockout.rawValue:
             message = "Too many failed attempts."
             
-        case LAError.touchIDNotAvailable.rawValue:
+        case LAError.biometryNotAvailable.rawValue:
             message = "TouchID is not available on the device"
             //            showPassWordInput()
             

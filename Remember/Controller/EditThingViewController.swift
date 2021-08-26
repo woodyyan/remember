@@ -197,6 +197,6 @@ extension EditThingViewController: UIPopoverPresentationControllerDelegate {
     }
 }
 
-protocol EditThingDelegate: class {
+protocol EditThingDelegate: AnyObject {
     func editThing(isDeleted: Bool, thing: ThingModel)
 }

@@ -312,6 +312,6 @@ extension TagManagementView: UITextFieldDelegate {
     }
 }
 
-protocol TagManagementDelegate: class {
+protocol TagManagementDelegate: AnyObject {
     func tagManagement(view: TagManagementView, tag: String)
 }

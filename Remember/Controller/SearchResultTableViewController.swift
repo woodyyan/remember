@@ -79,6 +79,6 @@ class SearchResultTableViewController: UITableViewController, UISearchResultsUpd
     }
 }
 
-protocol SearchResultTableDelegate: class {
+protocol SearchResultTableDelegate: AnyObject {
     func searchResultTable(view: SearchResultTableViewController, thing: ThingModel)
 }

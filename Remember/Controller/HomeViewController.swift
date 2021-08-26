@@ -51,7 +51,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func initUI() {
         self.title = NSLocalizedString("appName", comment: "丁丁记事")
-        self.view.backgroundColor = UIColor.background
+        self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.remember]
         self.navigationController?.navigationBar.tintColor = UIColor.remember
         
