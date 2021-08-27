@@ -35,6 +35,16 @@ extension UIColor {
         }
     }
     
+    public static var moreButtonColor: UIColor {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return UIColor(red: 44, green: 44, blue: 46)!
+            } else {
+                return UIColor.white
+            }
+        }
+    }
+    
     public static var aboutBottomColor: UIColor {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
             if UITraitCollection.userInterfaceStyle == .dark {

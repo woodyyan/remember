@@ -36,7 +36,7 @@ class MoreMenuViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.moreButtonColor
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.isScrollEnabled = false
         self.tableView.separatorStyle = .none
