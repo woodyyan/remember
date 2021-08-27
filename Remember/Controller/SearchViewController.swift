@@ -37,7 +37,7 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = true
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.whiteBlackColor
         
         initUI()
         
@@ -68,7 +68,7 @@ class SearchViewController: UIViewController {
         
         let rect = CGRect(x: 0, y: 0, width: self.width, height: self.height)
         tableView = UITableView(frame: rect, style: UITableView.Style.plain)
-        tableView.backgroundColor = UIColor.background
+        tableView.backgroundColor = UIColor.grayBackground
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")

@@ -133,7 +133,7 @@ class VoiceInputController: UIViewController, UIGestureRecognizerDelegate {
         backgroundView.frame = CGRect(origin: CGPoint(x: 0.0, y: self.view.frame.height), size: size)
         
         let voiceView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: height))
-        voiceView.backgroundColor = UIColor.voiceViewColor
+        voiceView.backgroundColor = UIColor.whiteBlackColor
         backgroundView.addSubview(voiceView)
         
         let cancelButton = getCancelButton()

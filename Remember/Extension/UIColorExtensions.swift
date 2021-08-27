@@ -25,6 +25,16 @@ extension UIColor {
         }
     }
     
+    public static var grayBackground: UIColor {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return UIColor(red: 28, green: 28, blue: 28)!
+            } else {
+                return UIColor(red: 238, green: 238, blue: 238)!
+            }
+        }
+    }
+    
     public static var aboutBottomColor: UIColor {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
             if UITraitCollection.userInterfaceStyle == .dark {
@@ -45,7 +55,7 @@ extension UIColor {
         }
     }
     
-    public static var voiceViewColor: UIColor {
+    public static var whiteBlackColor: UIColor {
         return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
             if UITraitCollection.userInterfaceStyle == .dark {
                 return UIColor.black
