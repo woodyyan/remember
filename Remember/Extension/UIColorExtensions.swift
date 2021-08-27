@@ -55,6 +55,16 @@ extension UIColor {
         }
     }
     
+    public static var editBackground: UIColor {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                return UIColor(red: 28, green: 28, blue: 28)!
+            } else {
+                return UIColor.white
+            }
+        }
+    }
+    
     public static var text: UIColor {
         return UIColor(red: 116, green: 116, blue: 116)!
     }

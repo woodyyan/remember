@@ -54,7 +54,7 @@ class TitledEditView: UIView {
         
         editView.font = UIFont.systemFont(ofSize: 18)
         editView.layer.cornerRadius = 8
-        editView.backgroundColor = UIColor.white
+        editView.backgroundColor = UIColor.editBackground
         editView.textColor = UIColor.text
         editView.returnKeyType = .done
         editView.delegate = self
