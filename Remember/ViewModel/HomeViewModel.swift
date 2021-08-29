@@ -86,6 +86,11 @@ class HomeViewModel: BaseViewModel {
         let thing = self.things[index]
         self.things.remove(at: index)
         self.thingStorage.delete(thing)
+        
+        let thingTags = self.thingTagStorage.findThingTagsBy(thingId: thing.id)
+        for thingTag in thingTags {
+            self.thingTagStorage.delete(for: thingTag)
+        }
     }
     
     func sortAndSaveThings() {
