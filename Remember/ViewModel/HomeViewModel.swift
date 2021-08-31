@@ -100,7 +100,6 @@ class HomeViewModel: BaseViewModel {
             for i in 0..<self.things.count {
                 self.things[i].index = i
             }
-
         }
         
         self.thingStorage.save(sorted: self.things)
