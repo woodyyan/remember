@@ -198,7 +198,6 @@ class SearchViewController: UIViewController {
     private func createNewTagButton(with tag: String, last leftView: UIView?, last topView: UIView) -> UIButton {
         let tagbutton = UIButton(type: .system)
         tagbutton.setTitle(tag, for: .normal)
-        tagbutton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
         tagbutton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         tagbutton.layer.cornerRadius = 11
         tagbutton.backgroundColor = UIColor.remember

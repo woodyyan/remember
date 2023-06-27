@@ -32,7 +32,6 @@ class TagManagementView: UIView {
         
         addTagButton = UIButton(type: .system)
         addTagButton.setTitle(NSLocalizedString("addTag", comment: ""), for: .normal)
-        addTagButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         addTagButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         addTagButton.layer.cornerRadius = 10
         addTagButton.backgroundColor = UIColor.remember
@@ -138,7 +137,6 @@ class TagManagementView: UIView {
     func createExistingTagButton(with tag: String, last leftView: UIView?, last topView: UIView?) -> UIButton {
         let tagbutton = UIButton(type: .system)
         tagbutton.setTitle("#\(tag)", for: .normal)
-        tagbutton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
         tagbutton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         tagbutton.setTitleColor(UIColor.remember, for: .normal)
         tagbutton.addTarget(self, action: #selector(TagManagementView.addExitingTagTap(sender:)), for: .touchUpInside)
@@ -212,7 +210,6 @@ class TagManagementView: UIView {
     private func createNewTagButton(with tag: String, last leftView: UIView?, last topView: UIView?) -> UIButton {
         let tagbutton = UIButton(type: .system)
         tagbutton.setTitle(tag, for: .normal)
-        tagbutton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 5, bottom: 2, right: 5)
         tagbutton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         tagbutton.layer.cornerRadius = 10
         tagbutton.backgroundColor = UIColor.remember

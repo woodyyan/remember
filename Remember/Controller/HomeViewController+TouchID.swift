@@ -46,7 +46,7 @@ extension HomeViewController {
     }
     
     private func showFaceId() -> UIView? {
-        guard let window = UIApplication.shared.windows.filter({$0.isKeyWindow}).first else {return nil}
+        guard let window = UIApplication.shared.keyWindow else {return nil}
         let touchIDView = UIView()
         touchIDView.backgroundColor = UIColor.white
         touchIDView.frame = window.frame
