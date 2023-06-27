@@ -11,18 +11,15 @@ import MessageUI
 
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private let viewModel: SettingsViewModel = ViewModelFactory.shared.create()
-    private let feedbackKit = BCFeedbackKit(appKey: GlobleConfigs.aliyunAppKey, appSecret: GlobleConfigs.aliyunAppSecret)
     
     var tableView: UITableView!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        ALBBMANPageHitHelper.getInstance().pageAppear(self)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        ALBBMANPageHitHelper.getInstance().pageDisAppear(self)
     }
     
     override func viewDidLoad() {
@@ -88,7 +85,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
             case 3:
                 let cell = tableView.cellForRow(at: indexPath)
                 cell?.detailTextLabel?.text = ""
-                feedBackOrSendEmail()
+                sendEmail()
             case 4:
                 exportToCSV()
             default:
@@ -115,36 +112,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    private func feedBackOrSendEmail() {
-        let language = Locale.preferredLanguages[0]
-        if language.hasPrefix("en") {
-            sendEmail()
-        } else {
-            feedback()
-        }
-    }
-    
     private func exportToCSV() {
         let fileUrl = viewModel.export()
         let controller = UIActivityViewController(activityItems: [fileUrl], applicationActivities: [])
         controller.excludedActivityTypes = [.addToReadingList, .assignToContact, .openInIBooks, .saveToCameraRoll]
         self.present(controller, animated: true, completion: nil)
-    }
-    
-    private func feedback() {
-        feedbackKit?.extInfo = [
-            "app_version": VersionUtils.getCurrentVersion(),
-            "device_model": UIDevice.current.model
-        ]
-        feedbackKit?.makeFeedbackViewController(completionBlock: { (controller, error) in
-            print(error ?? "")
-            if let feedbackController = controller {
-                 self.navigationController?.pushViewController(feedbackController, animated: true)
-                feedbackController.closeBlock = { controller in
-                    controller?.navigationController?.popViewController(animated: true)
-                }
-            }
-        })
     }
     
     private func sendEmail() {

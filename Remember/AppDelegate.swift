@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.window!.rootViewController = UINavigationController.init(rootViewController: HomeViewController())
         
-        initAliyunService()
-        
         let addIcon = UIApplicationShortcutIcon(type: .add)
         let addText = NSLocalizedString("addThingAction", comment: "添加小事")
         let createItem = UIApplicationShortcutItem(type: "create", localizedTitle: addText, localizedSubtitle: nil, icon: addIcon, userInfo: nil)
@@ -29,12 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.shortcutItems = [createItem, searchItem]
         
         return true
-    }
-    
-    private func initAliyunService() {
-        let man = ALBBMANAnalytics.getInstance()
-        // man?.turnOnDebug()
-        man?.initWithAppKey(GlobleConfigs.aliyunAppKey, secretKey: GlobleConfigs.aliyunAppSecret)
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {

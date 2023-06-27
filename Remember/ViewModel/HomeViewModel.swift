@@ -8,6 +8,7 @@
 
 import Foundation
 import LocalAuthentication
+import UIKit
 
 class HomeViewModel: BaseViewModel {
     private var tagStorage: TagStorage!
