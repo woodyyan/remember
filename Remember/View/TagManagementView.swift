@@ -272,7 +272,7 @@ class TagManagementView: UIView {
                 case 2436:
                     y = endFrame.cgPointValue.y - self.frame.origin.y - 44 - 84
                 default:
-                    y = UIScreen.main.bounds.height - self.frame.origin.y - 44 - 64 - endFrame.cgRectValue.height
+                    y = UIScreen.main.bounds.height - self.frame.origin.y - 44 - 98 - endFrame.cgRectValue.height
                 }
             }
             self.tagScrollView?.frame = CGRect(x: 0, y: y, width: self.bounds.width, height: 44)
