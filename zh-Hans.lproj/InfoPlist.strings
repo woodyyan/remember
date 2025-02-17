@@ -5,7 +5,7 @@
   Created by Songbai Yan on 14/03/2018.
   Copyright © 2018 Songbai Yan. All rights reserved.
 */
-"CFBundleDisplayName" = "丁丁记事";
+"CFBundleDisplayName" = "伍迪收纳盒";
 "NSMicrophoneUsageDescription" = "如果不允许，你将无法使用语音添加小事。";
 "NSSpeechRecognitionUsageDescription" = "如果不允许，你将无法使用语音添加小事。";
 "NSPhotoLibraryUsageDescription" = "访问相册";

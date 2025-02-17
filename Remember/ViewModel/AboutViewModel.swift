@@ -10,7 +10,7 @@ import Foundation
 
 class AboutViewModel: BaseViewModel {
     func getAppName() -> String {
-        return NSLocalizedString("appName", comment: "丁丁记事")
+        return NSLocalizedString("appName", comment: "伍迪收纳盒")
     }
     
     func getSlogan() -> String {

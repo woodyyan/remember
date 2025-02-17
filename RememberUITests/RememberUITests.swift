@@ -33,15 +33,15 @@ class RememberUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         
 //        let app = XCUIApplication()
-//        app.navigationBars["丁丁记事"].buttons["about"].tap()
-//        
+//        app.navigationBars["伍迪收纳盒"].buttons["about"].tap()
+//
 //        let tablesQuery = app.tables
 //        var isExists = tablesQuery.staticTexts["记住你容易忘记的小事"].exists
 //        XCTAssert(isExists)
 //        
 //        isExists = tablesQuery.staticTexts["版本号：V1.9"].exists
 //        XCTAssert(isExists)
-//        isExists = tablesQuery.staticTexts["丁丁记事是一个帮助你记住平时容易忘记的小事的轻量级备忘录，你可以非常快速而简单的记录一切容易忘记的小事，当你忘记它们的时候，可以很方便的从这里找到它们。"].exists
+//        isExists = tablesQuery.staticTexts["伍迪收纳盒是一个帮助你记住平时容易忘记的小事的轻量级备忘录，你可以非常快速而简单的记录一切容易忘记的小事，当你忘记它们的时候，可以很方便的从这里找到它们。"].exists
 //        XCTAssert(isExists)
 //        isExists = app.buttons["反馈"].exists
 //        XCTAssert(isExists)

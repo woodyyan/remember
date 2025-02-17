@@ -5,7 +5,7 @@
   Created by Songbai Yan on 14/03/2018.
   Copyright © 2018 Songbai Yan. All rights reserved.
 */
-"appName" = "丁丁记事";
+"appName" = "伍迪收纳盒";
 "searchPlaceHolder" = " 搜索你忘记的小事";
 "addThingPlaceHolder" = " 记一点什么吧";
 "settings" = "设置";
@@ -27,13 +27,13 @@
 "email" = "邮箱";
 "weibo" = "微博";
 "copyright" = "Copyright ©2023 Woody工作室 All Rights Reserved";
-"emailSubject" = "丁丁记事";
+"emailSubject" = "伍迪收纳盒";
 "cannotSendEmail" = "无法发送邮件";
 "checkEmailConfig" = "请检查邮件设置";
 "sendSuccess" = "发送成功";
 "willCheckLater" = "我们会尽快处理";
 "sendFailed" = "发送失败";
-"rememberDescription" = "丁丁记事是一个帮助你记住平时容易忘记的小事的轻量级备忘录，你可以非常快速而简单的记录一切的小事，当你忘记它们的时候，可以很方便的从这里找到它们。";
+"rememberDescription" = "伍迪收纳盒是一个帮助你记住平时容易忘记的小事的轻量级备忘录，你可以非常快速而简单的记录一切的小事，当你忘记它们的时候，可以很方便的从这里找到它们。";
 "rememberEveryThing" = "记住你容易忘记的小事";
 "version" = "版本号：";
 "addPasteboardContent" = "是否要添加粘贴板的内容：";
@@ -64,7 +64,7 @@
 "createAt" = "创建于 ";
 "addTagLabel" = "添加标签";
 "copy" = "复制";
-"recommendDescription" = "推荐「丁丁记事」给你";
+"recommendDescription" = "推荐「伍迪收纳盒」给你";
 "addThingAction" = "添加小事";
 "searchThingAction" = "搜索小事";
 "password" = "密码";

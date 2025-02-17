@@ -123,7 +123,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
         if MFMailComposeViewController.canSendMail() {
             let mailComposerVC = MFMailComposeViewController()
             mailComposerVC.mailComposeDelegate = self
-            mailComposerVC.setSubject(NSLocalizedString("emailSubject", comment: "丁丁记事"))
+            mailComposerVC.setSubject(NSLocalizedString("emailSubject", comment: "伍迪收纳盒"))
             mailComposerVC.setToRecipients(["easystudio@outlook.com"])
             self.present(mailComposerVC, animated: true, completion: nil)
         } else {

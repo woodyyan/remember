@@ -1,12 +1,12 @@
-# 丁丁记事 for iOS
+# 伍迪收纳盒 for iOS
 [![Build Status](https://travis-ci.org/woodyyan/remember.svg?branch=develop)](https://travis-ci.org/woodyyan/remember)
 [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5974bf357812780001c2fc66&branch=develop&build=latest)](https://dashboard.buddybuild.com/apps/5974bf357812780001c2fc66/build/latest?branch=develop)
 
-当你忘记红酒开瓶器放在哪里时，你只要打开丁丁记事，就可以找到一个月前你记录的红酒开瓶器放在哪里了。
+当你忘记红酒开瓶器放在哪里时，你只要打开伍迪收纳盒，就可以找到一个月前你记录的红酒开瓶器放在哪里了。
 
-丁丁记事是一个帮助你记住平时容易忘记的小事的助手，你可以非常快速而简单的记录一切容易忘记的小事，当你忘记它们的时候，可以很方便的从这里找到它们。
+伍迪收纳盒是一个帮助你记住平时容易忘记的小事的助手，你可以非常快速而简单的记录一切容易忘记的小事，当你忘记它们的时候，可以很方便的从这里找到它们。
 
-丁丁记事是一个基于每件小事的轻量级的备忘录。
+伍迪收纳盒是一个基于每件小事的轻量级的备忘录。
 
 比如你可以记录下面这些小事：
 
@@ -22,7 +22,7 @@
 
 跟我们交流：微博@略懂工作室
 
-App Store下载地址：[丁丁记事 on the App Store](https://itunes.apple.com/us/app/%E4%B8%81%E4%B8%81%E8%AE%B0%E4%BA%8B/id1192994573?l=zh&ls=1&mt=8)
+App Store下载地址：[伍迪收纳盒 on the App Store](https://itunes.apple.com/us/app/%E4%B8%81%E4%B8%81%E8%AE%B0%E4%BA%8B/id1192994573?l=zh&ls=1&mt=8)
 
 ![image1](https://github.com/woodyyan/remember/raw/develop/Screenshots/1.png)
 ![image2](https://github.com/woodyyan/remember/raw/develop/Screenshots/2.png)

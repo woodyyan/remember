@@ -5,7 +5,7 @@
   Created by Songbai Yan on 14/03/2018.
   Copyright © 2018 Songbai Yan. All rights reserved.
 */
-"appName" = "丁丁記事";
+"appName" = "伍迪收納盒";
 "searchPlaceHolder" = " 搜索妳忘記的小事";
 "addThingPlaceHolder" = " 記壹點什麽吧";
 "settings" = "設置";
@@ -27,13 +27,13 @@
 "email" = "郵箱";
 "weibo" = "微博";
 "copyright" = "Copyright ©2023 Woody工作室 All Rights Reserved";
-"emailSubject" = "丁丁記事";
+"emailSubject" = "伍迪收納盒";
 "cannotSendEmail" = "無法發送郵件";
 "checkEmailConfig" = "請檢查郵件設置";
 "sendSuccess" = "發送成功";
 "willCheckLater" = "我們會盡快處理";
 "sendFailed" = "發送失敗";
-"rememberDescription" = "丁丁記事是壹個幫助妳記住平時容易忘記的小事的輕量級備忘錄，妳可以非常快速而簡單的記錄壹切的小事，當妳忘記它們的時候，可以很方便的從這裏找到它們。";
+"rememberDescription" = "伍迪收納盒是壹個幫助妳記住平時容易忘記的小事的輕量級備忘錄，妳可以非常快速而簡單的記錄壹切的小事，當妳忘記它們的時候，可以很方便的從這裏找到它們。";
 "rememberEveryThing" = "記住妳容易忘記的小事";
 "version" = "版本號：";
 "addPasteboardContent" = "是否要添加粘貼板的內容：";
@@ -64,7 +64,7 @@
 "createAt" = "創建於 ";
 "addTagLabel" = "添加標簽";
 "copy" = "復制";
-"recommendDescription" = "推薦「丁丁記事」給妳";
+"recommendDescription" = "推薦「伍迪收納盒」給妳";
 "addThingAction" = "添加小事";
 "searchThingAction" = "搜索小事";
 "password" = "密碼";
