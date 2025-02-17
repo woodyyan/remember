@@ -53,14 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // 粘贴板内容添加提示
-        if let pasteContent = PasteboardUtils.getPasteboardContent() {
-            let notify = Notification(name: Notification.Name(rawValue: "updatePasteboardView"), object: pasteContent, userInfo: nil)
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "updatePasteboardView"), object: notify)
-        }
-    }
-
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.

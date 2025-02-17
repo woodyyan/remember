@@ -62,11 +62,6 @@ class HomeViewModel: BaseViewModel {
         return style
     }
     
-    func addPasteContentToSettings(_ content: String) {
-        UserDefaults.standard.set(content, forKey: "pasteboardContent")
-        UserDefaults.standard.synchronize()
-    }
-    
     func calculateCellHeight(viewWidth: CGFloat, row: Int) -> CGFloat {
         let thing = self.things[row]
         let content: NSString = thing.content as NSString

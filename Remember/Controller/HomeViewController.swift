@@ -41,8 +41,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initNotification() {
-        let selector = #selector(HomeViewController.updatePasteboardView(_:))
-        NotificationCenter.addObserver(self, selector, "updatePasteboardView")
         NotificationCenter.addObserver(self, #selector(HomeViewController.tagRemoved(_:)), "tagRemovedNotification")
     }
     
@@ -65,10 +63,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func beginCreateThing() {
         inputThingView.beginEditing()
-    }
-    
-    @objc func updatePasteboardView(_ notification: Notification) {
-        self.addPasteboardViewIfNeeded()
     }
     
     @objc func tagRemoved(_ notification: Notification) {
@@ -106,34 +100,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.width, height: 60))
         tableHeaderView.addSubview(getSearchButton())
         
-        addPasteboardViewIfNeeded()
-        
         tableView.tableHeaderView = tableHeaderView
-    }
-    
-    private func addPasteboardViewIfNeeded() {
-        // 如果已经有粘贴板提示了就返回
-        if self.tableHeaderView.viewWithTag(self.pasteboardViewTag) != nil {
-            return
-        }
-        if let tempPasteContent = PasteboardUtils.getPasteboardContent() {
-            // add timer
-            addPasteDisappearTimer()
-            self.viewModel.pasteContent = tempPasteContent
-            self.tableView.beginUpdates()
-            tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.width, height: 130)
-            tableHeaderView.addSubview(getPasteBoardView(tempPasteContent))
-            self.tableView.endUpdates()
-        }
-    }
-    
-    private func addPasteDisappearTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            // 移除粘贴板提示
-            if self.viewModel.pasteContent != nil {
-                self.removePasteboardView()
-            }
-        }
     }
     
     private func getSearchButton() -> SearchButton {
@@ -141,35 +108,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let searchButton = SearchButton(frame: frame)
         searchButton.addTarget(self, action: #selector(HomeViewController.searchClick(_:)), for: UIControl.Event.touchUpInside)
         return searchButton
-    }
-    
-    private func getPasteBoardView(_ content: String) -> UIView {
-        viewModel.addPasteContentToSettings(content)
-        
-        let pasteboardView = PasteboardView(frame: CGRect(x: 10, y: 60, width: self.width - 20, height: 55))
-        pasteboardView.okButton.addTarget(self, action: #selector(HomeViewController.pasteOkButtonClick(_:)), for: .touchUpInside)
-        pasteboardView.pasteContentLabel.text = content
-        pasteboardView.tag = pasteboardViewTag
-        return pasteboardView
-    }
-    
-    @objc func pasteOkButtonClick(_ sender: UIButton) {
-        if self.viewModel.addPastContent() {
-            tableView.reloadData()
-        }
-        
-        removePasteboardView()
-    }
-    
-    private func removePasteboardView() {
-        // remove pasteboard
-        self.tableView.beginUpdates()
-        self.tableHeaderView.frame = CGRect(x: 0, y: 0, width: self.width, height: 60)
-        if let pasteboardView = self.tableHeaderView.viewWithTag(self.pasteboardViewTag) {
-            pasteboardView.removeFromSuperview()
-        }
-        self.tableView.tableHeaderView = self.tableHeaderView
-        self.tableView.endUpdates()
     }
     
     @objc func searchClick(_ sender: UIButton) {
