@@ -21,10 +21,10 @@ class ThingTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = UIColor.clear
-        setBackground(style: .normal)
+        setBackground(type: .password)
         
         tagLabel = UILabel(frame: CGRect(x: 30, y: 20, width: 60, height: 20))
-        tagLabel?.textColor = UIColor.tag
+        tagLabel?.textColor = UIColor.white
         tagLabel?.textAlignment = .right
         tagLabel?.font = UIFont.systemFont(ofSize: 10)
         self.addSubview(tagLabel!)
@@ -161,16 +161,16 @@ class ThingTableViewCell: UITableViewCell {
         tagLabel?.text = viewModel.getJointTagText(for: thing)
     }
     
-    func setBackground(style: ThingCellBackgroundStyle) {
-        switch style {
-        case .first:
-            self.backgroundView = getBackgroundImageView("FirstCellBackground")
-        case .last:
-            self.backgroundView = getBackgroundImageView("LastCellBackground")
-        case .normal:
-            self.backgroundView = getBackgroundImageView("CellBackground")
-        case .one:
-            self.backgroundView = getBackgroundImageView("OneCellBackground")
+    func setBackground(type: ThingType) {
+        switch type {
+        case .note:
+            self.backgroundView = getBackgroundImageView("accountpassword")
+        case .password:
+            self.backgroundView = getBackgroundImageView("accountpassword")
+        case .card:
+            self.backgroundView = getBackgroundImageView("accountpassword")
+        case .address:
+            self.backgroundView = getBackgroundImageView("accountpassword")
         }
     }
     

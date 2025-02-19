@@ -22,6 +22,10 @@
 		22D4EB7622BA72B2005763EC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB7522BA72B2005763EC /* Settings.swift */; };
 		22D4EB7722BA72B2005763EC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB7522BA72B2005763EC /* Settings.swift */; };
 		22D4EB7822BA72B2005763EC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB7522BA72B2005763EC /* Settings.swift */; };
+		575B2C8D2D6488E700E604ED /* ThingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B2C8C2D6488DB00E604ED /* ThingType.swift */; };
+		575B2C8E2D6488E700E604ED /* ThingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B2C8C2D6488DB00E604ED /* ThingType.swift */; };
+		575B2C902D648A2D00E604ED /* ThingTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B2C8F2D648A2D00E604ED /* ThingTypeCell.swift */; };
+		575B2C922D6497CC00E604ED /* HomeViewController copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B2C912D6497CC00E604ED /* HomeViewController copy.swift */; };
 		579467FB25A185B900CA010F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 579467FA25A185B900CA010F /* SnapKit */; };
 		5794681925A1A24300CA010F /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = 5794681825A1A24300CA010F /* CSV */; };
 		5794681F25A1C53C00CA010F /* DZNEmptyDataSet in Frameworks */ = {isa = PBXBuildFile; productRef = 5794681E25A1C53C00CA010F /* DZNEmptyDataSet */; };
@@ -220,6 +224,9 @@
 		22D4EB6C22B12EBB005763EC /* CsvExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvExporterTests.swift; sourceTree = "<group>"; };
 		22D4EB7022B131F3005763EC /* CSV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSV.framework; path = Carthage/Build/iOS/CSV.framework; sourceTree = SOURCE_ROOT; };
 		22D4EB7522BA72B2005763EC /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		575B2C8C2D6488DB00E604ED /* ThingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingType.swift; sourceTree = "<group>"; };
+		575B2C8F2D648A2D00E604ED /* ThingTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingTypeCell.swift; sourceTree = "<group>"; };
+		575B2C912D6497CC00E604ED /* HomeViewController copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController copy.swift"; sourceTree = "<group>"; };
 		820B83B31F0E81A0007E3C15 /* ThingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingEntity.swift; sourceTree = "<group>"; };
 		820B83BB1F0E81FE007E3C15 /* TagEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagEntity.swift; sourceTree = "<group>"; };
 		820B83C31F0E8237007E3C15 /* ThingTagEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingTagEntity.swift; sourceTree = "<group>"; };
@@ -600,9 +607,11 @@
 			isa = PBXGroup;
 			children = (
 				825DEB541DDA0B9B0065090F /* HomeViewController.swift */,
+				575B2C912D6497CC00E604ED /* HomeViewController copy.swift */,
 				82DB5C201E213B560037FAD5 /* SearchResultTableViewController.swift */,
 				823A341E1E252EBA0093FBF4 /* AboutViewController.swift */,
 				823A34BB1E2F4EAF0093FBF4 /* ThingTableViewCell.swift */,
+				575B2C8F2D648A2D00E604ED /* ThingTypeCell.swift */,
 				82DF5DA01E657EAE0027CA1F /* EditThingViewController.swift */,
 				82DF5DAC1E6D58740027CA1F /* VoiceInputController.swift */,
 				82303BAE1F245454004C06F1 /* SearchViewController.swift */,
@@ -639,6 +648,7 @@
 		8280CE182091A05100C7A1F5 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
+				575B2C8C2D6488DB00E604ED /* ThingType.swift */,
 				8280CE192091A06600C7A1F5 /* ThingCellBackgroundStyle.swift */,
 			);
 			path = Enum;
@@ -740,7 +750,6 @@
 				825DEB111DD9DC070065090F /* Sources */,
 				825DEB121DD9DC070065090F /* Frameworks */,
 				825DEB131DD9DC070065090F /* Resources */,
-				824267F9206BC50A009FD115 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -909,22 +918,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		824267F9206BC50A009FD115 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		825DEB111DD9DC070065090F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -934,6 +927,7 @@
 				8280CE0F208DDFDF00C7A1F5 /* ViewModelFactory.swift in Sources */,
 				82DF5DA11E657EAE0027CA1F /* EditThingViewController.swift in Sources */,
 				820B83F01F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
+				575B2C902D648A2D00E604ED /* ThingTypeCell.swift in Sources */,
 				820B83B51F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
 				8280CE0B208AE0DA00C7A1F5 /* ThingTableCellViewModel.swift in Sources */,
 				824267FF2073C725009FD115 /* HomeViewController+DZNEmptyDataSet.swift in Sources */,
@@ -945,6 +939,7 @@
 				823876BE1F2D6727001EA4B4 /* SettingsViewController.swift in Sources */,
 				8280CDCE20862B0500C7A1F5 /* NotificationCenterExtension.swift in Sources */,
 				22B69E8D2369C651007FD8EF /* MoreMenuSettings.swift in Sources */,
+				575B2C8E2D6488E700E604ED /* ThingType.swift in Sources */,
 				82E7AC7320553BB1006FC9E5 /* GlobleConfigs.swift in Sources */,
 				22B69E89236587F2007FD8EF /* HomeViewController+TouchID.swift in Sources */,
 				820B83C51F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
@@ -954,6 +949,7 @@
 				823A34B71E2E26C60093FBF4 /* InputTextField.swift in Sources */,
 				8280CDD220870A1A00C7A1F5 /* PasteboardView.swift in Sources */,
 				824A14AF2073D7D4004D7F21 /* CoreStorage.swift in Sources */,
+				575B2C922D6497CC00E604ED /* HomeViewController copy.swift in Sources */,
 				8280CE09208AD9AE00C7A1F5 /* SearchViewModel.swift in Sources */,
 				823876C21F2D766F001EA4B4 /* TagManageViewController.swift in Sources */,
 				82E7AC542053F39F006FC9E5 /* TipsViewController.swift in Sources */,
@@ -1021,6 +1017,7 @@
 				8280CE1520919F8F00C7A1F5 /* ViewModelFactoryTests.swift in Sources */,
 				8280CE122090695200C7A1F5 /* BaseViewModel.swift in Sources */,
 				8280CDDE2089B93500C7A1F5 /* ThingEntity.swift in Sources */,
+				575B2C8D2D6488E700E604ED /* ThingType.swift in Sources */,
 				22D4EB6E22B12EBB005763EC /* CsvExporterTests.swift in Sources */,
 				8280CE312091C74100C7A1F5 /* StubThingStorage.swift in Sources */,
 				8280CE1720919FD200C7A1F5 /* HomeViewModel.swift in Sources */,
