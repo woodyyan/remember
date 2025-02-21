@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ThingType: Int, CaseIterable {
+enum ThingType: Int {
     case note // 文本
     case password // 账户密码
     case address // 地址

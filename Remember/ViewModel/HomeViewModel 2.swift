@@ -10,21 +10,19 @@ import Foundation
 import LocalAuthentication
 import UIKit
 
-class HomeViewModel: BaseViewModel {
+class HomeViewModel2: BaseViewModel {
     private var tagStorage: TagStorage!
     private var thingStorage: ThingStorage!
     private var thingTagStorage: ThingTagStorage!
     
     var pasteContent: String?
     var things = [ThingModel]()
-    var thingTypes = [ThingTypeModel]()
     
     init(tagStorage: TagStorage, thingStorage: ThingStorage, thingTagStorage: ThingTagStorage!) {
         super.init()
         self.tagStorage = tagStorage
         self.thingStorage = thingStorage
         self.thingTagStorage = thingTagStorage
-        self.thingTypes = ThingTypeModel.getAllTypes()
         self.refreshThings()
     }
     
@@ -44,6 +42,25 @@ class HomeViewModel: BaseViewModel {
         }
         return false
     }
+    
+//    func getCellBackgroundStyle(_ index: Int) -> ThingCellBackgroundStyle {
+//        var style = ThingCellBackgroundStyle.normal
+//        let lastNumber = self.things.count - 1
+//        switch index {
+//        case 0:
+//            style = ThingCellBackgroundStyle.first
+//        case lastNumber:
+//            style = ThingCellBackgroundStyle.last
+//        default:
+//            style = ThingCellBackgroundStyle.normal
+//        }
+//        
+//        if self.things.count == 1 {
+//            style = ThingCellBackgroundStyle.one
+//        }
+//        
+//        return style
+//    }
     
     func calculateCellHeight(viewWidth: CGFloat, row: Int) -> CGFloat {
         let thing = self.things[row]

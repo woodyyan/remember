@@ -22,13 +22,6 @@ class ThingTypeCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.backgroundColor = UIColor.clear
-        setBackground(type: .password)
-        
-//        var content = self.defaultContentConfiguration()
-//        content.textProperties.font = UIFont.systemFont(ofSize: 20)
-//        content.textProperties.color = .white
-//        content.directionalLayoutMargins = NSDirectionalEdgeInsets(top: -20, leading: 40, bottom: 0, trailing: 0)
-//        self.contentConfiguration = content
         
         titleLabel = UILabel()
         titleLabel?.textColor = .white
@@ -81,21 +74,36 @@ class ThingTypeCell: UITableViewCell {
     }
     
     func setBackground(type: ThingType) {
-        let backgroundView = getBackgroundImageView("accountpassword")
-        self.addSubview(backgroundView)
+        let backgroundView = UIView(frame: self.contentView.frame)
+        backgroundView.layer.cornerRadius = 20
+        backgroundView.layer.masksToBounds = true
+        var imageView: UIImageView!
+        switch type {
+        case .note:
+            imageView = getBackgroundImageView("note")
+        case .password:
+            imageView = getBackgroundImageView("accountpassword")
+        case .card:
+            imageView = getBackgroundImageView("idcard")
+        case .address:
+            imageView = getBackgroundImageView("address")
+        }
+        backgroundView.addSubview(imageView)
+        self.insertSubview(backgroundView, at: 0)
         backgroundView.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.top.equalToSuperview().offset(5)
             make.bottom.equalToSuperview().offset(-5)
         }
+        imageView.snp.makeConstraints { make in
+            make.top.bottom.right.left.equalTo(backgroundView)
+        }
     }
     
     private func getBackgroundImageView(_ imageName: String) -> UIImageView {
         let image = UIImage(named: imageName)
-        let insets = UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 40)
-        let resizedImage = image?.resizableImage(withCapInsets: insets, resizingMode: UIImage.ResizingMode.stretch)
-        let backImage =  UIImageView(image: resizedImage)
+        let backImage =  UIImageView(image: image)
         return backImage
     }
     

@@ -70,3 +70,7 @@
 "password" = "密码";
 "export" = "导出到CSV";
 "clickToTouchId" = "点击进行指纹解锁";
+"accountPassword" = "账号密码";
+"address" = "地址";
+"note" = "备忘录";
+"idcard" = "证件信息";

@@ -254,7 +254,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 extension HomeViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ThingType.allCases.count
+        return viewModel.thingTypes.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -263,24 +263,23 @@ extension HomeViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ThingTypeCell
-        cell.titleLabel?.text = "账户密码"
-//        var content = cell.contentConfiguration as? UIListContentConfiguration
-//        content?.text = "账户密码"
-//        cell.contentConfiguration = content
+        let thingType = viewModel.thingTypes[indexPath.row]
+        cell.setBackground(type: thingType.type)
+        cell.titleLabel?.text = thingType.name
         cell.showCount(for: .password)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.width/3.54 // 3.54是图片的宽高比
+        return (self.width - 40)/3.52 + 10 // 3.52是图片的宽高比
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         inputThingView.endEditing()
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let thing = self.viewModel.things[indexPath.row]
-        openThingViewController(with: thing)
+//        let thing = self.viewModel.things[indexPath.row]
+//        openThingViewController(with: thing)
     }
     
     func openThingViewController(with thing: ThingModel) {

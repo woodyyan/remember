@@ -22,6 +22,11 @@
 		22D4EB7622BA72B2005763EC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB7522BA72B2005763EC /* Settings.swift */; };
 		22D4EB7722BA72B2005763EC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB7522BA72B2005763EC /* Settings.swift */; };
 		22D4EB7822BA72B2005763EC /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D4EB7522BA72B2005763EC /* Settings.swift */; };
+		574E00CD2D65C7E50027DA2E /* ThingTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E00CC2D65C7D70027DA2E /* ThingTypeModel.swift */; };
+		574E00CE2D65C7E50027DA2E /* ThingTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E00CC2D65C7D70027DA2E /* ThingTypeModel.swift */; };
+		574E00CF2D65C7E50027DA2E /* ThingTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E00CC2D65C7D70027DA2E /* ThingTypeModel.swift */; };
+		574E00D12D66EE740027DA2E /* HomeViewModel 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E00D02D66EE740027DA2E /* HomeViewModel 2.swift */; };
+		574E00D22D66EE740027DA2E /* HomeViewModel 2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574E00D02D66EE740027DA2E /* HomeViewModel 2.swift */; };
 		575B2C8D2D6488E700E604ED /* ThingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B2C8C2D6488DB00E604ED /* ThingType.swift */; };
 		575B2C8E2D6488E700E604ED /* ThingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B2C8C2D6488DB00E604ED /* ThingType.swift */; };
 		575B2C902D648A2D00E604ED /* ThingTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B2C8F2D648A2D00E604ED /* ThingTypeCell.swift */; };
@@ -224,6 +229,8 @@
 		22D4EB6C22B12EBB005763EC /* CsvExporterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvExporterTests.swift; sourceTree = "<group>"; };
 		22D4EB7022B131F3005763EC /* CSV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSV.framework; path = Carthage/Build/iOS/CSV.framework; sourceTree = SOURCE_ROOT; };
 		22D4EB7522BA72B2005763EC /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		574E00CC2D65C7D70027DA2E /* ThingTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingTypeModel.swift; sourceTree = "<group>"; };
+		574E00D02D66EE740027DA2E /* HomeViewModel 2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewModel 2.swift"; sourceTree = "<group>"; };
 		575B2C8C2D6488DB00E604ED /* ThingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingType.swift; sourceTree = "<group>"; };
 		575B2C8F2D648A2D00E604ED /* ThingTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingTypeCell.swift; sourceTree = "<group>"; };
 		575B2C912D6497CC00E604ED /* HomeViewController copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController copy.swift"; sourceTree = "<group>"; };
@@ -697,6 +704,7 @@
 				820B83EF1F0F971D007E3C15 /* VoiceInputViewModel.swift */,
 				82E7AC5620541945006FC9E5 /* TipsViewModel.swift */,
 				824267FA2072823B009FD115 /* HomeViewModel.swift */,
+				574E00D02D66EE740027DA2E /* HomeViewModel 2.swift */,
 				8280CDFA208ACE0A00C7A1F5 /* EditThingViewModel.swift */,
 				8280CDFE208ACF5F00C7A1F5 /* InputThingViewModel.swift */,
 				8280CE00208AD12D00C7A1F5 /* SettingsViewModel.swift */,
@@ -727,6 +735,7 @@
 		82FED7CE1E0A631700FDDFD2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				574E00CC2D65C7D70027DA2E /* ThingTypeModel.swift */,
 				820B83C31F0E8237007E3C15 /* ThingTagEntity.swift */,
 				820B83BB1F0E81FE007E3C15 /* TagEntity.swift */,
 				820B83B31F0E81A0007E3C15 /* ThingEntity.swift */,
@@ -931,6 +940,7 @@
 				820B83B51F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
 				8280CE0B208AE0DA00C7A1F5 /* ThingTableCellViewModel.swift in Sources */,
 				824267FF2073C725009FD115 /* HomeViewController+DZNEmptyDataSet.swift in Sources */,
+				574E00CF2D65C7E50027DA2E /* ThingTypeModel.swift in Sources */,
 				8280CE07208AD7F000C7A1F5 /* TagManagementViewControllerModel.swift in Sources */,
 				825DEB561DDA0B9B0065090F /* HomeViewController.swift in Sources */,
 				82290ECF209F4AD200F00DBD /* MoreMenuViewController.swift in Sources */,
@@ -970,6 +980,7 @@
 				824267FD2073C33B009FD115 /* PasteboardUtils.swift in Sources */,
 				221448C92373DD280020DD83 /* TitledEditView.swift in Sources */,
 				8280CE05208AD6C300C7A1F5 /* TagManagementViewModel.swift in Sources */,
+				574E00D12D66EE740027DA2E /* HomeViewModel 2.swift in Sources */,
 				8280CDFB208ACE0A00C7A1F5 /* EditThingViewModel.swift in Sources */,
 				820B83E41F0E8D3D007E3C15 /* TagModel.swift in Sources */,
 				8280CDFD208ACE9900C7A1F5 /* DateExtensions.swift in Sources */,
@@ -1003,10 +1014,12 @@
 				8280CE1E2091A0E200C7A1F5 /* InputThingViewModel.swift in Sources */,
 				82E7AC5D205420D3006FC9E5 /* TipsViewModelTests.swift in Sources */,
 				8280CE1F2091A0EA00C7A1F5 /* SettingsViewModel.swift in Sources */,
+				574E00CD2D65C7E50027DA2E /* ThingTypeModel.swift in Sources */,
 				820B83BE1F0E81FE007E3C15 /* TagEntity.swift in Sources */,
 				22D4EB7722BA72B2005763EC /* Settings.swift in Sources */,
 				820B83C61F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				824A14B32075032E004D7F21 /* PasteboardUtils.swift in Sources */,
+				574E00D22D66EE740027DA2E /* HomeViewModel 2.swift in Sources */,
 				8280CE202091A0F200C7A1F5 /* TagManagementViewModel.swift in Sources */,
 				82E7AC58205420A1006FC9E5 /* TipsViewModel.swift in Sources */,
 				820B83F11F0F971D007E3C15 /* AboutViewModel.swift in Sources */,
@@ -1061,6 +1074,7 @@
 				8280CDCC2086291A00C7A1F5 /* UIColorExtensions.swift in Sources */,
 				825DEB3C1DD9DC070065090F /* RememberUITests.swift in Sources */,
 				820B83B71F0E81A0007E3C15 /* ThingEntity.swift in Sources */,
+				574E00CE2D65C7E50027DA2E /* ThingTypeModel.swift in Sources */,
 				820B83C71F0E8237007E3C15 /* ThingTagEntity.swift in Sources */,
 				823A34CF1E320DC00093FBF4 /* MessageBox.swift in Sources */,
 				825BA5FB1ED4819600B4545B /* UIImage+Gif.swift in Sources */,
