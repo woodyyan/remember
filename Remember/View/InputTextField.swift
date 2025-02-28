@@ -13,7 +13,7 @@ class InputTextField: UITextField {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let leftImage = UIImageView(image: UIImage(named: "PlusMath"))
+        let leftImage = UIImageView(image: UIImage(named: "PlusMath")?.withTintColor(.remember))
         self.leftView = leftImage
         self.leftViewMode = .always
         let text = NSLocalizedString("addThingPlaceHolder", comment: "记")
