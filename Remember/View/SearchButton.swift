@@ -15,7 +15,7 @@ class SearchButton: UIButton {
         super.layoutSubviews()
     
         self.setTitle(NSLocalizedString("searchPlaceHolder", comment: "搜索"), for: UIControl.State.normal)
-        self.setImage(UIImage(named: "Search"), for: UIControl.State.normal)
+        self.setImage(UIImage(named: "Search")?.withTintColor(.remember), for: UIControl.State.normal)
         self.layer.borderColor = UIColor.inputGray.cgColor
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 20
