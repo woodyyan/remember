@@ -12,7 +12,7 @@ import UIKit
 extension UIColor {
     
     public static var remember: UIColor {
-        return UIColor(red: 252, green: 156, blue: 43)!
+        return UIColor(red: 40, green: 80, blue: 97)!
     }
     
     public static var background: UIColor {

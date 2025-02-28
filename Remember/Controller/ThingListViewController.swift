@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ThingListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     private let inputViewHeight: CGFloat = 60
     private var shouldInputViewDisplay = true
     private var tableView: UITableView!
@@ -17,9 +18,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private var sourceIndexPath: IndexPath?
     private var inputThingView: InputThingView!
     
+    var thingType: ThingTypeModel?
+    
     private static let context = CoreStorage.shared.persistentContainer.viewContext
     
-    let viewModel: HomeViewModel = ViewModelFactory.shared.create()
+    let viewModel: ThingListViewModel = ViewModelFactory.shared.create()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -35,8 +38,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         initUI()
         
         initNotification()
-        
-        touchId()
     }
     
     private func initNotification() {
@@ -44,7 +45,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func initUI() {
-        self.title = NSLocalizedString("appName", comment: "伍迪收纳盒")
+        self.title = self.thingType?.name
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.remember]
         self.navigationController?.navigationBar.tintColor = UIColor.remember
@@ -113,7 +114,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         inputThingView.endEditing()
         
         let searchController = SearchViewController()
-        searchController.homeController = self
+//        searchController.homeController = self
         self.present(UINavigationController.init(rootViewController: searchController), animated: false, completion: nil)
     }
     
@@ -124,7 +125,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.register(ThingTypeCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(ThingTableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.view.addSubview(tableView)
         
@@ -251,10 +252,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 }
 
-extension HomeViewController {
+extension ThingListViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.thingTypes.count
+        return self.viewModel.things.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -262,31 +263,66 @@ extension HomeViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ThingTypeCell
-        let thingType = viewModel.thingTypes[indexPath.row]
-        cell.setBackground(type: thingType.type)
-        cell.titleLabel?.text = thingType.name
-        cell.showCount(for: .password)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ThingTableViewCell
+        var thing = self.viewModel.things[indexPath.row]
+        cell.textLabel?.text = thing.content
+        cell.showTags(for: thing)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (self.width - 40)/3.52 + 10 // 3.52是图片的宽高比
+        return self.width/3.54 // 3.54是图片的宽高比
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let title = NSLocalizedString("tag", comment: "标签")
+        let editAction = UIContextualAction(style: .normal, title: title, handler: { (_, _, _) in
+            let index = indexPath.row
+            let thing = self.viewModel.things[index]
+            self.editThing(thing, isTag: true)
+            tableView.isEditing = false
+        })
+        
+        let copyTitle = NSLocalizedString("copy", comment: "复制")
+        let shareAction = UIContextualAction(style: .normal, title: copyTitle, handler: { (_, _, _) in
+            let index=(indexPath as NSIndexPath).row as Int
+            let thing = self.viewModel.things[index]
+            UIPasteboard.general.string = thing.content
+        })
+        shareAction.backgroundColor = UIColor.remember
+        
+        let deleteTitle = NSLocalizedString("delete", comment: "删除")
+        let deleteAction = UIContextualAction(style: .destructive, title: deleteTitle, handler: { (_, _, _) in
+            let alertController = UIAlertController(title: NSLocalizedString("sureToDelete", comment: "确定要删除吗？"),
+                                                    message: NSLocalizedString("cannotRecovery", comment: ""), preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: NSLocalizedString("cancel", comment: "取消"), style: .cancel, handler: { _ in
+                tableView.setEditing(false, animated: true)
+            })
+            let okAction = UIAlertAction(title: NSLocalizedString("confirmDelete", comment: "确认删除"), style: .destructive, handler: { _ in
+                self.viewModel.deleteThing(index: (indexPath as NSIndexPath).row as Int)
+                tableView.reloadData()
+            })
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        })
+
+        return UISwipeActionsConfiguration(actions: [deleteAction, shareAction, editAction])
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         inputThingView.endEditing()
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let thingType = self.viewModel.thingTypes[indexPath.row]
-        openThingListViewController(with: thingType)
-    }
-    
-    func openThingListViewController(with thingType: ThingTypeModel) {
-        let listController = ThingListViewController()
-//        listController.delegate = self
-        listController.thingType = thingType
-        self.navigationController?.pushViewController(listController, animated: true)
+        let thing = self.viewModel.things[indexPath.row]
+        openThingViewController(with: thing)
     }
     
     func openThingViewController(with thing: ThingModel) {
@@ -295,15 +331,33 @@ extension HomeViewController {
         editController.thing = thing
         self.navigationController?.pushViewController(editController, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        inputThingView.endEditing()
+    }
+    
+    private func editThing(_ thing: ThingModel, isTag: Bool = false) {
+        self.shouldInputViewDisplay = true
+        
+        let editController = EditThingViewController()
+        editController.delegate = self
+        editController.thing = thing
+        editController.isEditTag = isTag
+        self.navigationController?.pushViewController(editController, animated: true)
+    }
 }
 
-extension HomeViewController: UISearchControllerDelegate {
+extension ThingListViewController: UISearchControllerDelegate {
     func willDismissSearchController(_ searchController: UISearchController) {
         self.shouldInputViewDisplay = true
     }
 }
 
-extension HomeViewController: ThingInputDelegate {
+extension ThingListViewController: ThingInputDelegate {
     func input(inputView: InputThingView, thing: ThingModel) {
         self.viewModel.things.insert(thing, at: 0)
         self.viewModel.sortAndSaveThings()
@@ -311,7 +365,7 @@ extension HomeViewController: ThingInputDelegate {
     }
 }
 
-extension HomeViewController: VoiceInputDelegate {
+extension ThingListViewController: VoiceInputDelegate {
     func voiceInput(voiceInputView: VoiceInputController, thing: ThingModel) {
         self.viewModel.things.insert(thing, at: 0)
         self.viewModel.sortAndSaveThings()
@@ -319,7 +373,7 @@ extension HomeViewController: VoiceInputDelegate {
     }
 }
 
-extension HomeViewController: EditThingDelegate {
+extension ThingListViewController: EditThingDelegate {
     func editThing(isDeleted: Bool, thing: ThingModel) {
         if isDeleted {
             if let index = self.viewModel.things.firstIndex(where: {$0.id == thing.id}) {
@@ -331,7 +385,7 @@ extension HomeViewController: EditThingDelegate {
     }
 }
 
-extension HomeViewController: SearchResultTableDelegate {
+extension ThingListViewController: SearchResultTableDelegate {
     func searchResultTable(view: SearchResultTableViewController, thing: ThingModel) {
         openThingViewController(with: thing)
     }

@@ -6,7 +6,7 @@
  Copyright © 2018 Songbai Yan. All rights reserved.
  */
 "appName" = "Remember";
-"searchPlaceHolder" = " Search for things you forgot";
+"searchPlaceHolder" = " Search";
 "addThingPlaceHolder" = " Add something";
 "settings" = "Settings";
 "totalThingsPart1" = "";

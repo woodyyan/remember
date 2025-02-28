@@ -6,7 +6,7 @@
   Copyright © 2018 Songbai Yan. All rights reserved.
 */
 "appName" = "伍迪收納盒";
-"searchPlaceHolder" = " 搜索妳忘記的小事";
+"searchPlaceHolder" = " 搜索";
 "addThingPlaceHolder" = " 記壹點什麽吧";
 "settings" = "設置";
 "totalThingsPart1" = "共記了";

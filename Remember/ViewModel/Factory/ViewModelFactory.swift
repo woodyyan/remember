@@ -25,6 +25,7 @@ class ViewModelFactory {
         let tagStorage = TagStorage(context: context)
         let thingStorage = ThingStorage(context: context)
         let thingTagStorage = ThingTagStorage(context: context)
+        viewModels.append(ThingListViewModel(tagStorage: tagStorage, thingStorage: thingStorage, thingTagStorage: thingTagStorage))
         viewModels.append(HomeViewModel(tagStorage: tagStorage, thingStorage: thingStorage, thingTagStorage: thingTagStorage))
         viewModels.append(AboutViewModel())
         viewModels.append(MoreMenuViewModel())

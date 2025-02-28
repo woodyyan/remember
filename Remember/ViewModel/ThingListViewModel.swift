@@ -10,7 +10,7 @@ import Foundation
 import LocalAuthentication
 import UIKit
 
-class HomeViewModel2: BaseViewModel {
+class ThingListViewModel: BaseViewModel {
     private var tagStorage: TagStorage!
     private var thingStorage: ThingStorage!
     private var thingTagStorage: ThingTagStorage!
