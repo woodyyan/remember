@@ -26,8 +26,8 @@ extension ThingTypeModel {
     static func getAllTypes() -> [ThingTypeModel] {
         var types = [ThingTypeModel]()
         types.append(ThingTypeModel(name: NSLocalizedString("accountPassword", comment: "账号密码"), type: .password))
-        types.append(ThingTypeModel(name: NSLocalizedString("address", comment: "地址"), type: .address))
         types.append(ThingTypeModel(name: NSLocalizedString("note", comment: "备忘录"), type: .card))
+        types.append(ThingTypeModel(name: NSLocalizedString("address", comment: "地址"), type: .address))
         types.append(ThingTypeModel(name: NSLocalizedString("idcard", comment: "证件信息"), type: .note))
         return types
     }

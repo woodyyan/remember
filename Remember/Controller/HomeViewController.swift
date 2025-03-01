@@ -279,11 +279,28 @@ extension HomeViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let thingType = self.viewModel.thingTypes[indexPath.row]
-        openThingListViewController(with: thingType)
+        openListViewController(with: thingType)
     }
     
-    func openThingListViewController(with thingType: ThingTypeModel) {
-        let listController = ThingListViewController()
+    func openListViewController(with thingType: ThingTypeModel) {
+        var listController = ThingListViewController()
+        switch thingType.type {
+        case .address:
+            listController = ThingListViewController()
+//            listController = AddressListViewController()
+        case .card:
+            listController = ThingListViewController()
+//            listController = CardListViewController()
+        case .note:
+            listController = ThingListViewController()
+        case .password:
+            listController = ThingListViewController()
+//            listController = PasswordListViewController()
+        default:
+            listController = ThingListViewController()
+            // TODO: 这里可以重构成统一的controller
+        }
+        
 //        listController.delegate = self
         listController.thingType = thingType
         self.navigationController?.pushViewController(listController, animated: true)
