@@ -264,7 +264,7 @@ extension ThingListViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ThingTableViewCell
-        var thing = self.viewModel.things[indexPath.row]
+        let thing = self.viewModel.things[indexPath.row]
         cell.textLabel?.text = thing.content
         cell.showTags(for: thing)
         return cell
