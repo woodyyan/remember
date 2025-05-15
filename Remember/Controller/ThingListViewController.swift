@@ -48,11 +48,7 @@ class ThingListViewController: UIViewController, UITableViewDelegate, UITableVie
         self.title = self.thingType?.name
         self.view.backgroundColor = UIColor.white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.remember]
-        self.navigationController?.navigationBar.tintColor = UIColor.remember
-        
-        let rightBarItem = UIBarButtonItem(image: #imageLiteral(resourceName: "setting"), style: .plain, target: self, action: #selector(HomeViewController.pushToSettingsPage(_:)))
-        self.navigationItem.rightBarButtonItem = rightBarItem
-        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.remember
+        self.navigationController?.navigationBar.tintColor = thingType?.name
         
         initTableView()
         initInputView()
